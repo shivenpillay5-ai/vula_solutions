@@ -9,8 +9,8 @@ import heroDoorway from "@/assets/hero-doorway.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vula Solutions — Helping businesses work smarter" },
-      { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™ — our signature business discovery experience." },
+      { title: "Vula Solutions - Helping businesses work smarter" },
+      { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™ - our signature business discovery experience." },
       { property: "og:title", content: "Vula Solutions" },
       { property: "og:description", content: "Helping businesses work smarter." },
       { property: "og:url", content: "/" },
@@ -43,7 +43,7 @@ function Hero() {
       <div className="container-page grid gap-12 pt-16 pb-10 md:grid-cols-[1fr_1.35fr] md:items-center md:gap-14 md:pt-24 md:pb-14">
         <div className="relative z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/70 backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#14B8A6" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#01A1B7" }} />
             Business Transformation Partner
           </span>
           <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem]">
@@ -51,13 +51,13 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
             Running a business is complicated enough. Choosing the right technology shouldn't be.
-            We help you open the right doors — with clarity, confidence and practical technology that fits your business.
+            We help you open the right doors - with clarity, confidence and practical technology that fits your business.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/compass"
               className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90"
-              style={{ backgroundColor: "#14B8A6" }}
+              style={{ backgroundColor: "#01A1B7" }}
             >
               Start with Compass™
               <ArrowRight className="h-4 w-4" />
@@ -74,7 +74,7 @@ function Hero() {
           <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
             <img
               src={heroDoorway}
-              alt="Two elegant architectural doors opening onto a bright sunlit landscape — a metaphor for opening new business possibilities."
+              alt="Two elegant architectural doors opening onto a bright sunlit landscape - a metaphor for opening new business possibilities."
               width={1600}
               height={1200}
               className="h-full w-full object-cover"
@@ -115,30 +115,30 @@ function TrustBar() {
 
 function VulaMeaning() {
   const pillars = [
-    { icon: ClarityIcon, title: "CLARITY", body: "We help you see the path forward — before anything is built." },
+    { icon: ClarityIcon, title: "CLARITY", body: "We help you see the path forward - before anything is built." },
     { icon: ConfidenceIcon, title: "CONFIDENCE", body: "Trusted advice, so every technology decision feels certain." },
     { icon: TrendingUp, title: "TRANSFORMATION", body: "Practical technology that quietly changes how your business works." },
-    { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you — long after the launch." },
+    { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you - long after the launch." },
   ];
   return (
     <section className="bg-navy-deep pt-10 pb-12 sm:pt-14 sm:pb-16">
       <div className="container-page">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#2DD4BF" }}>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#01A1B7" }}>
             Vula means open
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-            We <span style={{ color: "#2DD4BF" }}>open the door</span> to a smarter, stronger business.
+            We <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/65">
-            VULA is a Business Transformation Partner — not a website agency, an AI vendor or IT support.
+            VULA is a Business Transformation Partner - not a website agency, an AI vendor or IT support.
             The best technology is the kind that helps your business thrive without getting in the way.
           </p>
         </div>
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map(({ icon: Icon, title, body }) => (
             <div key={title} className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition hover:border-white/20 hover:bg-white/[0.05]">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10" style={{ color: "#2DD4BF" }}>
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10" style={{ color: "#01A1B7" }}>
                 <Icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-xs font-semibold tracking-[0.2em] text-white">{title}</h3>
@@ -191,7 +191,7 @@ function CompassIntro() {
                 "A focused business discovery session",
                 "Opportunity mapping across technology, AI and operations",
                 "A written Compass Report with a clear roadmap",
-                "No obligation, no sales pitch — just clarity",
+                "No obligation, no sales pitch - just clarity",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-2">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric" />
@@ -212,7 +212,7 @@ function SolutionsOverview() {
     <Section
       eyebrow="The Vula Solutions suite"
       title="A connected ecosystem for modern businesses"
-      intro="Each product is designed to work on its own or as part of a broader transformation — all beginning with Compass™."
+      intro="Each product is designed to work on its own or as part of a broader transformation - all beginning with Compass™."
       className="bg-secondary/40"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -227,12 +227,12 @@ function SolutionsOverview() {
 function WhyVula() {
   const points = [
     { title: "Strategy before technology", body: "We start with your business, not with tools. Clarity first, execution second." },
-    { title: "Practical, not theoretical", body: "Outcomes you can measure — faster processes, better websites, real AI adoption." },
+    { title: "Practical, not theoretical", body: "Outcomes you can measure - faster processes, better websites, real AI adoption." },
     { title: "Premium, without the overhead", body: "The quality of a senior team, structured for small and medium businesses." },
     { title: "One partner, end to end", body: "Discovery, design, build, automation and ongoing support under one roof." },
   ];
   return (
-    <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology — with a calm, considered approach.">
+    <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology - with a calm, considered approach.">
       <div className="grid gap-6 sm:grid-cols-2">
         {points.map((p) => (
           <div key={p.title} className="card-premium p-7">
@@ -249,8 +249,8 @@ function Approach() {
   const steps = [
     { n: "01", t: "Discover", b: "A structured Compass™ session to understand your business and priorities." },
     { n: "02", t: "Map", b: "We identify opportunities across technology, AI, automation and growth." },
-    { n: "03", t: "Deliver", b: "We build, launch and refine — websites, automations and AI enablement." },
-    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow — without limits." },
+    { n: "03", t: "Deliver", b: "We build, launch and refine - websites, automations and AI enablement." },
+    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow - without limits." },
   ];
   return (
     <Section eyebrow="The approach" title="A simple path to real change." className="bg-secondary/40">
@@ -299,14 +299,14 @@ function Industries() {
 
 function ResourcesTeaser() {
   return (
-    <Section eyebrow="Insights" title="Ideas worth reading." intro="Guides, checklists and thinking on how small and medium businesses can work smarter." className="bg-secondary/40">
+    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass™ thinking and real business decisions." className="bg-secondary/40">
       <div className="grid gap-6 md:grid-cols-3">
         {[
-          { t: "How to run a proper business discovery", d: "The questions that unlock the right strategy." },
-          { t: "AI for SMEs, without the hype", d: "Practical use cases that pay for themselves." },
-          { t: "The website as a business tool", d: "Design decisions that drive real enquiries." },
+          { t: "How to run a proper business discovery", d: "Questions that unlock the right strategy." },
+          { t: "AI for SMEs, without the hype", d: "Practical use cases that create real value." },
+          { t: "The website as a business tool", d: "Design decisions that support real enquiries." },
         ].map((r) => (
-          <Link key={r.t} to="/resources" className="card-premium card-premium-hover block p-7">
+          <Link key={r.t} to="/resources" className="card-premium card-premium-hover block p-7 sm:p-8">
             <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Guide</p>
             <h3 className="mt-2 text-lg font-semibold">{r.t}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{r.d}</p>

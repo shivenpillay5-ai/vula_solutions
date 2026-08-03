@@ -38,7 +38,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-secondary/40">
       <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo className="mb-4" />
+          <Logo className="mb-5" size="lg" />
           <p className="max-w-sm text-sm text-muted-foreground">
             Technology without complexity. Results without compromise.
           </p>

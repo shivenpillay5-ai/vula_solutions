@@ -16,17 +16,18 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-2" aria-label="Vula Solutions home">
-          <Logo showTagline={false} />
+      <div className="container-page flex h-18 items-center justify-between gap-6 lg:h-20">
+        <Link to="/" className="flex items-center" aria-label="Vula Solutions home">
+          <Logo className="md:hidden" showTagline={false} showWordmark={false} size="md" />
+          <Logo className="hidden md:inline-flex" showTagline={false} size="hero" />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="transition-colors hover:text-foreground"
-              activeProps={{ className: "text-foreground" }}
+              className="transition-colors hover:text-electric"
+              activeProps={{ className: "text-electric" }}
             >
               {item.label}
             </Link>
@@ -58,7 +59,8 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-3 text-base font-medium text-foreground/90 hover:bg-accent"
+                className="rounded-md px-2 py-3 text-base font-medium text-foreground/90 transition hover:bg-accent hover:text-electric"
+                activeProps={{ className: "bg-accent text-electric" }}
               >
                 {item.label}
               </Link>

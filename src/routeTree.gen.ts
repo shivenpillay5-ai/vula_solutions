@@ -21,12 +21,15 @@ import { Route as CompassRouteImport } from './routes/compass'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as SolutionsPartnerRouteImport } from './routes/solutions.partner'
 import { Route as SolutionsLaunchRouteImport } from './routes/solutions.launch'
 import { Route as SolutionsGrowthRouteImport } from './routes/solutions.growth'
 import { Route as SolutionsFlowRouteImport } from './routes/solutions.flow'
 import { Route as SolutionsAccelerateRouteImport } from './routes/solutions.accelerate'
 import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
+import { Route as ResourcesSectionIndexRouteImport } from './routes/resources.$section.index'
+import { Route as ResourcesSectionArticleRouteImport } from './routes/resources.$section.$article'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -88,6 +91,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ResourcesRoute,
+} as any)
 const SolutionsPartnerRoute = SolutionsPartnerRouteImport.update({
   id: '/partner',
   path: '/partner',
@@ -118,6 +126,16 @@ const ResourcesSectionRoute = ResourcesSectionRouteImport.update({
   path: '/$section',
   getParentRoute: () => ResourcesRoute,
 } as any)
+const ResourcesSectionIndexRoute = ResourcesSectionIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ResourcesSectionRoute,
+} as any)
+const ResourcesSectionArticleRoute = ResourcesSectionArticleRouteImport.update({
+  id: '/$article',
+  path: '/$article',
+  getParentRoute: () => ResourcesSectionRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -132,12 +150,15 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
-  '/resources/$section': typeof ResourcesSectionRoute
+  '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/resources/$section/$article': typeof ResourcesSectionArticleRoute
+  '/resources/$section/': typeof ResourcesSectionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -148,16 +169,17 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/industries': typeof IndustriesRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
-  '/resources/$section': typeof ResourcesSectionRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/resources': typeof ResourcesIndexRoute
+  '/resources/$section/$article': typeof ResourcesSectionArticleRoute
+  '/resources/$section': typeof ResourcesSectionIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -173,12 +195,15 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
-  '/resources/$section': typeof ResourcesSectionRoute
+  '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/resources/$section/$article': typeof ResourcesSectionArticleRoute
+  '/resources/$section/': typeof ResourcesSectionIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -201,6 +226,9 @@ export interface FileRouteTypes {
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/resources/'
+    | '/resources/$section/$article'
+    | '/resources/$section/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -211,16 +239,17 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/industries'
     | '/privacy'
-    | '/resources'
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
-    | '/resources/$section'
     | '/solutions/accelerate'
     | '/solutions/flow'
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/resources'
+    | '/resources/$section/$article'
+    | '/resources/$section'
   id:
     | '__root__'
     | '/'
@@ -241,6 +270,9 @@ export interface FileRouteTypes {
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/resources/'
+    | '/resources/$section/$article'
+    | '/resources/$section/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -344,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
     '/solutions/partner': {
       id: '/solutions/partner'
       path: '/partner'
@@ -386,15 +425,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesSectionRouteImport
       parentRoute: typeof ResourcesRoute
     }
+    '/resources/$section/': {
+      id: '/resources/$section/'
+      path: '/'
+      fullPath: '/resources/$section/'
+      preLoaderRoute: typeof ResourcesSectionIndexRouteImport
+      parentRoute: typeof ResourcesSectionRoute
+    }
+    '/resources/$section/$article': {
+      id: '/resources/$section/$article'
+      path: '/$article'
+      fullPath: '/resources/$section/$article'
+      preLoaderRoute: typeof ResourcesSectionArticleRouteImport
+      parentRoute: typeof ResourcesSectionRoute
+    }
   }
 }
 
+interface ResourcesSectionRouteChildren {
+  ResourcesSectionArticleRoute: typeof ResourcesSectionArticleRoute
+  ResourcesSectionIndexRoute: typeof ResourcesSectionIndexRoute
+}
+
+const ResourcesSectionRouteChildren: ResourcesSectionRouteChildren = {
+  ResourcesSectionArticleRoute: ResourcesSectionArticleRoute,
+  ResourcesSectionIndexRoute: ResourcesSectionIndexRoute,
+}
+
+const ResourcesSectionRouteWithChildren =
+  ResourcesSectionRoute._addFileChildren(ResourcesSectionRouteChildren)
+
 interface ResourcesRouteChildren {
-  ResourcesSectionRoute: typeof ResourcesSectionRoute
+  ResourcesSectionRoute: typeof ResourcesSectionRouteWithChildren
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 const ResourcesRouteChildren: ResourcesRouteChildren = {
-  ResourcesSectionRoute: ResourcesSectionRoute,
+  ResourcesSectionRoute: ResourcesSectionRouteWithChildren,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 
 const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
