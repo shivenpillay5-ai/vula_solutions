@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-type IntroState = "pending" | "playing" | "hidden";
+type IntroState = "waiting" | "playing" | "hidden";
 
 function IntroMark() {
   return (
     <div className="vula-intro__mark-wrap" aria-hidden="true">
       <svg viewBox="0 0 420 500" className="vula-intro__mark" xmlns="http://www.w3.org/2000/svg">
-        <path className="vula-intro__panel vula-intro__panel--left" d="M160 90L0 0V416.667L160 500V90Z" fill="#F8FAFC" />
-        <path className="vula-intro__panel vula-intro__panel--right" d="M260 90L420 0V416.667L260 500V90Z" fill="#01A1B7" />
+        <path className="vula-intro__panel vula-intro__panel--left" style={{ transform: "translate3d(50px,0,0)", transformBox: "fill-box", transformOrigin: "center center" }} d="M160 90L0 0V416.667L160 500V90Z" fill="#F8FAFC" />
+        <path className="vula-intro__panel vula-intro__panel--right" style={{ transform: "translate3d(-50px,0,0)", transformBox: "fill-box", transformOrigin: "center center" }} d="M260 90L420 0V416.667L260 500V90Z" fill="#01A1B7" />
       </svg>
       <span className="vula-intro__glow vula-intro__glow--back" />
       <span className="vula-intro__glow vula-intro__glow--beam" />
@@ -17,58 +17,29 @@ function IntroMark() {
 }
 
 export function BrandIntro() {
-  const [state, setState] = useState<IntroState>("pending");
+  const [state, setState] = useState<IntroState>("waiting");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    let shouldPlay = !reducedMotion;
-    try {
-      shouldPlay = shouldPlay && !sessionStorage.getItem("vula_intro_played");
-      if (shouldPlay) {
-        sessionStorage.setItem("vula_intro_played", "1");
-      }
-    } catch {
-      shouldPlay = !reducedMotion;
-    }
-
-    if (!shouldPlay) {
+    if (reducedMotion) {
       setState("hidden");
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
-    const previousPaddingRight = document.body.style.paddingRight;
-    const scrollbarCompensation = window.innerWidth - document.documentElement.clientWidth;
-
-    document.body.style.overflow = "hidden";
-    if (scrollbarCompensation > 0) {
-      document.body.style.paddingRight = `${scrollbarCompensation}px`;
-    }
-
     let hideTimeout = 0;
-    let frameOne = 0;
-    let frameTwo = 0;
-
-    frameOne = window.requestAnimationFrame(() => {
-      frameTwo = window.requestAnimationFrame(() => {
-        setState("playing");
-        hideTimeout = window.setTimeout(() => {
-          setState("hidden");
-          document.body.style.overflow = previousOverflow;
-          document.body.style.paddingRight = previousPaddingRight;
-        }, 2460);
-      });
+    const startFrame = window.requestAnimationFrame(() => {
+      setState("playing");
+      hideTimeout = window.setTimeout(() => {
+        setState("hidden");
+      }, 2880);
     });
 
     return () => {
-      window.cancelAnimationFrame(frameOne);
-      window.cancelAnimationFrame(frameTwo);
+      window.cancelAnimationFrame(startFrame);
       window.clearTimeout(hideTimeout);
-      document.body.style.overflow = previousOverflow;
-      document.body.style.paddingRight = previousPaddingRight;
     };
   }, []);
 
@@ -77,7 +48,7 @@ export function BrandIntro() {
   return (
     <div
       aria-hidden="true"
-      className={`vula-intro fixed inset-0 z-[100] overflow-hidden ${state === "playing" ? "is-playing" : "is-pending"}`}
+      className={`vula-intro ${state === "playing" ? "is-playing" : "is-waiting"} fixed inset-0 z-[100] overflow-hidden`}
     >
       <div className="vula-intro__veil" />
       <div className="vula-intro__wash" />
@@ -91,13 +62,17 @@ export function BrandIntro() {
         .vula-intro {
           background: #06090d;
           pointer-events: auto;
+          opacity: 1;
         }
-        .vula-intro__veil,
-        .vula-intro__wash,
-        .vula-intro__content-shell,
-        .vula-intro__content,
-        .vula-intro__panel,
-        .vula-intro__glow {
+        .vula-intro.is-playing {
+          opacity: 1;
+        }
+        .vula-intro.is-playing .vula-intro__veil,
+        .vula-intro.is-playing .vula-intro__wash,
+        .vula-intro.is-playing .vula-intro__content-shell,
+        .vula-intro.is-playing .vula-intro__content,
+        .vula-intro.is-playing .vula-intro__panel,
+        .vula-intro.is-playing .vula-intro__glow {
           will-change: transform, opacity, filter;
         }
         .vula-intro__veil {
@@ -143,12 +118,6 @@ export function BrandIntro() {
           transform-box: fill-box;
           transform-origin: center center;
         }
-        .vula-intro__panel--left {
-          transform: translate3d(50px, 0, 0);
-        }
-        .vula-intro__panel--right {
-          transform: translate3d(-50px, 0, 0);
-        }
         .vula-intro__glow {
           position: absolute;
           pointer-events: none;
@@ -188,53 +157,49 @@ export function BrandIntro() {
         }
 
         .vula-intro.is-playing {
-          animation: vulaIntroDone 220ms ease-in-out 2240ms forwards;
+          animation: vulaIntroDone 220ms ease-in-out 2660ms forwards;
         }
         .vula-intro.is-playing .vula-intro__veil {
-          animation: vulaOverlayFade 2260ms ease-in-out forwards;
+          animation: vulaOverlayFade 2180ms ease-in-out 500ms both;
         }
         .vula-intro.is-playing .vula-intro__wash {
-          animation: vulaWash 1680ms ease-in-out 260ms forwards;
+          animation: vulaWash 1520ms ease-in-out 620ms both;
         }
         .vula-intro.is-playing .vula-intro__content {
-          animation: vulaSettle 980ms cubic-bezier(0.45, 0, 0.2, 1) 1320ms forwards;
+          animation: vulaSettle 920ms cubic-bezier(0.45, 0, 0.2, 1) 1680ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--left {
-          animation: vulaLeftOpen 1260ms cubic-bezier(0.45, 0, 0.2, 1) 260ms forwards;
+          animation: vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 500ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--right {
-          animation: vulaRightOpen 1260ms cubic-bezier(0.45, 0, 0.2, 1) 260ms forwards;
+          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 500ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--back {
-          animation: vulaBackLight 1420ms ease-in-out 240ms forwards;
+          animation: vulaBackLight 1360ms ease-in-out 620ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--beam {
-          animation: vulaBeam 1500ms ease-in-out 290ms forwards;
+          animation: vulaBeam 1420ms ease-in-out 640ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--ambient {
-          animation: vulaAmbient 1380ms ease-in-out 420ms forwards;
+          animation: vulaAmbient 1320ms ease-in-out 720ms both;
         }
 
         @keyframes vulaLeftOpen {
           0% { transform: translate3d(50px, 0, 0); }
-          16% { transform: translate3d(50px, 0, 0); }
           100% { transform: translate3d(0, 0, 0); }
         }
         @keyframes vulaRightOpen {
           0% { transform: translate3d(-50px, 0, 0); }
-          16% { transform: translate3d(-50px, 0, 0); }
           100% { transform: translate3d(0, 0, 0); }
         }
         @keyframes vulaBackLight {
           0% { opacity: 0; transform: scale(0.55); }
-          20% { opacity: 0; transform: scale(0.55); }
-          62% { opacity: 0.82; }
+          52% { opacity: 0.78; }
           100% { opacity: 0.92; transform: scale(1.08); }
         }
         @keyframes vulaBeam {
           0% { opacity: 0; transform: translateY(10px) scaleY(0.08); }
-          20% { opacity: 0; transform: translateY(10px) scaleY(0.08); }
-          46% { opacity: 0.28; }
+          42% { opacity: 0.34; }
           100% { opacity: 0.95; transform: translateY(0) scaleY(1); }
         }
         @keyframes vulaAmbient {
