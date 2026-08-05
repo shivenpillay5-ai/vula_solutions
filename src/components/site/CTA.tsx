@@ -22,13 +22,13 @@ export function CTA({
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               to={primary.to}
-              className="inline-flex h-11 items-center rounded-full bg-white px-6 text-sm font-semibold text-navy-deep transition hover:bg-white/90"
+              className="inline-flex h-11 items-center rounded-full bg-electric px-6 text-sm font-semibold text-white transition hover:opacity-90"
             >
               {primary.label}
             </Link>
             <Link
               to={secondary.to}
-              className="inline-flex h-11 items-center rounded-full border border-white/25 px-6 text-sm font-medium text-white transition hover:bg-white/10"
+              className="inline-flex h-11 items-center rounded-full bg-white px-6 text-sm font-medium text-navy-deep transition hover:bg-white/90"
             >
               {secondary.label}
             </Link>

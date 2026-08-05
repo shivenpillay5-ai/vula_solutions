@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
 import { CTA } from "@/components/site/CTA";
 import heroDoorway from "@/assets/hero-doorway.jpg";
+import { resourceSections } from "@/lib/resources";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,13 +41,9 @@ function Home() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-deep">
-      <div className="container-page grid gap-12 pt-16 pb-10 md:grid-cols-[1fr_1.35fr] md:items-center md:gap-14 md:pt-24 md:pb-14">
+      <div className="container-page grid gap-12 pt-12 pb-10 md:grid-cols-[1fr_1.35fr] md:items-center md:gap-14 md:pt-18 md:pb-14">
         <div className="relative z-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/70 backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#01A1B7" }} />
-            Business Transformation Partner
-          </span>
-          <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem]">
+          <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem]">
             Technology shouldn't be the hardest part of running your business.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
@@ -64,7 +61,7 @@ function Hero() {
             </Link>
             <Link
               to="/solutions"
-              className="inline-flex h-12 items-center rounded-full border border-white/20 px-6 text-sm font-medium text-white transition hover:bg-white/[0.06]"
+              className="inline-flex h-12 items-center rounded-full bg-white px-6 text-sm font-medium text-navy-deep transition hover:bg-white/90"
             >
               Explore Our Solutions
             </Link>
@@ -121,14 +118,14 @@ function VulaMeaning() {
     { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you - long after the launch." },
   ];
   return (
-    <section className="bg-navy-deep pt-10 pb-12 sm:pt-14 sm:pb-16">
+    <section className="bg-navy-deep pt-14 pb-16 sm:pt-20 sm:pb-22">
       <div className="container-page">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#01A1B7" }}>
             Vula means open
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-            We <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
+            We help you <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/65">
             VULA is a Business Transformation Partner - not a website agency, an AI vendor or IT support.
@@ -213,7 +210,8 @@ function SolutionsOverview() {
       eyebrow="The Vula Solutions suite"
       title="A connected ecosystem for modern businesses"
       intro="Each product is designed to work on its own or as part of a broader transformation - all beginning with Compass™."
-      className="bg-secondary/40"
+      className="bg-navy-deep"
+      tone="dark"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
@@ -277,7 +275,7 @@ function Industries() {
     { icon: Wrench, label: "Trades & specialists" },
   ];
   return (
-    <Section eyebrow="Industries" title="Built for the businesses that keep South Africa moving.">
+    <Section eyebrow="Industries" title="Built for the businesses that keep South Africa moving." className="bg-[#F7FAFC]">
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {items.map(({ icon: Icon, label }) => (
           <div key={label} className="card-premium flex items-center gap-3 p-5">
@@ -298,21 +296,59 @@ function Industries() {
 }
 
 function ResourcesTeaser() {
+  const featuredArticles = [
+    {
+      section: "getting-started",
+      article: "five-questions-before-buying-software",
+      label: "Small Business",
+    },
+    {
+      section: "artificial-intelligence",
+      article: "five-practical-ways-smes-can-use-ai-today",
+      label: "AI",
+    },
+    {
+      section: "software-and-technology",
+      article: "how-to-choose-software-without-regretting-it",
+      label: "Digital Decision",
+    },
+  ] as const;
+
+  const items = featuredArticles
+    .map(({ section, article, label }) => {
+      const sectionEntry = resourceSections.find((entry) => entry.slug === section);
+      const articleEntry = sectionEntry?.articles.find((entry) => entry.slug === article);
+
+      if (!sectionEntry || !articleEntry) return null;
+
+      return {
+        label,
+        section: sectionEntry.slug,
+        article: articleEntry.slug,
+        title: articleEntry.title,
+        description: articleEntry.description,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+
   return (
-    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass™ thinking and real business decisions." className="bg-secondary/40">
+    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass� thinking and real business decisions." className="bg-secondary/40">
       <div className="grid gap-6 md:grid-cols-3">
-        {[
-          { t: "How to run a proper business discovery", d: "Questions that unlock the right strategy." },
-          { t: "AI for SMEs, without the hype", d: "Practical use cases that create real value." },
-          { t: "The website as a business tool", d: "Design decisions that support real enquiries." },
-        ].map((r) => (
-          <Link key={r.t} to="/resources" className="card-premium card-premium-hover block p-7 sm:p-8">
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Guide</p>
-            <h3 className="mt-2 text-lg font-semibold">{r.t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{r.d}</p>
+        {items.map((item) => (
+          <Link
+            key={item.article}
+            to="/resources/$section/$article"
+            params={{ section: item.section, article: item.article }}
+            className="card-premium card-premium-hover block p-7 sm:p-8"
+          >
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.label}</p>
+            <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
           </Link>
         ))}
       </div>
     </Section>
   );
 }
+
+

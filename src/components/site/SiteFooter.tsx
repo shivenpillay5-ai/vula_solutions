@@ -44,7 +44,7 @@ export function SiteFooter() {
           </p>
           <Link
             to="/compass"
-            className="mt-6 inline-flex h-10 items-center rounded-full border border-border bg-background px-4 text-sm font-medium hover:border-foreground/30"
+            className="mt-6 inline-flex h-10 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
             Start with Compass™
           </Link>

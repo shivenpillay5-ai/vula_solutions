@@ -18,8 +18,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-18 items-center justify-between gap-6 lg:h-20">
         <Link to="/" className="flex items-center" aria-label="Vula Solutions home">
-          <Logo className="md:hidden" showTagline={false} showWordmark={false} size="md" />
-          <Logo className="hidden md:inline-flex" showTagline={false} size="hero" />
+          <Logo className="md:hidden" showTagline={false} showWordmark={false} size="md" markTarget />
+          <Logo className="hidden md:inline-flex" showTagline={false} size="hero" markTarget />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
           {nav.map((item) => (

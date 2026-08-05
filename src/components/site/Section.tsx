@@ -7,6 +7,7 @@ export function Section({
   children,
   className = "",
   align = "left",
+  tone = "light",
 }: {
   eyebrow?: string;
   title?: ReactNode;
@@ -14,9 +15,14 @@ export function Section({
   children?: ReactNode;
   className?: string;
   align?: "left" | "center";
+  tone?: "light" | "dark";
 }) {
+  const titleClass = tone === "dark" ? "text-white" : "text-foreground";
+  const introClass = tone === "dark" ? "text-white/70" : "text-muted-foreground";
+  const spacingClass = tone === "dark" ? "py-14 sm:py-20" : "py-10 sm:py-14";
+
   return (
-    <section className={`py-10 sm:py-14 ${className}`}>
+    <section className={`${spacingClass} ${className}`}>
       <div className="container-page">
         {(eyebrow || title || intro) && (
           <div className={`mb-12 max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
@@ -26,11 +32,11 @@ export function Section({
               </p>
             )}
             {title && (
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+              <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1] ${titleClass}`}>
                 {title}
               </h2>
             )}
-            {intro && <p className="mt-5 text-lg text-muted-foreground">{intro}</p>}
+            {intro && <p className={`mt-5 text-lg ${introClass}`}>{intro}</p>}
           </div>
         )}
         {children}

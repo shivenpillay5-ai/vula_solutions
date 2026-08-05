@@ -15,12 +15,14 @@ export function Logo({
   showWordmark = true,
   showTagline = false,
   size = "md",
+  markTarget = false,
 }: {
   className?: string;
   variant?: "dark" | "light";
   showWordmark?: boolean;
   showTagline?: boolean;
   size?: keyof typeof sizeClasses;
+  markTarget?: boolean;
 }) {
   const primary = variant === "light" ? "#F8FAFC" : "#0F172A";
   const accent = "#01A1B7";
@@ -31,7 +33,7 @@ export function Logo({
       className={`inline-flex items-center ${sizing.gap} ${className ?? ""}`}
       aria-label="Vula Solutions"
     >
-      <Mark className={sizing.mark} variant={variant} />
+      <Mark className={sizing.mark} variant={variant} brandIntroTarget={markTarget} />
       {showWordmark && (
         <span className="flex flex-col leading-none">
           <span
@@ -57,9 +59,11 @@ export function Logo({
 export function Mark({
   className,
   variant = "dark",
+  brandIntroTarget = false,
 }: {
   className?: string;
   variant?: "dark" | "light";
+  brandIntroTarget?: boolean;
 }) {
   const primary = variant === "light" ? "#F8FAFC" : "#0F172A";
   const accent = "#01A1B7";
@@ -71,6 +75,7 @@ export function Mark({
       aria-hidden="true"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
+      data-brand-intro-target={brandIntroTarget ? "true" : undefined}
     >
       <path d={MARK_LEFT_PATH} fill={primary} />
       <path d={MARK_RIGHT_PATH} fill={accent} />

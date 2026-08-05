@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { BrandIntro } from "../components/site/BrandIntro";
+import { AskCompass } from "../components/site/AskCompass";
 
 function NotFoundComponent() {
   return (
@@ -135,6 +136,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <AskCompass />
       </div>
     </QueryClientProvider>
   );
