@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -109,10 +110,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/* Prevents browser from restoring scroll position on refresh */}
+        <script dangerouslySetInnerHTML={{ __html: 'history.scrollRestoration="manual"' }} />
         <HeadContent />
       </head>
       <body>
@@ -128,6 +139,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollToTop />
       <div className="flex min-h-dvh flex-col">
         <BrandIntro />
         <SiteHeader />
