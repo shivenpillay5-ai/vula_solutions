@@ -20,6 +20,16 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Claude Code internal files
+.claude/
+
+# Codex internal files
+.codex/
+
+# Temporary working files
+tmp-*
+*.crdownload
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
