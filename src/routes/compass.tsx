@@ -1,9 +1,119 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy } from "lucide-react";
+import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, ChevronDown } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
 import { FAQ } from "@/components/site/FAQ";
+
+type OutcomeResult = {
+  metric: string;
+  label: string;
+  outcome: string;
+  source: string;
+  product: string;
+  found: string;
+  fixed: string;
+};
+
+function OutcomeCard({ metric, label, outcome, source, product, found, fixed }: OutcomeResult) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="card-premium flex flex-col overflow-hidden transition-shadow duration-200"
+      style={open ? { boxShadow: "0 0 0 1.5px #01A1B7" } : undefined}
+    >
+      <div className="flex flex-1 flex-col p-7">
+        <p className="font-display text-3xl font-bold leading-none tracking-tight" style={{ color: "#01A1B7" }}>
+          {metric}
+        </p>
+        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{label}</p>
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{outcome}</p>
+        <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
+          <p className="text-xs text-muted-foreground">{source}</p>
+          <span
+            className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white"
+            style={{ backgroundColor: "#01A1B7" }}
+          >
+            {product}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="mt-4 flex w-full items-center justify-between rounded-lg border border-border px-4 py-2.5 text-left text-xs font-semibold text-muted-foreground transition hover:border-electric/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
+        >
+          <span>{open ? "Hide details" : "How we did it"}</span>
+          <ChevronDown
+            className="h-4 w-4 flex-shrink-0 transition-transform duration-300"
+            style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          />
+        </button>
+      </div>
+      <div className="grid transition-all duration-300 ease-in-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
+        <div className="overflow-hidden">
+          <div className="space-y-5 border-t border-border bg-secondary/50 px-7 py-6">
+            <div>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What we found</p>
+              <p className="text-sm leading-relaxed text-foreground">{found}</p>
+            </div>
+            <div>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: "#01A1B7" }}>How we fixed it</p>
+              <p className="text-sm leading-relaxed text-foreground">{fixed}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompassOutcomes() {
+  const results: OutcomeResult[] = [
+    {
+      metric: "11 hrs",
+      label: "saved every week",
+      outcome: "A 4-person accounting practice eliminated eleven hours of weekly admin after automating client onboarding, deadline reminders and monthly reporting.",
+      source: "Professional Services · Gauteng",
+      product: "Flow™",
+      found: "Client onboarding required six or more email exchanges to collect information and set up files. Monthly reporting was compiled by hand from three separate systems. No automated reminders existed, leading to missed deadlines and reactive chasing.",
+      fixed: "Automated the onboarding process with a branded intake form that triggered folder creation, task assignments and welcome communication. Monthly reports were connected directly to source data, cutting compilation time from three hours to under twenty minutes.",
+    },
+    {
+      metric: "3 weeks",
+      label: "to first inbound lead",
+      outcome: "A specialist engineering consultancy received their first unsolicited inbound enquiry three weeks after launch — after seven years of relying entirely on referrals.",
+      source: "Engineering · Johannesburg",
+      product: "Launch™",
+      found: "The existing website was eight years old, had no mobile layout, and wasn't being indexed on Google. There was no Google Business Profile and no clear contact pathway beyond a generic email address — making it nearly impossible for new clients to find or evaluate them.",
+      fixed: "Built a new website with clear service positioning, a project portfolio and a direct enquiry form. Set up and fully optimised their Google Business Profile. The first inbound enquiry came through the contact form eighteen days after launch.",
+    },
+    {
+      metric: "4 days → same day",
+      label: "quote turnaround",
+      outcome: "A growing construction supplier used Compass™ to surface three hidden process bottlenecks and cut their quote turnaround from four days to same-day.",
+      source: "Construction & Supply · Pretoria",
+      product: "Compass™",
+      found: "Quotes were built manually in Excel with no template, required sign-off from the owner who was frequently on-site, and pricing required manual lookups from a printed supplier catalogue — three separate bottlenecks each adding hours to every quote.",
+      fixed: "Introduced a quoting template with pre-loaded pricing tiers, established a delegated approval threshold so quotes under a set value could be approved by the operations manager, and digitised the supplier catalogue into a shared live pricing sheet. No new software was purchased.",
+    },
+  ];
+
+  return (
+    <Section
+      eyebrow="Real results"
+      title="What this looks like in practice."
+      intro="Anonymised to protect our clients. Specific because vague claims don't help anyone."
+      className="bg-secondary/40"
+    >
+      <div className="grid gap-6 md:grid-cols-3">
+        {results.map((r) => (
+          <OutcomeCard key={r.metric} {...r} />
+        ))}
+      </div>
+    </Section>
+  );
+}
 
 export const Route = createFileRoute("/compass")({
   head: () => ({
@@ -134,6 +244,7 @@ function CompassPage() {
           ))}
         </div>
       </Section>
+      <CompassOutcomes />
       <Section eyebrow="Common questions" title="Compass™, answered.">
         <FAQ items={[
           { q: "Is Compass™ a sales call?", a: "No. It's a structured strategy session. You'll leave with a written report, whether or not you choose to work with us afterwards." },

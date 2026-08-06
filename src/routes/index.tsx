@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass as CompassIcon, ShieldCheck, LineChart, Users, Building2, Briefcase, Stethoscope, Wrench, HardHat, Landmark, Compass as ClarityIcon, ShieldCheck as ConfidenceIcon, TrendingUp, Handshake } from "lucide-react";
+import { ArrowRight, Compass as CompassIcon, ShieldCheck, LineChart, Users, Compass as ClarityIcon, ShieldCheck as ConfidenceIcon, TrendingUp, Handshake } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
@@ -31,7 +31,6 @@ function Home() {
       <SolutionsOverview />
       <WhyVula />
       <Approach />
-      <Industries />
       <ResourcesTeaser />
       <CTA />
     </>
@@ -265,36 +264,6 @@ function Approach() {
   );
 }
 
-function Industries() {
-  const items = [
-    { icon: Briefcase, label: "Professional services" },
-    { icon: Landmark, label: "Financial services" },
-    { icon: HardHat, label: "Engineering" },
-    { icon: Building2, label: "Construction" },
-    { icon: Stethoscope, label: "Healthcare" },
-    { icon: Wrench, label: "Trades & specialists" },
-  ];
-  return (
-    <Section eyebrow="Industries" title="Built for the businesses that keep South Africa moving." className="bg-[#F7FAFC]">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {items.map(({ icon: Icon, label }) => (
-          <div key={label} className="card-premium flex items-center gap-3 p-5">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-electric">
-              <Icon className="h-5 w-5" />
-            </span>
-            <span className="text-sm font-medium">{label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="mt-8">
-        <Link to="/industries" className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:underline">
-          See how we help each industry <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-    </Section>
-  );
-}
-
 function ResourcesTeaser() {
   const featuredArticles = [
     {
@@ -332,7 +301,7 @@ function ResourcesTeaser() {
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   return (
-    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass™ thinking and real business decisions." className="bg-secondary/40">
+    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compassâ„¢ thinking and real business decisions." className="bg-secondary/40">
       <div className="grid gap-6 md:grid-cols-3">
         {items.map((item) => (
           <Link

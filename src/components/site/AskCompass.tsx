@@ -101,7 +101,7 @@ export function AskCompass() {
         createMessage("assistant", reply.content, reply.suggestions, reply.references),
       ]);
     } catch {
-      setError("Ask Compass™ could not respond just now. Please try again, or start with Compass™.");
+      setError("Ask Compassâ„¢ could not respond just now. Please try again, or start with Compassâ„¢.");
     } finally {
       setLoading(false);
     }
@@ -261,7 +261,7 @@ export function AskCompass() {
                 />
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs text-muted-foreground">
-                    Not sure? Compass™ is usually the right first step.
+                    Not sure? Compassâ„¢ is usually the right first step.
                   </p>
                   <Button
                     type="submit"
@@ -277,7 +277,7 @@ export function AskCompass() {
               <div className="mt-3 flex items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
                 <span>Guidance only. No pricing or promises.</span>
                 <Link to="/contact" className="font-medium text-electric hover:underline">
-                  Start with Compass™
+                  Start with Compassâ„¢
                 </Link>
               </div>
             </div>
