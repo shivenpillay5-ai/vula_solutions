@@ -38,7 +38,7 @@ export function SiteHeader() {
             to="/contact"
             className="inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-90"
           >
-            Start with Compass
+            Start with Compass™
           </Link>
         </div>
         <button
@@ -70,7 +70,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground"
             >
-              Start with Compass
+              Start with Compass™
             </Link>
           </div>
         </div>
