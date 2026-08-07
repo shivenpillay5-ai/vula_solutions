@@ -218,14 +218,15 @@ export function BrandIntro() {
         }
         .vula-intro__glow--beam {
           left: 50%;
-          top: 12%;
+          top: 8%;
           z-index: 2;
-          width: 14rem;
-          height: 10.5rem;
-          margin-left: -7rem;
-          background: radial-gradient(ellipse 68% 100% at 50% 0%, rgba(255, 251, 240, 0.9) 0%, rgba(255, 248, 232, 0.56) 28%, rgba(255, 244, 226, 0.22) 56%, rgba(255, 242, 220, 0) 80%);
-          filter: blur(18px) brightness(1);
-          transform: translateY(10px) scaleY(0.08);
+          width: 10rem;
+          height: 84%;
+          margin-left: -5rem;
+          background: radial-gradient(ellipse 100% 52% at 50% 42%, rgba(255, 251, 240, 0.92) 0%, rgba(255, 248, 232, 0.58) 26%, rgba(255, 244, 226, 0.22) 54%, rgba(255, 242, 220, 0) 76%);
+          filter: blur(10px) brightness(1);
+          transform: scaleX(0.04);
+          transform-origin: center center;
         }
         .vula-intro__glow--ambient {
           left: 50%;
@@ -290,10 +291,10 @@ export function BrandIntro() {
           100% { opacity: 1; transform: scale(1.22); filter: blur(32px) brightness(1.5); }
         }
         @keyframes vulaBeam {
-          0% { opacity: 0; transform: translateY(10px) scaleY(0.08); filter: blur(18px) brightness(0.9); }
-          38% { opacity: 0.44; filter: blur(19px) brightness(1.04); }
-          74% { opacity: 0.86; filter: blur(20px) brightness(1.25); }
-          100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(22px) brightness(1.45); }
+          0%  { opacity: 0;    transform: scaleX(0.04); filter: blur(6px)  brightness(0.9);  }
+          22% { opacity: 0.32; transform: scaleX(0.22); filter: blur(9px)  brightness(1.05); }
+          58% { opacity: 0.72; transform: scaleX(0.64); filter: blur(14px) brightness(1.22); }
+          100% { opacity: 1;  transform: scaleX(1);    filter: blur(18px) brightness(1.48); }
         }
         @keyframes vulaAmbient {
           0% { opacity: 0; transform: perspective(160px) rotateX(74deg) scale(0.58); filter: blur(20px) brightness(0.96); }
