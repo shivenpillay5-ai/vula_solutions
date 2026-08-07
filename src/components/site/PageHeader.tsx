@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 
-export function PageHeader({ eyebrow, title, intro, children }: {
+export function PageHeader({ eyebrow, title, intro, children, breadcrumb }: {
   eyebrow?: string;
   title: ReactNode;
   intro?: ReactNode;
   children?: ReactNode;
+  breadcrumb?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-border">
@@ -13,6 +14,7 @@ export function PageHeader({ eyebrow, title, intro, children }: {
         <div className="absolute -bottom-40 left-[-10%] h-[400px] w-[500px] rounded-full bg-growth/10 blur-3xl" />
       </div>
       <div className="container-page py-12 sm:py-16">
+        {breadcrumb && <div className="mb-6">{breadcrumb}</div>}
         {eyebrow && (
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-electric">
             {eyebrow}

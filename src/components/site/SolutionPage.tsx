@@ -1,8 +1,9 @@
 import type { ComponentType } from "react";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, Check } from "lucide-react";
 import { PageHeader } from "./PageHeader";
 import { Section } from "./Section";
 import { CTA } from "./CTA";
-import { Check } from "lucide-react";
 
 export interface SolutionPageProps {
   name: string;
@@ -21,7 +22,20 @@ export function SolutionPage(props: SolutionPageProps) {
   const { name, tagline, hero, intro, who, problems, included, outcomes, process, icon: Icon } = props;
   return (
     <>
-      <PageHeader eyebrow={name} title={<>{hero}</>} intro={intro}>
+      <PageHeader
+        eyebrow={name}
+        title={<>{hero}</>}
+        intro={intro}
+        breadcrumb={
+          <Link
+            to="/solutions"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            All solutions
+          </Link>
+        }
+      >
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-foreground/80">
           <Icon className="h-4 w-4 text-electric" />
           {tagline}
