@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 export function CTA({
   title = "Ready to find your direction?",
   body = "Every successful journey starts with knowing where you are. Book a Compass™ session and leave with clarity.",
-  primary = { to: "/contact", label: "Start with Compass" },
+  primary = { to: "/contact", label: "Start with Compass™" },
   secondary = { to: "/compass", label: "Discover Compass™" },
 }: {
   title?: string;
