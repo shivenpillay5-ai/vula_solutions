@@ -83,8 +83,12 @@ function SolutionsLayout() {
         className="bg-secondary/40"
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {deliveryProducts.map((p) => (
-            <ProductCard key={p.name} {...p} />
+          {deliveryProducts.map((p, i) => (
+            <ProductCard
+              key={p.name}
+              {...p}
+              className={i === deliveryProducts.length - 1 ? "sm:col-span-2 lg:col-span-2" : ""}
+            />
           ))}
         </div>
       </Section>

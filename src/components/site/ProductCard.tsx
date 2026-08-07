@@ -9,6 +9,7 @@ export interface ProductCardProps {
   to: string;
   icon: ComponentType<{ className?: string }>;
   accent?: "electric" | "growth" | "navy";
+  className?: string;
 }
 
 const accentBg: Record<NonNullable<ProductCardProps["accent"]>, string> = {
@@ -17,11 +18,11 @@ const accentBg: Record<NonNullable<ProductCardProps["accent"]>, string> = {
   navy: "from-navy/15 to-navy/0",
 };
 
-export function ProductCard({ name, tagline, description, to, icon: Icon, accent = "electric" }: ProductCardProps) {
+export function ProductCard({ name, tagline, description, to, icon: Icon, accent = "electric", className = "" }: ProductCardProps) {
   return (
     <Link
       to={to}
-      className="card-premium group relative flex h-full flex-col overflow-hidden p-7 transition-transform duration-250 hover:-translate-y-[3px] hover:border-electric/25 hover:shadow-[0_32px_70px_-34px_rgba(15,23,42,0.36)]"
+      className={`card-premium group relative flex h-full flex-col overflow-hidden p-7 transition-transform duration-250 hover:-translate-y-[3px] hover:border-electric/25 hover:shadow-[0_32px_70px_-34px_rgba(15,23,42,0.36)] ${className}`}
     >
       <div className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br ${accentBg[accent]} blur-2xl`} aria-hidden />
       <div className="relative flex items-center gap-3">
