@@ -104,7 +104,8 @@ function CompassOutcomes() {
       eyebrow="Real results"
       title="What this looks like in practice."
       intro="Anonymised to protect our clients. Specific because vague claims don't help anyone."
-      className="bg-secondary/40"
+      className="bg-navy-deep"
+      tone="dark"
     >
       <div className="grid gap-6 md:grid-cols-3">
         {results.map((r) => (
@@ -175,11 +176,13 @@ function CompassPage() {
             { icon: CheckCircle, t: "Not sure what to do next", b: "End the session knowing exactly what to prioritise, and why." },
           ].map(({ icon: Icon, t, b }) => (
             <div key={t} className="card-premium p-7">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-electric">
-                <Icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{b}</p>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <h3 className="text-base font-semibold">{t}</h3>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">{b}</p>
             </div>
           ))}
         </div>
@@ -239,11 +242,13 @@ function CompassPage() {
             { icon: CheckSquare, t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
           ].map(({ icon: Icon, t, b }) => (
             <div key={t} className="card-premium p-7">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-electric">
-                <Icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{b}</p>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <h3 className="text-base font-semibold">{t}</h3>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">{b}</p>
             </div>
           ))}
         </div>
