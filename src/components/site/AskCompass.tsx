@@ -125,12 +125,12 @@ export function AskCompass() {
         type="button"
         onClick={() => setOpen(true)}
         className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-3 rounded-full border border-white/10 bg-navy-deep px-4 py-3 text-sm font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6"
-        aria-label="Open Ask Compass chat"
+        aria-label="Open Ask Compass™ chat"
       >
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-electric text-white">
           <BotMessageSquare className="h-4 w-4" />
         </span>
-        <span className="hidden sm:inline">Ask Compass</span>
+        <span className="hidden sm:inline">Ask Compass™</span>
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -142,7 +142,7 @@ export function AskCompass() {
                   <Compass className="h-5 w-5" />
                 </span>
                 <div>
-                  <DialogTitle className="font-display text-[1.1rem] text-white">Ask Compass</DialogTitle>
+                  <DialogTitle className="font-display text-[1.1rem] text-white">Ask Compass™</DialogTitle>
                   <DialogDescription className="mt-1 text-sm text-white/65">
                     Calm guidance for the right next step.
                   </DialogDescription>
@@ -165,7 +165,7 @@ export function AskCompass() {
               className="flex-1 space-y-4 overflow-y-auto bg-[linear-gradient(180deg,rgba(248,250,252,0.92),rgba(255,255,255,1))] px-4 py-4 sm:px-5"
             >
               <div className="rounded-2xl border border-electric/15 bg-electric/5 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-                <strong className="font-semibold text-foreground">Ask Compass</strong> uses curated website guidance and stays within VULA's published positioning.
+                <strong className="font-semibold text-foreground">Ask Compass™</strong> uses curated website guidance and stays within VULA's published positioning.
               </div>
 
               {messages.map((message) => (
