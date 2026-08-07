@@ -218,14 +218,13 @@ export function BrandIntro() {
         }
         .vula-intro__glow--beam {
           left: 50%;
-          top: 18%;
+          top: 12%;
           z-index: 2;
-          width: 10.6rem;
-          height: 8.6rem;
-          margin-left: -5.3rem;
-          background: linear-gradient(180deg, rgba(255, 252, 244, 0.12) 0%, rgba(255, 249, 235, 0.42) 18%, rgba(255, 245, 228, 0.92) 48%, rgba(255, 241, 220, 0.72) 70%, rgba(255, 237, 210, 0.16) 90%, rgba(255, 237, 210, 0) 100%);
-          clip-path: polygon(49.1% 0%, 50.9% 0%, 79% 100%, 21% 100%);
-          filter: blur(10px) brightness(1);
+          width: 14rem;
+          height: 10.5rem;
+          margin-left: -7rem;
+          background: radial-gradient(ellipse 68% 100% at 50% 0%, rgba(255, 251, 240, 0.9) 0%, rgba(255, 248, 232, 0.56) 28%, rgba(255, 244, 226, 0.22) 56%, rgba(255, 242, 220, 0) 80%);
+          filter: blur(18px) brightness(1);
           transform: translateY(10px) scaleY(0.08);
         }
         .vula-intro__glow--ambient {
@@ -291,10 +290,10 @@ export function BrandIntro() {
           100% { opacity: 1; transform: scale(1.22); filter: blur(32px) brightness(1.5); }
         }
         @keyframes vulaBeam {
-          0% { opacity: 0; transform: translateY(10px) scaleY(0.08); filter: blur(10px) brightness(0.88); }
-          38% { opacity: 0.42; filter: blur(11px) brightness(1.02); }
-          74% { opacity: 0.88; filter: blur(12px) brightness(1.3); }
-          100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(14px) brightness(1.58); }
+          0% { opacity: 0; transform: translateY(10px) scaleY(0.08); filter: blur(18px) brightness(0.9); }
+          38% { opacity: 0.44; filter: blur(19px) brightness(1.04); }
+          74% { opacity: 0.86; filter: blur(20px) brightness(1.25); }
+          100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(22px) brightness(1.45); }
         }
         @keyframes vulaAmbient {
           0% { opacity: 0; transform: perspective(160px) rotateX(74deg) scale(0.58); filter: blur(20px) brightness(0.96); }
