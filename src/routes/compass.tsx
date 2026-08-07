@@ -104,8 +104,7 @@ function CompassOutcomes() {
       eyebrow="Real results"
       title="What this looks like in practice."
       intro="Anonymised to protect our clients. Specific because vague claims don't help anyone."
-      className="bg-navy-deep"
-      tone="dark"
+      className="bg-secondary/40"
     >
       <div className="grid gap-6 md:grid-cols-3">
         {results.map((r) => (
