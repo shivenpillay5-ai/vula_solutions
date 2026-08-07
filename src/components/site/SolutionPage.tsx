@@ -4,6 +4,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import { PageHeader } from "./PageHeader";
 import { Section } from "./Section";
 import { CTA } from "./CTA";
+import { FAQ } from "./FAQ";
 
 export interface SolutionPageProps {
   name: string;
@@ -15,11 +16,12 @@ export interface SolutionPageProps {
   included: string[];
   outcomes: string[];
   process: { n: string; t: string; b: string }[];
+  faq: { q: string; a: string }[];
   icon: ComponentType<{ className?: string }>;
 }
 
 export function SolutionPage(props: SolutionPageProps) {
-  const { name, tagline, hero, intro, who, problems, included, outcomes, process, icon: Icon } = props;
+  const { name, tagline, hero, intro, who, problems, included, outcomes, process, faq, icon: Icon } = props;
   return (
     <>
       <PageHeader
@@ -42,9 +44,10 @@ export function SolutionPage(props: SolutionPageProps) {
         </span>
       </PageHeader>
       <Section eyebrow="How it works" title={`What to expect from ${name}.`}>
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 hidden -translate-y-1/2 border-t border-dashed border-border lg:block" aria-hidden />
           {process.map((s) => (
-            <li key={s.n} className="card-premium card-premium-hover p-7">
+            <li key={s.n} className="relative z-10 card-premium card-premium-hover p-7">
               <p className="font-display text-4xl text-electric">{s.n}</p>
               <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
@@ -59,6 +62,9 @@ export function SolutionPage(props: SolutionPageProps) {
           <Card title="What's included" items={included} />
           <Card title="Typical outcomes" items={outcomes} />
         </div>
+      </Section>
+      <Section eyebrow="Common questions" title={`${name}, answered.`}>
+        <FAQ items={faq} />
       </Section>
       <CTA
         title={`Start with Compass™ — then move to ${name}`}

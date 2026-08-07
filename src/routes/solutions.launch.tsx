@@ -25,6 +25,12 @@ export const Route = createFileRoute("/solutions/launch")({
         { n: "03", t: "Build", b: "A fast, modern site with clean code, strong SEO foundations and analytics from day one." },
         { n: "04", t: "Launch", b: "Go live with a full handover, team training and a roadmap for what comes next." },
       ]}
+      faq={[
+        { q: "How long does a Launch™ project take?", a: "Most Launch™ projects are delivered within four to eight weeks, depending on scope. We'll confirm a timeline before any work begins." },
+        { q: "What do I need to prepare?", a: "Very little at the start. We'll guide you through what we need — typically brand assets, existing content and access to relevant tools or hosting." },
+        { q: "Do you build on a specific platform?", a: "We recommend and build on modern, performance-first platforms suited to your business. We'll advise on the best fit during the discovery phase." },
+        { q: "What happens after the site goes live?", a: "You get a full handover and training session so you're not dependent on us. Ongoing support is available through Partner™ if you want it." },
+      ]}
       who={[
         "Businesses launching a new site or brand.",
         "Teams outgrowing an outdated website.",

@@ -218,104 +218,233 @@ export function getAskCompassReply(question: string): AskCompassReply {
     };
   }
 
-  if (includesAny(text, ["compass", "where do i start", "start", "first step", "not sure", "discovery"])) {
+  // Platform / what do you build on (before generic website block)
+  if (includesAny(text, ["platform", "wordpress", "webflow", "shopify", "cms", "what do you build", "which platform", "technology stack"])) {
     return withReferences(
       {
-        content:
-          `Compass${TM} is VULA's signature business discovery and strategy experience. It helps clarify where your business is now, where the opportunities are, and what should happen next. If you are not sure where to begin, Compass${TM} is the right first step.`,
-        suggestions: ["How do I start", "How VULA can help my business", "Do I need a website"],
-      },
-      question,
-    );
-  }
-
-  if (includesAny(text, ["vula", "what do you do", "how can vula help", "help my business", "business transformation", "partner"])) {
-    return withReferences(
-      {
-        content:
-          "VULA is a Business Transformation Partner. We help businesses with strategy, websites, AI, automation, and growth, but we usually begin by understanding the business first rather than jumping straight to a tool or build.",
-        suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "What industries VULA works with"],
-      },
-      question,
-    );
-  }
-
-  if (includesAny(text, ["website", "site", "redesign", "web", "online presence"])) {
-    return withReferences(
-      {
-        content:
-          `Possibly, but that depends on what your business needs the website to do. Sometimes the right answer is a stronger website. Sometimes it is clearer messaging, better process, or a different digital priority. A good place to start is Compass${TM}.`,
+        content: `VULA recommends and builds on modern, performance-first platforms suited to each business. The right choice is decided during the Launch${TM} discovery phase, based on your goals, content needs and how your team will manage the site going forward.`,
         suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
       },
       question,
     );
   }
 
-  if (includesAny(text, ["automation", "workflow", "process", "manual", "repetitive", "flow"])) {
+  // Handover / training / what happens after the build
+  if (includesAny(text, ["handover", "after launch", "after the build", "goes live", "after the site", "maintain the site", "what happens after"])) {
     return withReferences(
       {
-        content:
-          `Yes. VULA helps identify repetitive work and turn it into reliable workflows through Flow${TM}. We would usually begin by understanding the process first, then recommend the right level of automation.`,
-        suggestions: [`What is Compass${TM}`, "How VULA can help my business", "How do I start"],
+        content: `After a Launch${TM} project, you receive a full handover and training session so your team can make basic updates without depending on VULA. Ongoing support and continuous improvement is available through Partner${TM}.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
       },
       question,
     );
   }
 
-  if (includesAny(text, ["ai", "artificial intelligence", "accelerate"])) {
+  // What to prepare before starting
+  if (includesAny(text, ["what do i need to prepare", "what should i prepare", "what to prepare", "what to bring", "what to have ready", "brand assets"])) {
     return withReferences(
       {
-        content:
-          `Yes. VULA helps businesses adopt AI in a practical way through Accelerate${TM}. The focus is on real use cases, team enablement, and choosing tools that fit the way your business actually works.`,
+        content: `Very little at the start. VULA guides you through exactly what is needed. For a Launch${TM} project that is typically brand assets, existing content and access to relevant tools or hosting. For a Compass${TM} session, just your time and an honest picture of where the business is right now.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // Cancellation / minimum commitment (before pricing block)
+  if (includesAny(text, ["cancel", "minimum commitment", "minimum term", "lock in", "how long do i have to commit", "exit partner", "notice period", "can i leave"])) {
+    return {
+      content: `Partner${TM} is structured around quarterly planning cycles with a minimum three-month engagement. At the end of each quarter you can choose not to continue — VULA does not lock clients in beyond the agreed term.`,
+      suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+    };
+  }
+
+  // Partner / ongoing retainer / what a typical month looks like
+  if (includesAny(text, ["partner", "ongoing", "retainer", "typical month", "what happens monthly", "long term support", "monthly support", "continuous improvement"])) {
+    return withReferences(
+      {
+        content: `Partner${TM} is VULA's ongoing support and strategic partnership. Work is structured around quarterly planning cycles — each month covers delivery against your roadmap, priority support for any issues and regular check-ins to adjust if priorities shift. There is no long-term lock-in beyond the quarterly commitment.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // Compass / where to start
+  if (includesAny(text, ["compass", "where do i start", "start", "first step", "not sure", "discovery"])) {
+    return withReferences(
+      {
+        content: `Compass${TM} is VULA's signature business discovery and strategy experience. It helps clarify where your business is now, where the opportunities are, and what should happen next. If you are not sure where to begin, Compass${TM} is the right first step.`,
+        suggestions: ["How do I start", "How VULA can help my business", "Do I need a website"],
+      },
+      question,
+    );
+  }
+
+  // VULA / business transformation
+  if (includesAny(text, ["vula", "what do you do", "how can vula help", "help my business", "business transformation"])) {
+    return withReferences(
+      {
+        content: "VULA is a Business Transformation Partner. We help businesses with strategy, websites, AI, automation, and growth, but we usually begin by understanding the business first rather than jumping straight to a tool or build.",
+        suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "What industries VULA works with"],
+      },
+      question,
+    );
+  }
+
+  // Website / online presence
+  if (includesAny(text, ["website", "site", "redesign", "web", "online presence"])) {
+    return withReferences(
+      {
+        content: `Possibly, but that depends on what your business needs the website to do. Sometimes the right answer is a stronger website. Sometimes it is clearer messaging, better process, or a different digital priority. A good place to start is Compass${TM}.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // SEO / search rankings / Google visibility
+  if (includesAny(text, ["seo", "search engine", "rank", "rankings", "google ranking", "organic", "found on google", "local listing", "google business"])) {
+    return withReferences(
+      {
+        content: `Growth${TM} is VULA's SEO and digital growth service. It covers keyword strategy, on-page improvements, Google Business Profile optimisation and content production. Most clients begin to see meaningful movement in rankings within three to six months.`,
+        suggestions: [`What is Compass${TM}`, "How is this different from ads", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Ads vs organic / paid vs SEO
+  if (includesAny(text, ["ads", "google ads", "paid ads", "advertising", "ppc", "adwords", "paid search"])) {
+    return withReferences(
+      {
+        content: `Ads stop the moment you stop paying. Growth${TM} builds organic visibility that compounds over time — rankings, content and local presence that keep working without ongoing spend. VULA focuses on growth that does not depend on a monthly ad budget.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // Content writing / who writes the content
+  if (includesAny(text, ["write content", "content writing", "who writes", "copywriting", "blog", "articles", "content production"])) {
+    return withReferences(
+      {
+        content: `Yes. Content production is part of the Growth${TM} programme — researched, written and optimised around real search opportunities in your market. VULA does not hand over a brief and leave the writing to you.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // Technical requirements / do we need to be technical
+  if (includesAny(text, ["technical", "non-technical", "coding", "developer", "need to know code", "need to be technical", "tech skills"])) {
+    return withReferences(
+      {
+        content: `No. VULA handles the build and documents everything clearly. Your team just needs to use the tools, not maintain them. Whether it is a website, automation or AI enablement, the goal is to make things simpler for the people in the business.`,
         suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
       },
       question,
     );
   }
 
+  // What tools do you work with
+  if (includesAny(text, ["what tools", "which tools", "microsoft", "google workspace", "crm", "xero", "accounting software", "which software", "existing tools", "work with our tools"])) {
+    return withReferences(
+      {
+        content: `VULA works across widely used business tools — Microsoft 365, Google Workspace, CRMs, accounting platforms and industry-specific software. The right tools for your setup are assessed as part of Flow${TM} during the audit phase.`,
+        suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Automation / workflow / Flow
+  if (includesAny(text, ["automation", "workflow", "process", "manual", "repetitive", "flow"])) {
+    return withReferences(
+      {
+        content: `Yes. VULA helps identify repetitive work and turn it into reliable workflows through Flow${TM}. We would usually begin by understanding the process first, then recommend the right level of automation.`,
+        suggestions: [`What is Compass${TM}`, "How VULA can help my business", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Data privacy / client data security (before AI block)
+  if (includesAny(text, ["data privacy", "privacy", "data protection", "client data", "data security", "gdpr", "sensitive data", "confidential"])) {
+    return withReferences(
+      {
+        content: `VULA takes data privacy seriously. Every AI or automation use case is assessed for data risk before implementation. Guidelines and governance are built into programmes like Accelerate${TM}, and VULA will not recommend tools that put client data at risk.`,
+        suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
+      },
+      question,
+    );
+  }
+
+  // Team resistance / change management / AI adoption
+  if (includesAny(text, ["resistant", "resistance", "afraid of ai", "worried about ai", "skeptical", "not ready for ai", "team won't use", "adoption", "change management"])) {
+    return withReferences(
+      {
+        content: `That is common — and exactly why enablement is central to the Accelerate${TM} programme. VULA works with your team, not just your tools, building confidence through practical, relevant use cases rather than abstract training.`,
+        suggestions: [`What is Compass${TM}`, "How VULA can help my business", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // AI / Accelerate
+  if (includesAny(text, ["ai", "artificial intelligence", "accelerate"])) {
+    return withReferences(
+      {
+        content: `Yes. VULA helps businesses adopt AI in a practical way through Accelerate${TM}. The focus is on real use cases, team enablement, and choosing tools that fit the way your business actually works.`,
+        suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Industries / sectors
   if (includesAny(text, ["industry", "industries", "sector", "work with"])) {
     return withReferences(
       {
-        content:
-          "VULA works across professional services, financial services, engineering, construction, healthcare, and trades and specialist businesses. The common thread is helping growing organisations work smarter with clarity and confidence.",
+        content: "VULA works across professional services, financial services, engineering, construction, healthcare, and trades and specialist businesses. The common thread is helping growing organisations work smarter with clarity and confidence.",
         suggestions: ["How VULA can help my business", `What is Compass${TM}`, "How do I start"],
       },
       question,
     );
   }
 
+  // Pricing
   if (includesAny(text, ["price", "pricing", "cost", "quote", "how much", "fees"])) {
     return {
-      content:
-        `I cannot give pricing from the website alone, because the right recommendation depends on your business, goals, and current setup. VULA would usually start with Compass${TM} so the next step is clear before any scope or quote is discussed.`,
+      content: `I cannot give pricing from the website alone, because the right recommendation depends on your business, goals, and current setup. VULA would usually start with Compass${TM} so the next step is clear before any scope or quote is discussed.`,
       suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
     };
   }
 
+  // IT support
   if (includesAny(text, ["it support", "support company", "managed services", "fix my laptop", "tech support"])) {
     return {
-      content:
-        "VULA is not positioned as an IT support company. The focus is business transformation through strategy, websites, AI, automation, and growth, with support built around improvement rather than generic tech support.",
+      content: "VULA is not positioned as an IT support company. The focus is business transformation through strategy, websites, AI, automation, and growth, with support built around improvement rather than generic tech support.",
       suggestions: ["How VULA can help my business", `What is Compass${TM}`, "How do I start"],
     };
   }
 
+  // Contact / book
   if (includesAny(text, ["contact", "book", "talk", "speak", "meeting", "start working", "start with compass", "how do i start"])) {
     return withReferences(
       {
-        content:
-          `The clearest next step is to start with Compass${TM}. That gives VULA a chance to understand your business properly before recommending what to do next.`,
+        content: `The clearest next step is to start with Compass${TM}. That gives VULA a chance to understand your business properly before recommending what to do next.`,
         suggestions: [`What is Compass${TM}`, "How VULA can help my business", "Do I need a website"],
       },
       question,
     );
   }
 
+  // Case studies / proof / examples
   if (includesAny(text, ["case study", "examples", "proof", "experience"])) {
     return withReferences(
       {
-        content:
-          `VULA's approach is built around practical transformation work across strategy, process, technology, and growth. If you want to explore what that could look like in your context, Compass${TM} is the best place to begin.`,
+        content: `VULA's approach is built around practical transformation work across strategy, process, technology, and growth. If you want to explore what that could look like in your context, Compass${TM} is the best place to begin.`,
         suggestions: ["How VULA can help my business", "What industries VULA works with", "How do I start"],
       },
       question,
@@ -324,8 +453,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
 
   return withReferences(
     {
-      content:
-        `I am not fully sure from the website alone, and I would rather not guess. If you are weighing a business, website, AI, or automation decision, Compass${TM} is usually the right place to start because it brings clarity before recommendations.`,
+      content: `I am not fully sure from the website alone, and I would rather not guess. If you are weighing a business, website, AI, or automation decision, Compass${TM} is usually the right place to start because it brings clarity before recommendations.`,
       suggestions: [...DEFAULT_SUGGESTIONS.slice(0, 3)],
     },
     question,

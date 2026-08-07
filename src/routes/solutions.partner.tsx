@@ -25,6 +25,12 @@ export const Route = createFileRoute("/solutions/partner")({
         { n: "03", t: "Execution", b: "We deliver against the plan with priority support and fast response throughout." },
         { n: "04", t: "Review", b: "Quarterly strategy sessions to assess progress, adapt and plan the next quarter." },
       ]}
+      faq={[
+        { q: "What does a typical month look like?", a: "It depends on your roadmap. Each month typically includes delivery against your quarterly plan, priority support for any issues and regular check-ins to adapt if priorities shift." },
+        { q: "Is there a minimum commitment?", a: "Yes — Partner™ is structured around quarterly planning cycles. Reach out and we'll confirm the terms and pricing that suit your situation." },
+        { q: "Can we cancel?", a: "We ask for notice at the end of each quarter. Partner™ works best as a continuous relationship — results compound over time — but we don't lock you in beyond the agreed term." },
+        { q: "Is this just maintenance, or do you actively improve things?", a: "The emphasis is improvement. We don't just keep the lights on — we actively work to make your website, automations and systems better every month." },
+      ]}
       who={[
         "Businesses that want a long-term technology partner.",
         "Owners without an in-house digital or IT team.",

@@ -32,7 +32,7 @@ export function Section({
               </p>
             )}
             {title && (
-              <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1] ${titleClass}`}>
+              <h2 className={`text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl md:leading-[1.1] ${titleClass}`}>
                 {title}
               </h2>
             )}

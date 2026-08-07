@@ -82,14 +82,15 @@ function SolutionsLayout() {
         intro="Once Compass™ has mapped the opportunity, choose the right product — or let us recommend the right combination for your business."
         className="bg-secondary/40"
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {deliveryProducts.map((p, i) => (
-            <ProductCard
-              key={p.name}
-              {...p}
-              className={i === deliveryProducts.length - 1 ? "sm:col-span-2 lg:col-span-2" : ""}
-            />
-          ))}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          {deliveryProducts.map((p, i) => {
+            const last = deliveryProducts.length - 1;
+            const className =
+              i === last - 1 ? "lg:col-start-2 lg:col-span-2" :
+              i === last     ? "sm:col-span-2 lg:col-start-4 lg:col-span-2" :
+                               "lg:col-span-2";
+            return <ProductCard key={p.name} {...p} className={className} />;
+          })}
         </div>
       </Section>
       <CTA />

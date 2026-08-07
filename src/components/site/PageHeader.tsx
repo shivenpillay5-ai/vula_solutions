@@ -20,7 +20,7 @@ export function PageHeader({ eyebrow, title, intro, children, breadcrumb }: {
             {eyebrow}
           </p>
         )}
-        <h1 className="max-w-4xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl md:leading-[1.05]">
+        <h1 className="max-w-4xl text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl md:leading-[1.05]">
           {title}
         </h1>
         {intro && <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{intro}</p>}

@@ -25,6 +25,12 @@ export const Route = createFileRoute("/solutions/flow")({
         { n: "03", t: "Build", b: "We implement, test and refine until every workflow runs without you thinking about it." },
         { n: "04", t: "Handover", b: "Your team is trained, everything is documented and you stay in full control." },
       ]}
+      faq={[
+        { q: "What tools do you work with?", a: "We work across the most widely used business tools — Microsoft 365, Google Workspace, CRMs, accounting platforms and industry-specific software. We'll assess your stack during the audit phase." },
+        { q: "How long does a Flow™ project take?", a: "Most automation projects are scoped and delivered within two to six weeks. More complex implementations take longer — we'll be clear upfront." },
+        { q: "Do we need to be technical?", a: "No. We handle the build and document everything clearly. Your team just needs to use the tools — not maintain them." },
+        { q: "What if our processes change after implementation?", a: "Automations can be updated as your business evolves. We document everything so changes are straightforward — whether we make them or your team does." },
+      ]}
       who={[
         "Teams drowning in manual admin.",
         "Businesses juggling disconnected tools.",

@@ -24,6 +24,7 @@ export function ProductCard({ name, tagline, description, to, icon: Icon, accent
       to={to}
       className={`card-premium group relative flex h-full flex-col overflow-hidden p-7 transition-transform duration-250 hover:-translate-y-[3px] hover:border-electric/25 hover:shadow-[0_32px_70px_-34px_rgba(15,23,42,0.36)] ${className}`}
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-250 group-hover:opacity-100" aria-hidden />
       <div className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br ${accentBg[accent]} blur-2xl`} aria-hidden />
       <div className="relative flex items-center gap-3">
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/8 bg-navy-deep text-white transition-all duration-250 group-hover:border-electric/30 group-hover:ring-1 group-hover:ring-electric/45">
@@ -35,10 +36,12 @@ export function ProductCard({ name, tagline, description, to, icon: Icon, accent
         </div>
       </div>
       <p className="relative mt-5 text-sm leading-relaxed text-muted-foreground">{description}</p>
-      <span className="relative mt-auto inline-flex items-center gap-1 pt-6 text-sm font-medium text-electric">
-        Explore
-        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </span>
+      <div className="relative mt-auto border-t border-border pt-5">
+        <span className="inline-flex items-center gap-1 text-sm font-medium text-electric">
+          Explore
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
+      </div>
     </Link>
   );
 }

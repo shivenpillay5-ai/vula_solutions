@@ -25,6 +25,12 @@ export const Route = createFileRoute("/solutions/growth")({
         { n: "03", t: "Optimise", b: "On-page, technical and local search improvements that move the needle." },
         { n: "04", t: "Grow", b: "Ongoing content, reporting and iteration — compounding results over time." },
       ]}
+      faq={[
+        { q: "How long before we see results?", a: "SEO compounds over time. Most clients see meaningful movement in rankings within three to six months. We'll set honest expectations from the start." },
+        { q: "Do you write the content for us?", a: "Yes. Content production is part of the programme — researched, written and optimised around real search opportunities in your market." },
+        { q: "Is this just for Google?", a: "Primarily, yes — Google dominates search in South Africa. We also optimise your Google Business Profile for local visibility, which is often the fastest win." },
+        { q: "How is this different from running ads?", a: "Ads stop the moment you stop paying. Growth™ builds organic visibility that compounds over time — rankings, content and local presence that keep working without ongoing spend." },
+      ]}
       who={[
         "Businesses invisible to their ideal customers.",
         "Owners tired of paying for ads with no results.",
