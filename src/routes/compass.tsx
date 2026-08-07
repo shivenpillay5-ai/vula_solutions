@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, ChevronDown } from "lucide-react";
+import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, ChevronDown, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
@@ -108,7 +108,7 @@ function CompassOutcomes() {
     >
       <div className="grid gap-6 md:grid-cols-3">
         {results.map((r) => (
-          <OutcomeCard key={r.metric} {...r} />
+          <OutcomeCard key={r.source} {...r} />
         ))}
       </div>
     </Section>
@@ -119,7 +119,7 @@ export const Route = createFileRoute("/compass")({
   head: () => ({
     meta: [
       { title: "Compass™ — Find Your Direction | Vula Solutions" },
-      { name: "description", content: "Compass™ is Vula Solutions's signature business discovery and strategy experience. Leave with clarity — not a quote." },
+      { name: "description", content: "Compass™ is Vula Solutions' signature business discovery and strategy experience. Leave with clarity — not a quote." },
       { property: "og:title", content: "Compass™ — Find Your Direction" },
       { property: "og:description", content: "Every successful journey starts with knowing where you are." },
       { property: "og:url", content: "/compass" },
@@ -144,7 +144,7 @@ function CompassPage() {
             <p className="mt-5 text-lg text-muted-foreground">
               A focused, high-value session with a senior Vula Solutions strategist. We explore your business — what's working, what isn't, and where the real opportunities lie. It's the foundation for every engagement we take on.
             </p>
-            <p className="mt-4 text-lg text-foreground">At the end of Compass™, you don't leave with a quote. You leave with clarity.</p>
+            <p className="mt-4 text-lg text-foreground">What you leave with isn't a proposal. It's a written Compass Report — a plan that's yours to keep and act on, whether you continue with us or not.</p>
           </div>
           <div className="card-premium p-8">
             <h3 className="text-lg font-semibold">Who Compass™ is for</h3>
@@ -167,12 +167,12 @@ function CompassPage() {
       <Section eyebrow="What we cover" title="Problems Compass™ helps you solve." className="bg-secondary/40">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
-            { icon: MapPin, t: "Direction & priorities", b: "Cut through competing ideas and agree on what to do first." },
-            { icon: Target, t: "Growth opportunities", b: "Identify practical ways to increase enquiries, sales and retention." },
-            { icon: Sparkles, t: "AI & automation", b: "Find real use cases — not hype — with meaningful ROI." },
-            { icon: CompassIcon, t: "Digital foundation", b: "Assess your website, tools and workflows against your goals." },
-            { icon: FileText, t: "A written plan", b: "A clear roadmap you can act on, with or without us." },
-            { icon: Target, t: "Confidence to move", b: "Leave knowing what to do next — and why." },
+            { icon: MapPin, t: "No clear direction", b: "Cut through competing priorities and lock in what to do first." },
+            { icon: Target, t: "Missing growth opportunities", b: "Surface practical ways to increase enquiries, sales and retention." },
+            { icon: Sparkles, t: "Unsure about AI & automation", b: "Find the real use cases — not the hype — with meaningful ROI." },
+            { icon: CompassIcon, t: "Digital presence gaps", b: "Assess your website, tools and workflows against your actual goals." },
+            { icon: FileText, t: "No written roadmap", b: "Leave with a clear plan you can act on immediately — with or without us." },
+            { icon: CheckCircle, t: "Not sure what to do next", b: "End the session knowing exactly what to prioritise, and why." },
           ].map(({ icon: Icon, t, b }) => (
             <div key={t} className="card-premium p-7">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-electric">
@@ -184,7 +184,7 @@ function CompassPage() {
           ))}
         </div>
       </Section>
-      <Section eyebrow="The experience" title="What happens during Compass™">
+      <Section eyebrow="The experience" title="What happens during Compass™.">
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
             { n: "01", t: "Pre-session brief", b: "A short intake so we arrive prepared and focused on your business." },
@@ -204,6 +204,7 @@ function CompassPage() {
         eyebrow="The methodology"
         title="Every Compass™ engagement follows the VULA DARES™ Framework."
         intro="Compass™ is delivered through DARES™ — our five-step methodology for turning uncertainty into clarity, and clarity into action."
+        className="bg-secondary/40"
       >
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {[
@@ -229,17 +230,20 @@ function CompassPage() {
           Compass™ covers <span className="font-medium text-foreground">Discover</span>, <span className="font-medium text-foreground">Assess</span> and <span className="font-medium text-foreground">Recommend</span>. <span className="font-medium text-foreground">Execute</span> and <span className="font-medium text-foreground">Support</span> continue through Launch™, Flow™, Accelerate™, Growth™ or Partner™.
         </p>
       </Section>
-      <Section eyebrow="The deliverable" title="Inside the Compass Report" className="bg-secondary/40">
+      <Section eyebrow="The deliverable" title="Inside the Compass Report.">
         <div className="grid gap-6 md:grid-cols-2">
           {[
-            { t: "Business snapshot", b: "A clear summary of where your business is today." },
-            { t: "Opportunity map", b: "Prioritised opportunities across strategy, technology and operations." },
-            { t: "Recommended roadmap", b: "A staged plan — quick wins, mid-term projects, long-term direction." },
-            { t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
-          ].map((r) => (
-            <div key={r.t} className="card-premium p-7">
-              <h3 className="text-lg font-semibold">{r.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{r.b}</p>
+            { icon: BarChart2, t: "Business snapshot", b: "A clear summary of where your business is today." },
+            { icon: Map, t: "Opportunity map", b: "Prioritised opportunities across strategy, technology and operations." },
+            { icon: GitBranch, t: "Recommended roadmap", b: "A staged plan — quick wins, mid-term projects, long-term direction." },
+            { icon: CheckSquare, t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
+          ].map(({ icon: Icon, t, b }) => (
+            <div key={t} className="card-premium p-7">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-electric">
+                <Icon className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 text-lg font-semibold">{t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{b}</p>
             </div>
           ))}
         </div>
@@ -248,8 +252,11 @@ function CompassPage() {
       <Section eyebrow="Common questions" title="Compass™, answered.">
         <FAQ items={[
           { q: "Is Compass™ a sales call?", a: "No. It's a structured strategy session. You'll leave with a written report, whether or not you choose to work with us afterwards." },
+          { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business — reach out and we'll send you the details before you decide." },
+          { q: "Can I do Compass™ remotely?", a: "Yes. Compass™ works equally well in person or online. Most sessions are conducted via video call, with clients across South Africa." },
           { q: "Who runs the session?", a: "A senior Vula Solutions strategist who has worked across websites, AI adoption, automation and SME growth." },
           { q: "How long does it take?", a: "The session itself is typically 90 minutes. The Compass Report is delivered within a week." },
+          { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose — there's no obligation to continue working with us." },
           { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand — the rest is a conversation." },
         ]} />
       </Section>
