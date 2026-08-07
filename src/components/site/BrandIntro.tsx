@@ -218,13 +218,14 @@ export function BrandIntro() {
         }
         .vula-intro__glow--beam {
           left: 50%;
-          top: 8%;
+          top: 4%;
           z-index: 2;
-          width: 10rem;
-          height: 84%;
-          margin-left: -5rem;
-          background: radial-gradient(ellipse 100% 52% at 50% 42%, rgba(255, 251, 240, 0.92) 0%, rgba(255, 248, 232, 0.58) 26%, rgba(255, 244, 226, 0.22) 54%, rgba(255, 242, 220, 0) 76%);
-          filter: blur(10px) brightness(1);
+          width: 11rem;
+          height: 90%;
+          margin-left: -5.5rem;
+          background: radial-gradient(ellipse 40% 82% at 50% 4%, rgba(255, 253, 246, 0.96) 0%, rgba(255, 250, 236, 0.70) 22%, rgba(255, 246, 228, 0.36) 50%, rgba(255, 243, 220, 0.10) 76%, transparent 94%);
+          clip-path: polygon(44% 0%, 56% 0%, 94% 100%, 6% 100%);
+          filter: blur(12px) brightness(1);
           transform: scaleX(0.04);
           transform-origin: center center;
         }
