@@ -35,12 +35,10 @@ export function ProductCard({ name, tagline, description, to, icon: Icon, accent
         </div>
       </div>
       <p className="relative mt-5 text-sm leading-relaxed text-muted-foreground">{description}</p>
-      <div className="relative mt-auto pt-6">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-navy-deep px-4 py-2 text-sm font-semibold text-white transition-colors duration-250 group-hover:bg-navy">
-          Explore
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
-      </div>
+      <span className="relative mt-auto inline-flex items-center gap-1 pt-6 text-sm font-medium text-electric">
+        Explore
+        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </span>
     </Link>
   );
 }
