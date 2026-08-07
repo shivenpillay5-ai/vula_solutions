@@ -19,6 +19,12 @@ export const Route = createFileRoute("/solutions/partner")({
       icon={HeartHandshake}
       hero="A team on your side, every month."
       intro="Partner™ is our ongoing support and strategic partnership. Continuous improvement, priority response and a plan that grows with you."
+      process={[
+        { n: "01", t: "Onboarding", b: "We get to know your business, tools, priorities and team in depth." },
+        { n: "02", t: "Planning", b: "A quarterly roadmap of improvements, projects and strategic priorities." },
+        { n: "03", t: "Execution", b: "We deliver against the plan with priority support and fast response throughout." },
+        { n: "04", t: "Review", b: "Quarterly strategy sessions to assess progress, adapt and plan the next quarter." },
+      ]}
       who={[
         "Businesses that want a long-term technology partner.",
         "Owners without an in-house digital or IT team.",

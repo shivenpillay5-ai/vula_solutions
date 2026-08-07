@@ -19,6 +19,12 @@ export const Route = createFileRoute("/solutions/launch")({
       icon={Rocket}
       hero="A website that works as hard as you do."
       intro="Launch™ is our modern website and digital foundation service. We build clean, fast, conversion-focused sites — designed to earn trust and drive real enquiries."
+      process={[
+        { n: "01", t: "Discovery", b: "We understand your brand, audience and goals before a single pixel is designed." },
+        { n: "02", t: "Design", b: "A design system and site architecture built around your business and how visitors think." },
+        { n: "03", t: "Build", b: "A fast, modern site with clean code, strong SEO foundations and analytics from day one." },
+        { n: "04", t: "Launch", b: "Go live with a full handover, team training and a roadmap for what comes next." },
+      ]}
       who={[
         "Businesses launching a new site or brand.",
         "Teams outgrowing an outdated website.",

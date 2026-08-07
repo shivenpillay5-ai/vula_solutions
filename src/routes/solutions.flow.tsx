@@ -19,6 +19,12 @@ export const Route = createFileRoute("/solutions/flow")({
       icon={Workflow}
       hero="Remove the busywork. Keep the business."
       intro="Flow™ is our automation service. We identify the repetitive work slowing your team down and replace it with reliable, well-designed workflows."
+      process={[
+        { n: "01", t: "Audit", b: "We map your current workflows and identify the highest-value automation opportunities." },
+        { n: "02", t: "Design", b: "Each automation is designed around your tools and the way your team actually works." },
+        { n: "03", t: "Build", b: "We implement, test and refine until every workflow runs without you thinking about it." },
+        { n: "04", t: "Handover", b: "Your team is trained, everything is documented and you stay in full control." },
+      ]}
       who={[
         "Teams drowning in manual admin.",
         "Businesses juggling disconnected tools.",

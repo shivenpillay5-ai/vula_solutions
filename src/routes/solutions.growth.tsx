@@ -19,6 +19,12 @@ export const Route = createFileRoute("/solutions/growth")({
       icon={TrendingUp}
       hero="Turn visibility into enquiries."
       intro="Growth™ is our SEO and digital growth service. We make sure the right people find you — and then choose you."
+      process={[
+        { n: "01", t: "Audit", b: "A full assessment of your current rankings, content, and digital visibility." },
+        { n: "02", t: "Strategy", b: "A keyword and content strategy built around real opportunities in your market." },
+        { n: "03", t: "Optimise", b: "On-page, technical and local search improvements that move the needle." },
+        { n: "04", t: "Grow", b: "Ongoing content, reporting and iteration — compounding results over time." },
+      ]}
       who={[
         "Businesses invisible to their ideal customers.",
         "Owners tired of paying for ads with no results.",

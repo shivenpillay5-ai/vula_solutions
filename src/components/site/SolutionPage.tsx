@@ -13,24 +13,32 @@ export interface SolutionPageProps {
   problems: string[];
   included: string[];
   outcomes: string[];
+  process: { n: string; t: string; b: string }[];
   icon: ComponentType<{ className?: string }>;
 }
 
 export function SolutionPage(props: SolutionPageProps) {
-  const { name, tagline, hero, intro, who, problems, included, outcomes, icon: Icon } = props;
+  const { name, tagline, hero, intro, who, problems, included, outcomes, process, icon: Icon } = props;
   return (
     <>
-      <PageHeader
-        eyebrow={name}
-        title={<>{hero}</>}
-        intro={intro}
-      >
+      <PageHeader eyebrow={name} title={<>{hero}</>} intro={intro}>
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-foreground/80">
           <Icon className="h-4 w-4 text-electric" />
           {tagline}
         </span>
       </PageHeader>
-      <Section>
+      <Section eyebrow="How it works" title={`What to expect from ${name}.`}>
+        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {process.map((s) => (
+            <li key={s.n} className="card-premium card-premium-hover p-7">
+              <p className="font-display text-4xl text-electric">{s.n}</p>
+              <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+      <Section className="bg-secondary/40">
         <div className="grid gap-8 md:grid-cols-2">
           <Card title="Who it's for" items={who} />
           <Card title="Problems it solves" items={problems} />

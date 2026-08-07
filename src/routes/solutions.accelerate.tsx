@@ -19,6 +19,12 @@ export const Route = createFileRoute("/solutions/accelerate")({
       icon={Sparkles}
       hero="AI that actually helps your business."
       intro="Accelerate™ is our AI adoption and enablement programme. We help you identify real use cases, choose the right tools and embed AI into how your team works — safely and practically."
+      process={[
+        { n: "01", t: "Assessment", b: "We identify where AI can add real, measurable value in your business — and where it can't yet." },
+        { n: "02", t: "Use case design", b: "Prioritise the right applications for your team, with clear success criteria for each." },
+        { n: "03", t: "Enablement", b: "Set up tools, train your team and put the right guidelines and guardrails in place." },
+        { n: "04", t: "Measure", b: "Track adoption and value, iterate on what's working and plan the next stage." },
+      ]}
       who={[
         "Owners curious about AI but unsure where to start.",
         "Teams experimenting with AI tools without a strategy.",
