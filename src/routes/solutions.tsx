@@ -45,7 +45,7 @@ function SolutionsLayout() {
             </p>
             <Link
               to="/compass"
-              className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-electric px-6 text-sm font-semibold text-white transition hover:opacity-90"
+              className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
             >
               Discover Compass™ <ArrowRight className="h-4 w-4" />
             </Link>
