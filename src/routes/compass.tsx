@@ -175,7 +175,7 @@ function CompassPage() {
             { icon: FileText, t: "No written roadmap", b: "Leave with a clear plan you can act on immediately — with or without us." },
             { icon: CheckCircle, t: "Not sure what to do next", b: "End the session knowing exactly what to prioritise, and why." },
           ].map(({ icon: Icon, t, b }) => (
-            <div key={t} className="card-premium p-7">
+            <div key={t} className="card-premium card-premium-hover p-7">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
                   <Icon className="h-4 w-4" />
@@ -195,7 +195,7 @@ function CompassPage() {
             { n: "03", t: "Analysis", b: "We synthesise findings and map opportunities across your business." },
             { n: "04", t: "Compass Report", b: "A written roadmap with priorities, options and clear next steps." },
           ].map((s) => (
-            <li key={s.n} className="card-premium p-7">
+            <li key={s.n} className="card-premium card-premium-hover p-7">
               <p className="font-display text-4xl text-electric">{s.n}</p>
               <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
@@ -207,7 +207,8 @@ function CompassPage() {
         eyebrow="The methodology"
         title="Every Compass™ engagement follows the VULA DARES™ Framework."
         intro="Compass™ is delivered through DARES™ — our five-step methodology for turning uncertainty into clarity, and clarity into action."
-        className="bg-secondary/40"
+        className="bg-navy-deep"
+        tone="dark"
       >
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {[
@@ -217,7 +218,7 @@ function CompassPage() {
             { icon: Hammer, l: "E", t: "Execute", b: "Implement the agreed work through the right Vula solution." },
             { icon: LifeBuoy, l: "S", t: "Support", b: "Ongoing improvement, guidance and partnership after delivery." },
           ].map(({ icon: Icon, l, t, b }) => (
-            <li key={t} className="card-premium p-7">
+            <li key={t} className="card-premium card-premium-hover p-7">
               <div className="flex items-center gap-3">
                 <span className="font-display text-4xl text-electric">{l}</span>
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary text-electric">
@@ -229,8 +230,8 @@ function CompassPage() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 text-sm text-muted-foreground">
-          Compass™ covers <span className="font-medium text-foreground">Discover</span>, <span className="font-medium text-foreground">Assess</span> and <span className="font-medium text-foreground">Recommend</span>. <span className="font-medium text-foreground">Execute</span> and <span className="font-medium text-foreground">Support</span> continue through Launch™, Flow™, Accelerate™, Growth™ or Partner™.
+        <p className="mt-8 text-sm text-white/60">
+          Compass™ covers <span className="font-medium text-white">Discover</span>, <span className="font-medium text-white">Assess</span> and <span className="font-medium text-white">Recommend</span>. <span className="font-medium text-white">Execute</span> and <span className="font-medium text-white">Support</span> continue through Launch™, Flow™, Accelerate™, Growth™ or Partner™.
         </p>
       </Section>
       <Section eyebrow="The deliverable" title="Inside the Compass Report.">
@@ -241,7 +242,7 @@ function CompassPage() {
             { icon: GitBranch, t: "Recommended roadmap", b: "A staged plan — quick wins, mid-term projects, long-term direction." },
             { icon: CheckSquare, t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
           ].map(({ icon: Icon, t, b }) => (
-            <div key={t} className="card-premium p-7">
+            <div key={t} className="card-premium card-premium-hover p-7">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
                   <Icon className="h-4 w-4" />
