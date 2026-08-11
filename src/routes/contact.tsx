@@ -17,6 +17,24 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+function Pill({ value, label, selected, onSelect }: { value: string; label: string; selected: string; onSelect: (v: string) => void }) {
+  const active = selected === value;
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={() => onSelect(active ? "" : value)}
+      className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm transition-all duration-150 ${
+        active
+          ? "border-electric bg-electric/10 font-medium text-electric"
+          : "border-border text-foreground/70 hover:border-electric/40 hover:text-electric"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
 function Contact() {
   const location = useLocation();
   const service = new URLSearchParams(location.search).get("service") ?? "";
@@ -101,29 +119,31 @@ function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="interest" className="block text-sm font-medium">
-                    I am interested in
-                  </label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    value={interest}
-                    onChange={(e) => setInterest(e.target.value)}
-                    className="mt-2 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                  >
-                    <option value="">Select a service</option>
-                    <optgroup label="Compass™: Discovery and Strategy">
-                      <option value="compass-essential">Compass™ Essential</option>
-                      <option value="compass-professional">Compass™ Professional</option>
-                      <option value="compass-strategic">Compass™ Strategic</option>
-                    </optgroup>
-                    <option value="launch">Launch™: Website or Redesign</option>
-                    <option value="flow">Flow™: Automation</option>
-                    <option value="accelerate">Accelerate™: AI Adoption</option>
-                    <option value="growth">Growth™: SEO and Visibility</option>
-                    <option value="partner">Partner™: Ongoing Support</option>
-                    <option value="unsure">Not sure yet</option>
-                  </select>
+                  <p className="text-sm font-medium">I am interested in</p>
+                  <input type="hidden" name="interest" value={interest} />
+                  <div className="mt-3 space-y-2">
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { value: "compass-essential", label: "Compass™ Essential" },
+                        { value: "compass-professional", label: "Compass™ Professional" },
+                        { value: "compass-strategic", label: "Compass™ Strategic" },
+                      ].map(({ value, label }) => (
+                        <Pill key={value} value={value} label={label} selected={interest} onSelect={setInterest} />
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { value: "launch", label: "Launch™" },
+                        { value: "flow", label: "Flow™" },
+                        { value: "accelerate", label: "Accelerate™" },
+                        { value: "growth", label: "Growth™" },
+                        { value: "partner", label: "Partner™" },
+                        { value: "unsure", label: "Not sure yet" },
+                      ].map(({ value, label }) => (
+                        <Pill key={value} value={value} label={label} selected={interest} onSelect={setInterest} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <div>
