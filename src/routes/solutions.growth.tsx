@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
 import { SolutionPage } from "@/components/site/SolutionPage";
 
@@ -18,18 +18,18 @@ export const Route = createFileRoute("/solutions/growth")({
       tagline="Be Found. Be Chosen."
       icon={TrendingUp}
       hero="Turn visibility into enquiries."
-      intro="Growth™ is our SEO and digital growth service. We make sure the right people find you — and then choose you."
+      intro="Growth™ is our SEO and digital growth service. We make sure the right people find you, and then choose you."
       process={[
         { n: "01", t: "Audit", b: "A full assessment of your current rankings, content, and digital visibility." },
         { n: "02", t: "Strategy", b: "A keyword and content strategy built around real opportunities in your market." },
         { n: "03", t: "Optimise", b: "On-page, technical and local search improvements that move the needle." },
-        { n: "04", t: "Grow", b: "Ongoing content, reporting and iteration — compounding results over time." },
+        { n: "04", t: "Grow", b: "Ongoing content, reporting and iteration, compounding results over time." },
       ]}
       faq={[
         { q: "How long before we see results?", a: "SEO compounds over time. Most clients see meaningful movement in rankings within three to six months. We'll set honest expectations from the start." },
-        { q: "Do you write the content for us?", a: "Yes. Content production is part of the programme — researched, written and optimised around real search opportunities in your market." },
-        { q: "Is this just for Google?", a: "Primarily, yes — Google dominates search in South Africa. We also optimise your Google Business Profile for local visibility, which is often the fastest win." },
-        { q: "How is this different from running ads?", a: "Ads stop the moment you stop paying. Growth™ builds organic visibility that compounds over time — rankings, content and local presence that keep working without ongoing spend." },
+        { q: "Do you write the content for us?", a: "Yes. Content production is part of the programme: researched, written and optimised around real search opportunities in your market." },
+        { q: "Is this just for Google?", a: "Primarily, yes. Google dominates search in South Africa. We also optimise your Google Business Profile for local visibility, which is often the fastest win." },
+        { q: "How is this different from running ads?", a: "Ads stop the moment you stop paying. Growth™ builds organic visibility that compounds over time: rankings, content and local presence that keep working without ongoing spend." },
       ]}
       who={[
         "Businesses invisible to their ideal customers.",

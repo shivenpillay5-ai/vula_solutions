@@ -1,4 +1,4 @@
-import {
+﻿import {
   resourceSections,
   type ResourceArticle,
   type ResourceContentBlock,
@@ -254,7 +254,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   // Cancellation / minimum commitment (before pricing block)
   if (includesAny(text, ["cancel", "minimum commitment", "minimum term", "lock in", "how long do i have to commit", "exit partner", "notice period", "can i leave"])) {
     return {
-      content: `Partner${TM} is structured around quarterly planning cycles with a minimum three-month engagement. At the end of each quarter you can choose not to continue — VULA does not lock clients in beyond the agreed term.`,
+      content: `Partner${TM} is structured around quarterly planning cycles with a minimum three-month engagement. At the end of each quarter you can choose not to continue. VULA does not lock clients in beyond the agreed term.`,
       suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
     };
   }
@@ -263,7 +263,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["partner", "ongoing", "retainer", "typical month", "what happens monthly", "long term support", "monthly support", "continuous improvement"])) {
     return withReferences(
       {
-        content: `Partner${TM} is VULA's ongoing support and strategic partnership. Work is structured around quarterly planning cycles — each month covers delivery against your roadmap, priority support for any issues and regular check-ins to adjust if priorities shift. There is no long-term lock-in beyond the quarterly commitment.`,
+        content: `Partner${TM} is VULA's ongoing support and strategic partnership. Work is structured around quarterly planning cycles: each month covers delivery against your roadmap, priority support for any issues and regular check-ins to adjust if priorities shift. There is no long-term lock-in beyond the quarterly commitment.`,
         suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
       },
       question,
@@ -318,7 +318,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["ads", "google ads", "paid ads", "advertising", "ppc", "adwords", "paid search"])) {
     return withReferences(
       {
-        content: `Ads stop the moment you stop paying. Growth${TM} builds organic visibility that compounds over time — rankings, content and local presence that keep working without ongoing spend. VULA focuses on growth that does not depend on a monthly ad budget.`,
+        content: `Ads stop the moment you stop paying. Growth${TM} builds organic visibility that compounds over time: rankings, content and local presence that keep working without ongoing spend. VULA focuses on growth that does not depend on a monthly ad budget.`,
         suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
       },
       question,
@@ -329,7 +329,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["write content", "content writing", "who writes", "copywriting", "blog", "articles", "content production"])) {
     return withReferences(
       {
-        content: `Yes. Content production is part of the Growth${TM} programme — researched, written and optimised around real search opportunities in your market. VULA does not hand over a brief and leave the writing to you.`,
+        content: `Yes. Content production is part of the Growth${TM} programme: researched, written and optimised around real search opportunities in your market. VULA does not hand over a brief and leave the writing to you.`,
         suggestions: [`What is Compass${TM}`, "How do I start", "How VULA can help my business"],
       },
       question,
@@ -351,7 +351,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["what tools", "which tools", "microsoft", "google workspace", "crm", "xero", "accounting software", "which software", "existing tools", "work with our tools"])) {
     return withReferences(
       {
-        content: `VULA works across widely used business tools — Microsoft 365, Google Workspace, CRMs, accounting platforms and industry-specific software. The right tools for your setup are assessed as part of Flow${TM} during the audit phase.`,
+        content: `VULA works across widely used business tools: Microsoft 365, Google Workspace, CRMs, accounting platforms and industry-specific software. The right tools for your setup are assessed as part of Flow${TM} during the audit phase.`,
         suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
       },
       question,
@@ -384,7 +384,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["resistant", "resistance", "afraid of ai", "worried about ai", "skeptical", "not ready for ai", "team won't use", "adoption", "change management"])) {
     return withReferences(
       {
-        content: `That is common — and exactly why enablement is central to the Accelerate${TM} programme. VULA works with your team, not just your tools, building confidence through practical, relevant use cases rather than abstract training.`,
+        content: `That is common, and exactly why enablement is central to the Accelerate${TM} programme. VULA works with your team, not just your tools, building confidence through practical, relevant use cases rather than abstract training.`,
         suggestions: [`What is Compass${TM}`, "How VULA can help my business", "How do I start"],
       },
       question,

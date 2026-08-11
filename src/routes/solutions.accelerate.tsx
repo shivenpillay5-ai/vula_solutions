@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import { SolutionPage } from "@/components/site/SolutionPage";
 
@@ -18,18 +18,18 @@ export const Route = createFileRoute("/solutions/accelerate")({
       tagline="Unlock Your Potential"
       icon={Sparkles}
       hero="AI that actually helps your business."
-      intro="Accelerate™ is our AI adoption and enablement programme. We help you identify real use cases, choose the right tools and embed AI into how your team works — safely and practically."
+      intro="Accelerate™ is our AI adoption and enablement programme. We help you identify real use cases, choose the right tools and embed AI into how your team works, safely and practically."
       process={[
-        { n: "01", t: "Assessment", b: "We identify where AI can add real, measurable value in your business — and where it can't yet." },
+        { n: "01", t: "Assessment", b: "We identify where AI can add real, measurable value in your business, and where it can't yet." },
         { n: "02", t: "Use case design", b: "Prioritise the right applications for your team, with clear success criteria for each." },
         { n: "03", t: "Enablement", b: "Set up tools, train your team and put the right guidelines and guardrails in place." },
         { n: "04", t: "Measure", b: "Track adoption and value, iterate on what's working and plan the next stage." },
       ]}
       faq={[
-        { q: "We're concerned about data privacy — how do you handle that?", a: "Every use case is assessed for data risk before implementation. We build guidelines and governance into the programme and won't recommend tools that put your client data at risk." },
+        { q: "We're concerned about data privacy. How do you handle that?", a: "Every use case is assessed for data risk before implementation. We build guidelines and governance into the programme and won't recommend tools that put your client data at risk." },
         { q: "Do we need existing AI tools?", a: "No. We assess what's right for your business and recommend the right tools as part of the programme. You don't need to have started anything yet." },
         { q: "How long does Accelerate™ take?", a: "The initial programme typically runs over four to eight weeks. Ongoing enablement and iteration can continue through Partner™." },
-        { q: "What if our team is resistant to AI?", a: "That's common — and exactly why enablement is central to the programme. We work with your team, not just your tools, building confidence through relevant, practical use cases." },
+        { q: "What if our team is resistant to AI?", a: "That's common, and exactly why enablement is central to the programme. We work with your team, not just your tools, building confidence through relevant, practical use cases." },
       ]}
       who={[
         "Owners curious about AI but unsure where to start.",

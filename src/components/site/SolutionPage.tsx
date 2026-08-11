@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+﻿import type { ComponentType } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Check } from "lucide-react";
 import { PageHeader } from "./PageHeader";
@@ -67,7 +67,7 @@ export function SolutionPage(props: SolutionPageProps) {
         <FAQ items={faq} />
       </Section>
       <CTA
-        title={`Start with Compass™ — then move to ${name}`}
+        title={`Start with Compass™. Then move to ${name}`}
         body="Every engagement begins with a discovery session. Book Compass™ and we'll shape the right plan together."
         primary={{ to: "/contact", label: "Book Compass™" }}
         secondary={{ to: "/solutions", label: "See all solutions" }}

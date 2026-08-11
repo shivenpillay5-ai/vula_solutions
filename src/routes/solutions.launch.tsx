@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Rocket } from "lucide-react";
 import { SolutionPage } from "@/components/site/SolutionPage";
 
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/solutions/launch")({
       tagline="Build With Confidence"
       icon={Rocket}
       hero="A website that works as hard as you do."
-      intro="Launch™ is our modern website and digital foundation service. We build clean, fast, conversion-focused sites — designed to earn trust and drive real enquiries."
+      intro="Launch™ is our modern website and digital foundation service. We build clean, fast, conversion-focused sites, designed to earn trust and drive real enquiries."
       process={[
         { n: "01", t: "Discovery", b: "We understand your brand, audience and goals before a single pixel is designed." },
         { n: "02", t: "Design", b: "A design system and site architecture built around your business and how visitors think." },
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/solutions/launch")({
       ]}
       faq={[
         { q: "How long does a Launch™ project take?", a: "Most Launch™ projects are delivered within four to eight weeks, depending on scope. We'll confirm a timeline before any work begins." },
-        { q: "What do I need to prepare?", a: "Very little at the start. We'll guide you through what we need — typically brand assets, existing content and access to relevant tools or hosting." },
+        { q: "What do I need to prepare?", a: "Very little at the start. We'll guide you through what we need: typically brand assets, existing content and access to relevant tools or hosting." },
         { q: "Do you build on a specific platform?", a: "We recommend and build on modern, performance-first platforms suited to your business. We'll advise on the best fit during the discovery phase." },
         { q: "What happens after the site goes live?", a: "You get a full handover and training session so you're not dependent on us. Ongoing support is available through Partner™ if you want it." },
       ]}

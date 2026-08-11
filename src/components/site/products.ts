@@ -1,4 +1,4 @@
-import { Compass, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
+﻿import { Compass, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
 import type { ProductCardProps } from "./ProductCard";
 
 export const products: ProductCardProps[] = [
@@ -33,7 +33,7 @@ export const products: ProductCardProps[] = [
     name: "Accelerate™",
     tagline: "Unlock Your Potential",
     description:
-      "Practical AI adoption and team enablement — real use cases, adopted well, measured properly.",
+      "Practical AI adoption and team enablement: real use cases, adopted well, measured properly.",
     to: "/solutions/accelerate",
     icon: Sparkles,
     accent: "electric",

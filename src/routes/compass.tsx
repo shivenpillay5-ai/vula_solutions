@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, ChevronDown, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -82,10 +82,10 @@ function CompassOutcomes() {
     {
       metric: "3 weeks",
       label: "to first inbound lead",
-      outcome: "A specialist engineering consultancy received their first unsolicited inbound enquiry three weeks after launch — after seven years of relying entirely on referrals.",
+      outcome: "A specialist engineering consultancy received their first unsolicited inbound enquiry three weeks after launch. They had relied entirely on referrals for seven years.",
       source: "Engineering · Johannesburg",
       product: "Launch™",
-      found: "The existing website was eight years old, had no mobile layout, and wasn't being indexed on Google. There was no Google Business Profile and no clear contact pathway beyond a generic email address — making it nearly impossible for new clients to find or evaluate them.",
+      found: "The existing website was eight years old, had no mobile layout, and wasn't being indexed on Google. There was no Google Business Profile and no clear contact pathway beyond a generic email address, making it nearly impossible for new clients to find or evaluate them.",
       fixed: "Built a new website with clear service positioning, a project portfolio and a direct enquiry form. Set up and fully optimised their Google Business Profile. The first inbound enquiry came through the contact form eighteen days after launch.",
     },
     {
@@ -94,7 +94,7 @@ function CompassOutcomes() {
       outcome: "A growing construction supplier used Compass™ to surface three hidden process bottlenecks and cut their quote turnaround from four days to same-day.",
       source: "Construction & Supply · Pretoria",
       product: "Compass™",
-      found: "Quotes were built manually in Excel with no template, required sign-off from the owner who was frequently on-site, and pricing required manual lookups from a printed supplier catalogue — three separate bottlenecks each adding hours to every quote.",
+      found: "Quotes were built manually in Excel with no template, required sign-off from the owner who was frequently on-site, and pricing required manual lookups from a printed supplier catalogue. Three separate bottlenecks each adding hours to every quote.",
       fixed: "Introduced a quoting template with pre-loaded pricing tiers, established a delegated approval threshold so quotes under a set value could be approved by the operations manager, and digitised the supplier catalogue into a shared live pricing sheet. No new software was purchased.",
     },
   ];
@@ -119,7 +119,7 @@ export const Route = createFileRoute("/compass")({
   head: () => ({
     meta: [
       { title: "Compass™ — Find Your Direction | Vula Solutions" },
-      { name: "description", content: "Compass™ is Vula Solutions' signature business discovery and strategy experience. Leave with clarity — not a quote." },
+      { name: "description", content: "Compass™ is Vula Solutions' signature business discovery and strategy experience. Leave with clarity, not a quote." },
       { property: "og:title", content: "Compass™ — Find Your Direction" },
       { property: "og:description", content: "Every successful journey starts with knowing where you are." },
       { property: "og:url", content: "/compass" },
@@ -142,9 +142,9 @@ function CompassPage() {
           <div>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What Compass™ is</h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              A focused, high-value session with a senior Vula Solutions strategist. We explore your business — what's working, what isn't, and where the real opportunities lie. It's the foundation for every engagement we take on.
+              A focused, high-value session with a senior Vula Solutions strategist. We explore your business: what's working, what isn't, and where the real opportunities lie. It's the foundation for every engagement we take on.
             </p>
-            <p className="mt-4 text-lg text-foreground">What you leave with isn't a proposal. It's a written Compass Report — a plan that's yours to keep and act on, whether you continue with us or not.</p>
+            <p className="mt-4 text-lg text-foreground">What you leave with isn't a proposal. It's a written Compass Report, a plan that's yours to keep and act on, whether you continue with us or not.</p>
           </div>
           <div className="card-premium p-8">
             <h3 className="text-lg font-semibold">Who Compass™ is for</h3>
@@ -169,9 +169,9 @@ function CompassPage() {
           {[
             { icon: MapPin, t: "No clear direction", b: "Cut through competing priorities and lock in what to do first." },
             { icon: Target, t: "Missing growth opportunities", b: "Surface practical ways to increase enquiries, sales and retention." },
-            { icon: Sparkles, t: "Unsure about AI & automation", b: "Find the real use cases — not the hype — with meaningful ROI." },
+            { icon: Sparkles, t: "Unsure about AI & automation", b: "Find the real use cases, not the hype, with meaningful ROI." },
             { icon: CompassIcon, t: "Digital presence gaps", b: "Assess your website, tools and workflows against your actual goals." },
-            { icon: FileText, t: "No written roadmap", b: "Leave with a clear plan you can act on immediately — with or without us." },
+            { icon: FileText, t: "No written roadmap", b: "Leave with a clear plan you can act on immediately, with or without us." },
             { icon: CheckCircle, t: "Not sure what to do next", b: "End the session knowing exactly what to prioritise, and why." },
           ].map(({ icon: Icon, t, b }) => (
             <div key={t} className="card-premium card-premium-hover p-7">
@@ -190,7 +190,7 @@ function CompassPage() {
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
             { n: "01", t: "Pre-session brief", b: "A short intake so we arrive prepared and focused on your business." },
-            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist — typically 90 minutes." },
+            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist, typically 90 minutes." },
             { n: "03", t: "Analysis", b: "We synthesise findings and map opportunities across your business." },
             { n: "04", t: "Compass Report", b: "A written roadmap with priorities, options and clear next steps." },
           ].map((s) => (
@@ -205,7 +205,7 @@ function CompassPage() {
       <Section
         eyebrow="The methodology"
         title="Every Compass™ engagement follows the VULA DARES™ Framework."
-        intro="Compass™ is delivered through DARES™ — our five-step methodology for turning uncertainty into clarity, and clarity into action."
+        intro="Compass™ is delivered through DARES™, our five-step methodology for turning uncertainty into clarity, and clarity into action."
         className="bg-navy-deep"
         tone="dark"
       >
@@ -238,7 +238,7 @@ function CompassPage() {
           {[
             { icon: BarChart2, t: "Business snapshot", b: "A clear summary of where your business is today." },
             { icon: Map, t: "Opportunity map", b: "Prioritised opportunities across strategy, technology and operations." },
-            { icon: GitBranch, t: "Recommended roadmap", b: "A staged plan — quick wins, mid-term projects, long-term direction." },
+            { icon: GitBranch, t: "Recommended roadmap", b: "A staged plan covering quick wins, mid-term projects, long-term direction." },
             { icon: CheckSquare, t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
           ].map(({ icon: Icon, t, b }) => (
             <div key={t} className="card-premium card-premium-hover p-7">
@@ -257,12 +257,12 @@ function CompassPage() {
       <Section eyebrow="Common questions" title="Compass™, answered.">
         <FAQ items={[
           { q: "Is Compass™ a sales call?", a: "No. It's a structured strategy session. You'll leave with a written report, whether or not you choose to work with us afterwards." },
-          { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business — reach out and we'll send you the details before you decide." },
+          { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business. Reach out and we'll send you the details before you decide." },
           { q: "Can I do Compass™ remotely?", a: "Yes. Compass™ works equally well in person or online. Most sessions are conducted via video call, with clients across South Africa." },
           { q: "Who runs the session?", a: "A senior Vula Solutions strategist who has worked across websites, AI adoption, automation and SME growth." },
           { q: "How long does it take?", a: "The session itself is typically 90 minutes. The Compass Report is delivered within a week." },
-          { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose — there's no obligation to continue working with us." },
-          { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand — the rest is a conversation." },
+          { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose. There's no obligation to continue working with us." },
+          { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand. The rest is a conversation." },
         ]} />
       </Section>
       <CTA

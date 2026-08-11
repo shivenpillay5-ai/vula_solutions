@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -61,7 +61,7 @@ function Contact() {
             {sent ? (
               <div className="flex flex-col items-start gap-3 py-8">
                 <CheckCircle2 className="h-6 w-6 text-growth" />
-                <h3 className="text-lg font-semibold">Thanks — we'll be in touch shortly.</h3>
+                <h3 className="text-lg font-semibold">Thank you. We'll be in touch shortly.</h3>
                 <p className="text-sm text-muted-foreground">A member of the Vula Solutions team will reply within one business day.</p>
               </div>
             ) : (
@@ -75,12 +75,12 @@ function Contact() {
                 <div>
                   <label htmlFor="interest" className="block text-sm font-medium">I'm interested in</label>
                   <select id="interest" name="interest" className="mt-2 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
-                    <option>Compass™ — discovery & strategy</option>
-                    <option>Launch™ — website or redesign</option>
-                    <option>Flow™ — automation</option>
-                    <option>Accelerate™ — AI adoption</option>
-                    <option>Growth™ — SEO & visibility</option>
-                    <option>Partner™ — ongoing support</option>
+                    <option>Compass™: Discovery & Strategy</option>
+                    <option>Launch™: Website or Redesign</option>
+                    <option>Flow™: Automation</option>
+                    <option>Accelerate™: AI Adoption</option>
+                    <option>Growth™: SEO & Visibility</option>
+                    <option>Partner™: Ongoing Support</option>
                     <option>Not sure yet</option>
                   </select>
                 </div>

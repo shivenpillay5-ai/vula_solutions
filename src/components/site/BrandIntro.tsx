@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
+﻿import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 
 type IntroState = "waiting" | "playing" | "hidden";
 
@@ -163,7 +163,7 @@ export function BrandIntro() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(68rem 42rem at 50% 34%, rgba(255, 247, 229, 0.08), transparent 54%),
+            radial-gradient(68rem 42rem at 50% 34%, rgba(255, 240, 150, 0.08), transparent 54%),
             radial-gradient(44rem 28rem at 50% 50%, rgba(15, 23, 42, 0.18), transparent 68%),
             linear-gradient(180deg, rgba(17, 25, 34, 0.985), rgba(10, 15, 22, 0.96));
           backdrop-filter: blur(7px);
@@ -171,7 +171,7 @@ export function BrandIntro() {
         .vula-intro__wash {
           position: absolute;
           inset: -10%;
-          background: radial-gradient(circle at 50% 42%, rgba(255, 248, 233, 0.22) 0%, rgba(255, 243, 222, 0.12) 22%, rgba(255, 243, 222, 0) 50%);
+          background: radial-gradient(circle at 50% 42%, rgba(255, 244, 155, 0.22) 0%, rgba(255, 232, 128, 0.12) 22%, rgba(255, 232, 128, 0) 50%);
           opacity: 0;
           transform: scale(0.9);
         }
@@ -209,25 +209,24 @@ export function BrandIntro() {
           opacity: 0;
         }
         .vula-intro__glow--back {
-          inset: 16% 18% 20% 18%;
+          inset: 8% 8% 8% 8%;
           z-index: 1;
-          border-radius: 999px;
-          background: radial-gradient(circle, rgba(255, 250, 240, 0.42) 0%, rgba(255, 244, 222, 0.3) 34%, rgba(255, 238, 204, 0.12) 58%, rgba(255, 238, 204, 0) 80%);
-          filter: blur(22px);
+          background: radial-gradient(ellipse 80% 70% at 50% 42%, rgba(255, 242, 150, 0.12) 0%, rgba(255, 230, 120, 0.06) 45%, rgba(255, 215, 90, 0) 75%);
+          filter: blur(65px);
           transform: scale(0.5);
         }
         .vula-intro__glow--beam {
           left: 50%;
-          top: 29%;
+          top: 76%;
           z-index: 2;
-          width: 11rem;
-          height: 62%;
-          margin-left: -5.5rem;
-          background: radial-gradient(ellipse 40% 82% at 50% 4%, rgba(255, 253, 246, 0.96) 0%, rgba(255, 250, 236, 0.70) 22%, rgba(255, 246, 228, 0.36) 50%, rgba(255, 243, 220, 0.10) 76%, transparent 94%);
-          clip-path: polygon(44% 0%, 56% 0%, 94% 100%, 6% 100%);
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 12%, black 28%, black 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 12%, black 28%, black 100%);
-          filter: blur(14px) brightness(1);
+          width: 20rem;
+          height: 55%;
+          margin-left: -10rem;
+          background: radial-gradient(ellipse 18% 40% at 50% 0%, rgba(255, 245, 160, 0.92) 0%, rgba(255, 236, 135, 0.60) 25%, rgba(255, 222, 105, 0.28) 55%, rgba(255, 210, 80, 0.06) 82%, transparent 98%);
+          clip-path: polygon(48% 0%, 52% 0%, 98% 100%, 2% 100%);
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
+          filter: blur(16px) brightness(1.1);
           transform: scaleX(0.04);
           transform-origin: center center;
         }
@@ -235,11 +234,11 @@ export function BrandIntro() {
           left: 50%;
           bottom: 13%;
           z-index: 1;
-          width: 14rem;
-          height: 3.6rem;
-          margin-left: -7rem;
+          width: 20rem;
+          height: 5rem;
+          margin-left: -10rem;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(255, 247, 232, 0.38) 0%, rgba(255, 241, 219, 0.22) 44%, rgba(255, 241, 219, 0) 78%);
+          background: radial-gradient(circle, rgba(255, 238, 140, 0.38) 0%, rgba(255, 222, 110, 0.22) 44%, rgba(255, 222, 110, 0) 78%);
           filter: blur(20px);
           transform: perspective(160px) rotateX(74deg) scale(0.58);
         }

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Briefcase, Landmark, HardHat, Building2, Stethoscope, Wrench, ArrowRight, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
       { title: "Industries | Vula Solutions" },
-      { name: "description", content: "Vula Solutions adapts its playbook to the pressures, regulations and expectations of your industry — starting with Compass™." },
+      { name: "description", content: "Vula Solutions adapts its playbook to the pressures, regulations and expectations of your industry, starting with Compass™." },
       { property: "og:title", content: "Industries | Vula Solutions" },
       { property: "og:url", content: "/industries" },
     ],
@@ -23,7 +23,7 @@ const dares = [
   { icon: ClipboardCheck, l: "A", t: "Assess",     b: "Evaluate your digital presence, operations, AI readiness and efficiency gaps." },
   { icon: Lightbulb,     l: "R", t: "Recommend",  b: "Prioritise the highest-impact actions specific to your industry context." },
   { icon: Hammer,        l: "E", t: "Execute",     b: "Deliver the agreed work through the right combination of VULA solutions." },
-  { icon: LifeBuoy,      l: "S", t: "Support",     b: "Stay alongside you — improving, iterating and growing with your business." },
+  { icon: LifeBuoy,      l: "S", t: "Support",     b: "Stay alongside you, improving, iterating and growing with your business." },
 ];
 
 const industries = [
@@ -35,17 +35,17 @@ const industries = [
   {
     icon: Landmark,
     t: "Financial services",
-    b: "Trust is everything — and most financial services websites don't earn it fast enough. We build credible digital presences and processes that scale with regulation.",
+    b: "Trust is everything, and most financial services websites don't earn it fast enough. We build credible digital presences and processes that scale with regulation.",
   },
   {
     icon: HardHat,
     t: "Engineering",
-    b: "Complex services are hard to communicate and project admin eats into delivery time. We simplify both — project-ready sites, automation and AI for reporting.",
+    b: "Complex services are hard to communicate and project admin eats into delivery time. We simplify both: project-ready sites, automation and AI for reporting.",
   },
   {
     icon: Building2,
     t: "Construction",
-    b: "Winning work depends on credibility. Keeping it depends on operational clarity. We help with both — tender-winning content and workflows that streamline site management.",
+    b: "Winning work depends on credibility. Keeping it depends on operational clarity. We help with both: tender-winning content and workflows that streamline site management.",
   },
   {
     icon: Stethoscope,
@@ -55,26 +55,26 @@ const industries = [
   {
     icon: Wrench,
     t: "Trades & specialists",
-    b: "Most competitors look the same online — and you're losing jobs you should be winning. Local SEO, fast quoting and effective websites that book work.",
+    b: "Most competitors look the same online, and you're losing jobs you should be winning. Local SEO, fast quoting and effective websites that book work.",
   },
 ];
 
 const faqs = [
   {
     q: "Do you specialise in specific industries?",
-    a: "We work across several sectors and understand their specific pressures well. But VULA is not a sector-specific agency — we are a Business Transformation Partner. What makes the work effective is starting with Compass™, which gives us the context to adapt our approach to your reality.",
+    a: "We work across several sectors and understand their specific pressures well. But VULA is not a sector-specific agency. We are a Business Transformation Partner. What makes the work effective is starting with Compass™, which gives us the context to adapt our approach to your reality.",
   },
   {
     q: "How does your process adapt by sector?",
-    a: "The methodology is consistent — Compass™ first, then the right product combination — but the application varies. A professional services firm needs different things from an engineering company or a healthcare practice. We have worked across all of these and know where the leverage points are.",
+    a: "The methodology is consistent: Compass™ first, then the right product combination. But the application varies. A professional services firm needs different things from an engineering company or a healthcare practice. We have worked across all of these and know where the leverage points are.",
   },
   {
-    q: "We're a niche or specialist business — can you still help?",
-    a: "Almost certainly. If your business relies on a strong digital presence, clear processes and confident use of technology, we can add value. Compass™ is the quickest way to find out — it takes less than half a day and gives you a clear picture regardless of whether you continue with us.",
+    q: "We're a niche or specialist business. Can you still help?",
+    a: "Almost certainly. If your business relies on a strong digital presence, clear processes and confident use of technology, we can add value. Compass™ is the quickest way to find out. It takes less than half a day and gives you a clear picture regardless of whether you continue with us.",
   },
   {
-    q: "We operate in a regulated environment — is that a problem?",
-    a: "No — it shapes the approach. We understand that financial services, healthcare and other regulated businesses have constraints that many agencies ignore. We factor compliance and data governance in from the start.",
+    q: "We operate in a regulated environment. Is that a problem?",
+    a: "Not at all. It shapes the approach. We understand that financial services, healthcare and other regulated businesses have constraints that many agencies ignore. We factor compliance and data governance in from the start.",
   },
 ];
 
@@ -90,7 +90,7 @@ function Industries() {
       <Section
         eyebrow="Our approach"
         title="Every engagement follows the DARES™ framework."
-        intro="Whatever your industry, we follow the same proven methodology — adapted to your specific pressures, regulations and goals."
+        intro="Whatever your industry, we follow the same proven methodology, adapted to your specific pressures, regulations and goals."
         className="bg-secondary/40"
       >
         <ol className="relative grid gap-8 sm:grid-cols-5">

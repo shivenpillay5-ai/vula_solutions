@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Compass as CompassIcon, ShieldCheck, LineChart, Users, TrendingUp, Handshake } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -47,7 +47,7 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
             Running a business is complicated enough. Choosing the right technology shouldn't be.
-            We help you open the right doors — with clarity, confidence and practical technology that fits your business.
+            We help you open the right doors to clarity, confidence and practical technology that fits your business.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
@@ -111,10 +111,10 @@ function TrustBar() {
 
 function VulaMeaning() {
   const pillars = [
-    { icon: CompassIcon, title: "CLARITY", body: "We help you see the path forward — before anything is built." },
+    { icon: CompassIcon, title: "CLARITY", body: "We help you see the path forward before anything is built." },
     { icon: ShieldCheck, title: "CONFIDENCE", body: "Trusted advice, so every technology decision feels certain." },
     { icon: TrendingUp, title: "TRANSFORMATION", body: "Practical technology that quietly changes how your business works." },
-    { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you — long after the launch." },
+    { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you long after the launch." },
   ];
   return (
     <section className="bg-navy-deep pt-14 pb-16 sm:pt-20 sm:pb-22">
@@ -127,7 +127,7 @@ function VulaMeaning() {
             We help you <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/65">
-            VULA is a Business Transformation Partner — not a website agency, an AI vendor or IT support.
+            VULA is a Business Transformation Partner. Not a website agency, an AI vendor or IT support.
             The best technology is the kind that helps your business thrive without getting in the way.
           </p>
         </div>
@@ -187,7 +187,7 @@ function CompassIntro() {
                 "A focused business discovery session",
                 "Opportunity mapping across technology, AI and operations",
                 "A written Compass Report with a clear roadmap",
-                "No obligation, no sales pitch — just clarity",
+                "No obligation, no sales pitch. Just clarity",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-2">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric" />
@@ -208,7 +208,7 @@ function SolutionsOverview() {
     <Section
       eyebrow="The Vula Solutions suite"
       title="A connected ecosystem for modern businesses."
-      intro="Each product is designed to work on its own or as part of a broader transformation — all beginning with Compass™."
+      intro="Each product is designed to work on its own or as part of a broader transformation, all beginning with Compass™."
       className="bg-navy-deep"
       tone="dark"
     >
@@ -224,12 +224,12 @@ function SolutionsOverview() {
 function WhyVula() {
   const points = [
     { title: "Strategy before technology", body: "We start with your business, not with tools. Clarity first, execution second." },
-    { title: "Practical, not theoretical", body: "Outcomes you can measure — faster processes, better websites, real AI adoption." },
+    { title: "Practical, not theoretical", body: "Outcomes you can measure: faster processes, better websites, real AI adoption." },
     { title: "Premium, without the overhead", body: "The quality of a senior team, structured for small and medium businesses." },
     { title: "One partner, end to end", body: "Discovery, design, build, automation and ongoing support under one roof." },
   ];
   return (
-    <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology — with a calm, considered approach.">
+    <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology, with a calm, considered approach.">
       <div className="grid gap-6 sm:grid-cols-2">
         {points.map((p) => (
           <div key={p.title} className="card-premium p-7">
@@ -246,8 +246,8 @@ function Approach() {
   const steps = [
     { n: "01", t: "Discover", b: "A structured Compass™ session to understand your business and priorities." },
     { n: "02", t: "Map", b: "We identify opportunities across technology, AI, automation and growth." },
-    { n: "03", t: "Deliver", b: "We build, launch and refine — websites, automations and AI enablement." },
-    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow — without limits." },
+    { n: "03", t: "Deliver", b: "We build, launch and refine. Websites, automations and AI enablement." },
+    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow, without limits." },
   ];
   return (
     <Section eyebrow="The approach" title="A simple path to real change." className="bg-secondary/40">
