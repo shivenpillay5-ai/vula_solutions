@@ -10,6 +10,7 @@ const nav = [
   { to: "/resources", label: "Resources" },
   { to: "/case-studies", label: "Case Studies" },
   { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
