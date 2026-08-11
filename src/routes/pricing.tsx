@@ -25,7 +25,7 @@ const compassTiers = [
     from: false,
     featured: false,
     included: [
-      "Half-day discovery session",
+      "90-minute discovery session",
       "1–2 stakeholder participants",
       "Digital presence and operations review",
       "Written Compass Report with prioritised roadmap",
@@ -38,7 +38,7 @@ const compassTiers = [
     from: false,
     featured: true,
     included: [
-      "Full-day discovery session",
+      "Half-day discovery session",
       "Up to 5 stakeholders across functions",
       "Digital, operations and AI readiness audit",
       "Competitive landscape review",
@@ -52,7 +52,7 @@ const compassTiers = [
     from: true,
     featured: false,
     included: [
-      "Multi-day deep-dive engagement",
+      "Full-day or multi-day deep-dive engagement",
       "Cross-functional team involvement",
       "Full business transformation roadmap",
       "90-day implementation blueprint",
