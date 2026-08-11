@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Info } from "lucide-react";
+import { ArrowRight, Check, Info, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
+import type { ComponentType } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
@@ -61,10 +62,20 @@ const compassTiers = [
   },
 ] as const;
 
-const deliveryProducts = [
+type DeliveryProduct = {
+  name: string;
+  to: string;
+  icon: ComponentType<{ className?: string }>;
+  description: string;
+  price: string;
+  monthly: boolean;
+};
+
+const deliveryProducts: DeliveryProduct[] = [
   {
     name: "Launch™",
     to: "/solutions/launch",
+    icon: Rocket,
     description: "A website that earns trust and converts the right clients.",
     price: "R20,000 – R500,000+",
     monthly: false,
@@ -72,6 +83,7 @@ const deliveryProducts = [
   {
     name: "Flow™",
     to: "/solutions/flow",
+    icon: Workflow,
     description: "Fewer manual steps, fewer errors, more time for the work that actually matters.",
     price: "R15,000 – R750,000+",
     monthly: false,
@@ -79,6 +91,7 @@ const deliveryProducts = [
   {
     name: "Accelerate™",
     to: "/solutions/accelerate",
+    icon: Sparkles,
     description: "Practical AI, embedded in your workflows and delivering measurable results.",
     price: "R10,000 – R500,000+",
     monthly: false,
@@ -86,6 +99,7 @@ const deliveryProducts = [
   {
     name: "Growth™",
     to: "/solutions/growth",
+    icon: TrendingUp,
     description: "Organic visibility that compounds over time and brings the right clients to you.",
     price: "R4,500 – R100,000+",
     monthly: true,
@@ -93,11 +107,12 @@ const deliveryProducts = [
   {
     name: "Partner™",
     to: "/solutions/partner",
+    icon: HeartHandshake,
     description: "A standing technology partner, in your corner as your business grows.",
     price: "R7,500 – R150,000+",
     monthly: true,
   },
-] as const;
+];
 
 function Pricing() {
   return (
@@ -126,37 +141,9 @@ function Pricing() {
         intro="These are the broad price ranges for each product. Final proposals are issued after Compass™ has scoped the work."
         className="bg-secondary/40"
       >
-        <div className="card-premium overflow-hidden">
-          {deliveryProducts.map((product, i) => (
-            <div
-              key={product.name}
-              className={`flex items-center justify-between gap-6 px-7 py-5 ${i > 0 ? "border-t border-border" : ""}`}
-            >
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <p className="font-semibold">{product.name}</p>
-                  {product.monthly && (
-                    <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                      Retainer
-                    </span>
-                  )}
-                </div>
-                <p className="mt-0.5 text-sm text-muted-foreground">{product.description}</p>
-              </div>
-              <div className="flex shrink-0 items-center gap-4">
-                <p className="text-right text-sm font-medium tabular-nums text-foreground">
-                  {product.price}
-                  {product.monthly && <span className="text-xs text-muted-foreground"> /mo</span>}
-                </p>
-                <Link
-                  to={product.to}
-                  className="text-muted-foreground transition-colors hover:text-electric"
-                  aria-label={`Learn more about ${product.name}`}
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {deliveryProducts.map((product) => (
+            <ProductCard key={product.name} {...product} />
           ))}
         </div>
 
@@ -176,6 +163,37 @@ function Pricing() {
         secondary={{ to: "/solutions", label: "See all solutions" }}
       />
     </>
+  );
+}
+
+function ProductCard({ name, to, icon: Icon, description, price, monthly }: DeliveryProduct) {
+  return (
+    <Link to={to} className="group card-premium card-premium-hover relative flex flex-col overflow-hidden p-7">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-50 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
+      <div className="flex items-center gap-3">
+        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-navy-deep text-white transition-colors duration-200 group-hover:border-electric/40 group-hover:bg-electric">
+          <Icon className="h-5 w-5" />
+        </span>
+        <div className="flex items-center gap-2">
+          <p className="font-semibold transition-colors duration-200 group-hover:text-electric">{name}</p>
+          {monthly && (
+            <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Retainer
+            </span>
+          )}
+        </div>
+      </div>
+      <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
+      <div className="mt-5 flex items-center justify-between border-t border-border pt-5">
+        <p className="text-sm font-medium tabular-nums text-foreground">
+          {price}
+          {monthly && <span className="text-xs text-muted-foreground"> /mo</span>}
+        </p>
+        <span className="text-muted-foreground transition-colors duration-200 group-hover:text-electric">
+          <ArrowRight className="h-4 w-4" />
+        </span>
+      </div>
+    </Link>
   );
 }
 
