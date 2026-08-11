@@ -48,7 +48,7 @@ const compassTiers = [
   {
     label: "Strategic",
     ideal: "Organisations with multiple divisions or complex stakeholder environments.",
-    price: "R30,000",
+    price: "R50,000",
     from: true,
     featured: false,
     included: [
