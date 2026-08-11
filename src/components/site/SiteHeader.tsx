@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 const nav = [
   { to: "/compass", label: "Compass™" },
   { to: "/solutions", label: "Solutions" },
+  { to: "/pricing", label: "Pricing" },
   { to: "/industries", label: "Industries" },
   { to: "/resources", label: "Resources" },
   { to: "/case-studies", label: "Case Studies" },
@@ -22,7 +23,7 @@ export function SiteHeader() {
           <Logo className="md:hidden" showTagline={false} showWordmark={false} size="md" markTarget />
           <Logo className="hidden md:inline-flex" showTagline={false} size="hero" markTarget />
         </Link>
-        <nav aria-label="Primary" className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
