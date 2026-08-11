@@ -55,7 +55,7 @@ export function SolutionPage(props: SolutionPageProps) {
           ))}
         </ol>
       </Section>
-      <Section className="bg-secondary/40">
+      <Section eyebrow="At a glance" className="bg-secondary/40">
         <div className="grid gap-8 md:grid-cols-2">
           <Card title="Who it's for" items={who} />
           <Card title="Problems it solves" items={problems} />
@@ -67,7 +67,7 @@ export function SolutionPage(props: SolutionPageProps) {
         <FAQ items={faq} />
       </Section>
       <CTA
-        title={`Start with Compass™. Then move to ${name}`}
+        title={`Start with Compass™, then build with ${name}.`}
         body="Every engagement begins with a discovery session. Book Compass™ and we'll shape the right plan together."
         primary={{ to: "/contact", label: "Book Compass™" }}
         secondary={{ to: "/solutions", label: "See all solutions" }}
