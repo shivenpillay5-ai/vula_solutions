@@ -206,7 +206,11 @@ function CompassCard({
   included,
 }: typeof compassTiers[number]) {
   return (
-    <Link to="/contact" className={`group card-premium card-premium-hover relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}>
+    <Link
+      to="/contact"
+      search={{ service: `compass-${label.toLowerCase()}` }}
+      className={`group card-premium card-premium-hover relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}
+    >
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric transition-opacity duration-200 ${featured ? "opacity-80 group-hover:opacity-100" : "opacity-0 group-hover:opacity-70"}`}
         aria-hidden

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, Phone, MapPin, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -18,7 +18,10 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const location = useLocation();
+  const service = new URLSearchParams(location.search).get("service") ?? "";
   const [sent, setSent] = useState(false);
+  const [interest, setInterest] = useState(service);
   return (
     <>
       <PageHeader
@@ -104,10 +107,16 @@ function Contact() {
                   <select
                     id="interest"
                     name="interest"
+                    value={interest}
+                    onChange={(e) => setInterest(e.target.value)}
                     className="mt-2 h-11 w-full rounded-lg border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     <option value="">Select a service</option>
-                    <option value="compass">Compass™: Discovery and Strategy</option>
+                    <optgroup label="Compass™: Discovery and Strategy">
+                      <option value="compass-essential">Compass™ Essential</option>
+                      <option value="compass-professional">Compass™ Professional</option>
+                      <option value="compass-strategic">Compass™ Strategic</option>
+                    </optgroup>
                     <option value="launch">Launch™: Website or Redesign</option>
                     <option value="flow">Flow™: Automation</option>
                     <option value="accelerate">Accelerate™: AI Adoption</option>
