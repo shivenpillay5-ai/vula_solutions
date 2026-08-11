@@ -9,7 +9,7 @@ import { CTA } from "@/components/site/CTA";
 export const Route = createFileRoute("/solutions")({
   head: () => ({
     meta: [
-      { title: "Solutions | Vula Solutions" },
+      { title: "Solutions — Vula Solutions" },
       { name: "description", content: "Compass™, Launch™, Flow™, Accelerate™, Growth™ and Partner™, a connected ecosystem to help your business work smarter." },
       { property: "og:title", content: "Solutions | Vula Solutions" },
       { property: "og:description", content: "A connected ecosystem for modern businesses." },

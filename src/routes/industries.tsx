@@ -8,7 +8,7 @@ import { FAQ } from "@/components/site/FAQ";
 export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
-      { title: "Industries | Vula Solutions" },
+      { title: "Industries — Vula Solutions" },
       { name: "description", content: "Vula Solutions adapts its playbook to the pressures, regulations and expectations of your industry, starting with Compass™." },
       { property: "og:title", content: "Industries | Vula Solutions" },
       { property: "og:url", content: "/industries" },

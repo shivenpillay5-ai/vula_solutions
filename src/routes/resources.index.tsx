@@ -30,13 +30,13 @@ function extractPullQuote(body: ResourceContentBlock[]): string | null {
 export const Route = createFileRoute("/resources/")({
   head: () => ({
     meta: [
-      { title: "Resources - Vula Solutions" },
+      { title: "Resources — Vula Solutions" },
       {
         name: "description",
         content:
           "Guides, checklists and insights on how small and medium businesses can work smarter.",
       },
-      { property: "og:title", content: "Resources | Vula Solutions" },
+      { property: "og:title", content: "Resources — Vula Solutions" },
       { property: "og:url", content: "/resources" },
     ],
     links: [{ rel: "canonical", href: "/resources" }],
