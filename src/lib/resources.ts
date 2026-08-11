@@ -1,4 +1,4 @@
-export type ResourceContentBlock =
+﻿export type ResourceContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
   | { type: "list"; items: string[] };
@@ -1164,7 +1164,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Leading your business through change? Successful transformation is not just about introducing new technology. Through Compass?, VULA helps leadership teams build understanding, reduce uncertainty and create the confidence needed for lasting change.",
+              "Leading your business through change? Successful transformation is not just about introducing new technology. Through Compass™, VULA helps leadership teams build understanding, reduce uncertainty and create the confidence needed for lasting change.",
           },
         ],
       },
@@ -1281,7 +1281,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Helping your team navigate change? At VULA, we believe successful transformation is built on confidence, not confusion. Through Compass?, we help leadership teams create clarity, involve their people and build the trust needed for meaningful, lasting change.",
+              "Helping your team navigate change? At VULA, we believe successful transformation is built on confidence, not confusion. Through Compass™, we help leadership teams create clarity, involve their people and build the trust needed for meaningful, lasting change.",
           },
         ],
       },
@@ -1397,7 +1397,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Planning a business transformation? At VULA, we believe that successful change starts with meaningful conversations. Through Compass?, we help leadership teams create clear communication, build alignment and ensure that people understand not only what is changing, but why it matters.",
+              "Planning a business transformation? At VULA, we believe that successful change starts with meaningful conversations. Through Compass™, we help leadership teams create clear communication, build alignment and ensure that people understand not only what is changing, but why it matters.",
           },
         ],
       },

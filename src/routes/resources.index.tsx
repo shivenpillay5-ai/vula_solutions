@@ -1,10 +1,31 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, BookOpen, Target, Users, Zap, Brain, Monitor, TrendingUp } from "lucide-react";
 
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
-import { resourceSections } from "@/lib/resources";
+import { CTA } from "@/components/site/CTA";
+import { resourceSections, type ResourceContentBlock } from "@/lib/resources";
+
+const SECTION_ICONS = {
+  "getting-started": BookOpen,
+  "strategy-and-leadership": Target,
+  "change-management": Users,
+  "process-improvement": Zap,
+  "artificial-intelligence": Brain,
+  "software-and-technology": Monitor,
+  "business-growth": TrendingUp,
+};
+
+function extractPullQuote(body: ResourceContentBlock[]): string | null {
+  for (let i = 1; i < body.length; i++) {
+    const block = body[i];
+    if (block.type === "paragraph" && block.text.length >= 50 && block.text.length <= 175) {
+      return block.text;
+    }
+  }
+  return null;
+}
 
 export const Route = createFileRoute("/resources/")({
   head: () => ({
@@ -41,7 +62,7 @@ function ResourcesIndex() {
       <PageHeader
         eyebrow="Resources"
         title="Thoughtful guidance, not content for content's sake."
-        intro="Start with Compass? thinking, then explore practical articles curated to help leaders make clearer business decisions."
+        intro="Start with Compass™ thinking, then explore practical articles curated to help leaders make clearer business decisions."
       />
       <Section className="pb-6 sm:pb-8">
         {featuredSection && featuredArticle && (
@@ -68,7 +89,7 @@ function ResourcesIndex() {
               </div>
               <div className="rounded-2xl border border-electric/15 bg-electric/5 p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                  Compass? First
+                  Compass™ First
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-foreground/85">
                   The strongest technology decisions begin with clarity. This featured read is a useful place to start before comparing tools, vendors or platforms.
@@ -102,6 +123,8 @@ function ResourcesIndex() {
                   .filter((article): article is (typeof liveArticles)[number] => Boolean(article))
               : liveArticles.slice(0, 3);
 
+            const SectionIcon = SECTION_ICONS[section.slug as keyof typeof SECTION_ICONS];
+
             return (
               <div key={section.slug} className={`card-premium overflow-hidden ${isOpen ? "border-electric/35 shadow-[0_24px_50px_-28px_rgba(1,161,183,0.28)]" : ""}`}>
                 <button
@@ -111,11 +134,18 @@ function ResourcesIndex() {
                   aria-expanded={isOpen}
                   aria-controls={`resource-section-${section.slug}`}
                 >
-                  <div className="max-w-3xl">
-                    <h3 className="text-2xl font-semibold tracking-tight">{section.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      {tightenCopy(section.description, 150)}
-                    </p>
+                  <div className="flex min-w-0 items-start gap-4">
+                    {SectionIcon && (
+                      <span className={`mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-200 ${isOpen ? "bg-electric/15 text-electric" : "bg-secondary text-muted-foreground"}`}>
+                        <SectionIcon className="h-5 w-5" />
+                      </span>
+                    )}
+                    <div className="max-w-3xl">
+                      <h3 className="text-2xl font-semibold tracking-tight">{section.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {tightenCopy(section.description, 150)}
+                      </p>
+                    </div>
                   </div>
                   <span className={`mt-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background text-electric transition-transform duration-300 ${isOpen ? "rotate-180 border-electric/30" : ""}`}>
                     <ChevronDown className="h-5 w-5" />
@@ -129,7 +159,7 @@ function ResourcesIndex() {
                         <Link
                           to="/resources/$section/$article"
                           params={{ section: section.slug, article: previewArticles[0].slug }}
-                          className="rounded-2xl border border-electric/15 bg-electric/5 p-5 transition hover:border-electric/35 hover:bg-electric/7"
+                          className="flex flex-col rounded-2xl border border-electric/15 bg-electric/5 p-5 transition hover:border-electric/35 hover:bg-electric/7"
                         >
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
                             {previewArticles[0].tag}
@@ -144,6 +174,14 @@ function ResourcesIndex() {
                             Read article
                             <ArrowRight className="h-4 w-4" />
                           </div>
+                          {(() => {
+                            const pq = extractPullQuote(previewArticles[0].body ?? []);
+                            return pq ? (
+                              <p className="mt-5 border-t border-electric/15 pt-5 text-sm italic leading-relaxed text-foreground/65">
+                                &ldquo;{pq}&rdquo;
+                              </p>
+                            ) : null;
+                          })()}
                         </Link>
 
                         <div className="grid gap-4">
@@ -190,6 +228,12 @@ function ResourcesIndex() {
           })}
         </div>
       </Section>
+      <CTA
+        title="Knowledge is the start. Action is the difference."
+        body="Compass™ turns what you have read into a concrete plan for your business. Book a session and leave with clarity."
+        primary={{ to: "/contact", label: "Book Compass™" }}
+        secondary={{ to: "/solutions", label: "Explore solutions" }}
+      />
     </>
   );
 }

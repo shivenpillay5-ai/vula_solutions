@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
+import { CTA } from "@/components/site/CTA";
 import { getResourceSectionBySlug } from "@/lib/resources";
 
 export const Route = createFileRoute("/resources/$section/")({
@@ -19,9 +20,7 @@ function ResourceSectionPage() {
   const { section: sectionSlug } = Route.useParams();
   const section = getResourceSectionBySlug(sectionSlug);
 
-  if (!section) {
-    return null;
-  }
+  if (!section) return null;
 
   const featuredArticle = section.articles.find((article) => article.body);
   const remainingArticles = featuredArticle
@@ -63,18 +62,18 @@ function ResourceSectionPage() {
         eyebrow="Resources"
         title={section.title}
         intro={section.description}
-      />
-      <Section className="pt-0">
-        <div className="mb-8 sm:mb-10">
+        breadcrumb={
           <Link
             to="/resources"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-electric"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to all sections
           </Link>
-        </div>
+        }
+      />
 
+      <Section className="pt-8">
         {overviewConfig ? (
           <>
             <div className={`mb-8 grid gap-6 sm:mb-10 ${overviewConfig.columns}`}>
@@ -83,20 +82,19 @@ function ResourceSectionPage() {
                   key={article.slug}
                   to="/resources/$section/$article"
                   params={{ section: section.slug, article: article.slug }}
-                  className="card-premium card-premium-hover group flex h-full flex-col p-7 sm:p-8"
+                  className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
                 >
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
                     {article.tag}
                   </p>
                   <h2 className="mt-3 text-2xl font-semibold tracking-tight">{article.title}</h2>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-3">
                     {tightenCopy(article.description, 110)}
                   </p>
-                  <div className="mt-6 flex items-center justify-end gap-3 pt-2">
-                    <span className="inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                      Read article
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                    Read article
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </Link>
               ))}
@@ -125,32 +123,30 @@ function ResourceSectionPage() {
                     key={article.slug}
                     to="/resources/$section/$article"
                     params={{ section: section.slug, article: article.slug }}
-                    className="card-premium card-premium-hover group flex h-full flex-col p-7 sm:p-8"
+                    className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
                   >
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
                       {article.tag}
                     </p>
                     <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
                       {tightenCopy(article.description)}
                     </p>
-                    <div className="mt-6 flex items-center justify-end gap-3 pt-2">
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                        Read article
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                      Read article
+                      <ArrowRight className="h-4 w-4" />
                     </div>
                   </Link>
                 ) : (
                   <div key={article.slug} className="card-premium flex h-full flex-col p-7 sm:p-8">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                      {article.tag}
-                    </p>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    <span className="inline-block w-fit rounded-full border border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/60">
+                      Coming soon
+                    </span>
+                    <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground/40">{article.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground/40 line-clamp-2">
                       {tightenCopy(article.description)}
                     </p>
-                    <p className="mt-6 text-sm font-medium text-muted-foreground">Coming soon</p>
                   </div>
                 ),
               )}
@@ -162,8 +158,9 @@ function ResourceSectionPage() {
               <Link
                 to="/resources/$section/$article"
                 params={{ section: section.slug, article: featuredArticle.slug }}
-                className="card-premium card-premium-hover group mb-8 block p-8 sm:mb-10 sm:p-10"
+                className="card-premium card-premium-hover group relative mb-8 block overflow-hidden p-8 sm:mb-10 sm:p-10"
               >
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
                 <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-electric">
@@ -193,32 +190,30 @@ function ResourceSectionPage() {
                     key={article.slug}
                     to="/resources/$section/$article"
                     params={{ section: section.slug, article: article.slug }}
-                    className="card-premium card-premium-hover group flex h-full flex-col p-7 sm:p-8"
+                    className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
                   >
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
                       {article.tag}
                     </p>
                     <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
                       {tightenCopy(article.description)}
                     </p>
-                    <div className="mt-6 flex items-center justify-end gap-3 pt-2">
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                        Read article
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                      Read article
+                      <ArrowRight className="h-4 w-4" />
                     </div>
                   </Link>
                 ) : (
                   <div key={article.slug} className="card-premium flex h-full flex-col p-7 sm:p-8">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                      {article.tag}
-                    </p>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    <span className="inline-block w-fit rounded-full border border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/60">
+                      Coming soon
+                    </span>
+                    <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground/40">{article.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground/40 line-clamp-2">
                       {tightenCopy(article.description)}
                     </p>
-                    <p className="mt-6 text-sm font-medium text-muted-foreground">Coming soon</p>
                   </div>
                 ),
               )}
@@ -226,6 +221,13 @@ function ResourceSectionPage() {
           </>
         )}
       </Section>
+
+      <CTA
+        title="Turned something into a question?"
+        body="Compass™ is where reading becomes a plan. Book a session and leave with a clear picture of what your business should do next."
+        primary={{ to: "/contact", label: "Book Compass™" }}
+        secondary={{ to: "/resources", label: "Back to resources" }}
+      />
     </>
   );
 }
