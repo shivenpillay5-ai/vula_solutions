@@ -24,7 +24,7 @@ function Pill({ value, label, selected, onSelect }: { value: string; label: stri
       type="button"
       aria-pressed={active}
       onClick={() => onSelect(active ? "" : value)}
-      className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm transition-all duration-150 ${
+      className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm transition-all duration-150 hover:-translate-y-0.5 ${
         active
           ? "border-electric bg-electric/10 font-medium text-electric"
           : "border-border text-foreground/70 hover:border-electric/40 hover:text-electric"
