@@ -206,13 +206,11 @@ function CompassCard({
   included,
 }: typeof compassTiers[number]) {
   return (
-    <div className={`card-premium relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}>
-      {featured && (
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric"
-          aria-hidden
-        />
-      )}
+    <div className={`group card-premium card-premium-hover relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}>
+      <div
+        className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric transition-opacity duration-200 ${featured ? "opacity-80 group-hover:opacity-100" : "opacity-0 group-hover:opacity-70"}`}
+        aria-hidden
+      />
 
       <div className="px-7 pt-7">
         <p className={`mb-2.5 text-[10px] font-bold uppercase tracking-[0.16em] ${featured ? "text-electric" : "invisible"}`}>
