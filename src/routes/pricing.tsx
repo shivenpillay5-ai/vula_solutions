@@ -206,7 +206,7 @@ function CompassCard({
   included,
 }: typeof compassTiers[number]) {
   return (
-    <div className={`group card-premium card-premium-hover relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}>
+    <Link to="/contact" className={`group card-premium card-premium-hover relative flex flex-col overflow-hidden${featured ? " border-electric/40" : ""}`}>
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric transition-opacity duration-200 ${featured ? "opacity-80 group-hover:opacity-100" : "opacity-0 group-hover:opacity-70"}`}
         aria-hidden
@@ -239,18 +239,17 @@ function CompassCard({
       </ul>
 
       <div className="border-t border-border px-7 pb-7 pt-6">
-        <Link
-          to="/contact"
-          className={`inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold transition hover:opacity-90 ${
+        <span
+          className={`inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
             featured
               ? "bg-primary text-primary-foreground"
-              : "border border-border bg-background text-foreground hover:border-electric/50 hover:text-electric"
+              : "border border-border bg-background text-foreground group-hover:border-electric/50 group-hover:text-electric"
           }`}
         >
           Book {label}
           <ArrowRight className="h-4 w-4" />
-        </Link>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
