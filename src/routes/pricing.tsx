@@ -77,7 +77,7 @@ const deliveryProducts: DeliveryProduct[] = [
     to: "/solutions/launch",
     icon: Rocket,
     description: "A website that earns trust and converts the right clients.",
-    price: "R20,000 – R500,000+",
+    price: "From R20,000",
     monthly: false,
   },
   {
@@ -85,7 +85,7 @@ const deliveryProducts: DeliveryProduct[] = [
     to: "/solutions/flow",
     icon: Workflow,
     description: "Fewer manual steps, fewer errors, more time for the work that actually matters.",
-    price: "R15,000 – R750,000+",
+    price: "From R15,000",
     monthly: false,
   },
   {
@@ -93,7 +93,7 @@ const deliveryProducts: DeliveryProduct[] = [
     to: "/solutions/accelerate",
     icon: Sparkles,
     description: "Practical AI, embedded in your workflows and delivering measurable results.",
-    price: "R10,000 – R500,000+",
+    price: "From R10,000",
     monthly: false,
   },
   {
@@ -101,7 +101,7 @@ const deliveryProducts: DeliveryProduct[] = [
     to: "/solutions/growth",
     icon: TrendingUp,
     description: "Organic visibility that compounds over time and brings the right clients to you.",
-    price: "R4,500 – R100,000+",
+    price: "From R4,500",
     monthly: true,
   },
   {
@@ -109,7 +109,7 @@ const deliveryProducts: DeliveryProduct[] = [
     to: "/solutions/partner",
     icon: HeartHandshake,
     description: "A standing technology partner, in your corner as your business grows.",
-    price: "R7,500 – R150,000+",
+    price: "From R7,500",
     monthly: true,
   },
 ];
@@ -215,11 +215,9 @@ function CompassCard({
       )}
 
       <div className="px-7 pt-7">
-        {featured && (
-          <p className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.16em] text-electric">
-            Recommended
-          </p>
-        )}
+        <p className={`mb-2.5 text-[10px] font-bold uppercase tracking-[0.16em] ${featured ? "text-electric" : "invisible"}`}>
+          Recommended
+        </p>
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
           Compass™
         </p>
