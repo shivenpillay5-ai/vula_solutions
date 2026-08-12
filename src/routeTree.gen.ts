@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SessionsRouteImport } from './routes/sessions'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -28,6 +29,9 @@ import { Route as SolutionsLaunchRouteImport } from './routes/solutions.launch'
 import { Route as SolutionsGrowthRouteImport } from './routes/solutions.growth'
 import { Route as SolutionsFlowRouteImport } from './routes/solutions.flow'
 import { Route as SolutionsAccelerateRouteImport } from './routes/solutions.accelerate'
+import { Route as SessionsStrategicRouteImport } from './routes/sessions.strategic'
+import { Route as SessionsProfessionalRouteImport } from './routes/sessions.professional'
+import { Route as SessionsEssentialRouteImport } from './routes/sessions.essential'
 import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
 import { Route as ResourcesSectionIndexRouteImport } from './routes/resources.$section.index'
 import { Route as ResourcesSectionArticleRouteImport } from './routes/resources.$section.$article'
@@ -45,6 +49,11 @@ const SolutionsRoute = SolutionsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SessionsRoute = SessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -127,6 +136,21 @@ const SolutionsAccelerateRoute = SolutionsAccelerateRouteImport.update({
   path: '/accelerate',
   getParentRoute: () => SolutionsRoute,
 } as any)
+const SessionsStrategicRoute = SessionsStrategicRouteImport.update({
+  id: '/strategic',
+  path: '/strategic',
+  getParentRoute: () => SessionsRoute,
+} as any)
+const SessionsProfessionalRoute = SessionsProfessionalRouteImport.update({
+  id: '/professional',
+  path: '/professional',
+  getParentRoute: () => SessionsRoute,
+} as any)
+const SessionsEssentialRoute = SessionsEssentialRouteImport.update({
+  id: '/essential',
+  path: '/essential',
+  getParentRoute: () => SessionsRoute,
+} as any)
 const ResourcesSectionRoute = ResourcesSectionRouteImport.update({
   id: '/$section',
   path: '/$section',
@@ -154,10 +178,14 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
+  '/sessions': typeof SessionsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
+  '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/professional': typeof SessionsProfessionalRoute
+  '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
@@ -177,9 +205,13 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/sessions': typeof SessionsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/professional': typeof SessionsProfessionalRoute
+  '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
@@ -201,10 +233,14 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRouteWithChildren
+  '/sessions': typeof SessionsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
+  '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/professional': typeof SessionsProfessionalRoute
+  '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
   '/solutions/flow': typeof SolutionsFlowRoute
   '/solutions/growth': typeof SolutionsGrowthRoute
@@ -227,10 +263,14 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/resources'
+    | '/sessions'
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
     | '/resources/$section'
+    | '/sessions/essential'
+    | '/sessions/professional'
+    | '/sessions/strategic'
     | '/solutions/accelerate'
     | '/solutions/flow'
     | '/solutions/growth'
@@ -250,9 +290,13 @@ export interface FileRouteTypes {
     | '/industries'
     | '/pricing'
     | '/privacy'
+    | '/sessions'
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
+    | '/sessions/essential'
+    | '/sessions/professional'
+    | '/sessions/strategic'
     | '/solutions/accelerate'
     | '/solutions/flow'
     | '/solutions/growth'
@@ -273,10 +317,14 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/resources'
+    | '/sessions'
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
     | '/resources/$section'
+    | '/sessions/essential'
+    | '/sessions/professional'
+    | '/sessions/strategic'
     | '/solutions/accelerate'
     | '/solutions/flow'
     | '/solutions/growth'
@@ -298,6 +346,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
+  SessionsRoute: typeof SessionsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
@@ -324,6 +373,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sessions': {
+      id: '/sessions'
+      path: '/sessions'
+      fullPath: '/sessions'
+      preLoaderRoute: typeof SessionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -438,6 +494,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsAccelerateRouteImport
       parentRoute: typeof SolutionsRoute
     }
+    '/sessions/strategic': {
+      id: '/sessions/strategic'
+      path: '/strategic'
+      fullPath: '/sessions/strategic'
+      preLoaderRoute: typeof SessionsStrategicRouteImport
+      parentRoute: typeof SessionsRoute
+    }
+    '/sessions/professional': {
+      id: '/sessions/professional'
+      path: '/professional'
+      fullPath: '/sessions/professional'
+      preLoaderRoute: typeof SessionsProfessionalRouteImport
+      parentRoute: typeof SessionsRoute
+    }
+    '/sessions/essential': {
+      id: '/sessions/essential'
+      path: '/essential'
+      fullPath: '/sessions/essential'
+      preLoaderRoute: typeof SessionsEssentialRouteImport
+      parentRoute: typeof SessionsRoute
+    }
     '/resources/$section': {
       id: '/resources/$section'
       path: '/$section'
@@ -489,6 +566,22 @@ const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
   ResourcesRouteChildren,
 )
 
+interface SessionsRouteChildren {
+  SessionsEssentialRoute: typeof SessionsEssentialRoute
+  SessionsProfessionalRoute: typeof SessionsProfessionalRoute
+  SessionsStrategicRoute: typeof SessionsStrategicRoute
+}
+
+const SessionsRouteChildren: SessionsRouteChildren = {
+  SessionsEssentialRoute: SessionsEssentialRoute,
+  SessionsProfessionalRoute: SessionsProfessionalRoute,
+  SessionsStrategicRoute: SessionsStrategicRoute,
+}
+
+const SessionsRouteWithChildren = SessionsRoute._addFileChildren(
+  SessionsRouteChildren,
+)
+
 interface SolutionsRouteChildren {
   SolutionsAccelerateRoute: typeof SolutionsAccelerateRoute
   SolutionsFlowRoute: typeof SolutionsFlowRoute
@@ -520,6 +613,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
+  SessionsRoute: SessionsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,
