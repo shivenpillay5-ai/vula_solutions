@@ -47,7 +47,7 @@ export function SolutionPage(props: SolutionPageProps) {
         <ol className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="pointer-events-none absolute inset-x-0 top-1/2 hidden -translate-y-1/2 border-t border-dashed border-border lg:block" aria-hidden />
           {process.map((s) => (
-            <li key={s.n} className="relative z-10 card-premium card-premium-hover p-7">
+            <li key={s.n} className="relative z-10 card-premium p-7">
               <p className="font-display text-4xl text-electric">{s.n}</p>
               <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>

@@ -8,9 +8,9 @@ export const Route = createFileRoute("/solutions/flow")({
       { title: "Flow™ — Work Smarter | Vula Solutions" },
       { name: "description", content: "Automation that removes repetitive work so your team can focus on the work that matters." },
       { property: "og:title", content: "Flow™ — Work Smarter" },
-      { property: "og:url", content: "/solutions/flow" },
+      { property: "og:url", content: "https://vulasolutions.co.za/solutions/flow" },
     ],
-    links: [{ rel: "canonical", href: "/solutions/flow" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions/flow" }],
   }),
   component: () => (
     <SolutionPage

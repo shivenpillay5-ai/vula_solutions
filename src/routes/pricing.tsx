@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Info, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
 import type { ComponentType } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -11,9 +11,9 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — Vula Solutions" },
       { name: "description", content: "Transparent, scope-based pricing for Compass™ discovery sessions and all Vula Solutions products." },
       { property: "og:title", content: "Pricing — Vula Solutions" },
-      { property: "og:url", content: "/pricing" },
+      { property: "og:url", content: "https://vulasolutions.co.za/pricing" },
     ],
-    links: [{ rel: "canonical", href: "/pricing" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/pricing" }],
   }),
   component: Pricing,
 });
@@ -141,17 +141,22 @@ function Pricing() {
         intro="These are the broad price ranges for each product. Final proposals are issued after Compass™ has scoped the work."
         className="bg-secondary/40"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          {deliveryProducts.map((product) => (
-            <ProductCard key={product.name} {...product} />
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-6">
+          {deliveryProducts.map((product, i) => (
+            <div
+              key={product.name}
+              className={`h-full md:col-span-2 ${i === 3 ? "md:col-start-2" : ""} ${i === 4 ? "sm:col-span-2 md:col-span-2 md:col-start-auto" : ""}`}
+            >
+              <ProductCard {...product} />
+            </div>
           ))}
         </div>
 
         <div className="mt-6 flex items-start gap-3 rounded-2xl border border-border bg-background p-5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-electric" />
           <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">These are price bands, not quotes.</span>{" "}
-            Scope, complexity, stakeholder count and delivery timeline all shape the final proposal. No project is priced until Compass™ has given us the full picture.
+            <span className="font-medium text-foreground">These are starting prices, not fixed quotes.</span>{" "}
+            Scope, complexity and delivery timelines all shape the final proposal. No project is quoted until Compass™ has mapped the full picture.
           </p>
         </div>
       </Section>
@@ -168,7 +173,7 @@ function Pricing() {
 
 function ProductCard({ name, to, icon: Icon, description, price, monthly }: DeliveryProduct) {
   return (
-    <Link to={to} className="group card-premium card-premium-hover relative flex flex-col overflow-hidden p-7">
+    <Link to={to} className="group card-premium card-premium-hover relative flex h-full flex-col overflow-hidden p-7">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-50 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
       <div className="flex items-center gap-3">
         <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-navy-deep text-white transition-colors duration-200 group-hover:border-electric/40 group-hover:bg-electric">

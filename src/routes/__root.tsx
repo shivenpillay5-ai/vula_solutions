@@ -138,13 +138,13 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const { pathname } = useLocation();
-  const isInternal = pathname.startsWith("/sessions");
+  const isInternal = pathname.startsWith("/sessions") || pathname.startsWith("/documents");
 
   return (
     <QueryClientProvider client={queryClient}>
       <ScrollToTop />
       <div className="flex min-h-dvh flex-col">
-        <BrandIntro />
+        <BrandIntro skip={isInternal} />
         <SiteHeader />
         <main className="flex-1">
           {/* Required: nested routes render here. */}

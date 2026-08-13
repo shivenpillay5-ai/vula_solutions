@@ -13,9 +13,9 @@ export const Route = createFileRoute("/solutions")({
       { name: "description", content: "Compass™, Launch™, Flow™, Accelerate™, Growth™ and Partner™, a connected ecosystem to help your business work smarter." },
       { property: "og:title", content: "Solutions | Vula Solutions" },
       { property: "og:description", content: "A connected ecosystem for modern businesses." },
-      { property: "og:url", content: "/solutions" },
+      { property: "og:url", content: "https://vulasolutions.co.za/solutions" },
     ],
-    links: [{ rel: "canonical", href: "/solutions" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions" }],
   }),
   component: SolutionsLayout,
 });

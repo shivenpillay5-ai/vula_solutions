@@ -8,9 +8,9 @@ export const Route = createFileRoute("/solutions/growth")({
       { title: "Growth™ — Be Found. Be Chosen. | Vula Solutions" },
       { name: "description", content: "SEO, Google Business Profile, content and conversion improvements that turn visibility into pipeline." },
       { property: "og:title", content: "Growth™ — Be Found. Be Chosen." },
-      { property: "og:url", content: "/solutions/growth" },
+      { property: "og:url", content: "https://vulasolutions.co.za/solutions/growth" },
     ],
-    links: [{ rel: "canonical", href: "/solutions/growth" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions/growth" }],
   }),
   component: () => (
     <SolutionPage

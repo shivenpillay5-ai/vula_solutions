@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Lightbulb, Target, ShieldCheck, TrendingUp, CheckCircle, XCircle, Briefcase, Brain, Layers, Users } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
@@ -10,9 +10,9 @@ export const Route = createFileRoute("/about")({
       { title: "About — Vula Solutions" },
       { name: "description", content: "We build confidence through technology. Meet the team helping South African SMEs work smarter." },
       { property: "og:title", content: "About Vula Solutions" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://vulasolutions.co.za/about" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/about" }],
   }),
   component: About,
 });

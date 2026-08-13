@@ -36,7 +36,7 @@ function ThemeToggle() {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md print:hidden">
       <div className="container-page flex h-16 items-center justify-between gap-6 lg:h-20">
         <Link to="/" className="flex items-center" aria-label="Vula Solutions home">
           <Logo className="lg:hidden" showTagline={false} showWordmark={false} size="md" markTarget />

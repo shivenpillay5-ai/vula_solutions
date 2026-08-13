@@ -8,10 +8,25 @@ import { getResourceArticle, type ResourceContentBlock } from "@/lib/resources";
 export const Route = createFileRoute("/resources/$section/$article")({
   beforeLoad: ({ params }) => {
     const result = getResourceArticle(params.section, params.article);
-
-    if (!result?.article.body) {
-      throw notFound();
-    }
+    if (!result?.article.body) throw notFound();
+  },
+  head: ({ params }) => {
+    const result = getResourceArticle(params.section, params.article);
+    if (!result) return { meta: [] };
+    const { section, article } = result;
+    const url = `https://vulasolutions.co.za/resources/${params.section}/${params.article}`;
+    return {
+      meta: [
+        { title: `${article.title} — Vula Solutions` },
+        { name: "description", content: article.description },
+        { property: "og:title", content: article.title },
+        { property: "og:description", content: article.description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { name: "article:section", content: section.title },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
   },
   component: ResourceArticlePage,
 });

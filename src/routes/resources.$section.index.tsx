@@ -22,10 +22,9 @@ function ResourceSectionPage() {
 
   if (!section) return null;
 
-  const featuredArticle = section.articles.find((article) => article.body);
-  const remainingArticles = featuredArticle
-    ? section.articles.filter((article) => article.slug !== featuredArticle.slug)
-    : section.articles;
+  const publishedArticles = section.articles.filter((article) => Boolean(article.body));
+  const featuredArticle = publishedArticles[0];
+  const remainingArticles = publishedArticles.slice(1);
 
   const groupedOverviewConfig: Record<
     string,
@@ -51,7 +50,7 @@ function ResourceSectionPage() {
         .filter((article): article is NonNullable<typeof article> => Boolean(article))
     : [];
   const libraryArticles = overviewConfig
-    ? section.articles.filter(
+    ? publishedArticles.filter(
         (article) => !overviewArticles.some((entry) => entry.slug === article.slug),
       )
     : [];
@@ -117,39 +116,27 @@ function ResourceSectionPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              {libraryArticles.map((article) =>
-                article.body ? (
-                  <Link
-                    key={article.slug}
-                    to="/resources/$section/$article"
-                    params={{ section: section.slug, article: article.slug }}
-                    className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
-                  >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                      {article.tag}
-                    </p>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                      {tightenCopy(article.description)}
-                    </p>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                      Read article
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </Link>
-                ) : (
-                  <div key={article.slug} className="card-premium flex h-full flex-col p-7 sm:p-8">
-                    <span className="inline-block w-fit rounded-full border border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/60">
-                      Coming soon
-                    </span>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground/40">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground/40 line-clamp-2">
-                      {tightenCopy(article.description)}
-                    </p>
+              {libraryArticles.map((article) => (
+                <Link
+                  key={article.slug}
+                  to="/resources/$section/$article"
+                  params={{ section: section.slug, article: article.slug }}
+                  className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
+                >
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
+                    {article.tag}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    {tightenCopy(article.description)}
+                  </p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                    Read article
+                    <ArrowRight className="h-4 w-4" />
                   </div>
-                ),
-              )}
+                </Link>
+              ))}
             </div>
           </>
         ) : (
@@ -184,39 +171,27 @@ function ResourceSectionPage() {
             )}
 
             <div className="grid gap-6 md:grid-cols-2">
-              {remainingArticles.map((article) =>
-                article.body ? (
-                  <Link
-                    key={article.slug}
-                    to="/resources/$section/$article"
-                    params={{ section: section.slug, article: article.slug }}
-                    className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
-                  >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
-                      {article.tag}
-                    </p>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                      {tightenCopy(article.description)}
-                    </p>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                      Read article
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </Link>
-                ) : (
-                  <div key={article.slug} className="card-premium flex h-full flex-col p-7 sm:p-8">
-                    <span className="inline-block w-fit rounded-full border border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/60">
-                      Coming soon
-                    </span>
-                    <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground/40">{article.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground/40 line-clamp-2">
-                      {tightenCopy(article.description)}
-                    </p>
+              {remainingArticles.map((article) => (
+                <Link
+                  key={article.slug}
+                  to="/resources/$section/$article"
+                  params={{ section: section.slug, article: article.slug }}
+                  className="card-premium card-premium-hover group relative flex h-full flex-col overflow-hidden p-7 sm:p-8"
+                >
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-200 group-hover:opacity-100" aria-hidden />
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-electric">
+                    {article.tag}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold tracking-tight">{article.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    {tightenCopy(article.description)}
+                  </p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                    Read article
+                    <ArrowRight className="h-4 w-4" />
                   </div>
-                ),
-              )}
+                </Link>
+              ))}
             </div>
           </>
         )}

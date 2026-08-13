@@ -35,7 +35,7 @@ const cols = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-secondary/40">
+    <footer className="border-t border-border bg-secondary/40 print:hidden">
       <div className="container-page grid gap-8 py-14 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link to="/" aria-label="Vula Solutions home">

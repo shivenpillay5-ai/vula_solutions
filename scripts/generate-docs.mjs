@@ -37,7 +37,19 @@ const FONT = "Calibri";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/** Branded logo block */
+/** Branded logo block — light version (for dark/navy backgrounds) */
+function logoLight() {
+  return new Paragraph({
+    shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+    spacing: { before: 120, after: 120 },
+    children: [
+      new TextRun({ text: "  VULA", bold: true, color: WHITE, size: 40, font: FONT }),
+      new TextRun({ text: "  Solutions", color: "A8C4CC", size: 26, font: FONT }),
+    ],
+  });
+}
+
+/** Branded logo block — dark version (for light backgrounds) */
 function logo() {
   return new Paragraph({
     border: { left: { color: TEAL, style: BorderStyle.THICK, size: 24, space: 6 } },
@@ -111,12 +123,17 @@ function body(text, opts = {}) {
   });
 }
 
-/** Bullet point */
+/** Bullet point — explicit teal bullet so Word doesn't apply its accent colour */
 function bullet(text, level = 0) {
+  const hangingIndent = 320;
+  const leftIndent = 480 + level * 360;
   return new Paragraph({
-    bullet: { level },
     spacing: { before: 0, after: 80 },
-    children: [new TextRun({ text, size: 22, font: FONT })],
+    indent: { left: leftIndent, hanging: hangingIndent },
+    children: [
+      new TextRun({ text: "▸  ", color: TEAL, size: 20, font: FONT }),
+      new TextRun({ text, size: 22, font: FONT }),
+    ],
   });
 }
 
@@ -151,23 +168,47 @@ function disclaimer(text) {
   });
 }
 
-/** Cover page block */
+/** Cover page block — navy header matching the web design */
 function cover(title, subtitle, meta = []) {
   const children = [];
+
+  // Dark navy header area
   children.push(
-    logo(),
-    rule(),
-    sp(32),
+    logoLight(),
+    // Teal accent bar
     new Paragraph({
-      alignment: AlignmentType.LEFT,
-      spacing: { before: 0, after: 240 },
-      children: [new TextRun({ text: title, bold: true, color: NAVY, size: 56, font: FONT })],
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: TEAL },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: " ", size: 4, font: FONT })],
     }),
+    // Spacer inside navy
     new Paragraph({
-      spacing: { before: 0, after: 480 },
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: " ", size: 16, font: FONT })],
+    }),
+    // Document title
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      alignment: AlignmentType.LEFT,
+      spacing: { before: 0, after: 120 },
+      children: [new TextRun({ text: title, bold: true, color: WHITE, size: 56, font: FONT })],
+    }),
+    // Subtitle
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 0 },
       children: [new TextRun({ text: subtitle, color: TEAL, size: 28, font: FONT })],
-    })
+    }),
+    // Bottom padding of navy header
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: " ", size: 24, font: FONT })],
+    }),
+    sp(16),
   );
+
   for (const [label, val] of meta) {
     children.push(kv(label, val));
   }
@@ -1203,19 +1244,33 @@ function buildWelcomePack() {
 function buildCompassTemplate() {
   const children = [
     // Cover
-    logo(),
-    rule(),
-    sp(24),
+    logoLight(),
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: TEAL },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: " ", size: 4, font: FONT })],
+    }),
     new Paragraph({
       shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
       spacing: { before: 0, after: 0 },
-      children: [new TextRun({ text: "  COMPASS REPORT", bold: true, color: WHITE, size: 48, font: FONT })],
+      children: [new TextRun({ text: " ", size: 16, font: FONT })],
     }),
     new Paragraph({
-      shading: { type: ShadingType.CLEAR, color: "auto", fill: TEAL },
-      spacing: { before: 0, after: 480 },
-      children: [new TextRun({ text: "  [Session Tier: Essential / Professional / Strategic]", color: WHITE, size: 26, font: FONT })],
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 120 },
+      children: [new TextRun({ text: "Compass Report", bold: true, color: WHITE, size: 56, font: FONT })],
     }),
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: "[Session Tier: Essential / Professional / Strategic]", color: TEAL, size: 26, font: FONT })],
+    }),
+    new Paragraph({
+      shading: { type: ShadingType.CLEAR, color: "auto", fill: NAVY },
+      spacing: { before: 0, after: 0 },
+      children: [new TextRun({ text: " ", size: 24, font: FONT })],
+    }),
+    sp(16),
     sp(),
     kv("Prepared for", "[Client Company Name]"),
     kv("Primary contact", "[Name, Title]"),

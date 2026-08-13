@@ -11,9 +11,9 @@ export const Route = createFileRoute("/industries")({
       { title: "Industries — Vula Solutions" },
       { name: "description", content: "Vula Solutions adapts its playbook to the pressures, regulations and expectations of your industry, starting with Compass™." },
       { property: "og:title", content: "Industries | Vula Solutions" },
-      { property: "og:url", content: "/industries" },
+      { property: "og:url", content: "https://vulasolutions.co.za/industries" },
     ],
-    links: [{ rel: "canonical", href: "/industries" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/industries" }],
   }),
   component: Industries,
 });

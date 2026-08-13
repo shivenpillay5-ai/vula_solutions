@@ -1,10 +1,11 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, ChevronDown, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
+import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, X, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
 import { FAQ } from "@/components/site/FAQ";
+import { compassOutcomes } from "@/lib/outcomes";
 
 type OutcomeResult = {
   metric: string;
@@ -18,12 +19,49 @@ type OutcomeResult = {
 
 function OutcomeCard({ metric, label, outcome, source, product, found, fixed }: OutcomeResult) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    closeBtnRef.current?.focus();
+    document.body.style.overflow = "hidden";
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen(false); return; }
+      if (e.key === "Tab" && panelRef.current) {
+        const focusable = Array.from(
+          panelRef.current.querySelectorAll<HTMLElement>(
+            'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => !el.hasAttribute("disabled"));
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      triggerRef.current?.focus();
+    };
+  }, [open]);
+
   return (
-    <div
-      className="card-premium flex flex-col overflow-hidden transition-shadow duration-200"
-      style={open ? { boxShadow: "0 0 0 1.5px #01A1B7" } : undefined}
-    >
-      <div className="flex flex-1 flex-col p-7">
+    <>
+      <div
+        ref={triggerRef}
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        onClick={() => setOpen(true)}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setOpen(true); }}
+        className="group card-premium card-premium-hover flex cursor-pointer flex-col p-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
+      >
         <p className="font-display text-3xl font-bold leading-none tracking-tight" style={{ color: "#01A1B7" }}>
           {metric}
         </p>
@@ -38,66 +76,74 @@ function OutcomeCard({ metric, label, outcome, source, product, found, fixed }: 
             {product}
           </span>
         </div>
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="mt-4 flex w-full items-center justify-between rounded-lg border border-border px-4 py-3 text-left text-xs font-semibold text-muted-foreground transition hover:border-electric/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
-        >
-          <span>{open ? "Hide details" : "How we did it"}</span>
-          <ChevronDown
-            className="h-4 w-4 flex-shrink-0 transition-transform duration-300"
-            style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
-          />
-        </button>
+        <div className="mt-4 flex w-full items-center justify-between rounded-lg border border-border px-4 py-3 text-xs font-semibold text-muted-foreground transition group-hover:border-electric/40 group-hover:text-foreground">
+          <span>How we did it</span>
+          <span aria-hidden className="text-base leading-none">→</span>
+        </div>
       </div>
-      <div className="grid transition-all duration-300 ease-in-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
-        <div className="overflow-hidden">
-          <div className="space-y-5 border-t border-border bg-secondary/50 px-7 py-6">
-            <div>
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What we found</p>
-              <p className="text-sm leading-relaxed text-foreground">{found}</p>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+          onClick={() => setOpen(false)}
+          aria-hidden="true"
+        >
+          <div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${metric} — ${label}`}
+            className="relative w-full max-w-lg rounded-2xl border border-border bg-background p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              ref={closeBtnRef}
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close"
+              className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition hover:border-electric/40 hover:text-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <p className="font-display text-2xl font-bold leading-none" style={{ color: "#01A1B7" }}>{metric}</p>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{label}</p>
+            <div className="mt-6 space-y-5">
+              <div>
+                <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What we found</p>
+                <p className="text-sm leading-relaxed text-foreground">{found}</p>
+              </div>
+              <div>
+                <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: "#01A1B7" }}>How we fixed it</p>
+                <p className="text-sm leading-relaxed text-foreground">{fixed}</p>
+              </div>
             </div>
-            <div>
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: "#01A1B7" }}>How we fixed it</p>
-              <p className="text-sm leading-relaxed text-foreground">{fixed}</p>
+            <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
+              <p className="text-xs text-muted-foreground">{source}</p>
+              <span
+                className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white"
+                style={{ backgroundColor: "#01A1B7" }}
+              >
+                {product}
+              </span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
 function CompassOutcomes() {
-  const results: OutcomeResult[] = [
-    {
-      metric: "11 hrs",
-      label: "saved every week",
-      outcome: "A 4-person accounting practice eliminated eleven hours of weekly admin after automating client onboarding, deadline reminders and monthly reporting.",
-      source: "Professional Services · Gauteng",
-      product: "Flow™",
-      found: "Client onboarding required six or more email exchanges to collect information and set up files. Monthly reporting was compiled by hand from three separate systems. No automated reminders existed, leading to missed deadlines and reactive chasing.",
-      fixed: "Automated the onboarding process with a branded intake form that triggered folder creation, task assignments and welcome communication. Monthly reports were connected directly to source data, cutting compilation time from three hours to under twenty minutes.",
-    },
-    {
-      metric: "3 weeks",
-      label: "to first inbound lead",
-      outcome: "A specialist engineering consultancy received their first unsolicited inbound enquiry three weeks after launch. They had relied entirely on referrals for seven years.",
-      source: "Engineering · Johannesburg",
-      product: "Launch™",
-      found: "The existing website was eight years old, had no mobile layout, and wasn't being indexed on Google. There was no Google Business Profile and no clear contact pathway beyond a generic email address, making it nearly impossible for new clients to find or evaluate them.",
-      fixed: "Built a new website with clear service positioning, a project portfolio and a direct enquiry form. Set up and fully optimised their Google Business Profile. The first inbound enquiry came through the contact form eighteen days after launch.",
-    },
-    {
-      metric: "4 days → same day",
-      label: "quote turnaround",
-      outcome: "A growing construction supplier used Compass™ to surface three hidden process bottlenecks and cut their quote turnaround from four days to same-day.",
-      source: "Construction & Supply · Pretoria",
-      product: "Compass™",
-      found: "Quotes were built manually in Excel with no template, required sign-off from the owner who was frequently on-site, and pricing required manual lookups from a printed supplier catalogue. Three separate bottlenecks each adding hours to every quote.",
-      fixed: "Introduced a quoting template with pre-loaded pricing tiers, established a delegated approval threshold so quotes under a set value could be approved by the operations manager, and digitised the supplier catalogue into a shared live pricing sheet. No new software was purchased.",
-    },
-  ];
+  const results: OutcomeResult[] = compassOutcomes.map((o) => ({
+    metric: o.metric,
+    label: o.metricLabel,
+    outcome: o.summary,
+    source: `${o.sector} · ${o.location}`,
+    product: o.product,
+    found: o.found,
+    fixed: o.fixed,
+  }));
 
   return (
     <Section
@@ -122,9 +168,9 @@ export const Route = createFileRoute("/compass")({
       { name: "description", content: "Compass™ is Vula Solutions' signature business discovery and strategy experience. Leave with clarity, not a quote." },
       { property: "og:title", content: "Compass™ — Find Your Direction" },
       { property: "og:description", content: "Every successful journey starts with knowing where you are." },
-      { property: "og:url", content: "/compass" },
+      { property: "og:url", content: "https://vulasolutions.co.za/compass" },
     ],
-    links: [{ rel: "canonical", href: "/compass" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/compass" }],
   }),
   component: CompassPage,
 });
@@ -174,7 +220,7 @@ function CompassPage() {
             { icon: FileText, t: "No written roadmap", b: "Leave with a clear plan you can act on immediately, with or without us." },
             { icon: CheckCircle, t: "Not sure what to do next", b: "End the session knowing exactly what to prioritise, and why." },
           ].map(({ icon: Icon, t, b }) => (
-            <div key={t} className="card-premium card-premium-hover p-7">
+            <div key={t} className="card-premium p-7">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
                   <Icon className="h-4 w-4" />
@@ -194,7 +240,7 @@ function CompassPage() {
             { n: "03", t: "Analysis", b: "We synthesise findings and map opportunities across your business." },
             { n: "04", t: "Compass Report", b: "A written roadmap with priorities, options and clear next steps." },
           ].map((s) => (
-            <li key={s.n} className="card-premium card-premium-hover p-7">
+            <li key={s.n} className="card-premium p-7">
               <p className="font-display text-4xl text-electric">{s.n}</p>
               <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
@@ -209,15 +255,15 @@ function CompassPage() {
         className="bg-navy-deep"
         tone="dark"
       >
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5">
           {[
             { icon: Search, l: "D", t: "Discover", b: "Understand the business, goals, people, challenges and opportunities." },
             { icon: ClipboardCheck, l: "A", t: "Assess", b: "Evaluate digital presence, operations, AI readiness, efficiency and risk." },
             { icon: Lightbulb, l: "R", t: "Recommend", b: "Prioritise practical actions based on impact, feasibility and business value." },
             { icon: Hammer, l: "E", t: "Execute", b: "Implement the agreed work through the right Vula solution." },
             { icon: LifeBuoy, l: "S", t: "Support", b: "Ongoing improvement, guidance and partnership after delivery." },
-          ].map(({ icon: Icon, l, t, b }) => (
-            <li key={t} className="card-premium card-premium-hover p-7">
+          ].map(({ icon: Icon, l, t, b }, i) => (
+            <li key={t} className={`card-premium p-7 lg:col-span-2 xl:col-span-1${i === 3 ? " lg:col-start-2 xl:col-start-auto" : ""}`}>
               <div className="flex items-center gap-3">
                 <span className="font-display text-4xl text-electric">{l}</span>
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary text-electric">
@@ -241,7 +287,7 @@ function CompassPage() {
             { icon: GitBranch, t: "Recommended roadmap", b: "A staged plan covering quick wins, mid-term projects, long-term direction." },
             { icon: CheckSquare, t: "Suggested next steps", b: "Optional pathways using Launch™, Flow™, Accelerate™, Growth™ or Partner™." },
           ].map(({ icon: Icon, t, b }) => (
-            <div key={t} className="card-premium card-premium-hover p-7">
+            <div key={t} className="card-premium p-7">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
                   <Icon className="h-4 w-4" />

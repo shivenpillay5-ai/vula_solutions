@@ -44,8 +44,8 @@ function IntroMark({ markRef }: { markRef: RefObject<SVGSVGElement | null> }) {
   );
 }
 
-export function BrandIntro() {
-  const [state, setState] = useState<IntroState>("waiting");
+export function BrandIntro({ skip = false }: { skip?: boolean }) {
+  const [state, setState] = useState<IntroState>("playing");
   const [transform, setTransform] = useState<IntroTransform | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const markRef = useRef<SVGSVGElement | null>(null);
@@ -117,7 +117,7 @@ export function BrandIntro() {
     };
   }, []);
 
-  if (state === "hidden") return null;
+  if (skip || state === "hidden") return null;
 
   const style = {
     "--intro-target-x": transform ? `${transform.x}px` : undefined,
@@ -247,30 +247,30 @@ export function BrandIntro() {
           animation: vulaIntroDone 220ms ease-in-out 2460ms forwards;
         }
         .vula-intro.is-playing .vula-intro__veil {
-          animation: vulaOverlayFade 1980ms ease-in-out 300ms both;
+          animation: vulaOverlayFade 1980ms ease-in-out 0ms both;
         }
         .vula-intro.is-playing .vula-intro__wash {
-          animation: vulaWash 1520ms ease-in-out 420ms both;
+          animation: vulaWash 1520ms ease-in-out 100ms both;
         }
         .vula-intro.is-playing .vula-intro__content {
           animation: vulaSettle 1000ms cubic-bezier(0.32, 0.06, 0.16, 1) 1480ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--left {
           animation:
-            vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 300ms both,
+            vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 0ms both,
             vulaLeftTone 920ms ease-in-out 1480ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--right {
-          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 300ms both;
+          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 0ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--back {
-          animation: vulaBackLight 1360ms ease-in-out 300ms both;
+          animation: vulaBackLight 1360ms ease-in-out 0ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--beam {
-          animation: vulaBeam 1420ms ease-in-out 320ms both;
+          animation: vulaBeam 1420ms ease-in-out 0ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--ambient {
-          animation: vulaAmbient 1320ms ease-in-out 420ms both;
+          animation: vulaAmbient 1320ms ease-in-out 100ms both;
         }
 
         @keyframes vulaLeftOpen {

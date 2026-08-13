@@ -1,5 +1,6 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { ClipboardList, Clock, Users, Lock, History } from "lucide-react";
+import { InternalGate } from "@/components/site/InternalGate";
 
 export const Route = createFileRoute("/sessions")({
   head: () => ({ meta: [{ title: "Session Forms — Vula Solutions Internal" }] }),
@@ -65,9 +66,10 @@ function SessionsLayout() {
   const isChild = matches.some(
     (m) => m.routeId !== "/sessions" && m.routeId.startsWith("/sessions/")
   );
-  if (isChild) return <Outlet />;
+  if (isChild) return <InternalGate><Outlet /></InternalGate>;
 
   return (
+    <InternalGate>
     <div className="mx-auto max-w-5xl px-6 py-16">
       <div className="mb-10">
         <div className="mb-3 flex items-center gap-2">
@@ -140,5 +142,6 @@ function SessionsLayout() {
         </Link>
       </div>
     </div>
+    </InternalGate>
   );
 }

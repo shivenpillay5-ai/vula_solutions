@@ -14,9 +14,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™ - our signature business discovery experience." },
       { property: "og:title", content: "Vula Solutions" },
       { property: "og:description", content: "Helping businesses work smarter." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://vulasolutions.co.za/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/" }],
   }),
   component: Home,
 });

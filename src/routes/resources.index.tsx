@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronDown, BookOpen, Target, Users, Zap, Brain, Monitor, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronDown, BookOpen, Target, Users, Zap, Brain, Monitor, TrendingUp, Download } from "lucide-react";
 
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
@@ -37,12 +37,85 @@ export const Route = createFileRoute("/resources/")({
           "Guides, checklists and insights on how small and medium businesses can work smarter.",
       },
       { property: "og:title", content: "Resources — Vula Solutions" },
-      { property: "og:url", content: "/resources" },
+      { property: "og:url", content: "https://vulasolutions.co.za/resources" },
     ],
-    links: [{ rel: "canonical", href: "/resources" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/resources" }],
   }),
   component: ResourcesIndex,
 });
+
+const FREE_TOOLS = [
+  {
+    slug: "business-discovery-checklist",
+    to: "/tools/business-discovery-checklist" as const,
+    title: "Business Discovery Checklist",
+    type: "Checklist",
+    description: "Evaluate where your business is today and identify where to focus next.",
+  },
+  {
+    slug: "software-buying-checklist",
+    to: "/tools/software-buying-checklist" as const,
+    title: "Software Buying Checklist",
+    type: "Checklist",
+    description: "Define your requirements, evaluate vendors objectively, and avoid costly mistakes.",
+  },
+  {
+    slug: "ai-readiness-assessment",
+    to: "/tools/ai-readiness-assessment" as const,
+    title: "AI Readiness Assessment",
+    type: "Assessment",
+    description: "Understand your organisation's readiness to adopt AI responsibly.",
+  },
+  {
+    slug: "process-improvement-scorecard",
+    to: "/tools/process-improvement-scorecard" as const,
+    title: "Process Improvement Scorecard",
+    type: "Scorecard",
+    description: "Rate your business processes across eight areas and build an improvement plan.",
+  },
+  {
+    slug: "digital-transformation-roadmap",
+    to: "/tools/digital-transformation-roadmap" as const,
+    title: "Digital Transformation Roadmap",
+    type: "Roadmap",
+    description: "Assess your current state, define your vision, and plan the path forward.",
+  },
+  {
+    slug: "business-systems-audit",
+    to: "/tools/business-systems-audit" as const,
+    title: "Business Systems Audit",
+    type: "Audit",
+    description: "Evaluate whether your technology supports your people, processes, and goals.",
+  },
+  {
+    slug: "meeting-agenda-templates",
+    to: "/tools/meeting-agenda-templates" as const,
+    title: "Meeting Agenda Templates",
+    type: "Template",
+    description: "Four ready-to-use templates — team, project kick-off, requirements, and leadership.",
+  },
+  {
+    slug: "requirements-workshop-guide",
+    to: "/tools/requirements-workshop-guide" as const,
+    title: "Requirements Workshop Guide",
+    type: "Guide",
+    description: "Plan and run a structured requirements workshop before any project starts.",
+  },
+  {
+    slug: "vendor-evaluation-matrix",
+    to: "/tools/vendor-evaluation-matrix" as const,
+    title: "Vendor Evaluation Matrix",
+    type: "Matrix",
+    description: "Score vendors against weighted criteria and arrive at a defensible recommendation.",
+  },
+  {
+    slug: "project-risk-checklist",
+    to: "/tools/project-risk-checklist" as const,
+    title: "Project Risk Checklist",
+    type: "Checklist",
+    description: "Identify risks early, assign ownership, and plan mitigation before issues arise.",
+  },
+] as const;
 
 function tightenCopy(text: string, max = 84) {
   const trimmed = text.trim();
@@ -103,10 +176,37 @@ function ResourcesIndex() {
         )}
       </Section>
       <Section
+        eyebrow="Free Downloads"
+        title="Tools you can use right now."
+        intro="Practical worksheets, checklists and templates designed to help you make better business decisions — no sign-up required."
+        className="pt-2"
+      >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FREE_TOOLS.map(tool => (
+            <Link
+              key={tool.slug}
+              to={tool.to}
+              className="card-premium card-premium-hover group flex flex-col p-6"
+            >
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <span className="rounded-full bg-electric/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-electric">
+                  {tool.type}
+                </span>
+                <Download className="h-4 w-4 text-muted-foreground transition group-hover:text-electric" />
+              </div>
+              <h3 className="mb-2 text-base font-semibold tracking-tight leading-snug">{tool.title}</h3>
+              <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{tool.description}</p>
+              <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+                Open tool <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Section>
+      <Section
         eyebrow="Browse By Theme"
         title="Seven doors into better business thinking."
         intro="Open one topic at a time, start with the article that matters most, and keep the library calm instead of crowded."
-        className="pt-2"
       >
         <div className="space-y-4">
           {resourceSections.map((section) => {

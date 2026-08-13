@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 
@@ -7,9 +7,9 @@ export const Route = createFileRoute("/cookies")({
     meta: [
       { title: "Cookie Notice — Vula Solutions" },
       { name: "description", content: "How Vula Solutions uses cookies and similar technologies on this website." },
-      { property: "og:url", content: "/cookies" },
+      { property: "og:url", content: "https://vulasolutions.co.za/cookies" },
     ],
-    links: [{ rel: "canonical", href: "/cookies" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/cookies" }],
   }),
   component: () => (
     <>

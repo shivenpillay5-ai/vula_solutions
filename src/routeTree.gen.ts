@@ -25,6 +25,17 @@ import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as DocumentsIndexRouteImport } from './routes/documents.index'
+import { Route as ToolsVendorEvaluationMatrixRouteImport } from './routes/tools.vendor-evaluation-matrix'
+import { Route as ToolsSoftwareBuyingChecklistRouteImport } from './routes/tools.software-buying-checklist'
+import { Route as ToolsRequirementsWorkshopGuideRouteImport } from './routes/tools.requirements-workshop-guide'
+import { Route as ToolsProjectRiskChecklistRouteImport } from './routes/tools.project-risk-checklist'
+import { Route as ToolsProcessImprovementScorecardRouteImport } from './routes/tools.process-improvement-scorecard'
+import { Route as ToolsMeetingAgendaTemplatesRouteImport } from './routes/tools.meeting-agenda-templates'
+import { Route as ToolsDigitalTransformationRoadmapRouteImport } from './routes/tools.digital-transformation-roadmap'
+import { Route as ToolsBusinessSystemsAuditRouteImport } from './routes/tools.business-systems-audit'
+import { Route as ToolsBusinessDiscoveryChecklistRouteImport } from './routes/tools.business-discovery-checklist'
+import { Route as ToolsAiReadinessAssessmentRouteImport } from './routes/tools.ai-readiness-assessment'
 import { Route as SolutionsPartnerRouteImport } from './routes/solutions.partner'
 import { Route as SolutionsLaunchRouteImport } from './routes/solutions.launch'
 import { Route as SolutionsGrowthRouteImport } from './routes/solutions.growth'
@@ -35,6 +46,13 @@ import { Route as SessionsProfessionalRouteImport } from './routes/sessions.prof
 import { Route as SessionsHistoryRouteImport } from './routes/sessions.history'
 import { Route as SessionsEssentialRouteImport } from './routes/sessions.essential'
 import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
+import { Route as DocumentsScopeOfWorkRouteImport } from './routes/documents.scope-of-work'
+import { Route as DocumentsProposalTemplateRouteImport } from './routes/documents.proposal-template'
+import { Route as DocumentsInvoiceTemplateRouteImport } from './routes/documents.invoice-template'
+import { Route as DocumentsCompassReportRouteImport } from './routes/documents.compass-report'
+import { Route as DocumentsClientWelcomePackRouteImport } from './routes/documents.client-welcome-pack'
+import { Route as DocumentsClientContractRouteImport } from './routes/documents.client-contract'
+import { Route as DocumentsBusinessPlanRouteImport } from './routes/documents.business-plan'
 import { Route as ResourcesSectionIndexRouteImport } from './routes/resources.$section.index'
 import { Route as ResourcesSectionArticleRouteImport } from './routes/resources.$section.$article'
 
@@ -118,6 +136,71 @@ const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ResourcesRoute,
 } as any)
+const DocumentsIndexRoute = DocumentsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DocumentsRoute,
+} as any)
+const ToolsVendorEvaluationMatrixRoute =
+  ToolsVendorEvaluationMatrixRouteImport.update({
+    id: '/tools/vendor-evaluation-matrix',
+    path: '/tools/vendor-evaluation-matrix',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsSoftwareBuyingChecklistRoute =
+  ToolsSoftwareBuyingChecklistRouteImport.update({
+    id: '/tools/software-buying-checklist',
+    path: '/tools/software-buying-checklist',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsRequirementsWorkshopGuideRoute =
+  ToolsRequirementsWorkshopGuideRouteImport.update({
+    id: '/tools/requirements-workshop-guide',
+    path: '/tools/requirements-workshop-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsProjectRiskChecklistRoute =
+  ToolsProjectRiskChecklistRouteImport.update({
+    id: '/tools/project-risk-checklist',
+    path: '/tools/project-risk-checklist',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsProcessImprovementScorecardRoute =
+  ToolsProcessImprovementScorecardRouteImport.update({
+    id: '/tools/process-improvement-scorecard',
+    path: '/tools/process-improvement-scorecard',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsMeetingAgendaTemplatesRoute =
+  ToolsMeetingAgendaTemplatesRouteImport.update({
+    id: '/tools/meeting-agenda-templates',
+    path: '/tools/meeting-agenda-templates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsDigitalTransformationRoadmapRoute =
+  ToolsDigitalTransformationRoadmapRouteImport.update({
+    id: '/tools/digital-transformation-roadmap',
+    path: '/tools/digital-transformation-roadmap',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsBusinessSystemsAuditRoute =
+  ToolsBusinessSystemsAuditRouteImport.update({
+    id: '/tools/business-systems-audit',
+    path: '/tools/business-systems-audit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsBusinessDiscoveryChecklistRoute =
+  ToolsBusinessDiscoveryChecklistRouteImport.update({
+    id: '/tools/business-discovery-checklist',
+    path: '/tools/business-discovery-checklist',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsAiReadinessAssessmentRoute =
+  ToolsAiReadinessAssessmentRouteImport.update({
+    id: '/tools/ai-readiness-assessment',
+    path: '/tools/ai-readiness-assessment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SolutionsPartnerRoute = SolutionsPartnerRouteImport.update({
   id: '/partner',
   path: '/partner',
@@ -168,6 +251,44 @@ const ResourcesSectionRoute = ResourcesSectionRouteImport.update({
   path: '/$section',
   getParentRoute: () => ResourcesRoute,
 } as any)
+const DocumentsScopeOfWorkRoute = DocumentsScopeOfWorkRouteImport.update({
+  id: '/scope-of-work',
+  path: '/scope-of-work',
+  getParentRoute: () => DocumentsRoute,
+} as any)
+const DocumentsProposalTemplateRoute =
+  DocumentsProposalTemplateRouteImport.update({
+    id: '/proposal-template',
+    path: '/proposal-template',
+    getParentRoute: () => DocumentsRoute,
+  } as any)
+const DocumentsInvoiceTemplateRoute =
+  DocumentsInvoiceTemplateRouteImport.update({
+    id: '/invoice-template',
+    path: '/invoice-template',
+    getParentRoute: () => DocumentsRoute,
+  } as any)
+const DocumentsCompassReportRoute = DocumentsCompassReportRouteImport.update({
+  id: '/compass-report',
+  path: '/compass-report',
+  getParentRoute: () => DocumentsRoute,
+} as any)
+const DocumentsClientWelcomePackRoute =
+  DocumentsClientWelcomePackRouteImport.update({
+    id: '/client-welcome-pack',
+    path: '/client-welcome-pack',
+    getParentRoute: () => DocumentsRoute,
+  } as any)
+const DocumentsClientContractRoute = DocumentsClientContractRouteImport.update({
+  id: '/client-contract',
+  path: '/client-contract',
+  getParentRoute: () => DocumentsRoute,
+} as any)
+const DocumentsBusinessPlanRoute = DocumentsBusinessPlanRouteImport.update({
+  id: '/business-plan',
+  path: '/business-plan',
+  getParentRoute: () => DocumentsRoute,
+} as any)
 const ResourcesSectionIndexRoute = ResourcesSectionIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -186,7 +307,7 @@ export interface FileRoutesByFullPath {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/documents': typeof DocumentsRoute
+  '/documents': typeof DocumentsRouteWithChildren
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -195,6 +316,13 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/documents/business-plan': typeof DocumentsBusinessPlanRoute
+  '/documents/client-contract': typeof DocumentsClientContractRoute
+  '/documents/client-welcome-pack': typeof DocumentsClientWelcomePackRoute
+  '/documents/compass-report': typeof DocumentsCompassReportRoute
+  '/documents/invoice-template': typeof DocumentsInvoiceTemplateRoute
+  '/documents/proposal-template': typeof DocumentsProposalTemplateRoute
+  '/documents/scope-of-work': typeof DocumentsScopeOfWorkRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/sessions/essential': typeof SessionsEssentialRoute
   '/sessions/history': typeof SessionsHistoryRoute
@@ -205,6 +333,17 @@ export interface FileRoutesByFullPath {
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
+  '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
+  '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
+  '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
+  '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
+  '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
+  '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
+  '/documents/': typeof DocumentsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/resources/$section/$article': typeof ResourcesSectionArticleRoute
   '/resources/$section/': typeof ResourcesSectionIndexRoute
@@ -216,7 +355,6 @@ export interface FileRoutesByTo {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/documents': typeof DocumentsRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -224,6 +362,13 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/documents/business-plan': typeof DocumentsBusinessPlanRoute
+  '/documents/client-contract': typeof DocumentsClientContractRoute
+  '/documents/client-welcome-pack': typeof DocumentsClientWelcomePackRoute
+  '/documents/compass-report': typeof DocumentsCompassReportRoute
+  '/documents/invoice-template': typeof DocumentsInvoiceTemplateRoute
+  '/documents/proposal-template': typeof DocumentsProposalTemplateRoute
+  '/documents/scope-of-work': typeof DocumentsScopeOfWorkRoute
   '/sessions/essential': typeof SessionsEssentialRoute
   '/sessions/history': typeof SessionsHistoryRoute
   '/sessions/professional': typeof SessionsProfessionalRoute
@@ -233,6 +378,17 @@ export interface FileRoutesByTo {
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
+  '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
+  '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
+  '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
+  '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
+  '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
+  '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
+  '/documents': typeof DocumentsIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/resources/$section/$article': typeof ResourcesSectionArticleRoute
   '/resources/$section': typeof ResourcesSectionIndexRoute
@@ -245,7 +401,7 @@ export interface FileRoutesById {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
-  '/documents': typeof DocumentsRoute
+  '/documents': typeof DocumentsRouteWithChildren
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -254,6 +410,13 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
+  '/documents/business-plan': typeof DocumentsBusinessPlanRoute
+  '/documents/client-contract': typeof DocumentsClientContractRoute
+  '/documents/client-welcome-pack': typeof DocumentsClientWelcomePackRoute
+  '/documents/compass-report': typeof DocumentsCompassReportRoute
+  '/documents/invoice-template': typeof DocumentsInvoiceTemplateRoute
+  '/documents/proposal-template': typeof DocumentsProposalTemplateRoute
+  '/documents/scope-of-work': typeof DocumentsScopeOfWorkRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/sessions/essential': typeof SessionsEssentialRoute
   '/sessions/history': typeof SessionsHistoryRoute
@@ -264,6 +427,17 @@ export interface FileRoutesById {
   '/solutions/growth': typeof SolutionsGrowthRoute
   '/solutions/launch': typeof SolutionsLaunchRoute
   '/solutions/partner': typeof SolutionsPartnerRoute
+  '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
+  '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
+  '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
+  '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
+  '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
+  '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
+  '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
+  '/documents/': typeof DocumentsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/resources/$section/$article': typeof ResourcesSectionArticleRoute
   '/resources/$section/': typeof ResourcesSectionIndexRoute
@@ -286,6 +460,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
+    | '/documents/business-plan'
+    | '/documents/client-contract'
+    | '/documents/client-welcome-pack'
+    | '/documents/compass-report'
+    | '/documents/invoice-template'
+    | '/documents/proposal-template'
+    | '/documents/scope-of-work'
     | '/resources/$section'
     | '/sessions/essential'
     | '/sessions/history'
@@ -296,6 +477,17 @@ export interface FileRouteTypes {
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/tools/ai-readiness-assessment'
+    | '/tools/business-discovery-checklist'
+    | '/tools/business-systems-audit'
+    | '/tools/digital-transformation-roadmap'
+    | '/tools/meeting-agenda-templates'
+    | '/tools/process-improvement-scorecard'
+    | '/tools/project-risk-checklist'
+    | '/tools/requirements-workshop-guide'
+    | '/tools/software-buying-checklist'
+    | '/tools/vendor-evaluation-matrix'
+    | '/documents/'
     | '/resources/'
     | '/resources/$section/$article'
     | '/resources/$section/'
@@ -307,7 +499,6 @@ export interface FileRouteTypes {
     | '/compass'
     | '/contact'
     | '/cookies'
-    | '/documents'
     | '/industries'
     | '/pricing'
     | '/privacy'
@@ -315,6 +506,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
+    | '/documents/business-plan'
+    | '/documents/client-contract'
+    | '/documents/client-welcome-pack'
+    | '/documents/compass-report'
+    | '/documents/invoice-template'
+    | '/documents/proposal-template'
+    | '/documents/scope-of-work'
     | '/sessions/essential'
     | '/sessions/history'
     | '/sessions/professional'
@@ -324,6 +522,17 @@ export interface FileRouteTypes {
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/tools/ai-readiness-assessment'
+    | '/tools/business-discovery-checklist'
+    | '/tools/business-systems-audit'
+    | '/tools/digital-transformation-roadmap'
+    | '/tools/meeting-agenda-templates'
+    | '/tools/process-improvement-scorecard'
+    | '/tools/project-risk-checklist'
+    | '/tools/requirements-workshop-guide'
+    | '/tools/software-buying-checklist'
+    | '/tools/vendor-evaluation-matrix'
+    | '/documents'
     | '/resources'
     | '/resources/$section/$article'
     | '/resources/$section'
@@ -344,6 +553,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/solutions'
     | '/terms'
+    | '/documents/business-plan'
+    | '/documents/client-contract'
+    | '/documents/client-welcome-pack'
+    | '/documents/compass-report'
+    | '/documents/invoice-template'
+    | '/documents/proposal-template'
+    | '/documents/scope-of-work'
     | '/resources/$section'
     | '/sessions/essential'
     | '/sessions/history'
@@ -354,6 +570,17 @@ export interface FileRouteTypes {
     | '/solutions/growth'
     | '/solutions/launch'
     | '/solutions/partner'
+    | '/tools/ai-readiness-assessment'
+    | '/tools/business-discovery-checklist'
+    | '/tools/business-systems-audit'
+    | '/tools/digital-transformation-roadmap'
+    | '/tools/meeting-agenda-templates'
+    | '/tools/process-improvement-scorecard'
+    | '/tools/project-risk-checklist'
+    | '/tools/requirements-workshop-guide'
+    | '/tools/software-buying-checklist'
+    | '/tools/vendor-evaluation-matrix'
+    | '/documents/'
     | '/resources/'
     | '/resources/$section/$article'
     | '/resources/$section/'
@@ -366,7 +593,7 @@ export interface RootRouteChildren {
   CompassRoute: typeof CompassRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
-  DocumentsRoute: typeof DocumentsRoute
+  DocumentsRoute: typeof DocumentsRouteWithChildren
   IndustriesRoute: typeof IndustriesRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -375,6 +602,16 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TermsRoute: typeof TermsRoute
+  ToolsAiReadinessAssessmentRoute: typeof ToolsAiReadinessAssessmentRoute
+  ToolsBusinessDiscoveryChecklistRoute: typeof ToolsBusinessDiscoveryChecklistRoute
+  ToolsBusinessSystemsAuditRoute: typeof ToolsBusinessSystemsAuditRoute
+  ToolsDigitalTransformationRoadmapRoute: typeof ToolsDigitalTransformationRoadmapRoute
+  ToolsMeetingAgendaTemplatesRoute: typeof ToolsMeetingAgendaTemplatesRoute
+  ToolsProcessImprovementScorecardRoute: typeof ToolsProcessImprovementScorecardRoute
+  ToolsProjectRiskChecklistRoute: typeof ToolsProjectRiskChecklistRoute
+  ToolsRequirementsWorkshopGuideRoute: typeof ToolsRequirementsWorkshopGuideRoute
+  ToolsSoftwareBuyingChecklistRoute: typeof ToolsSoftwareBuyingChecklistRoute
+  ToolsVendorEvaluationMatrixRoute: typeof ToolsVendorEvaluationMatrixRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -491,6 +728,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesIndexRouteImport
       parentRoute: typeof ResourcesRoute
     }
+    '/documents/': {
+      id: '/documents/'
+      path: '/'
+      fullPath: '/documents/'
+      preLoaderRoute: typeof DocumentsIndexRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/tools/vendor-evaluation-matrix': {
+      id: '/tools/vendor-evaluation-matrix'
+      path: '/tools/vendor-evaluation-matrix'
+      fullPath: '/tools/vendor-evaluation-matrix'
+      preLoaderRoute: typeof ToolsVendorEvaluationMatrixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/software-buying-checklist': {
+      id: '/tools/software-buying-checklist'
+      path: '/tools/software-buying-checklist'
+      fullPath: '/tools/software-buying-checklist'
+      preLoaderRoute: typeof ToolsSoftwareBuyingChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/requirements-workshop-guide': {
+      id: '/tools/requirements-workshop-guide'
+      path: '/tools/requirements-workshop-guide'
+      fullPath: '/tools/requirements-workshop-guide'
+      preLoaderRoute: typeof ToolsRequirementsWorkshopGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/project-risk-checklist': {
+      id: '/tools/project-risk-checklist'
+      path: '/tools/project-risk-checklist'
+      fullPath: '/tools/project-risk-checklist'
+      preLoaderRoute: typeof ToolsProjectRiskChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/process-improvement-scorecard': {
+      id: '/tools/process-improvement-scorecard'
+      path: '/tools/process-improvement-scorecard'
+      fullPath: '/tools/process-improvement-scorecard'
+      preLoaderRoute: typeof ToolsProcessImprovementScorecardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/meeting-agenda-templates': {
+      id: '/tools/meeting-agenda-templates'
+      path: '/tools/meeting-agenda-templates'
+      fullPath: '/tools/meeting-agenda-templates'
+      preLoaderRoute: typeof ToolsMeetingAgendaTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/digital-transformation-roadmap': {
+      id: '/tools/digital-transformation-roadmap'
+      path: '/tools/digital-transformation-roadmap'
+      fullPath: '/tools/digital-transformation-roadmap'
+      preLoaderRoute: typeof ToolsDigitalTransformationRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/business-systems-audit': {
+      id: '/tools/business-systems-audit'
+      path: '/tools/business-systems-audit'
+      fullPath: '/tools/business-systems-audit'
+      preLoaderRoute: typeof ToolsBusinessSystemsAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/business-discovery-checklist': {
+      id: '/tools/business-discovery-checklist'
+      path: '/tools/business-discovery-checklist'
+      fullPath: '/tools/business-discovery-checklist'
+      preLoaderRoute: typeof ToolsBusinessDiscoveryChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/ai-readiness-assessment': {
+      id: '/tools/ai-readiness-assessment'
+      path: '/tools/ai-readiness-assessment'
+      fullPath: '/tools/ai-readiness-assessment'
+      preLoaderRoute: typeof ToolsAiReadinessAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/partner': {
       id: '/solutions/partner'
       path: '/partner'
@@ -561,6 +875,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesSectionRouteImport
       parentRoute: typeof ResourcesRoute
     }
+    '/documents/scope-of-work': {
+      id: '/documents/scope-of-work'
+      path: '/scope-of-work'
+      fullPath: '/documents/scope-of-work'
+      preLoaderRoute: typeof DocumentsScopeOfWorkRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/proposal-template': {
+      id: '/documents/proposal-template'
+      path: '/proposal-template'
+      fullPath: '/documents/proposal-template'
+      preLoaderRoute: typeof DocumentsProposalTemplateRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/invoice-template': {
+      id: '/documents/invoice-template'
+      path: '/invoice-template'
+      fullPath: '/documents/invoice-template'
+      preLoaderRoute: typeof DocumentsInvoiceTemplateRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/compass-report': {
+      id: '/documents/compass-report'
+      path: '/compass-report'
+      fullPath: '/documents/compass-report'
+      preLoaderRoute: typeof DocumentsCompassReportRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/client-welcome-pack': {
+      id: '/documents/client-welcome-pack'
+      path: '/client-welcome-pack'
+      fullPath: '/documents/client-welcome-pack'
+      preLoaderRoute: typeof DocumentsClientWelcomePackRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/client-contract': {
+      id: '/documents/client-contract'
+      path: '/client-contract'
+      fullPath: '/documents/client-contract'
+      preLoaderRoute: typeof DocumentsClientContractRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/business-plan': {
+      id: '/documents/business-plan'
+      path: '/business-plan'
+      fullPath: '/documents/business-plan'
+      preLoaderRoute: typeof DocumentsBusinessPlanRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
     '/resources/$section/': {
       id: '/resources/$section/'
       path: '/'
@@ -577,6 +940,32 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface DocumentsRouteChildren {
+  DocumentsBusinessPlanRoute: typeof DocumentsBusinessPlanRoute
+  DocumentsClientContractRoute: typeof DocumentsClientContractRoute
+  DocumentsClientWelcomePackRoute: typeof DocumentsClientWelcomePackRoute
+  DocumentsCompassReportRoute: typeof DocumentsCompassReportRoute
+  DocumentsInvoiceTemplateRoute: typeof DocumentsInvoiceTemplateRoute
+  DocumentsProposalTemplateRoute: typeof DocumentsProposalTemplateRoute
+  DocumentsScopeOfWorkRoute: typeof DocumentsScopeOfWorkRoute
+  DocumentsIndexRoute: typeof DocumentsIndexRoute
+}
+
+const DocumentsRouteChildren: DocumentsRouteChildren = {
+  DocumentsBusinessPlanRoute: DocumentsBusinessPlanRoute,
+  DocumentsClientContractRoute: DocumentsClientContractRoute,
+  DocumentsClientWelcomePackRoute: DocumentsClientWelcomePackRoute,
+  DocumentsCompassReportRoute: DocumentsCompassReportRoute,
+  DocumentsInvoiceTemplateRoute: DocumentsInvoiceTemplateRoute,
+  DocumentsProposalTemplateRoute: DocumentsProposalTemplateRoute,
+  DocumentsScopeOfWorkRoute: DocumentsScopeOfWorkRoute,
+  DocumentsIndexRoute: DocumentsIndexRoute,
+}
+
+const DocumentsRouteWithChildren = DocumentsRoute._addFileChildren(
+  DocumentsRouteChildren,
+)
 
 interface ResourcesSectionRouteChildren {
   ResourcesSectionArticleRoute: typeof ResourcesSectionArticleRoute
@@ -650,7 +1039,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompassRoute: CompassRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
-  DocumentsRoute: DocumentsRoute,
+  DocumentsRoute: DocumentsRouteWithChildren,
   IndustriesRoute: IndustriesRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
@@ -659,6 +1048,17 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   TermsRoute: TermsRoute,
+  ToolsAiReadinessAssessmentRoute: ToolsAiReadinessAssessmentRoute,
+  ToolsBusinessDiscoveryChecklistRoute: ToolsBusinessDiscoveryChecklistRoute,
+  ToolsBusinessSystemsAuditRoute: ToolsBusinessSystemsAuditRoute,
+  ToolsDigitalTransformationRoadmapRoute:
+    ToolsDigitalTransformationRoadmapRoute,
+  ToolsMeetingAgendaTemplatesRoute: ToolsMeetingAgendaTemplatesRoute,
+  ToolsProcessImprovementScorecardRoute: ToolsProcessImprovementScorecardRoute,
+  ToolsProjectRiskChecklistRoute: ToolsProjectRiskChecklistRoute,
+  ToolsRequirementsWorkshopGuideRoute: ToolsRequirementsWorkshopGuideRoute,
+  ToolsSoftwareBuyingChecklistRoute: ToolsSoftwareBuyingChecklistRoute,
+  ToolsVendorEvaluationMatrixRoute: ToolsVendorEvaluationMatrixRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

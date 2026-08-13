@@ -124,7 +124,7 @@ export function AskCompass() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-3 rounded-full border border-white/10 bg-navy-deep px-4 py-3 text-sm font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6"
+        className="print:hidden fixed bottom-5 right-5 z-40 inline-flex items-center gap-3 rounded-full border border-white/10 bg-navy-deep px-4 py-3 text-sm font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6"
         aria-label="Open Ask Compass™ chat"
       >
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-electric text-white">

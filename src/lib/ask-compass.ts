@@ -22,7 +22,7 @@ const TM = "\u2122";
 const DEFAULT_SUGGESTIONS = [
   `What is Compass${TM}`,
   "How VULA can help my business",
-  "Do I need a website",
+  "What free resources are available",
   "Can VULA help with automation",
   "What industries VULA works with",
   "How do I start",
@@ -181,6 +181,101 @@ function findRelevantResources(question: string, limit = 3): AskCompassReference
   }));
 }
 
+type IndexedTool = {
+  title: string;
+  slug: string;
+  description: string;
+  haystack: string;
+};
+
+const FREE_TOOLS: IndexedTool[] = [
+  {
+    title: "Business Discovery Checklist",
+    slug: "business-discovery-checklist",
+    description: "Work through a structured discovery of your business across strategy, people, process, technology and growth. Ideal starting point before a Compass™ session.",
+  },
+  {
+    title: "AI Readiness Assessment",
+    slug: "ai-readiness-assessment",
+    description: "Score your business across data quality, team readiness, process maturity and infrastructure to understand where AI can realistically help you.",
+  },
+  {
+    title: "Process Improvement Scorecard",
+    slug: "process-improvement-scorecard",
+    description: "Map and rate your current business processes to identify bottlenecks, manual work and improvement opportunities.",
+  },
+  {
+    title: "Digital Transformation Roadmap",
+    slug: "digital-transformation-roadmap",
+    description: "Plan your digital journey across five stages: foundation, presence, automation, intelligence and optimisation.",
+  },
+  {
+    title: "Business Systems Audit",
+    slug: "business-systems-audit",
+    description: "Audit every tool and system in your business — from accounting to CRM — to find gaps, overlaps and cost savings.",
+  },
+  {
+    title: "Software Buying Checklist",
+    slug: "software-buying-checklist",
+    description: "A structured checklist to evaluate any software purchase — covering requirements, budget, security, integration and vendor risk.",
+  },
+  {
+    title: "Vendor Evaluation Matrix",
+    slug: "vendor-evaluation-matrix",
+    description: "Compare up to four vendors on cost, capability, support, integration and risk using a weighted scoring system.",
+  },
+  {
+    title: "Project Risk Checklist",
+    slug: "project-risk-checklist",
+    description: "Identify, rate and plan responses to project risks before work begins. Covers scope, budget, resource, technical and stakeholder risk.",
+  },
+  {
+    title: "Meeting Agenda Templates",
+    slug: "meeting-agenda-templates",
+    description: "Ready-to-use agenda templates for strategy reviews, project kick-offs, retrospectives and client check-ins.",
+  },
+  {
+    title: "Requirements Workshop Guide",
+    slug: "requirements-workshop-guide",
+    description: "Structured facilitation guide and templates for running a requirements gathering workshop with your team or clients.",
+  },
+].map((t) => ({
+  ...t,
+  haystack: normalize(`${t.title} ${t.description}`),
+}));
+
+function findRelevantTools(question: string, limit = 2): AskCompassReference[] {
+  const tokens = tokenize(question);
+  const normalizedQuestion = normalize(question);
+
+  if (tokens.length === 0) return [];
+
+  const scored = FREE_TOOLS.map((tool) => {
+    const title = normalize(tool.title);
+    const description = normalize(tool.description);
+    const score = tokens.reduce((total, token) => {
+      let points = total;
+      if (title.includes(token)) points += 5;
+      if (description.includes(token)) points += 3;
+      if (tool.haystack.includes(token)) points += 1;
+      return points;
+    }, 0);
+    const phraseBonus =
+      normalizedQuestion.length > 8 && tool.haystack.includes(normalizedQuestion) ? 8 : 0;
+    return { tool, score: score + phraseBonus };
+  })
+    .filter(({ score }) => score >= 3)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
+
+  return scored.map(({ tool }) => ({
+    title: tool.title,
+    to: `/tools/${tool.slug}`,
+    sectionTitle: "Free Business Resource",
+    snippet: tool.description,
+  }));
+}
+
 function blendReferenceIntoContent(content: string, references: AskCompassReference[]) {
   const primary = references[0];
   if (!primary) return content;
@@ -190,7 +285,16 @@ function blendReferenceIntoContent(content: string, references: AskCompassRefere
 }
 
 function withReferences(reply: AskCompassReply, question: string) {
-  const references = findRelevantResources(question);
+  const articleRefs = findRelevantResources(question);
+  const toolRefs = findRelevantTools(question);
+
+  const seen = new Set<string>();
+  const references = [...articleRefs, ...toolRefs].filter((ref) => {
+    if (seen.has(ref.to)) return false;
+    seen.add(ref.to);
+    return true;
+  }).slice(0, 4);
+
   if (!references.length) return reply;
 
   return {
@@ -216,6 +320,88 @@ export function getAskCompassReply(question: string): AskCompassReply {
       content: "Ask me a question, or choose one of the suggested starting points below.",
       suggestions: [...DEFAULT_SUGGESTIONS],
     };
+  }
+
+  // Free resources / tools
+  if (includesAny(text, ["free", "resource", "resources", "free tool", "free resource", "template", "checklist", "worksheet", "scorecard", "assessment", "what tools do you offer", "what resources"])) {
+    const toolRefs = findRelevantTools(question, 3);
+    const fallbackRefs: AskCompassReference[] = FREE_TOOLS.slice(0, 3).map((t) => ({
+      title: t.title,
+      to: `/tools/${t.slug}`,
+      sectionTitle: "Free Business Resource",
+      snippet: t.description,
+    }));
+    return {
+      content: `VULA offers 10 free business tools — no sign-up needed. They cover AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
+      suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
+      references: toolRefs.length > 0 ? toolRefs : fallbackRefs,
+    };
+  }
+
+  // Meeting agendas and notes
+  if (includesAny(text, ["meeting", "agenda", "meeting notes", "meeting template", "kick-off", "kick off", "retrospective"])) {
+    return withReferences(
+      {
+        content: `Running structured meetings makes a real difference. VULA has a free Meeting Agenda Templates tool covering strategy reviews, project kick-offs, client check-ins and retrospectives. You can open and fill it in directly — no download needed.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Vendor / supplier evaluation
+  if (includesAny(text, ["vendor", "supplier", "evaluate vendor", "choose vendor", "compare vendors", "vendor risk"])) {
+    return withReferences(
+      {
+        content: `Choosing the right vendor is a structured decision, not a gut call. VULA's free Vendor Evaluation Matrix lets you score up to four suppliers on cost, capability, support, integration and risk side-by-side.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Software buying
+  if (includesAny(text, ["buying software", "buy software", "which software", "software decision", "software purchase", "evaluate software", "choose software"])) {
+    return withReferences(
+      {
+        content: `VULA has a free Software Buying Checklist that walks you through requirements, budget, security, integration and vendor risk before you commit. Worth running through before any significant software purchase.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Project risk
+  if (includesAny(text, ["project risk", "risk register", "risk management", "risks", "risk assessment"])) {
+    return withReferences(
+      {
+        content: `VULA's free Project Risk Checklist helps you identify, rate and plan responses to risks before a project starts — covering scope, budget, resource, technical and stakeholder risk.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Requirements gathering / workshops
+  if (includesAny(text, ["requirements", "requirements gathering", "requirements workshop", "specification", "scope document"])) {
+    return withReferences(
+      {
+        content: `VULA has a free Requirements Workshop Guide — a structured facilitation template for gathering requirements from your team or clients before any build or change project.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // Business systems / audit
+  if (includesAny(text, ["systems audit", "business systems", "audit my tools", "tool audit", "software audit", "crm audit"])) {
+    return withReferences(
+      {
+        content: `VULA's free Business Systems Audit maps every tool and system across your business — accounting, CRM, comms, project management — to surface gaps, overlaps and cost savings.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
+      },
+      question,
+    );
   }
 
   // Platform / what do you build on (before generic website block)

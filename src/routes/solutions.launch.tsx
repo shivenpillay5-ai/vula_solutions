@@ -8,9 +8,9 @@ export const Route = createFileRoute("/solutions/launch")({
       { title: "Launch™ — Build With Confidence | Vula Solutions" },
       { name: "description", content: "Modern, conversion-focused websites and redesigns that give your business a stronger digital foundation." },
       { property: "og:title", content: "Launch™ — Build With Confidence" },
-      { property: "og:url", content: "/solutions/launch" },
+      { property: "og:url", content: "https://vulasolutions.co.za/solutions/launch" },
     ],
-    links: [{ rel: "canonical", href: "/solutions/launch" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions/launch" }],
   }),
   component: () => (
     <SolutionPage

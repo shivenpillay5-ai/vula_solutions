@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 
@@ -7,9 +7,9 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title: "Terms of Use — Vula Solutions" },
       { name: "description", content: "The terms that govern use of the Vula Solutions website." },
-      { property: "og:url", content: "/terms" },
+      { property: "og:url", content: "https://vulasolutions.co.za/terms" },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/terms" }],
   }),
   component: () => (
     <>
