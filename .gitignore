@@ -30,6 +30,9 @@ dist-ssr
 tmp-*
 *.crdownload
 
+# Generated Word documents (regenerate with: node scripts/generate-docs.mjs)
+generated-docs/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

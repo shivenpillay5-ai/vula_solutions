@@ -17,6 +17,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompassRouteImport } from './routes/compass'
@@ -75,6 +76,11 @@ const PricingRoute = PricingRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -180,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
+  '/documents': typeof DocumentsRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
+  '/documents': typeof DocumentsRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -237,6 +245,7 @@ export interface FileRoutesById {
   '/compass': typeof CompassRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
+  '/documents': typeof DocumentsRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -268,6 +277,7 @@ export interface FileRouteTypes {
     | '/compass'
     | '/contact'
     | '/cookies'
+    | '/documents'
     | '/industries'
     | '/pricing'
     | '/privacy'
@@ -297,6 +307,7 @@ export interface FileRouteTypes {
     | '/compass'
     | '/contact'
     | '/cookies'
+    | '/documents'
     | '/industries'
     | '/pricing'
     | '/privacy'
@@ -324,6 +335,7 @@ export interface FileRouteTypes {
     | '/compass'
     | '/contact'
     | '/cookies'
+    | '/documents'
     | '/industries'
     | '/pricing'
     | '/privacy'
@@ -354,6 +366,7 @@ export interface RootRouteChildren {
   CompassRoute: typeof CompassRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
+  DocumentsRoute: typeof DocumentsRoute
   IndustriesRoute: typeof IndustriesRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -420,6 +433,13 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -630,6 +650,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompassRoute: CompassRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
+  DocumentsRoute: DocumentsRoute,
   IndustriesRoute: IndustriesRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,

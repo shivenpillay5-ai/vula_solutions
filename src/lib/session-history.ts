@@ -1,39 +1,42 @@
 export type SessionTier = "Essential" | "Professional" | "Strategic";
 
-export type SessionSnapshot = {
+export interface SessionSnapshot {
   id: string;
   tier: SessionTier;
-  savedAt: string;
-  company: string;
-  clientName: string;
-  sessionDate: string;
   data: Record<string, unknown>;
-};
+  company?: string;
+  clientName?: string;
+  sessionDate?: string;
+  savedAt: string;
+}
 
-const HISTORY_KEY = "vula-sessions-history";
+const HISTORY_KEY = "vula-session-history";
+const MAX_ENTRIES = 50;
 
 export function saveToHistory(tier: SessionTier, data: Record<string, unknown>): void {
   try {
     const existing = getHistory();
-    existing.unshift({
-      id: String(Date.now()),
+    const snapshot: SessionSnapshot = {
+      id: crypto.randomUUID(),
       tier,
-      savedAt: new Date().toISOString().split("T")[0],
-      company: String(data.company ?? ""),
-      clientName: String(data.clientName ?? ""),
-      sessionDate: String(data.sessionDate ?? ""),
       data,
-    });
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(existing));
+      company: (data.company as string | undefined) || (data.companyName as string | undefined),
+      clientName: (data.clientName as string | undefined) || (data.contactName as string | undefined),
+      sessionDate: data.sessionDate as string | undefined,
+      savedAt: new Date().toISOString().split("T")[0],
+    };
+    const updated = [snapshot, ...existing].slice(0, MAX_ENTRIES);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(updated));
   } catch {
-    // localStorage full or unavailable
+    // ignore storage errors
   }
 }
 
 export function getHistory(): SessionSnapshot[] {
   try {
     const raw = localStorage.getItem(HISTORY_KEY);
-    return raw ? (JSON.parse(raw) as SessionSnapshot[]) : [];
+    if (!raw) return [];
+    return JSON.parse(raw) as SessionSnapshot[];
   } catch {
     return [];
   }
@@ -41,8 +44,9 @@ export function getHistory(): SessionSnapshot[] {
 
 export function deleteFromHistory(id: string): void {
   try {
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(getHistory().filter((e) => e.id !== id)));
+    const updated = getHistory().filter((s) => s.id !== id);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(updated));
   } catch {
-    // ignore
+    // ignore storage errors
   }
 }
