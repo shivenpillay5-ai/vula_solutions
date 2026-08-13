@@ -122,8 +122,9 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Prevents browser from restoring scroll position on refresh */}
         <script dangerouslySetInnerHTML={{ __html: 'history.scrollRestoration="manual"' }} />
+        {/* Only applies dark if user has explicitly chosen it — site always defaults to light */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{if(localStorage.getItem('vula-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})()` }} />
         <HeadContent />
       </head>
       <body>
@@ -136,6 +137,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { pathname } = useLocation();
+  const isInternal = pathname.startsWith("/sessions");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -148,7 +151,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
-        <AskCompass />
+        {!isInternal && <AskCompass />}
       </div>
     </QueryClientProvider>
   );

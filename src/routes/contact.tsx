@@ -24,7 +24,7 @@ function Pill({ value, label, selected, onSelect }: { value: string; label: stri
       type="button"
       aria-pressed={active}
       onClick={() => onSelect(active ? "" : value)}
-      className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm transition-all duration-150 hover:-translate-y-0.5 ${
+      className={`inline-flex items-center rounded-full border px-4 py-2.5 text-sm transition-all duration-150 hover:-translate-y-0.5 ${
         active
           ? "border-electric bg-electric/10 font-medium text-electric"
           : "border-border text-foreground/70 hover:border-electric/40 hover:text-electric"
@@ -162,7 +162,7 @@ function Contact() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="submit"
-                    className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                    className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:w-auto sm:justify-start"
                   >
                     Send enquiry
                     <ArrowRight className="h-4 w-4" />

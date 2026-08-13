@@ -2,6 +2,7 @@ import {
   AlignmentType,
   BorderStyle,
   Document,
+  ImageRun,
   Packer,
   Paragraph,
   ShadingType,
@@ -12,6 +13,36 @@ import {
   WidthType,
 } from "docx";
 import type { EssentialSession, ProfessionalSession, StrategicSession } from "./session-types";
+
+// Renders the Vula logo SVG to a PNG Uint8Array via canvas for embedding in Word documents.
+async function getLogoPng(): Promise<Uint8Array | undefined> {
+  try {
+    const svg = `<svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg">
+      <path d="M160 90L0 0V416.667L160 500V90Z" fill="#0F172A"/>
+      <path d="M260 90L420 0V416.667L260 500V90Z" fill="#01A1B7"/>
+    </svg>`;
+    return await new Promise((resolve, reject) => {
+      const blob = new Blob([svg], { type: "image/svg+xml" });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 168;
+        canvas.height = 200;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) { reject(new Error("no canvas context")); return; }
+        ctx.drawImage(img, 0, 0, 168, 200);
+        URL.revokeObjectURL(url);
+        const b64 = canvas.toDataURL("image/png").split(",")[1];
+        resolve(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0)));
+      };
+      img.onerror = reject;
+      img.src = url;
+    });
+  } catch {
+    return undefined;
+  }
+}
 
 const TEAL = "01A1B7";
 const NAVY = "0A1628";
@@ -134,9 +165,20 @@ function mkTable(headers: string[], rows: string[][]): Table {
   });
 }
 
-function coverPage(company: string, tier: string, date: string, consultant: string): Paragraph[] {
+function coverPage(company: string, tier: string, date: string, consultant: string, logo?: Uint8Array): Paragraph[] {
+  const logoEl = logo
+    ? new Paragraph({
+        children: [
+          new ImageRun({ type: "png", data: logo, transformation: { width: 63, height: 75 } }),
+        ],
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 240 },
+      })
+    : null;
+
   return [
-    new Paragraph({ children: [new TextRun({ text: "" })], spacing: { after: 2400 } }),
+    new Paragraph({ children: [new TextRun({ text: "" })], spacing: { after: 1800 } }),
+    ...(logoEl ? [logoEl] : []),
     new Paragraph({
       children: [new TextRun({ text: "VULA SOLUTIONS", bold: true, size: 48, color: NAVY, font: "Calibri" })],
       alignment: AlignmentType.CENTER,
@@ -534,23 +576,26 @@ function slug(s: string) {
   return (s || "Report").replace(/\s+/g, "-").replace(/[^a-zA-Z0-9-]/g, "");
 }
 
-export function generateEssentialReport(session: EssentialSession) {
+export async function generateEssentialReport(session: EssentialSession): Promise<void> {
+  const logo = await getLogoPng();
   download(
-    makeDoc(coverPage(session.company, "Essential", session.sessionDate, session.consultant), essentialBody(session)),
+    makeDoc(coverPage(session.company, "Essential", session.sessionDate, session.consultant, logo), essentialBody(session)),
     `Compass-Essential-${slug(session.company)}-${session.sessionDate || "Draft"}.docx`
   );
 }
 
-export function generateProfessionalReport(session: ProfessionalSession) {
+export async function generateProfessionalReport(session: ProfessionalSession): Promise<void> {
+  const logo = await getLogoPng();
   download(
-    makeDoc(coverPage(session.company, "Professional", session.sessionDate, session.consultant), professionalBody(session)),
+    makeDoc(coverPage(session.company, "Professional", session.sessionDate, session.consultant, logo), professionalBody(session)),
     `Compass-Professional-${slug(session.company)}-${session.sessionDate || "Draft"}.docx`
   );
 }
 
-export function generateStrategicReport(session: StrategicSession) {
+export async function generateStrategicReport(session: StrategicSession): Promise<void> {
+  const logo = await getLogoPng();
   download(
-    makeDoc(coverPage(session.company, "Strategic", session.sessionDate, session.consultant), strategicBody(session)),
+    makeDoc(coverPage(session.company, "Strategic", session.sessionDate, session.consultant, logo), strategicBody(session)),
     `Compass-Strategic-${slug(session.company)}-${session.sessionDate || "Draft"}.docx`
   );
 }

@@ -41,7 +41,7 @@ function OutcomeCard({ metric, label, outcome, source, product, found, fixed }: 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="mt-4 flex w-full items-center justify-between rounded-lg border border-border px-4 py-2.5 text-left text-xs font-semibold text-muted-foreground transition hover:border-electric/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
+          className="mt-4 flex w-full items-center justify-between rounded-lg border border-border px-4 py-3 text-left text-xs font-semibold text-muted-foreground transition hover:border-electric/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
         >
           <span>{open ? "Hide details" : "How we did it"}</span>
           <ChevronDown
@@ -209,7 +209,7 @@ function CompassPage() {
         className="bg-navy-deep"
         tone="dark"
       >
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
             { icon: Search, l: "D", t: "Discover", b: "Understand the business, goals, people, challenges and opportunities." },
             { icon: ClipboardCheck, l: "A", t: "Assess", b: "Evaluate digital presence, operations, AI readiness, efficiency and risk." },

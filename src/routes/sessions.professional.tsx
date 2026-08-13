@@ -5,6 +5,7 @@ import { FormSection, Field, AreaField, SelectField, PillRadio, PillCheckbox, Tw
 import { StakeholderTable } from "@/components/session/StakeholderTable";
 import { ActionPlanTable } from "@/components/session/ActionPlanTable";
 import { generateProfessionalReport } from "@/lib/generate-report";
+import { saveToHistory } from "@/lib/session-history";
 import type { ProfessionalSession } from "@/lib/session-types";
 
 export const Route = createFileRoute("/sessions/professional")({
@@ -487,7 +488,7 @@ function ProfessionalForm() {
           </span>
         )}
         <button
-          onClick={() => generateProfessionalReport(form)}
+          onClick={() => { saveToHistory("Professional", form as unknown as Record<string, unknown>); void generateProfessionalReport(form); }}
           className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:opacity-90"
         >
           <Download className="h-4 w-4" />

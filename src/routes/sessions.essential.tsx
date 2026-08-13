@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Download, Check } from "lucide-react";
 import { FormSection, Field, AreaField, SelectField, PillRadio, PillCheckbox, TwoCol } from "@/components/session/FormSection";
 import { generateEssentialReport } from "@/lib/generate-report";
+import { saveToHistory } from "@/lib/session-history";
 import type { EssentialSession } from "@/lib/session-types";
 
 export const Route = createFileRoute("/sessions/essential")({
@@ -414,7 +415,7 @@ function EssentialForm() {
           </span>
         )}
         <button
-          onClick={() => generateEssentialReport(form)}
+          onClick={() => { saveToHistory("Essential", form as unknown as Record<string, unknown>); void generateEssentialReport(form); }}
           className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:opacity-90"
         >
           <Download className="h-4 w-4" />

@@ -6,6 +6,7 @@ import { StakeholderTable } from "@/components/session/StakeholderTable";
 import { ActionPlanTable } from "@/components/session/ActionPlanTable";
 import { DepartmentTable } from "@/components/session/DepartmentTable";
 import { generateStrategicReport } from "@/lib/generate-report";
+import { saveToHistory } from "@/lib/session-history";
 import type { StrategicSession } from "@/lib/session-types";
 
 export const Route = createFileRoute("/sessions/strategic")({
@@ -640,7 +641,7 @@ function StrategicForm() {
           </span>
         )}
         <button
-          onClick={() => generateStrategicReport(form)}
+          onClick={() => { saveToHistory("Strategic", form as unknown as Record<string, unknown>); void generateStrategicReport(form); }}
           className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:opacity-90"
         >
           <Download className="h-4 w-4" />

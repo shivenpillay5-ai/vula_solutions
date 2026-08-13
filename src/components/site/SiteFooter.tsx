@@ -36,15 +36,17 @@ const cols = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-secondary/40">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-page grid gap-8 py-14 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo className="mb-5" size="lg" />
+          <Link to="/" aria-label="Vula Solutions home">
+            <Logo className="mb-5" size="lg" />
+          </Link>
           <p className="max-w-sm text-sm text-muted-foreground">
             Technology without complexity. Results without compromise.
           </p>
           <Link
             to="/compass"
-            className="mt-6 inline-flex h-10 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+            className="mt-6 inline-flex h-11 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
             Start with Compass™
           </Link>

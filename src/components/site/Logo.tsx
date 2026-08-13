@@ -24,8 +24,6 @@ export function Logo({
   size?: keyof typeof sizeClasses;
   markTarget?: boolean;
 }) {
-  const primary = variant === "light" ? "#F8FAFC" : "#0F172A";
-  const accent = "#01A1B7";
   const sizing = sizeClasses[size];
 
   return (
@@ -37,15 +35,19 @@ export function Logo({
       {showWordmark && (
         <span className="flex flex-col leading-none">
           <span
-            className={`${sizing.word} font-semibold tracking-[0.02em]`}
-            style={{ color: primary, fontFamily: "var(--font-display)" }}
+            className={`${sizing.word} font-semibold tracking-[0.02em] ${
+              variant === "dark"
+                ? "text-[#0F172A] dark:text-[#F8FAFC]"
+                : "text-[#F8FAFC]"
+            }`}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             VULA
           </span>
           {showTagline && (
             <span
               className="mt-1 text-[0.62rem] font-medium uppercase tracking-[0.22em]"
-              style={{ color: accent, fontFamily: "var(--font-sans)" }}
+              style={{ color: "#01A1B7", fontFamily: "var(--font-sans)" }}
             >
               Open the door to better business
             </span>
@@ -65,9 +67,6 @@ export function Mark({
   variant?: "dark" | "light";
   brandIntroTarget?: boolean;
 }) {
-  const primary = variant === "light" ? "#F8FAFC" : "#0F172A";
-  const accent = "#01A1B7";
-
   return (
     <svg
       viewBox="0 0 420 500"
@@ -77,8 +76,12 @@ export function Mark({
       xmlns="http://www.w3.org/2000/svg"
       data-brand-intro-target={brandIntroTarget ? "true" : undefined}
     >
-      <path d={MARK_LEFT_PATH} fill={primary} />
-      <path d={MARK_RIGHT_PATH} fill={accent} />
+      {variant === "dark" ? (
+        <path d={MARK_LEFT_PATH} className="fill-[#0F172A] dark:fill-[#F8FAFC]" />
+      ) : (
+        <path d={MARK_LEFT_PATH} fill="#F8FAFC" />
+      )}
+      <path d={MARK_RIGHT_PATH} fill="#01A1B7" />
     </svg>
   );
 }

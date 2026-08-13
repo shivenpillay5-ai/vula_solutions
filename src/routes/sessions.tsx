@@ -1,5 +1,5 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
-import { ClipboardList, Clock, Users, Lock } from "lucide-react";
+import { ClipboardList, Clock, Users, Lock, History } from "lucide-react";
 
 export const Route = createFileRoute("/sessions")({
   head: () => ({ meta: [{ title: "Session Forms — Vula Solutions Internal" }] }),
@@ -126,10 +126,19 @@ function SessionsLayout() {
         ))}
       </div>
 
-      <p className="mt-10 text-center text-xs text-muted-foreground">
-        These pages are not linked in the public navigation. Bookmark this URL:{" "}
-        <span className="font-mono text-foreground">/sessions</span>
-      </p>
+      <div className="mt-10 flex items-center justify-between">
+        <p className="text-xs text-muted-foreground">
+          Not in public navigation. Bookmark:{" "}
+          <span className="font-mono text-foreground">/sessions</span>
+        </p>
+        <Link
+          to="/sessions/history"
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition hover:text-electric"
+        >
+          <History className="h-3.5 w-3.5" />
+          View session history
+        </Link>
+      </div>
     </div>
   );
 }

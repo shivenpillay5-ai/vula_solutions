@@ -31,6 +31,7 @@ import { Route as SolutionsFlowRouteImport } from './routes/solutions.flow'
 import { Route as SolutionsAccelerateRouteImport } from './routes/solutions.accelerate'
 import { Route as SessionsStrategicRouteImport } from './routes/sessions.strategic'
 import { Route as SessionsProfessionalRouteImport } from './routes/sessions.professional'
+import { Route as SessionsHistoryRouteImport } from './routes/sessions.history'
 import { Route as SessionsEssentialRouteImport } from './routes/sessions.essential'
 import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
 import { Route as ResourcesSectionIndexRouteImport } from './routes/resources.$section.index'
@@ -146,6 +147,11 @@ const SessionsProfessionalRoute = SessionsProfessionalRouteImport.update({
   path: '/professional',
   getParentRoute: () => SessionsRoute,
 } as any)
+const SessionsHistoryRoute = SessionsHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => SessionsRoute,
+} as any)
 const SessionsEssentialRoute = SessionsEssentialRouteImport.update({
   id: '/essential',
   path: '/essential',
@@ -184,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/history': typeof SessionsHistoryRoute
   '/sessions/professional': typeof SessionsProfessionalRoute
   '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
@@ -210,6 +217,7 @@ export interface FileRoutesByTo {
   '/solutions': typeof SolutionsRouteWithChildren
   '/terms': typeof TermsRoute
   '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/history': typeof SessionsHistoryRoute
   '/sessions/professional': typeof SessionsProfessionalRoute
   '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
@@ -239,6 +247,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/resources/$section': typeof ResourcesSectionRouteWithChildren
   '/sessions/essential': typeof SessionsEssentialRoute
+  '/sessions/history': typeof SessionsHistoryRoute
   '/sessions/professional': typeof SessionsProfessionalRoute
   '/sessions/strategic': typeof SessionsStrategicRoute
   '/solutions/accelerate': typeof SolutionsAccelerateRoute
@@ -269,6 +278,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/resources/$section'
     | '/sessions/essential'
+    | '/sessions/history'
     | '/sessions/professional'
     | '/sessions/strategic'
     | '/solutions/accelerate'
@@ -295,6 +305,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/terms'
     | '/sessions/essential'
+    | '/sessions/history'
     | '/sessions/professional'
     | '/sessions/strategic'
     | '/solutions/accelerate'
@@ -323,6 +334,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/resources/$section'
     | '/sessions/essential'
+    | '/sessions/history'
     | '/sessions/professional'
     | '/sessions/strategic'
     | '/solutions/accelerate'
@@ -508,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SessionsProfessionalRouteImport
       parentRoute: typeof SessionsRoute
     }
+    '/sessions/history': {
+      id: '/sessions/history'
+      path: '/history'
+      fullPath: '/sessions/history'
+      preLoaderRoute: typeof SessionsHistoryRouteImport
+      parentRoute: typeof SessionsRoute
+    }
     '/sessions/essential': {
       id: '/sessions/essential'
       path: '/essential'
@@ -568,12 +587,14 @@ const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
 
 interface SessionsRouteChildren {
   SessionsEssentialRoute: typeof SessionsEssentialRoute
+  SessionsHistoryRoute: typeof SessionsHistoryRoute
   SessionsProfessionalRoute: typeof SessionsProfessionalRoute
   SessionsStrategicRoute: typeof SessionsStrategicRoute
 }
 
 const SessionsRouteChildren: SessionsRouteChildren = {
   SessionsEssentialRoute: SessionsEssentialRoute,
+  SessionsHistoryRoute: SessionsHistoryRoute,
   SessionsProfessionalRoute: SessionsProfessionalRoute,
   SessionsStrategicRoute: SessionsStrategicRoute,
 }

@@ -115,38 +115,40 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: #0F172A;
+  /* Vula brand dark palette — deep navy backgrounds, teal accent preserved */
+  --background: #0B1219;
+  --foreground: #E8EDF4;
+  --card: #162030;
+  --card-foreground: #E8EDF4;
+  --popover: #162030;
+  --popover-foreground: #E8EDF4;
+  /* Primary switches to electric teal in dark mode so CTA buttons pop */
+  --primary: #01A1B7;
   --primary-foreground: #FFFFFF;
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --secondary: #162030;
+  --secondary-foreground: #E8EDF4;
+  --muted: #162030;
+  --muted-foreground: #8B9DB5;
+  --accent: color-mix(in srgb, #01A1B7 12%, transparent);
+  --accent-foreground: #E8EDF4;
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --border: rgb(255 255 255 / 8%);
+  --input: rgb(255 255 255 / 10%);
+  --ring: #01A1B7;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar: #162030;
+  --sidebar-foreground: #E8EDF4;
+  --sidebar-primary: #01A1B7;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: color-mix(in srgb, #01A1B7 12%, transparent);
+  --sidebar-accent-foreground: #E8EDF4;
+  --sidebar-border: rgb(255 255 255 / 8%);
+  --sidebar-ring: #01A1B7;
 }
 
 @layer base {

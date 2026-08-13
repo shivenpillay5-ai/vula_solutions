@@ -66,7 +66,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative hidden md:block">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
             <img
               src={heroDoorway}
@@ -302,7 +302,7 @@ function ResourcesTeaser() {
 
   return (
     <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass™ thinking and real business decisions.">
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {items.map((item) => (
           <Link
             key={item.article}
