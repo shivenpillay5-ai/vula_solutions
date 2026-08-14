@@ -303,9 +303,9 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
             transparent 234deg,
             transparent 360deg
           );
-          -webkit-mask-image: radial-gradient(ellipse 92% 128% at 50% 0%, #000 0%, #000 16%, rgba(0, 0, 0, 0.32) 50%, transparent 76%);
-          mask-image: radial-gradient(ellipse 92% 128% at 50% 0%, #000 0%, #000 16%, rgba(0, 0, 0, 0.32) 50%, transparent 76%);
-          filter: blur(6px);
+          -webkit-mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0, 0, 0, 0.62) 0%, #000 32%, rgba(0, 0, 0, 0.34) 58%, transparent 80%);
+          mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0, 0, 0, 0.62) 0%, #000 32%, rgba(0, 0, 0, 0.34) 58%, transparent 80%);
+          filter: blur(10px);
           transform-origin: 50% 0%;
           transform: scaleY(0.62);
         }
@@ -374,9 +374,9 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
         }
         /* The V of light reaching further across the floor as the doors part. */
         @keyframes vulaSpill {
-          0%   { opacity: 0;   transform: scaleY(0.5);  filter: blur(5px) brightness(0.95); }
-          40%  { opacity: 0.6; transform: scaleY(0.82); filter: blur(6px) brightness(1.05); }
-          100% { opacity: 1;   transform: scaleY(1);    filter: blur(7px) brightness(1.22); }
+          0%   { opacity: 0;   transform: scaleY(0.5);  filter: blur(8px)  brightness(0.95); }
+          40%  { opacity: 0.6; transform: scaleY(0.82); filter: blur(9px)  brightness(1.05); }
+          100% { opacity: 1;   transform: scaleY(1);    filter: blur(11px) brightness(1.22); }
         }
         @keyframes vulaOverlayFade {
           0% { opacity: 1; }
