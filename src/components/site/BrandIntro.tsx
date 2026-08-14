@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 
 type IntroState = "waiting" | "playing" | "hidden";
 
@@ -23,6 +23,9 @@ function getVisibleIntroTarget() {
 function IntroMark({ markRef }: { markRef: RefObject<SVGSVGElement | null> }) {
   return (
     <div className="vula-intro__mark-wrap" aria-hidden="true">
+      {/* Warm sunlight streaming through the seam — sits behind the doors and is revealed as they open */}
+      <span className="vula-intro__glow vula-intro__glow--seam" />
+      <span className="vula-intro__glow vula-intro__glow--back" />
       <svg ref={markRef} viewBox="0 0 420 500" className="vula-intro__mark" xmlns="http://www.w3.org/2000/svg">
         <path
           className="vula-intro__panel vula-intro__panel--left"
@@ -37,15 +40,15 @@ function IntroMark({ markRef }: { markRef: RefObject<SVGSVGElement | null> }) {
           fill="#01A1B7"
         />
       </svg>
-      <span className="vula-intro__glow vula-intro__glow--back" />
-      <span className="vula-intro__glow vula-intro__glow--beam" />
+      {/* The wedge of light that fans out across the floor from the base of the opening doors */}
+      <span className="vula-intro__glow vula-intro__glow--spill" />
       <span className="vula-intro__glow vula-intro__glow--ambient" />
     </div>
   );
 }
 
 export function BrandIntro({ skip = false }: { skip?: boolean }) {
-  const [state, setState] = useState<IntroState>("playing");
+  const [state, setState] = useState<IntroState>("waiting");
   const [transform, setTransform] = useState<IntroTransform | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const markRef = useRef<SVGSVGElement | null>(null);
@@ -59,7 +62,7 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       const target = getVisibleIntroTarget();
 
       if (!introContent || !introMark || !target) {
-        setTransform(null);
+        setTransform((prev) => (prev === null ? prev : null));
         return;
       }
 
@@ -71,7 +74,12 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       const y = targetRect.top + targetRect.height / 2 - (contentRect.top + contentRect.height / 2);
       const scale = Math.max(0.28, Math.min(0.65, targetRect.width / markRect.width));
 
-      setTransform({ x, y, scale });
+      // Skip redundant updates — the ResizeObserver fires an immediate callback on observe,
+      // and an extra re-render right as the intro starts is enough to cause a visible hitch.
+      setTransform((prev) => {
+        if (prev && prev.x === x && prev.y === y && prev.scale === scale) return prev;
+        return { x, y, scale };
+      });
     };
 
     updateTransform();
@@ -104,16 +112,44 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
     }
 
     let hideTimeout = 0;
-    const startFrame = window.requestAnimationFrame(() => {
-      setState("playing");
-      hideTimeout = window.setTimeout(() => {
-        setState("hidden");
-      }, 2680);
-    });
+    let rafA = 0;
+    let rafB = 0;
+    let fallback = 0;
+    let started = false;
+    let cancelled = false;
+
+    const begin = () => {
+      if (started || cancelled) return;
+      started = true;
+
+      // Wait two frames so React's hydration commit (and any font-swap reflow) flushes
+      // before the first animation frame. Starting mid-hydration is what dropped frames
+      // and produced the start-jerk on a real page load.
+      rafA = window.requestAnimationFrame(() => {
+        rafB = window.requestAnimationFrame(() => {
+          if (cancelled) return;
+          setState("playing");
+          hideTimeout = window.setTimeout(() => setState("hidden"), 2680);
+        });
+      });
+    };
+
+    // Prefer to start once webfonts have settled (so a font swap doesn't repaint the page
+    // mid-animation), but never hold the dark frame longer than 180ms.
+    const fontsReady = document.fonts?.ready;
+    if (fontsReady) {
+      fontsReady.then(begin);
+      fallback = window.setTimeout(begin, 180);
+    } else {
+      begin();
+    }
 
     return () => {
-      window.cancelAnimationFrame(startFrame);
+      cancelled = true;
+      window.cancelAnimationFrame(rafA);
+      window.cancelAnimationFrame(rafB);
       window.clearTimeout(hideTimeout);
+      window.clearTimeout(fallback);
     };
   }, []);
 
@@ -148,30 +184,29 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           pointer-events: auto;
           opacity: 1;
         }
-        .vula-intro.is-playing {
-          opacity: 1;
-        }
-        .vula-intro.is-playing .vula-intro__veil,
-        .vula-intro.is-playing .vula-intro__wash,
-        .vula-intro.is-playing .vula-intro__content-shell,
-        .vula-intro.is-playing .vula-intro__content,
-        .vula-intro.is-playing .vula-intro__panel,
-        .vula-intro.is-playing .vula-intro__glow {
+        /* Promote the animated layers up-front (in both waiting and playing states) so the
+           browser is not creating GPU layers on the very frame the animation begins. */
+        .vula-intro__veil,
+        .vula-intro__wash,
+        .vula-intro__content-shell,
+        .vula-intro__content,
+        .vula-intro__panel,
+        .vula-intro__glow {
           will-change: transform, opacity, filter;
         }
         .vula-intro__veil {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(68rem 42rem at 50% 34%, rgba(255, 240, 150, 0.08), transparent 54%),
+            radial-gradient(68rem 42rem at 50% 30%, rgba(255, 214, 150, 0.07), transparent 54%),
             radial-gradient(44rem 28rem at 50% 50%, rgba(15, 23, 42, 0.18), transparent 68%),
             linear-gradient(180deg, rgba(17, 25, 34, 0.985), rgba(10, 15, 22, 0.96));
-          backdrop-filter: blur(7px);
+          backdrop-filter: blur(6px);
         }
         .vula-intro__wash {
           position: absolute;
           inset: -10%;
-          background: radial-gradient(circle at 50% 42%, rgba(255, 244, 155, 0.22) 0%, rgba(255, 232, 128, 0.12) 22%, rgba(255, 232, 128, 0) 50%);
+          background: radial-gradient(circle at 50% 44%, rgba(255, 224, 168, 0.2) 0%, rgba(255, 198, 126, 0.1) 24%, rgba(255, 198, 126, 0) 52%);
           opacity: 0;
           transform: scale(0.9);
         }
@@ -208,39 +243,71 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           pointer-events: none;
           opacity: 0;
         }
-        .vula-intro__glow--back {
-          inset: 8% 8% 8% 8%;
-          z-index: 1;
-          background: radial-gradient(ellipse 80% 70% at 50% 42%, rgba(255, 242, 150, 0.12) 0%, rgba(255, 230, 120, 0.06) 45%, rgba(255, 215, 90, 0) 75%);
-          filter: blur(65px);
-          transform: scale(0.5);
-        }
-        .vula-intro__glow--beam {
+        /* The hero light: a warm shaft of morning sun behind the doors. It sits at z-index 2
+           (behind the mark at z-index 3), so it is only seen through the widening seam as the
+           doors swing open — and it brightens as it grows. */
+        .vula-intro__glow--seam {
           left: 50%;
-          top: 76%;
+          top: 50%;
           z-index: 2;
-          width: 20rem;
-          height: 55%;
-          margin-left: -10rem;
-          background: radial-gradient(ellipse 18% 40% at 50% 0%, rgba(255, 245, 160, 0.92) 0%, rgba(255, 236, 135, 0.60) 25%, rgba(255, 222, 105, 0.28) 55%, rgba(255, 210, 80, 0.06) 82%, transparent 98%);
-          clip-path: polygon(48% 0%, 52% 0%, 98% 100%, 2% 100%);
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 100%);
-          filter: blur(16px) brightness(1.1);
-          transform: scaleX(0.04);
+          width: 6.5rem;
+          height: 8.5rem;
+          margin: 0;
+          transform: translate(-50%, -50%) scaleX(0.16);
           transform-origin: center center;
+          background: radial-gradient(
+            ellipse 32% 60% at 50% 50%,
+            rgba(255, 250, 236, 0.9) 0%,
+            rgba(255, 224, 168, 0.56) 24%,
+            rgba(255, 192, 120, 0.24) 48%,
+            rgba(255, 164, 88, 0.07) 70%,
+            transparent 84%
+          );
+          filter: blur(13px) brightness(0.85);
+        }
+        .vula-intro__glow--back {
+          inset: 6% 6% 6% 6%;
+          z-index: 1;
+          background: radial-gradient(ellipse 78% 72% at 50% 46%, rgba(255, 226, 176, 0.09) 0%, rgba(255, 194, 120, 0.045) 46%, rgba(255, 170, 90, 0) 74%);
+          filter: blur(60px);
+          transform: scale(0.6);
         }
         .vula-intro__glow--ambient {
           left: 50%;
-          bottom: 13%;
+          bottom: 12%;
           z-index: 1;
           width: 20rem;
           height: 5rem;
           margin-left: -10rem;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(255, 238, 140, 0.38) 0%, rgba(255, 222, 110, 0.22) 44%, rgba(255, 222, 110, 0) 78%);
+          background: radial-gradient(circle, rgba(255, 214, 150, 0.4) 0%, rgba(255, 184, 104, 0.22) 44%, rgba(255, 184, 104, 0) 78%);
           filter: blur(20px);
           transform: perspective(160px) rotateX(74deg) scale(0.58);
+        }
+        /* Built entirely from light, not geometry: a conic gradient forms the wedge with soft
+           angular falloff, and a radial mask fades it out with distance from the door base — so
+           there is no hard edge anywhere, only diffusion, the way real light behaves. */
+        .vula-intro__glow--spill {
+          left: 50%;
+          bottom: -0.6rem;
+          z-index: 2;
+          width: 11rem;
+          height: 2.7rem;
+          margin-left: -5.5rem;
+          background: conic-gradient(
+            from 0deg at 50% 0%,
+            transparent 126deg,
+            rgba(255, 234, 186, 0.24) 153deg,
+            rgba(255, 240, 200, 0.5) 180deg,
+            rgba(255, 234, 186, 0.24) 207deg,
+            transparent 234deg,
+            transparent 360deg
+          );
+          -webkit-mask-image: radial-gradient(ellipse 92% 128% at 50% 0%, #000 0%, #000 16%, rgba(0, 0, 0, 0.32) 50%, transparent 76%);
+          mask-image: radial-gradient(ellipse 92% 128% at 50% 0%, #000 0%, #000 16%, rgba(0, 0, 0, 0.32) 50%, transparent 76%);
+          filter: blur(6px);
+          transform-origin: 50% 0%;
+          transform: scaleY(0.62);
         }
 
         .vula-intro.is-playing {
@@ -257,20 +324,23 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
         }
         .vula-intro.is-playing .vula-intro__panel--left {
           animation:
-            vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 0ms both,
+            vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 120ms both,
             vulaLeftTone 920ms ease-in-out 1480ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--right {
-          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 0ms both;
+          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 120ms both;
+        }
+        .vula-intro.is-playing .vula-intro__glow--seam {
+          animation: vulaSeam 1360ms cubic-bezier(0.33, 0, 0.2, 1) 120ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--back {
-          animation: vulaBackLight 1360ms ease-in-out 0ms both;
-        }
-        .vula-intro.is-playing .vula-intro__glow--beam {
-          animation: vulaBeam 1420ms ease-in-out 0ms both;
+          animation: vulaBackLight 1360ms ease-in-out 120ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--ambient {
           animation: vulaAmbient 1320ms ease-in-out 100ms both;
+        }
+        .vula-intro.is-playing .vula-intro__glow--spill {
+          animation: vulaSpill 1280ms cubic-bezier(0.33, 0, 0.2, 1) 200ms both;
         }
 
         @keyframes vulaLeftOpen {
@@ -286,26 +356,32 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           58% { fill: #F8FAFC; }
           100% { fill: #0F172A; }
         }
-        @keyframes vulaBackLight {
-          0% { opacity: 0; transform: scale(0.5); filter: blur(22px) brightness(0.92); }
-          45% { opacity: 0.72; transform: scale(0.84); filter: blur(24px) brightness(1.08); }
-          78% { opacity: 0.94; transform: scale(1.08); filter: blur(28px) brightness(1.28); }
-          100% { opacity: 1; transform: scale(1.22); filter: blur(32px) brightness(1.5); }
+        /* Widen + brighten together: the sun peeks through the crack, then floods in as the doors part. */
+        @keyframes vulaSeam {
+          0%   { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.16); filter: blur(8px)  brightness(0.82); }
+          25%  { opacity: 0.5;  transform: translate(-50%, -50%) scaleX(0.42); filter: blur(11px) brightness(1.05); }
+          60%  { opacity: 0.8;  transform: translate(-50%, -50%) scaleX(0.78); filter: blur(16px) brightness(1.32); }
+          100% { opacity: 1;    transform: translate(-50%, -50%) scaleX(1);    filter: blur(21px) brightness(1.58); }
         }
-        @keyframes vulaBeam {
-          0%  { opacity: 0;    transform: scaleX(0.04); filter: blur(6px)  brightness(0.9);  }
-          22% { opacity: 0.32; transform: scaleX(0.22); filter: blur(9px)  brightness(1.05); }
-          58% { opacity: 0.72; transform: scaleX(0.64); filter: blur(14px) brightness(1.22); }
-          100% { opacity: 1;  transform: scaleX(1);    filter: blur(18px) brightness(1.48); }
+        @keyframes vulaBackLight {
+          0% { opacity: 0; transform: scale(0.6); filter: blur(30px) brightness(0.9); }
+          55% { opacity: 0.7; transform: scale(0.95); filter: blur(34px) brightness(1.16); }
+          100% { opacity: 1; transform: scale(1.18); filter: blur(40px) brightness(1.42); }
         }
         @keyframes vulaAmbient {
           0% { opacity: 0; transform: perspective(160px) rotateX(74deg) scale(0.58); filter: blur(20px) brightness(0.96); }
           100% { opacity: 1; transform: perspective(160px) rotateX(74deg) scale(1.08); filter: blur(24px) brightness(1.24); }
         }
+        /* The V of light reaching further across the floor as the doors part. */
+        @keyframes vulaSpill {
+          0%   { opacity: 0;   transform: scaleY(0.5);  filter: blur(5px) brightness(0.95); }
+          40%  { opacity: 0.6; transform: scaleY(0.82); filter: blur(6px) brightness(1.05); }
+          100% { opacity: 1;   transform: scaleY(1);    filter: blur(7px) brightness(1.22); }
+        }
         @keyframes vulaOverlayFade {
-          0% { opacity: 1; backdrop-filter: blur(7px); }
-          55% { opacity: 0.76; }
-          100% { opacity: 0; backdrop-filter: blur(0px); }
+          0% { opacity: 1; }
+          55% { opacity: 0.72; }
+          100% { opacity: 0; }
         }
         @keyframes vulaWash {
           0% { opacity: 0; transform: scale(0.9); }
@@ -335,6 +411,12 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           }
           .vula-intro__mark {
             width: 4.35rem;
+          }
+          .vula-intro__glow--spill {
+            bottom: -0.5rem;
+            width: 9.5rem;
+            height: 2.3rem;
+            margin-left: -4.75rem;
           }
         }
 
