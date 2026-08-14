@@ -62,7 +62,7 @@ function Contact() {
                 A 90-minute discovery session with a senior Vula Solutions strategist. You leave with a written Compass Report and a clear picture of what your business should do next.
               </p>
               <a
-                href="mailto:hello@shinola.co.za?subject=Compass%E2%84%A2%20booking"
+                href="mailto:info@vulasolutions.co.za?subject=Compass%E2%84%A2%20booking"
                 className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
               >
                 Request a Compass™ slot
@@ -74,8 +74,8 @@ function Contact() {
             <div className="space-y-4 px-1 text-sm text-muted-foreground">
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-electric" />
-                <a href="mailto:hello@shinola.co.za" className="transition hover:text-foreground hover:underline">
-                  hello@shinola.co.za
+                <a href="mailto:info@vulasolutions.co.za" className="transition hover:text-foreground hover:underline">
+                  info@vulasolutions.co.za
                 </a>
               </div>
               <div className="flex items-center gap-3">

@@ -14,7 +14,7 @@ export const Route = createFileRoute("/privacy")({
   component: Privacy,
 });
 
-const CONTACT_EMAIL = "hello@vulasolutions.co.za";
+const CONTACT_EMAIL = "info@vulasolutions.co.za";
 const EFFECTIVE_DATE = "1 August 2025";
 
 function Privacy() {

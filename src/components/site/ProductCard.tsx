@@ -23,6 +23,7 @@ export function ProductCard({ name, tagline, description, to, icon: Icon, accent
     <Link
       to={to}
       className={`card-premium group relative flex h-full flex-col overflow-hidden p-7 transition-transform duration-250 hover:-translate-y-[3px] hover:border-electric/25 hover:shadow-[0_32px_70px_-34px_rgba(15,23,42,0.36)] ${className}`}
+      style={{ borderTopWidth: 0 }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-80 transition-opacity duration-250 group-hover:opacity-100" aria-hidden />
       <div className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br ${accentBg[accent]} blur-2xl`} aria-hidden />

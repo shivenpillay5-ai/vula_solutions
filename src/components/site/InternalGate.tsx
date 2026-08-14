@@ -100,7 +100,7 @@ export function InternalGate({ children }: { children: React.ReactNode }) {
         {/* Footer */}
         <div style={{ background: INK }} className="px-8 py-3">
           <p className="text-[10.5px]" style={{ color: "rgba(255,255,255,.25)" }}>
-            Not for distribution. Contact Shiven Pillay for access.
+            Not for distribution. Contact info@vulasolutions.co.za for access.
           </p>
         </div>
       </div>

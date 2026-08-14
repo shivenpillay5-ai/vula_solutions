@@ -255,7 +255,7 @@ function CompassPage() {
         className="bg-navy-deep"
         tone="dark"
       >
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5">
+        <ol className="grid gap-6 md:grid-cols-6">
           {[
             { icon: Search, l: "D", t: "Discover", b: "Understand the business, goals, people, challenges and opportunities." },
             { icon: ClipboardCheck, l: "A", t: "Assess", b: "Evaluate digital presence, operations, AI readiness, efficiency and risk." },
@@ -263,7 +263,7 @@ function CompassPage() {
             { icon: Hammer, l: "E", t: "Execute", b: "Implement the agreed work through the right Vula solution." },
             { icon: LifeBuoy, l: "S", t: "Support", b: "Ongoing improvement, guidance and partnership after delivery." },
           ].map(({ icon: Icon, l, t, b }, i) => (
-            <li key={t} className={`card-premium p-7 lg:col-span-2 xl:col-span-1${i === 3 ? " lg:col-start-2 xl:col-start-auto" : ""}`}>
+            <li key={t} className={`card-premium p-7 md:col-span-2${i === 3 ? " md:col-start-2" : ""}`}>
               <div className="flex items-center gap-3">
                 <span className="font-display text-4xl text-electric">{l}</span>
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary text-electric">

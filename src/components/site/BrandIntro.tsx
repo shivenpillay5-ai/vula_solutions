@@ -8,6 +8,31 @@ type IntroTransform = {
   scale: number;
 };
 
+const INTRO_SESSION_KEY = "vula-intro-played";
+
+// Runs synchronously during HTML parse, before first paint. The intro overlay is
+// server-rendered on every page, so on loads where it should NOT play (any page that
+// isn't the homepage, or a repeat view in this tab session) we must hide it before the
+// browser paints — otherwise every refresh would flash the dark veil while React hydrates.
+const INTRO_GUARD_SCRIPT = `(function(){try{if(location.pathname!=="/"||sessionStorage.getItem("${INTRO_SESSION_KEY}")==="1"){document.documentElement.setAttribute("data-vula-intro-skip","")}}catch(e){}})();`;
+
+function shouldPlayIntro() {
+  if (window.location.pathname !== "/") return false;
+  try {
+    return window.sessionStorage.getItem(INTRO_SESSION_KEY) !== "1";
+  } catch {
+    return true;
+  }
+}
+
+function markIntroPlayed() {
+  try {
+    window.sessionStorage.setItem(INTRO_SESSION_KEY, "1");
+  } catch {
+    // Private browsing with storage disabled — the intro will simply replay next load.
+  }
+}
+
 function getVisibleIntroTarget() {
   const targets = Array.from(document.querySelectorAll<SVGElement>('[data-brand-intro-target="true"]'));
 
@@ -23,9 +48,11 @@ function getVisibleIntroTarget() {
 function IntroMark({ markRef }: { markRef: RefObject<SVGSVGElement | null> }) {
   return (
     <div className="vula-intro__mark-wrap" aria-hidden="true">
-      {/* Warm sunlight streaming through the seam — sits behind the doors and is revealed as they open */}
-      <span className="vula-intro__glow vula-intro__glow--seam" />
+      {/* All light lives BEHIND the doors (z2, doors z3). The opening panels act as a
+          natural mask: a crack of light appears, widens, and floods — nothing is overlaid. */}
       <span className="vula-intro__glow vula-intro__glow--back" />
+      <span className="vula-intro__glow vula-intro__glow--sun" />
+      <span className="vula-intro__glow vula-intro__glow--shaft" />
       <svg ref={markRef} viewBox="0 0 420 500" className="vula-intro__mark" xmlns="http://www.w3.org/2000/svg">
         <path
           className="vula-intro__panel vula-intro__panel--left"
@@ -40,9 +67,10 @@ function IntroMark({ markRef }: { markRef: RefObject<SVGSVGElement | null> }) {
           fill="#01A1B7"
         />
       </svg>
-      {/* The wedge of light that fans out across the floor from the base of the opening doors */}
+      {/* Floor spill sits below the door base, so nothing occludes it */}
       <span className="vula-intro__glow vula-intro__glow--spill" />
-      <span className="vula-intro__glow vula-intro__glow--ambient" />
+      {/* Soft camera-glare bloom along the open seam — very diffuse, arrives late */}
+      <span className="vula-intro__glow vula-intro__glow--bloom" />
     </div>
   );
 }
@@ -104,12 +132,22 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // The intro is a once-per-visit moment: homepage only, first load of this tab session.
+    // (The inline guard script already hid the overlay pre-paint in the skip cases;
+    // this just unmounts it properly.)
+    if (!shouldPlayIntro()) {
+      setState("hidden");
+      return;
+    }
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reducedMotion) {
       setState("hidden");
       return;
     }
+
+    markIntroPlayed();
 
     let hideTimeout = 0;
     let rafA = 0;
@@ -129,17 +167,17 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
         rafB = window.requestAnimationFrame(() => {
           if (cancelled) return;
           setState("playing");
-          hideTimeout = window.setTimeout(() => setState("hidden"), 2680);
+          hideTimeout = window.setTimeout(() => setState("hidden"), 2320);
         });
       });
     };
 
     // Prefer to start once webfonts have settled (so a font swap doesn't repaint the page
-    // mid-animation), but never hold the dark frame longer than 180ms.
+    // mid-animation), but never hold the dark frame longer than 120ms.
     const fontsReady = document.fonts?.ready;
     if (fontsReady) {
       fontsReady.then(begin);
-      fallback = window.setTimeout(begin, 180);
+      fallback = window.setTimeout(begin, 120);
     } else {
       begin();
     }
@@ -167,6 +205,7 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       className={`vula-intro ${state === "playing" ? "is-playing" : "is-waiting"} fixed inset-0 z-[100] overflow-hidden`}
       style={style}
     >
+      <script dangerouslySetInnerHTML={{ __html: INTRO_GUARD_SCRIPT }} />
       <div className="vula-intro__veil" />
       <div className="vula-intro__wash" />
       <div className="vula-intro__content-shell">
@@ -176,6 +215,9 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       </div>
 
       <style>{`
+        [data-vula-intro-skip] .vula-intro {
+          display: none !important;
+        }
         .vula-intro {
           --intro-target-x: calc(-50vw + 6.3rem);
           --intro-target-y: calc(-50vh + 3rem);
@@ -243,50 +285,64 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           pointer-events: none;
           opacity: 0;
         }
-        /* The hero light: a warm shaft of morning sun behind the doors. It sits at z-index 2
-           (behind the mark at z-index 3), so it is only seen through the widening seam as the
-           doors swing open — and it brightens as it grows. */
-        .vula-intro__glow--seam {
-          left: 50%;
-          top: 50%;
-          z-index: 2;
-          width: 6.5rem;
-          height: 8.5rem;
-          margin: 0;
-          transform: translate(-50%, -50%) scaleX(0.16);
-          transform-origin: center center;
-          background: radial-gradient(
-            ellipse 32% 60% at 50% 50%,
-            rgba(255, 250, 236, 0.9) 0%,
-            rgba(255, 224, 168, 0.56) 24%,
-            rgba(255, 192, 120, 0.24) 48%,
-            rgba(255, 164, 88, 0.07) 70%,
-            transparent 84%
-          );
-          filter: blur(13px) brightness(0.85);
-        }
+        /* Soft warm halo behind everything — ambient room fill */
         .vula-intro__glow--back {
-          inset: 6% 6% 6% 6%;
+          inset: -5% -5% -5% -5%;
           z-index: 1;
-          background: radial-gradient(ellipse 78% 72% at 50% 46%, rgba(255, 226, 176, 0.09) 0%, rgba(255, 194, 120, 0.045) 46%, rgba(255, 170, 90, 0) 74%);
-          filter: blur(60px);
-          transform: scale(0.6);
+          background: radial-gradient(
+            ellipse 72% 68% at 50% 55%,
+            rgba(255, 185, 45, 0.15) 0%,
+            rgba(255, 150, 18, 0.07) 44%,
+            transparent 72%
+          );
+          filter: blur(40px);
+          transform: scale(0.5);
         }
-        .vula-intro__glow--ambient {
+        /* The sun itself: an intense warm disc at mid-door height, BEHIND the panels.
+           The parting doors reveal it naturally — first a crack, then a blaze. */
+        .vula-intro__glow--sun {
           left: 50%;
-          bottom: 12%;
-          z-index: 1;
-          width: 20rem;
-          height: 5rem;
-          margin-left: -10rem;
-          border-radius: 999px;
-          background: radial-gradient(circle, rgba(255, 214, 150, 0.4) 0%, rgba(255, 184, 104, 0.22) 44%, rgba(255, 184, 104, 0) 78%);
-          filter: blur(20px);
-          transform: perspective(160px) rotateX(74deg) scale(0.58);
+          bottom: 3.7rem;
+          z-index: 2;
+          width: 3.4rem;
+          height: 2.8rem;
+          margin-left: -1.7rem;
+          border-radius: 50%;
+          transform-origin: center center;
+          transform: scale(0.5);
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 236, 1) 0%,
+            rgba(255, 241, 178, 0.96) 16%,
+            rgba(255, 208, 96, 0.62) 42%,
+            rgba(255, 166, 42, 0.24) 66%,
+            transparent 86%
+          );
+          filter: blur(5px) brightness(1.8);
         }
-        /* Built entirely from light, not geometry: a conic gradient forms the wedge with soft
-           angular falloff, and a radial mask fades it out with distance from the door base — so
-           there is no hard edge anywhere, only diffusion, the way real light behaves. */
+        /* Column of light falling from the sun down to the door base — also behind the
+           panels, so it reads as light streaming through the open doorway toward the floor */
+        .vula-intro__glow--shaft {
+          left: 50%;
+          bottom: 2rem;
+          z-index: 2;
+          width: 2.6rem;
+          height: 3.1rem;
+          margin-left: -1.3rem;
+          transform-origin: 50% 0%;
+          transform: scaleY(0.06);
+          background: radial-gradient(
+            ellipse 62% 58% at 50% 0%,
+            rgba(255, 248, 205, 0.9) 0%,
+            rgba(255, 216, 115, 0.55) 30%,
+            rgba(255, 175, 55, 0.26) 56%,
+            rgba(255, 135, 20, 0.07) 78%,
+            transparent 92%
+          );
+          filter: blur(5px) brightness(1.4);
+        }
+        /* V-shaped pool of light fanning across the floor from the doorway base —
+           grows as the doors open wider */
         .vula-intro__glow--spill {
           left: 50%;
           bottom: -0.6rem;
@@ -303,44 +359,67 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
             transparent 234deg,
             transparent 360deg
           );
-          -webkit-mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0, 0, 0, 0.62) 0%, #000 32%, rgba(0, 0, 0, 0.34) 58%, transparent 80%);
-          mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0, 0, 0, 0.62) 0%, #000 32%, rgba(0, 0, 0, 0.34) 58%, transparent 80%);
+          -webkit-mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0,0,0,0.62) 0%, #000 32%, rgba(0,0,0,0.34) 58%, transparent 80%);
+          mask-image: radial-gradient(ellipse 92% 132% at 50% 0%, rgba(0,0,0,0.62) 0%, #000 32%, rgba(0,0,0,0.34) 58%, transparent 80%);
           filter: blur(10px);
           transform-origin: 50% 0%;
-          transform: scaleY(0.62);
+          transform: scaleY(0.4);
+        }
+        /* Glare bloom hugging the open seam — extremely diffuse so it reads as light
+           flaring past the door edges, never as an object on the door faces */
+        .vula-intro__glow--bloom {
+          left: 50%;
+          bottom: 2.1rem;
+          z-index: 4;
+          width: 2.4rem;
+          height: 6.1rem;
+          margin-left: -1.2rem;
+          transform-origin: 50% 60%;
+          transform: scale(0.7);
+          background: radial-gradient(
+            ellipse 46% 52% at 50% 42%,
+            rgba(255, 246, 205, 0.52) 0%,
+            rgba(255, 214, 120, 0.28) 40%,
+            rgba(255, 175, 60, 0.10) 65%,
+            transparent 82%
+          );
+          filter: blur(14px);
         }
 
         .vula-intro.is-playing {
-          animation: vulaIntroDone 220ms ease-in-out 2460ms forwards;
+          animation: vulaIntroDone 200ms ease-in-out 2120ms forwards;
         }
         .vula-intro.is-playing .vula-intro__veil {
-          animation: vulaOverlayFade 1980ms ease-in-out 0ms both;
+          animation: vulaOverlayFade 1700ms ease-in-out 0ms both;
         }
         .vula-intro.is-playing .vula-intro__wash {
-          animation: vulaWash 1520ms ease-in-out 100ms both;
+          animation: vulaWash 1300ms ease-in-out 60ms both;
         }
         .vula-intro.is-playing .vula-intro__content {
-          animation: vulaSettle 1000ms cubic-bezier(0.32, 0.06, 0.16, 1) 1480ms both;
+          animation: vulaSettle 900ms cubic-bezier(0.32, 0.06, 0.16, 1) 1240ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--left {
           animation:
-            vulaLeftOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 120ms both,
-            vulaLeftTone 920ms ease-in-out 1480ms both;
+            vulaLeftOpen 1140ms cubic-bezier(0.45, 0, 0.2, 1) 60ms both,
+            vulaLeftTone 800ms ease-in-out 1240ms both;
         }
         .vula-intro.is-playing .vula-intro__panel--right {
-          animation: vulaRightOpen 1320ms cubic-bezier(0.45, 0, 0.2, 1) 120ms both;
-        }
-        .vula-intro.is-playing .vula-intro__glow--seam {
-          animation: vulaSeam 1360ms cubic-bezier(0.33, 0, 0.2, 1) 120ms both;
+          animation: vulaRightOpen 1140ms cubic-bezier(0.45, 0, 0.2, 1) 60ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--back {
-          animation: vulaBackLight 1360ms ease-in-out 120ms both;
+          animation: vulaBackLight 1180ms ease-in-out 60ms both;
         }
-        .vula-intro.is-playing .vula-intro__glow--ambient {
-          animation: vulaAmbient 1320ms ease-in-out 100ms both;
+        .vula-intro.is-playing .vula-intro__glow--sun {
+          animation: vulaSun 1120ms cubic-bezier(0.3, 0, 0.2, 1) 60ms both;
+        }
+        .vula-intro.is-playing .vula-intro__glow--shaft {
+          animation: vulaShaft 1100ms cubic-bezier(0.33, 0, 0.2, 1) 110ms both;
         }
         .vula-intro.is-playing .vula-intro__glow--spill {
-          animation: vulaSpill 1280ms cubic-bezier(0.33, 0, 0.2, 1) 200ms both;
+          animation: vulaSpill 1000ms cubic-bezier(0.33, 0, 0.2, 1) 220ms both;
+        }
+        .vula-intro.is-playing .vula-intro__glow--bloom {
+          animation: vulaBloom 760ms ease-out 430ms both;
         }
 
         @keyframes vulaLeftOpen {
@@ -356,27 +435,34 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           58% { fill: #F8FAFC; }
           100% { fill: #0F172A; }
         }
-        /* Widen + brighten together: the sun peeks through the crack, then floods in as the doors part. */
-        @keyframes vulaSeam {
-          0%   { opacity: 0;    transform: translate(-50%, -50%) scaleX(0.16); filter: blur(8px)  brightness(0.82); }
-          25%  { opacity: 0.5;  transform: translate(-50%, -50%) scaleX(0.42); filter: blur(11px) brightness(1.05); }
-          60%  { opacity: 0.8;  transform: translate(-50%, -50%) scaleX(0.78); filter: blur(16px) brightness(1.32); }
-          100% { opacity: 1;    transform: translate(-50%, -50%) scaleX(1);    filter: blur(21px) brightness(1.58); }
-        }
         @keyframes vulaBackLight {
-          0% { opacity: 0; transform: scale(0.6); filter: blur(30px) brightness(0.9); }
-          55% { opacity: 0.7; transform: scale(0.95); filter: blur(34px) brightness(1.16); }
-          100% { opacity: 1; transform: scale(1.18); filter: blur(40px) brightness(1.42); }
+          0%   { opacity: 0;   transform: scale(0.5);  filter: blur(40px) brightness(1.0);  }
+          45%  { opacity: 0.6; transform: scale(0.85); filter: blur(36px) brightness(1.35); }
+          100% { opacity: 1;   transform: scale(1.1);  filter: blur(28px) brightness(1.55); }
         }
-        @keyframes vulaAmbient {
-          0% { opacity: 0; transform: perspective(160px) rotateX(74deg) scale(0.58); filter: blur(20px) brightness(0.96); }
-          100% { opacity: 1; transform: perspective(160px) rotateX(74deg) scale(1.08); filter: blur(24px) brightness(1.24); }
+        /* Already burning when the crack first opens, then swells and intensifies */
+        @keyframes vulaSun {
+          0%   { opacity: 0;    transform: scale(0.5);  filter: blur(4px) brightness(1.6); }
+          15%  { opacity: 0.95; transform: scale(0.66); filter: blur(4px) brightness(2.1); }
+          60%  { opacity: 1;    transform: scale(0.88); filter: blur(5px) brightness(2.5); }
+          100% { opacity: 1;    transform: scale(1);    filter: blur(6px) brightness(2.7); }
         }
-        /* The V of light reaching further across the floor as the doors part. */
+        /* Light reaches down from the sun to the floor as the gap widens */
+        @keyframes vulaShaft {
+          0%   { opacity: 0;    transform: scaleY(0.06); filter: blur(3px) brightness(1.8);  }
+          25%  { opacity: 0.8;  transform: scaleY(0.42); filter: blur(4px) brightness(1.6);  }
+          65%  { opacity: 0.95; transform: scaleY(0.8);  filter: blur(5px) brightness(1.45); }
+          100% { opacity: 1;    transform: scaleY(1);    filter: blur(6px) brightness(1.35); }
+        }
+        /* The floor pool spreads wider and brighter the more the doors open */
         @keyframes vulaSpill {
-          0%   { opacity: 0;   transform: scaleY(0.5);  filter: blur(8px)  brightness(0.95); }
-          40%  { opacity: 0.6; transform: scaleY(0.82); filter: blur(9px)  brightness(1.05); }
-          100% { opacity: 1;   transform: scaleY(1);    filter: blur(11px) brightness(1.22); }
+          0%   { opacity: 0;    transform: scaleY(0.4);  filter: blur(8px)  brightness(0.95); }
+          45%  { opacity: 0.65; transform: scaleY(0.8);  filter: blur(9px)  brightness(1.08); }
+          100% { opacity: 1;    transform: scaleY(1);    filter: blur(11px) brightness(1.3);  }
+        }
+        @keyframes vulaBloom {
+          0%   { opacity: 0;    transform: scale(0.7); }
+          100% { opacity: 0.55; transform: scale(1);   }
         }
         @keyframes vulaOverlayFade {
           0% { opacity: 1; }
@@ -411,6 +497,20 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
           }
           .vula-intro__mark {
             width: 4.35rem;
+          }
+          .vula-intro__glow--sun {
+            bottom: 3.2rem;
+            width: 3rem;
+            height: 2.4rem;
+            margin-left: -1.5rem;
+          }
+          .vula-intro__glow--shaft {
+            bottom: 1.75rem;
+            height: 2.65rem;
+          }
+          .vula-intro__glow--bloom {
+            bottom: 1.8rem;
+            height: 5.2rem;
           }
           .vula-intro__glow--spill {
             bottom: -0.5rem;
