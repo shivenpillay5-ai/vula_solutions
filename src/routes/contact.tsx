@@ -59,7 +59,7 @@ function Contact() {
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-electric">Recommended starting point</p>
               <h2 className="mt-3 text-lg font-semibold">Book Compass™</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                A 90-minute discovery session with a senior Vula Solutions strategist. You leave with a written Compass Report and a clear picture of what your business should do next.
+                A focused discovery session with a senior Vula Solutions strategist. You leave with a written Compass Report and a clear picture of what your business should do next.
               </p>
               <a
                 href="mailto:info@vulasolutions.co.za?subject=Compass%E2%84%A2%20booking"

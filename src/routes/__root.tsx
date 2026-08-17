@@ -125,6 +125,9 @@ function RootShell({ children }: { children: ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: 'history.scrollRestoration="manual"' }} />
         {/* Only applies dark if user has explicitly chosen it — site always defaults to light */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{if(localStorage.getItem('vula-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})()` }} />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE6WZP7QLT" />
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CE6WZP7QLT');` }} />
         <HeadContent />
       </head>
       <body>

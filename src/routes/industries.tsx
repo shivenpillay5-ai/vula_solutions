@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: "We're a niche or specialist business. Can you still help?",
-    a: "Almost certainly. If your business relies on a strong digital presence, clear processes and confident use of technology, we can add value. Compass™ is the quickest way to find out. It takes less than half a day and gives you a clear picture regardless of whether you continue with us.",
+    a: "Almost certainly. If your business relies on a strong digital presence, clear processes and confident use of technology, we can add value. Compass™ is the quickest way to find out — sessions typically range from around 90 minutes to a full day depending on your business complexity — and it gives you a clear picture regardless of whether you continue with us.",
   },
   {
     q: "We operate in a regulated environment. Is that a problem?",

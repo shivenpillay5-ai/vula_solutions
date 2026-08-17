@@ -26,7 +26,7 @@ const compassTiers = [
     from: false,
     featured: false,
     included: [
-      "90-minute discovery session",
+      "Discovery session (approx. 90 minutes)",
       "1–2 stakeholder participants",
       "Digital presence and operations review",
       "Written Compass Report with prioritised roadmap",
@@ -39,7 +39,7 @@ const compassTiers = [
     from: false,
     featured: true,
     included: [
-      "Half-day discovery session",
+      "Discovery session (approximately half a day)",
       "Up to 5 stakeholders across functions",
       "Digital, operations and AI readiness audit",
       "Competitive landscape review",

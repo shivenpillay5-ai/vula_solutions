@@ -236,7 +236,7 @@ function CompassPage() {
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
             { n: "01", t: "Pre-session brief", b: "A short intake so we arrive prepared and focused on your business." },
-            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist, typically 90 minutes." },
+            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist. Duration varies by tier — from around 90 minutes to a full day." },
             { n: "03", t: "Analysis", b: "We synthesise findings and map opportunities across your business." },
             { n: "04", t: "Compass Report", b: "A written roadmap with priorities, options and clear next steps." },
           ].map((s) => (
@@ -306,7 +306,7 @@ function CompassPage() {
           { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business. Reach out and we'll send you the details before you decide." },
           { q: "Can I do Compass™ remotely?", a: "Yes. Compass™ works equally well in person or online. Most sessions are conducted via video call, with clients across South Africa." },
           { q: "Who runs the session?", a: "A senior Vula Solutions strategist who has worked across websites, AI adoption, automation and SME growth." },
-          { q: "How long does it take?", a: "The session itself is typically 90 minutes. The Compass Report is delivered within a week." },
+          { q: "How long does it take?", a: "It depends on the tier. Essential sessions are typically around 90 minutes, Professional sessions run roughly half a day, and Strategic engagements span a full day or more depending on scope. The Compass Report is delivered within a week." },
           { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose. There's no obligation to continue working with us." },
           { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand. The rest is a conversation." },
         ]} />
