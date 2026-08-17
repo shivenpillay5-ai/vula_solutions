@@ -84,7 +84,7 @@ function Contact() {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 shrink-0 text-electric" />
-                <span>South Africa · Remote-first</span>
+                <span>South Africa · In-person &amp; remote</span>
               </div>
             </div>
           </div>
