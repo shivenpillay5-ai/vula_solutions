@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --legacy-peer-deps --foreground-scripts",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "npm run build",
   "framework": null
 }
