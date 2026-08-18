@@ -39,8 +39,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md print:hidden">
       <div className="container-page flex h-16 items-center justify-between gap-6 lg:h-20">
         <Link to="/" className="flex items-center" aria-label="Vula Solutions home">
-          <Logo className="lg:hidden" showTagline={false} showWordmark={false} size="md" markTarget />
-          <Logo className="hidden lg:inline-flex" showTagline={false} size="hero" markTarget />
+          <span className="lg:hidden">
+            <Logo showTagline={false} showWordmark={false} size="md" markTarget />
+          </span>
+          <span className="hidden lg:inline-flex">
+            <Logo showTagline={false} size="hero" markTarget />
+          </span>
         </Link>
         {/* Desktop nav — only visible at lg (1024px+) where all 8 links + CTA fit */}
         <nav aria-label="Primary" className="hidden items-center gap-5 text-sm font-medium text-muted-foreground lg:flex">
