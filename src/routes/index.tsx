@@ -49,7 +49,20 @@ function Hero() {
             Running a business is complicated enough. Choosing the right technology shouldn't be.
             We help you open the right doors to clarity, confidence and practical technology that fits your business.
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          {/* Hero image — visible on mobile only, sits between text and buttons */}
+          <div className="relative my-8 md:hidden">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
+              <img
+                src={heroDoorway}
+                alt="Two elegant architectural doors opening onto a bright sunlit landscape."
+                width={1600}
+                height={1200}
+                className="h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-navy-deep/40 via-transparent to-transparent" />
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/compass"
               className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90"
@@ -66,7 +79,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="relative order-first md:order-last">
+        <div className="relative hidden md:block">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
             <img
               src={heroDoorway}
