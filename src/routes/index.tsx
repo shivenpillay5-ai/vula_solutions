@@ -66,7 +66,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="relative hidden md:block">
+        <div className="relative">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
             <img
               src={heroDoorway}

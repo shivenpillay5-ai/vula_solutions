@@ -40,7 +40,7 @@ export function SiteHeader() {
       <div className="container-page flex h-16 items-center justify-between gap-6 lg:h-20">
         <Link to="/" className="flex items-center" aria-label="Vula Solutions home">
           <span className="lg:hidden">
-            <Logo showTagline={false} showWordmark={false} size="md" markTarget />
+            <Logo showTagline={false} size="sm" markTarget />
           </span>
           <span className="hidden lg:inline-flex">
             <Logo showTagline={false} size="hero" markTarget />
