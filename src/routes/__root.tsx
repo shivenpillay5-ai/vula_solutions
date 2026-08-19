@@ -16,22 +16,56 @@ import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { BrandIntro } from "../components/site/BrandIntro";
 import { AskCompass } from "../components/site/AskCompass";
+import { Mark } from "../components/site/Logo";
+
+/**
+ * Structured data for search engines — ProfessionalService covers
+ * Organization and LocalBusiness. Only public business info here.
+ */
+const JSON_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://vulasolutions.co.za/#organization",
+  name: "Vula Solutions",
+  url: "https://vulasolutions.co.za/",
+  slogan: "Open the door to a smarter, stronger business.",
+  description:
+    "Vula Solutions is a Business Transformation Partner for South African SMEs. Strategy, websites, AI, automation and SEO — every engagement starts with Compass™, our signature business discovery session.",
+  image: "https://vulasolutions.co.za/og-image.png",
+  email: "info@vulasolutions.co.za",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Midrand",
+    addressRegion: "Gauteng",
+    addressCountry: "ZA",
+  },
+  areaServed: { "@type": "Country", name: "South Africa" },
+  sameAs: ["https://www.linkedin.com/company/vula-solutions/"],
+});
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-[70vh] items-center justify-center bg-background px-4 py-20">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <Mark className="mx-auto h-14 w-auto" />
+        <p className="font-display mt-8 text-7xl font-semibold tracking-tight text-foreground">404</p>
+        <h1 className="mt-3 text-xl font-semibold text-foreground">This door leads nowhere.</h1>
+        <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+          Vula means open — but the page you're looking for doesn't exist or has moved.
+          Let's get you back to somewhere useful.
         </p>
-        <div className="mt-6">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex h-11 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
           >
             Go home
+          </Link>
+          <Link
+            to="/compass"
+            className="inline-flex h-11 items-center rounded-full border border-border px-6 text-sm font-medium text-foreground transition hover:border-electric/40 hover:text-electric"
+          >
+            Discover Compass™
           </Link>
         </div>
       </div>
@@ -133,6 +167,8 @@ function RootShell({ children }: { children: ReactNode }) {
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE6WZP7QLT" />
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CE6WZP7QLT');` }} />
+        {/* Structured data for Google — Organization / LocalBusiness */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD }} />
         <HeadContent />
       </head>
       <body>
