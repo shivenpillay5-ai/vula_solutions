@@ -50,6 +50,7 @@ export function AskCompass() {
   const [error, setError] = useState<string | null>(null);
   const [hasOpened, setHasOpened] = useState(false);
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const latestMsgRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
@@ -76,7 +77,14 @@ export function AskCompass() {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
-    viewport.scrollTo({ top: viewport.scrollHeight, behavior: "smooth" });
+    if (latestMsgRef.current) {
+      const msgRect = latestMsgRef.current.getBoundingClientRect();
+      const viewRect = viewport.getBoundingClientRect();
+      const relativeTop = msgRect.top - viewRect.top + viewport.scrollTop;
+      viewport.scrollTo({ top: relativeTop - 12, behavior: "smooth" });
+    } else {
+      viewport.scrollTo({ top: viewport.scrollHeight, behavior: "smooth" });
+    }
   }, [loading, messages]);
 
   const quickReplies = useMemo(() => {
@@ -168,9 +176,10 @@ export function AskCompass() {
                 <strong className="font-semibold text-foreground">Ask Compass™</strong> uses curated website guidance and stays within VULA's published positioning.
               </div>
 
-              {messages.map((message) => (
+              {messages.map((message, index) => (
                 <div
                   key={message.id}
+                  ref={index === messages.length - 1 ? latestMsgRef : null}
                   className={cn(
                     "flex",
                     message.role === "user" ? "justify-end" : "justify-start",
