@@ -4,7 +4,7 @@ import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
 import { CTA } from "@/components/site/CTA";
-import { Reveal } from "@/components/site/Reveal";
+import { useReveal } from "@/components/site/Reveal";
 import heroDoorway from "@/assets/hero-doorway.jpg";
 
 export const Route = createFileRoute("/")({
@@ -25,11 +25,11 @@ function Home() {
   return (
     <>
       <Hero />
-      <Reveal><CompassIntro /></Reveal>
-      <Reveal><SolutionsOverview /></Reveal>
-      <Reveal><WhyVula /></Reveal>
-      <Reveal><BrandBand /></Reveal>
-      <Reveal><CTA /></Reveal>
+      <CompassIntro />
+      <SolutionsOverview />
+      <WhyVula />
+      <BrandBand />
+      <CTA />
     </>
   );
 }
@@ -99,9 +99,10 @@ function Hero() {
 }
 
 function BrandBand() {
+  const reveal = useReveal();
   return (
     <section className="bg-secondary/40 py-16 sm:py-20">
-      <div className="container-page mx-auto max-w-3xl text-center">
+      <div ref={reveal.ref} className={`container-page mx-auto max-w-3xl text-center ${reveal.className}`}>
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-electric">
           Vula means open
         </p>
@@ -201,14 +202,16 @@ function WhyVula() {
   ];
   return (
     <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology, with a calm, considered approach.">
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-x-12 gap-y-9 sm:grid-cols-2">
         {points.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="card-premium card-premium-hover p-7">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-electric/10 text-electric">
+          <div key={title} className="flex items-start gap-4">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric/10 text-electric">
               <Icon className="h-5 w-5" />
             </span>
-            <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            <div>
+              <h3 className="text-base font-semibold tracking-tight">{title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            </div>
           </div>
         ))}
       </div>

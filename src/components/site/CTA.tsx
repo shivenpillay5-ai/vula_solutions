@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useReveal } from "./Reveal";
 
 export function CTA({
   title = "Ready to find your direction?",
@@ -11,9 +12,10 @@ export function CTA({
   primary?: { to: string; label: string };
   secondary?: { to: string; label: string };
 }) {
+  const reveal = useReveal();
   return (
     <section className="py-10 sm:py-14">
-      <div className="container-page">
+      <div ref={reveal.ref} className={`container-page ${reveal.className}`}>
         <div className="gradient-hero relative overflow-hidden rounded-3xl px-8 py-16 text-center sm:px-16 sm:py-20">
           <h2 className="mx-auto max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
             {title}

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useReveal } from "./Reveal";
 
 export function Section({
   eyebrow,
@@ -20,10 +21,11 @@ export function Section({
   const titleClass = tone === "dark" ? "text-white" : "text-foreground";
   const introClass = tone === "dark" ? "text-white/70" : "text-muted-foreground";
   const spacingClass = tone === "dark" ? "py-14 sm:py-20" : "py-10 sm:py-14";
+  const reveal = useReveal();
 
   return (
     <section className={`${spacingClass} ${className}`}>
-      <div className="container-page">
+      <div ref={reveal.ref} className={`container-page ${reveal.className}`}>
         {(eyebrow || title || intro) && (
           <div className={`mb-12 max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
             {eyebrow && (
