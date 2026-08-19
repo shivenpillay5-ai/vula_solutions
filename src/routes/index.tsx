@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass as CompassIcon } from "lucide-react";
+import { ArrowRight, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
@@ -58,7 +58,7 @@ function Hero() {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-navy-deep/40 via-transparent to-transparent" />
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/compass"
               className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90"
@@ -99,15 +99,15 @@ function Hero() {
 
 function BrandBand() {
   return (
-    <section className="bg-navy-deep py-16 sm:py-20">
+    <section className="bg-background py-16 sm:py-20">
       <div className="container-page mx-auto max-w-3xl text-center">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#01A1B7" }}>
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-electric">
           Vula means open
         </p>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-          We help you <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
+        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+          We help you <span className="text-electric">open the door</span> to a smarter, stronger business.
         </h2>
-        <p className="mt-5 text-lg leading-relaxed text-white/65">
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
           VULA is a Business Transformation Partner — not a website agency, an AI vendor or IT support.
           The best technology is the kind that helps your business thrive without getting in the way.
         </p>
@@ -125,8 +125,8 @@ function CompassIntro() {
   ];
 
   return (
-    <Section>
-      <div className="grid gap-12 md:grid-cols-2 md:items-start">
+    <Section className="bg-secondary/40">
+      <div className="grid gap-12 md:grid-cols-2 md:items-center">
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-electric">
             The starting point
@@ -148,7 +148,7 @@ function CompassIntro() {
           </Link>
         </div>
 
-        <div className="space-y-4">
+        <div className="relative">
           <div className="card-premium p-8">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-white">
@@ -173,18 +173,24 @@ function CompassIntro() {
               ))}
             </ul>
           </div>
-
-          {/* Approach steps — folded in from the old Approach section */}
-          <div className="grid grid-cols-2 gap-3">
-            {steps.map((s) => (
-              <div key={s.n} className="rounded-xl border border-border bg-secondary/40 p-4">
-                <p className="font-display text-2xl text-electric">{s.n}</p>
-                <h3 className="mt-2 text-sm font-semibold">{s.t}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.b}</p>
-              </div>
-            ))}
-          </div>
+          <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-electric/10 to-growth/10 blur-2xl" aria-hidden />
         </div>
+      </div>
+
+      {/* The journey — Compass™ is step one, the strip shows where it leads */}
+      <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s, i) => (
+          <div key={s.n} className="card-premium relative p-6">
+            {i < steps.length - 1 && (
+              <ArrowRight className="absolute -right-4 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-electric/50 lg:block" aria-hidden />
+            )}
+            <div className="flex items-baseline gap-3">
+              <span className="font-display text-2xl font-semibold text-electric">{s.n}</span>
+              <h3 className="text-base font-semibold">{s.t}</h3>
+            </div>
+            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.b}</p>
+          </div>
+        ))}
       </div>
     </Section>
   );
@@ -210,18 +216,21 @@ function SolutionsOverview() {
 
 function WhyVula() {
   const points = [
-    { title: "Strategy before technology", body: "We start with your business, not with tools. Clarity first, execution second." },
-    { title: "Practical, not theoretical", body: "Outcomes you can measure: faster processes, better websites, real AI adoption." },
-    { title: "Premium, without the overhead", body: "The quality of a senior team, structured for small and medium businesses." },
-    { title: "One partner, end to end", body: "Discovery, design, build, automation and ongoing support under one roof." },
+    { icon: RouteIcon, title: "Strategy before technology", body: "We start with your business, not with tools. Clarity first, execution second." },
+    { icon: Gauge, title: "Practical, not theoretical", body: "Outcomes you can measure: faster processes, better websites, real AI adoption." },
+    { icon: Gem, title: "Premium, without the overhead", body: "The quality of a senior team, structured for small and medium businesses." },
+    { icon: Handshake, title: "One partner, end to end", body: "Discovery, design, build, automation and ongoing support under one roof." },
   ];
   return (
     <Section eyebrow="Why Vula Solutions" title="A partner, not a vendor." intro="We build confidence through technology, with a calm, considered approach.">
       <div className="grid gap-6 sm:grid-cols-2">
-        {points.map((p) => (
-          <div key={p.title} className="card-premium p-7">
-            <h3 className="text-lg font-semibold tracking-tight">{p.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+        {points.map(({ icon: Icon, title, body }) => (
+          <div key={title} className="card-premium card-premium-hover p-7">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-electric/10 text-electric">
+              <Icon className="h-5 w-5" />
+            </span>
+            <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>
+            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
           </div>
         ))}
       </div>
