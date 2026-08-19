@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   Checklist, TextQ, DataTable,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/software-buying-checklist")({
   head: () => ({
     meta: [
-      { title: "Software Buying Checklist — Vula Solutions" },
+      { title: "Software Buying Checklist â€” Vula Solutions" },
       { name: "description", content: "Choose business software with confidence. Define requirements, evaluate vendors objectively and avoid costly mistakes. Free from Vula Solutions." },
       { property: "og:title", content: "Software Buying Checklist" },
       { property: "og:description", content: "Choose business software with confidence. Define requirements, evaluate vendors objectively and avoid costly mistakes." },
-      { property: "og:url", content: "https://vula.co.za/tools/software-buying-checklist" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/software-buying-checklist" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/software-buying-checklist" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/software-buying-checklist" }],
   }),
   component: SoftwareBuyingChecklistPage,
 });
@@ -106,7 +106,7 @@ function SoftwareBuyingChecklistPage() {
             "Unwillingness to provide customer references",
           ].map(item => (
             <div key={item} className="flex items-start gap-2.5 text-[13px]">
-              <span className="mt-0.5 shrink-0 text-[#C45C3A] font-bold">⚠</span>
+              <span className="mt-0.5 shrink-0 text-[#C45C3A] font-bold">âš </span>
               <span>{item}</span>
             </div>
           ))}

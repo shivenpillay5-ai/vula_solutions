@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   Checklist, RatingTable, TextQ, DataTable,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/business-systems-audit")({
   head: () => ({
     meta: [
-      { title: "Business Systems Audit — Vula Solutions" },
+      { title: "Business Systems Audit â€” Vula Solutions" },
       { name: "description", content: "Assess whether your current technology supports your business goals. A free audit template to evaluate systems, identify gaps, and plan improvements." },
       { property: "og:title", content: "Business Systems Audit" },
       { property: "og:description", content: "Assess whether your current technology supports your business goals. Identify gaps, risks, and improvement opportunities." },
-      { property: "og:url", content: "https://vula.co.za/tools/business-systems-audit" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/business-systems-audit" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/business-systems-audit" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/business-systems-audit" }],
   }),
   component: BusinessSystemsAuditPage,
 });
@@ -48,13 +48,13 @@ function BusinessSystemsAuditPage() {
           lowLabel="Poor"
           highLabel="Excellent"
           rows={[
-            { label: "Ease of Use — are systems easy for staff to use day-to-day?", id: "sa1" },
-            { label: "Reliability — do systems perform consistently without failures?", id: "sa2" },
-            { label: "Performance — are systems fast enough for your needs?", id: "sa3" },
-            { label: "Integration — do systems share data and communicate effectively?", id: "sa4" },
-            { label: "Reporting — can you get the business insights you need?", id: "sa5" },
-            { label: "Security — are your systems and data appropriately protected?", id: "sa6" },
-            { label: "Scalability — will your systems support future growth?", id: "sa7" },
+            { label: "Ease of Use â€” are systems easy for staff to use day-to-day?", id: "sa1" },
+            { label: "Reliability â€” do systems perform consistently without failures?", id: "sa2" },
+            { label: "Performance â€” are systems fast enough for your needs?", id: "sa3" },
+            { label: "Integration â€” do systems share data and communicate effectively?", id: "sa4" },
+            { label: "Reporting â€” can you get the business insights you need?", id: "sa5" },
+            { label: "Security â€” are your systems and data appropriately protected?", id: "sa6" },
+            { label: "Scalability â€” will your systems support future growth?", id: "sa7" },
           ]}
         />
       </ToolSection>

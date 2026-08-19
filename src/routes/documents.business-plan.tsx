@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage,
   ToolSection,
@@ -11,7 +11,7 @@ import {
 } from "@/components/site/ToolPage";
 
 export const Route = createFileRoute("/documents/business-plan")({
-  head: () => ({ meta: [{ title: "Business Plan 2026 — Vula Internal" }] }),
+  head: () => ({ meta: [{ title: "Business Plan 2026 â€” Vula Internal" }] }),
   component: BusinessPlan,
 });
 
@@ -19,9 +19,9 @@ function BusinessPlan() {
   return (
     <ToolPage
       title="Business Plan 2026"
-      tagline="Shiven Pillay, Founder — August 2026 — Version 1.0 — Confidential"
+      tagline="Shiven Pillay, Founder â€” August 2026 â€” Version 1.0 â€” Confidential"
       type="Strategy"
-      about="Vula Solutions is a South African digital transformation consultancy purpose-built to make world-class strategic and digital expertise accessible to small and medium enterprises (SMEs). Leveraging the proprietary DARES™ Framework — Discover, Assess, Recommend, Execute, Support — Vula guides business owners through a structured journey from digital audit to full implementation and ongoing support. Our flagship service, the Compass™ assessment, delivers a clear, actionable digital roadmap in a single session. Priced from R5,000 for a focused 90-minute engagement to R50,000+ for a full leadership strategy day, Compass removes the guesswork from digital transformation and replaces it with clarity, prioritised initiatives, and a concrete execution plan. The business is bootstrapped, with no external funding required in Year 1. Targeting six to eight Compass sessions per month by Month 10, combined with downstream delivery projects, the business projects revenue of approximately R1,000,000 in Year 1, growing to R2,200,000 in Year 2 and R4,500,000 in Year 3."
+      about="Vula Solutions is a South African digital transformation consultancy purpose-built to make world-class strategic and digital expertise accessible to small and medium enterprises (SMEs). Leveraging the proprietary DARESâ„¢ Framework â€” Discover, Assess, Recommend, Execute, Support â€” Vula guides business owners through a structured journey from digital audit to full implementation and ongoing support. Our flagship service, the Compassâ„¢ assessment, delivers a clear, actionable digital roadmap in a single session. Priced from R5,000 for a focused 90-minute engagement to R50,000+ for a full leadership strategy day, Compass removes the guesswork from digital transformation and replaces it with clarity, prioritised initiatives, and a concrete execution plan. The business is bootstrapped, with no external funding required in Year 1. Targeting six to eight Compass sessions per month by Month 10, combined with downstream delivery projects, the business projects revenue of approximately R1,000,000 in Year 1, growing to R2,200,000 in Year 2 and R4,500,000 in Year 3."
       badge="Internal Template"
       footerVariant="internal"
       backTo="/documents"
@@ -31,14 +31,14 @@ function BusinessPlan() {
         <SectionIntro>Core registration and contact details. Update placeholder fields as registrations are completed.</SectionIntro>
         <FieldGrid
           fields={[
-            { label: "Company Name", value: "Vula Solutions (Pty) Ltd [Proposed — see Section 12]" },
+            { label: "Company Name", value: "Vula Solutions (Pty) Ltd [Proposed â€” see Section 12]" },
             { label: "Founder", value: "Shiven Pillay" },
             { label: "Founded", value: "2026" },
             { label: "Location", value: "South Africa [Insert city/province]" },
             { label: "Contact Email", value: "[Insert email]" },
             { label: "Contact Phone", value: "[Insert phone]" },
             { label: "Website", value: "vulasolutions.co.za" },
-            { label: "Legal Structure", value: "Private Company — (Pty) Ltd [Recommended]" },
+            { label: "Legal Structure", value: "Private Company â€” (Pty) Ltd [Recommended]" },
             { label: "CIPC Registration No", value: "[To be obtained]" },
             { label: "SARS Tax Number", value: "[To be confirmed]" },
             { label: "VAT Status", value: "Not applicable until turnover exceeds R1,000,000 per year" },
@@ -51,21 +51,21 @@ function BusinessPlan() {
         <TextQ
           label="Mission"
           rows={2}
-          value="To democratise access to world-class digital transformation expertise for South African SMEs — making strategic clarity, implementation support, and measurable growth outcomes available to every ambitious business, regardless of size."
+          value="To democratise access to world-class digital transformation expertise for South African SMEs â€” making strategic clarity, implementation support, and measurable growth outcomes available to every ambitious business, regardless of size."
         />
         <TextQ
           label="Vision"
           rows={2}
-          value="To be the leading digital transformation partner for South African SMEs by 2030, recognised for practical impact, transparent pricing, and the DARES™ methodology."
+          value="To be the leading digital transformation partner for South African SMEs by 2030, recognised for practical impact, transparent pricing, and the DARESâ„¢ methodology."
         />
         <TextQ
           label="Core Values"
           rows={6}
-          value={`Clarity over jargon — we translate complexity into action
-Transparency — fixed prices, clear deliverables, no surprises
-Impact first — every engagement must deliver measurable value
-Local expertise — built for the South African business environment
-Continuous growth — we apply to ourselves what we recommend to clients`}
+          value={`Clarity over jargon â€” we translate complexity into action
+Transparency â€” fixed prices, clear deliverables, no surprises
+Impact first â€” every engagement must deliver measurable value
+Local expertise â€” built for the South African business environment
+Continuous growth â€” we apply to ourselves what we recommend to clients`}
         />
       </ToolSection>
 
@@ -76,18 +76,18 @@ Continuous growth — we apply to ourselves what we recommend to clients`}
         <TextQ
           label="Market problem statement"
           rows={7}
-          value={`Digital agencies sell execution without strategy — websites and ads built without understanding the business.
-Management consultancies are priced out of reach — engagements starting at R200,000+ exclude 99% of SMEs.
+          value={`Digital agencies sell execution without strategy â€” websites and ads built without understanding the business.
+Management consultancies are priced out of reach â€” engagements starting at R200,000+ exclude 99% of SMEs.
 Freelancers offer ad hoc tactical help with no framework, accountability, or continuity.
 Business owners make costly digital decisions (websites, software, advertising) without a structured assessment.
-Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,000+ per business.`}
+Wasted spend on digital tools and campaigns is rampant â€” often R50,000â€“R500,000+ per business.`}
         />
       </ToolSection>
 
       <ToolDivider />
 
-      <ToolSection label="DARES™ Framework">
-        <SectionIntro>The proprietary five-phase methodology that underpins every Vula engagement — from initial discovery through to sustained strategic support.</SectionIntro>
+      <ToolSection label="DARESâ„¢ Framework">
+        <SectionIntro>The proprietary five-phase methodology that underpins every Vula engagement â€” from initial discovery through to sustained strategic support.</SectionIntro>
         <DataTable
           columns={[
             { label: "Phase", width: "20%" },
@@ -96,28 +96,28 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
           ]}
           rows={[
             [
-              "D — Discover",
+              "D â€” Discover",
               "Deep-dive into the business, its markets, processes, and current digital footprint",
               "Complete picture of where the business stands today",
             ],
             [
-              "A — Assess",
+              "A â€” Assess",
               "Digital maturity scoring, gap analysis, and competitive benchmarking",
               "Clear understanding of gaps, opportunities, and risks",
             ],
             [
-              "R — Recommend",
+              "R â€” Recommend",
               "Prioritised, practical roadmap tailored to budget, capacity, and goals",
               "Actionable plan with clear ROI logic",
             ],
             [
-              "E — Execute",
-              "Implementation of the recommended roadmap through Launch™, Flow™, Accelerate™, Growth™",
+              "E â€” Execute",
+              "Implementation of the recommended roadmap through Launchâ„¢, Flowâ„¢, Accelerateâ„¢, Growthâ„¢",
               "Tangible improvements delivered",
             ],
             [
-              "S — Support",
-              "Ongoing fractional strategic support through Partner™",
+              "S â€” Support",
+              "Ongoing fractional strategic support through Partnerâ„¢",
               "Sustained growth and accountability",
             ],
           ]}
@@ -125,7 +125,7 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
       </ToolSection>
 
       <ToolSection label="Products & Services">
-        <SectionIntro>The full product suite, spanning the Compass™ assessment tiers and downstream DARES™ delivery services.</SectionIntro>
+        <SectionIntro>The full product suite, spanning the Compassâ„¢ assessment tiers and downstream DARESâ„¢ delivery services.</SectionIntro>
         <DataTable
           columns={[
             { label: "Product / Service", width: "35%" },
@@ -133,14 +133,14 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
             { label: "Price", width: "30%" },
           ]}
           rows={[
-            ["Compass™ Essential", "90-minute session", "R5,000"],
-            ["Compass™ Professional", "Half-day session", "R15,000"],
-            ["Compass™ Strategic", "Full-day / multi-day", "R50,000+"],
-            ["Launch™", "Website design and build", "By quote"],
-            ["Flow™", "Process automation and workflow", "By quote"],
-            ["Accelerate™", "AI and digital enablement", "By quote"],
-            ["Growth™", "SEO and content growth", "By quote"],
-            ["Partner™", "Ongoing fractional support retainer", "By quote"],
+            ["Compassâ„¢ Essential", "90-minute session", "R5,000"],
+            ["Compassâ„¢ Professional", "Half-day session", "R15,000"],
+            ["Compassâ„¢ Strategic", "Full-day / multi-day", "R50,000+"],
+            ["Launchâ„¢", "Website design and build", "By quote"],
+            ["Flowâ„¢", "Process automation and workflow", "By quote"],
+            ["Accelerateâ„¢", "AI and digital enablement", "By quote"],
+            ["Growthâ„¢", "SEO and content growth", "By quote"],
+            ["Partnerâ„¢", "Ongoing fractional support retainer", "By quote"],
           ]}
         />
       </ToolSection>
@@ -167,8 +167,8 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
         />
       </ToolSection>
 
-      <ToolSection label="Year 2–3 Projections">
-        <SectionIntro>Growth assumptions reflect increased Compass volume, a maturing delivery pipeline, and growing retainer base through Partner™.</SectionIntro>
+      <ToolSection label="Year 2â€“3 Projections">
+        <SectionIntro>Growth assumptions reflect increased Compass volume, a maturing delivery pipeline, and growing retainer base through Partnerâ„¢.</SectionIntro>
         <DataTable
           columns={[
             { label: "Period", width: "18%" },
@@ -189,19 +189,19 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
       <ToolSection label="Go-to-Market Strategy">
         <SectionIntro>Three-phase GTM plan spanning the first 12 months. Update each phase as milestones are reached.</SectionIntro>
         <TextQ
-          label="Phase 1 — Months 1–3: Network Activation"
+          label="Phase 1 â€” Months 1â€“3: Network Activation"
           rows={3}
           value="Direct outreach to existing contacts, referral partnerships, LinkedIn presence. Goal: first three to five paying Compass clients."
         />
         <TextQ
-          label="Phase 2 — Months 4–6: Content & SEO"
+          label="Phase 2 â€” Months 4â€“6: Content & SEO"
           rows={3}
           value="Resource library live on website, thought leadership published on LinkedIn and X. Goal: inbound leads beginning to supplement outbound."
         />
         <TextQ
-          label="Phase 3 — Months 7–12: Growth Infrastructure"
+          label="Phase 3 â€” Months 7â€“12: Growth Infrastructure"
           rows={3}
-          value="Case studies published, Google Business profile active, review profiles established, Growth™ methodology self-applied. Goal: six to eight Compass sessions per month sustained."
+          value="Case studies published, Google Business profile active, review profiles established, Growthâ„¢ methodology self-applied. Goal: six to eight Compass sessions per month sustained."
         />
         <TextQ
           label="Current quarter priority actions"
@@ -219,7 +219,7 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
           ]}
           rows={[
             [
-              "No CIPC registration — business cannot legally operate",
+              "No CIPC registration â€” business cannot legally operate",
               "Register immediately via bizportal.gov.za (R175)",
               "",
             ],
@@ -253,14 +253,14 @@ Wasted spend on digital tools and campaigns is rampant — often R50,000–R500,
         <SectionIntro>All items must be completed before the first paid client engagement. Tick each item as it is confirmed.</SectionIntro>
         <Checklist
           items={[
-            "CIPC registration complete (bizportal.gov.za — R175)",
+            "CIPC registration complete (bizportal.gov.za â€” R175)",
             "Business bank account opened (FNB, Nedbank, or Capitec Business recommended)",
             "SARS income tax registration confirmed",
             "Professional indemnity insurance obtained (minimum R1,000,000 cover)",
             "Domain names secured (vula.co.za + vulasolutions.co.za)",
             "Google Workspace set up (shiven@vula.co.za)",
             "VAT registration (when turnover exceeds R1,000,000 per year)",
-            "Trademark application for DARES™ submitted",
+            "Trademark application for DARESâ„¢ submitted",
             "Terms & Conditions and Privacy Policy published on website",
             "Bookkeeping software set up (Xero or Wave recommended)",
           ]}

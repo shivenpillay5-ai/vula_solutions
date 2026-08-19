@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   Checklist, FieldGrid, TextQ, DataTable,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/requirements-workshop-guide")({
   head: () => ({
     meta: [
-      { title: "Requirements Workshop Guide — Vula Solutions" },
+      { title: "Requirements Workshop Guide â€” Vula Solutions" },
       { name: "description", content: "Capture clear business requirements before starting any project. A free workshop facilitation guide to plan, run and document a structured requirements session." },
       { property: "og:title", content: "Requirements Workshop Guide" },
       { property: "og:description", content: "Plan and facilitate a structured requirements workshop that produces clear, actionable outcomes before any project begins." },
-      { property: "og:url", content: "https://vula.co.za/tools/requirements-workshop-guide" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/requirements-workshop-guide" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/requirements-workshop-guide" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/requirements-workshop-guide" }],
   }),
   component: RequirementsWorkshopGuidePage,
 });
@@ -50,13 +50,13 @@ function RequirementsWorkshopGuidePage() {
 
       <ToolSection label="Workshop Agenda">
         <Checklist items={[
-          "Welcome & introductions — set the scene and confirm objectives",
-          "Business context — what problem are we solving and why?",
-          "Current process review — walk through how things work today",
-          "Challenges & pain points — what is frustrating or broken?",
-          "Future state discussion — what does good look like?",
-          "Requirements prioritisation — agree on must-haves vs nice-to-haves",
-          "Next steps — confirm actions, owners and timeline",
+          "Welcome & introductions â€” set the scene and confirm objectives",
+          "Business context â€” what problem are we solving and why?",
+          "Current process review â€” walk through how things work today",
+          "Challenges & pain points â€” what is frustrating or broken?",
+          "Future state discussion â€” what does good look like?",
+          "Requirements prioritisation â€” agree on must-haves vs nice-to-haves",
+          "Next steps â€” confirm actions, owners and timeline",
         ]} />
       </ToolSection>
 
@@ -77,15 +77,15 @@ function RequirementsWorkshopGuidePage() {
       <ToolDivider />
 
       <ToolSection label="Risks, Assumptions & Open Questions">
-        <TextQ label="Risks — what could go wrong or block delivery?" rows={2} />
-        <TextQ label="Assumptions — what are we assuming to be true?" rows={2} />
-        <TextQ label="Open questions — what do we still need to resolve?" rows={2} />
+        <TextQ label="Risks â€” what could go wrong or block delivery?" rows={2} />
+        <TextQ label="Assumptions â€” what are we assuming to be true?" rows={2} />
+        <TextQ label="Open questions â€” what do we still need to resolve?" rows={2} />
         <TextQ label="Decisions made during the workshop" rows={2} />
       </ToolSection>
 
       <ToolSection label="Workshop Outcomes">
         <TextQ label="Key decisions and agreements reached" rows={3} />
-        <TextQ label="Next actions — what happens after this workshop?" rows={3} />
+        <TextQ label="Next actions â€” what happens after this workshop?" rows={3} />
       </ToolSection>
     </ToolPage>
   );

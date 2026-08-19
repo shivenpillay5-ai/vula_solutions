@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   FieldGrid, TextQ, Checklist, RatingTable, DataTable, CommitmentBox,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/business-discovery-checklist")({
   head: () => ({
     meta: [
-      { title: "Business Discovery Checklist — Vula Solutions" },
+      { title: "Business Discovery Checklist â€” Vula Solutions" },
       { name: "description", content: "Evaluate where your business is today and identify where to focus next. A free structured worksheet from Vula Solutions." },
       { property: "og:title", content: "Business Discovery Checklist" },
       { property: "og:description", content: "Evaluate where your business is today and identify where to focus next. Free from Vula Solutions." },
-      { property: "og:url", content: "https://vula.co.za/tools/business-discovery-checklist" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/business-discovery-checklist" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/business-discovery-checklist" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/business-discovery-checklist" }],
   }),
   component: BusinessDiscoveryChecklistPage,
 });
@@ -23,7 +23,7 @@ function BusinessDiscoveryChecklistPage() {
   return (
     <ToolPage
       title="Business Discovery Checklist"
-      tagline="Discover where your business is today — and identify where to focus next."
+      tagline="Discover where your business is today â€” and identify where to focus next."
       type="Checklist"
       about="Every successful business makes decisions based on understanding, not assumptions. This checklist helps you evaluate the current state of your business, identify strengths, and prioritise improvement opportunities. Complete each section honestly for the most valuable outcome."
       howTo={["Complete every section", "Answer honestly", "Capture notes throughout", "Identify improvement opportunities", "Prioritise your next steps"]}

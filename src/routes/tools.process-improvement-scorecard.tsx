@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   RatingTable, TextQ, DataTable,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/process-improvement-scorecard")({
   head: () => ({
     meta: [
-      { title: "Process Improvement Scorecard — Vula Solutions" },
+      { title: "Process Improvement Scorecard â€” Vula Solutions" },
       { name: "description", content: "Measure the effectiveness of your business processes and identify opportunities for improvement. A free scorecard from Vula Solutions." },
       { property: "og:title", content: "Process Improvement Scorecard" },
       { property: "og:description", content: "Rate your business processes across eight key areas and build a prioritised improvement plan." },
-      { property: "og:url", content: "https://vula.co.za/tools/process-improvement-scorecard" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/process-improvement-scorecard" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/process-improvement-scorecard" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/process-improvement-scorecard" }],
   }),
   component: ProcessImprovementScorecardPage,
 });
@@ -26,7 +26,7 @@ function ProcessImprovementScorecardPage() {
       tagline="Measure the effectiveness of your current business processes."
       type="Scorecard"
       about="Efficient processes improve productivity, consistency and customer satisfaction. Use this scorecard to evaluate your current processes and identify opportunities for improvement."
-      howTo={["Complete every section", "Rate honestly — lower scores are more useful", "Capture specific notes for each area", "Prioritise improvements that deliver the greatest value"]}
+      howTo={["Complete every section", "Rate honestly â€” lower scores are more useful", "Capture specific notes for each area", "Prioritise improvements that deliver the greatest value"]}
     >
       <ToolSection label="Scorecard">
         <RatingTable
@@ -34,14 +34,14 @@ function ProcessImprovementScorecardPage() {
           lowLabel="Needs Significant Improvement"
           highLabel="Excellent"
           rows={[
-            { label: "Process Documentation — are your processes written down and up to date?", id: "pi1" },
-            { label: "Roles & Responsibilities — does everyone know what they own?", id: "pi2" },
-            { label: "Manual Work — how much unnecessary manual effort exists?", id: "pi3" },
-            { label: "Automation — are repetitive tasks automated where possible?", id: "pi4" },
-            { label: "Quality — are outputs consistently meeting the required standard?", id: "pi5" },
-            { label: "Customer Experience — do your processes serve your customers well?", id: "pi6" },
-            { label: "Reporting — do you have timely, accurate visibility of performance?", id: "pi7" },
-            { label: "Continuous Improvement — do you actively review and improve processes?", id: "pi8" },
+            { label: "Process Documentation â€” are your processes written down and up to date?", id: "pi1" },
+            { label: "Roles & Responsibilities â€” does everyone know what they own?", id: "pi2" },
+            { label: "Manual Work â€” how much unnecessary manual effort exists?", id: "pi3" },
+            { label: "Automation â€” are repetitive tasks automated where possible?", id: "pi4" },
+            { label: "Quality â€” are outputs consistently meeting the required standard?", id: "pi5" },
+            { label: "Customer Experience â€” do your processes serve your customers well?", id: "pi6" },
+            { label: "Reporting â€” do you have timely, accurate visibility of performance?", id: "pi7" },
+            { label: "Continuous Improvement â€” do you actively review and improve processes?", id: "pi8" },
           ]}
         />
       </ToolSection>

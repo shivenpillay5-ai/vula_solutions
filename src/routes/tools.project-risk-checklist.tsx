@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   ToolPage, ToolSection, ToolDivider,
   Checklist, FieldGrid, TextQ, DataTable,
@@ -7,14 +7,14 @@ import {
 export const Route = createFileRoute("/tools/project-risk-checklist")({
   head: () => ({
     meta: [
-      { title: "Project Risk Checklist — Vula Solutions" },
+      { title: "Project Risk Checklist â€” Vula Solutions" },
       { name: "description", content: "Identify, assess and manage project risks before they become issues. A free risk register template from Vula Solutions." },
       { property: "og:title", content: "Project Risk Checklist" },
       { property: "og:description", content: "Identify project risks early, assign ownership, and define mitigation actions before issues derail your delivery." },
-      { property: "og:url", content: "https://vula.co.za/tools/project-risk-checklist" },
+      { property: "og:url", content: "https://vulasolutions.co.za/tools/project-risk-checklist" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://vula.co.za/tools/project-risk-checklist" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/tools/project-risk-checklist" }],
   }),
   component: ProjectRiskChecklistPage,
 });
@@ -54,7 +54,7 @@ function ProjectRiskChecklistPage() {
         <Checklist items={[
           "Scope changes after the project starts",
           "Budget overruns due to underestimation",
-          "Resource constraints — key people unavailable",
+          "Resource constraints â€” key people unavailable",
           "Technology issues or vendor delays",
           "Poor stakeholder engagement or sponsorship",
           "Inadequate communication between teams",
