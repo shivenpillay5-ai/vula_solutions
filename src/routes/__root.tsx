@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "We help small and medium businesses work smarter through strategy, websites, AI, automation and SEO. Start with Compass™." },
       { name: "author", content: "Vula Solutions" },
       { property: "og:title", content: "Vula Solutions" },
-      { property: "og:description", content: "Helping businesses work smarter." },
+      { property: "og:description", content: "Open the door to a smarter, stronger business." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Vula Solutions" },
       { property: "og:image", content: "https://vulasolutions.co.za/og-image.png" },

@@ -1,11 +1,10 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass as CompassIcon, ShieldCheck, LineChart, Users, TrendingUp, Handshake } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Compass as CompassIcon } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
 import { CTA } from "@/components/site/CTA";
 import heroDoorway from "@/assets/hero-doorway.jpg";
-import { resourceSections } from "@/lib/resources";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -13,7 +12,7 @@ export const Route = createFileRoute("/")({
       { title: "Vula Solutions - Helping businesses work smarter" },
       { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™ - our signature business discovery experience." },
       { property: "og:title", content: "Vula Solutions" },
-      { property: "og:description", content: "Helping businesses work smarter." },
+      { property: "og:description", content: "Open the door to a smarter, stronger business." },
       { property: "og:url", content: "https://vulasolutions.co.za/" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/" }],
@@ -25,13 +24,10 @@ function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
-      <VulaMeaning />
+      <BrandBand />
       <CompassIntro />
       <SolutionsOverview />
       <WhyVula />
-      <Approach />
-      <ResourcesTeaser />
       <CTA />
     </>
   );
@@ -101,69 +97,36 @@ function Hero() {
   );
 }
 
-function TrustBar() {
-  const items = [
-    { icon: CompassIcon, label: "Understand first" },
-    { icon: LineChart, label: "Recommend second" },
-    { icon: ShieldCheck, label: "Build third" },
-    { icon: Users, label: "Support always" },
-  ];
+function BrandBand() {
   return (
-    <div className="border-b border-border bg-background">
-      <div className="container-page grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
-        {items.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center gap-3 text-sm text-muted-foreground">
-            <Icon className="h-4 w-4 text-electric" />
-            <span className="font-medium text-foreground">{label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function VulaMeaning() {
-  const pillars = [
-    { icon: CompassIcon, title: "CLARITY", body: "We help you see the path forward before anything is built." },
-    { icon: ShieldCheck, title: "CONFIDENCE", body: "Trusted advice, so every technology decision feels certain." },
-    { icon: TrendingUp, title: "TRANSFORMATION", body: "Practical technology that quietly changes how your business works." },
-    { icon: Handshake, title: "PARTNERSHIP", body: "We stay with you long after the launch." },
-  ];
-  return (
-    <section className="bg-navy-deep pt-14 pb-16 sm:pt-20 sm:pb-22">
-      <div className="container-page">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#01A1B7" }}>
-            Vula means open
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-            We help you <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/65">
-            VULA is a Business Transformation Partner. Not a website agency, an AI vendor or IT support.
-            The best technology is the kind that helps your business thrive without getting in the way.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition hover:border-white/20 hover:bg-white/[0.05]">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10" style={{ color: "#01A1B7" }}>
-                <Icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-5 text-xs font-semibold tracking-[0.2em] text-white">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">{body}</p>
-            </div>
-          ))}
-        </div>
+    <section className="bg-navy-deep py-16 sm:py-20">
+      <div className="container-page mx-auto max-w-3xl text-center">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "#01A1B7" }}>
+          Vula means open
+        </p>
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+          We help you <span style={{ color: "#01A1B7" }}>open the door</span> to a smarter, stronger business.
+        </h2>
+        <p className="mt-5 text-lg leading-relaxed text-white/65">
+          VULA is a Business Transformation Partner — not a website agency, an AI vendor or IT support.
+          The best technology is the kind that helps your business thrive without getting in the way.
+        </p>
       </div>
     </section>
   );
 }
 
 function CompassIntro() {
+  const steps = [
+    { n: "01", t: "Discover", b: "A structured Compass™ session to understand your business and priorities." },
+    { n: "02", t: "Map", b: "We identify opportunities across technology, AI, automation and growth." },
+    { n: "03", t: "Deliver", b: "We build, launch and refine. Websites, automations and AI enablement." },
+    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow — without limits." },
+  ];
+
   return (
     <Section>
-      <div className="grid gap-12 md:grid-cols-2 md:items-center">
+      <div className="grid gap-12 md:grid-cols-2 md:items-start">
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-electric">
             The starting point
@@ -184,7 +147,8 @@ function CompassIntro() {
             Discover Compass™ <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="relative">
+
+        <div className="space-y-4">
           <div className="card-premium p-8">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-white">
@@ -209,7 +173,17 @@ function CompassIntro() {
               ))}
             </ul>
           </div>
-          <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-electric/10 to-growth/10 blur-2xl" aria-hidden />
+
+          {/* Approach steps — folded in from the old Approach section */}
+          <div className="grid grid-cols-2 gap-3">
+            {steps.map((s) => (
+              <div key={s.n} className="rounded-xl border border-border bg-secondary/40 p-4">
+                <p className="font-display text-2xl text-electric">{s.n}</p>
+                <h3 className="mt-2 text-sm font-semibold">{s.t}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.b}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Section>
@@ -254,83 +228,3 @@ function WhyVula() {
     </Section>
   );
 }
-
-function Approach() {
-  const steps = [
-    { n: "01", t: "Discover", b: "A structured Compass™ session to understand your business and priorities." },
-    { n: "02", t: "Map", b: "We identify opportunities across technology, AI, automation and growth." },
-    { n: "03", t: "Deliver", b: "We build, launch and refine. Websites, automations and AI enablement." },
-    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow, without limits." },
-  ];
-  return (
-    <Section eyebrow="The approach" title="A simple path to real change." className="bg-secondary/40">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {steps.map((s) => (
-          <div key={s.n} className="card-premium p-7">
-            <p className="font-display text-4xl text-electric">{s.n}</p>
-            <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{s.b}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function ResourcesTeaser() {
-  const featuredArticles = [
-    {
-      section: "getting-started",
-      article: "five-questions-before-buying-software",
-      label: "Small Business",
-    },
-    {
-      section: "artificial-intelligence",
-      article: "five-practical-ways-smes-can-use-ai-today",
-      label: "AI",
-    },
-    {
-      section: "software-and-technology",
-      article: "how-to-choose-software-without-regretting-it",
-      label: "Digital Decision",
-    },
-  ] as const;
-
-  const items = featuredArticles
-    .map(({ section, article, label }) => {
-      const sectionEntry = resourceSections.find((entry) => entry.slug === section);
-      const articleEntry = sectionEntry?.articles.find((entry) => entry.slug === article);
-
-      if (!sectionEntry || !articleEntry) return null;
-
-      return {
-        label,
-        section: sectionEntry.slug,
-        article: articleEntry.slug,
-        title: articleEntry.title,
-        description: articleEntry.description,
-      };
-    })
-    .filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-  return (
-    <Section eyebrow="Insights" title="Thinking worth returning to." intro="A curated stream of practical articles, shaped around Compass™ thinking and real business decisions.">
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {items.map((item) => (
-          <Link
-            key={item.article}
-            to="/resources/$section/$article"
-            params={{ section: item.section, article: item.article }}
-            className="card-premium card-premium-hover block p-7 sm:p-8"
-          >
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.label}</p>
-            <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-          </Link>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-
