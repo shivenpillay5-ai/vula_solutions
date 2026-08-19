@@ -1,6 +1,6 @@
 ﻿import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Phone, MapPin, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, ShieldCheck, ArrowRight, Loader2 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 
@@ -39,6 +39,8 @@ function Contact() {
   const location = useLocation();
   const service = new URLSearchParams(location.search).get("service") ?? "";
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [interest, setInterest] = useState(service);
   return (
     <>
@@ -92,9 +94,37 @@ function Contact() {
           {/* Right column — enquiry form */}
           <form
             className="card-premium space-y-5 p-7 sm:p-8"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
+              setSubmitting(true);
+              setSubmitError(null);
+              const data = new FormData(e.currentTarget);
+              try {
+                const res = await fetch("https://api.web3forms.com/submit", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", Accept: "application/json" },
+                  body: JSON.stringify({
+                    access_key: "5b0a4f62-8142-47f6-a4e2-e92ce4867b5c",
+                    subject: "New enquiry — Vula Solutions website",
+                    name: data.get("name"),
+                    email: data.get("email"),
+                    company: data.get("company") || "Not provided",
+                    phone: data.get("phone") || "Not provided",
+                    interest: data.get("interest") || "Not selected",
+                    message: data.get("message") || "No message provided",
+                  }),
+                });
+                const result = await res.json();
+                if (result.success) {
+                  setSent(true);
+                } else {
+                  setSubmitError("Something went wrong. Please email us directly at info@vulasolutions.co.za.");
+                }
+              } catch {
+                setSubmitError("Something went wrong. Please email us directly at info@vulasolutions.co.za.");
+              } finally {
+                setSubmitting(false);
+              }
             }}
           >
             {sent ? (
@@ -159,13 +189,26 @@ function Contact() {
                   />
                 </div>
 
+                {submitError && (
+                  <p className="text-sm text-destructive">{submitError}</p>
+                )}
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="submit"
-                    className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:w-auto sm:justify-start"
+                    disabled={submitting}
+                    className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60 sm:w-auto sm:justify-start"
                   >
-                    Send enquiry
-                    <ArrowRight className="h-4 w-4" />
+                    {submitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        Send enquiry
+                        <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
                   </button>
                   <p className="flex items-center gap-2 text-xs text-muted-foreground">
                     <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-electric" />
