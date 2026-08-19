@@ -4,6 +4,7 @@ import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
 import { CTA } from "@/components/site/CTA";
+import { Reveal } from "@/components/site/Reveal";
 import heroDoorway from "@/assets/hero-doorway.jpg";
 
 export const Route = createFileRoute("/")({
@@ -24,11 +25,11 @@ function Home() {
   return (
     <>
       <Hero />
-      <BrandBand />
-      <CompassIntro />
-      <SolutionsOverview />
-      <WhyVula />
-      <CTA />
+      <Reveal><CompassIntro /></Reveal>
+      <Reveal><SolutionsOverview /></Reveal>
+      <Reveal><WhyVula /></Reveal>
+      <Reveal><BrandBand /></Reveal>
+      <Reveal><CTA /></Reveal>
     </>
   );
 }
@@ -39,7 +40,7 @@ function Hero() {
       <div className="container-page grid gap-12 pt-12 pb-10 md:grid-cols-[1fr_1.35fr] md:items-center md:gap-14 md:pt-18 md:pb-14">
         <div className="relative z-10">
           <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[3.5rem]">
-            Technology shouldn't be the hardest part of running your business.
+            Technology shouldn't be the <span className="text-electric">hardest part</span> of running your business.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
             Running a business is complicated enough. Choosing the right technology shouldn't be.
@@ -99,7 +100,7 @@ function Hero() {
 
 function BrandBand() {
   return (
-    <section className="bg-background py-16 sm:py-20">
+    <section className="bg-secondary/40 py-16 sm:py-20">
       <div className="container-page mx-auto max-w-3xl text-center">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-electric">
           Vula means open
@@ -117,13 +118,6 @@ function BrandBand() {
 }
 
 function CompassIntro() {
-  const steps = [
-    { n: "01", t: "Discover", b: "A structured Compass™ session to understand your business and priorities." },
-    { n: "02", t: "Map", b: "We identify opportunities across technology, AI, automation and growth." },
-    { n: "03", t: "Deliver", b: "We build, launch and refine. Websites, automations and AI enablement." },
-    { n: "04", t: "Partner", b: "Ongoing support to improve, adapt and grow — without limits." },
-  ];
-
   return (
     <Section className="bg-secondary/40">
       <div className="grid gap-12 md:grid-cols-2 md:items-center">
@@ -175,22 +169,6 @@ function CompassIntro() {
           </div>
           <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-electric/10 to-growth/10 blur-2xl" aria-hidden />
         </div>
-      </div>
-
-      {/* The journey — Compass™ is step one, the strip shows where it leads */}
-      <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((s, i) => (
-          <div key={s.n} className="card-premium relative p-6">
-            {i < steps.length - 1 && (
-              <ArrowRight className="absolute -right-4 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-electric/50 lg:block" aria-hidden />
-            )}
-            <div className="flex items-baseline gap-3">
-              <span className="font-display text-2xl font-semibold text-electric">{s.n}</span>
-              <h3 className="text-base font-semibold">{s.t}</h3>
-            </div>
-            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.b}</p>
-          </div>
-        ))}
       </div>
     </Section>
   );
