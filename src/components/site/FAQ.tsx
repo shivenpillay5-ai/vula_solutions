@@ -20,7 +20,10 @@ export function FAQ({ items }: { items: FAQItem[] }) {
               <span className="text-base font-medium text-foreground">{it.q}</span>
               <ChevronDown className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
             </button>
-            {isOpen && <div className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">{it.a}</div>}
+            {/* Always in the DOM (hidden when closed) so answers are crawlable */}
+            <div hidden={!isOpen} className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">
+              {it.a}
+            </div>
           </div>
         );
       })}
