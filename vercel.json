@@ -1,5 +1,13 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "npm run build",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.vulasolutions.co.za" }],
+      "destination": "https://vulasolutions.co.za/$1",
+      "permanent": true
+    }
+  ]
 }
