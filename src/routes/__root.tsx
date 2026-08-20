@@ -40,7 +40,10 @@ const JSON_LD = JSON.stringify({
     addressCountry: "ZA",
   },
   areaServed: { "@type": "Country", name: "South Africa" },
-  sameAs: ["https://www.linkedin.com/company/vula-solutions/"],
+  sameAs: [
+    "https://www.linkedin.com/company/vula-solutions/",
+    "https://www.facebook.com/vulasolutions",
+  ],
 });
 
 function NotFoundComponent() {
