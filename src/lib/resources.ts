@@ -1,4 +1,4 @@
-﻿export type ResourceContentBlock =
+export type ResourceContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
   | { type: "list"; items: string[] };
@@ -1951,7 +1951,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "AI can help draft emails, policies, proposals, job descriptions and other everyday business writing. It works best as an assistant that gives your team a starting point, not as something that replaces human judgment and voice.",
+              "AI can help draft emails, policies, proposals, job descriptions and other everyday business writing. It works best as an assistant that gives your team a starting point, not as something that replaces human judgement and voice.",
           },
           { type: "heading", text: "2. Summarise information quickly" },
           {
@@ -2028,7 +2028,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Employees need to understand that AI is there to support better work, remove repetitive effort and leave more room for creativity, judgment and customer care. Clear communication makes adoption much easier.",
+              "Employees need to understand that AI is there to support better work, remove repetitive effort and leave more room for creativity, judgement and customer care. Clear communication makes adoption much easier.",
           },
           {
             type: "paragraph",
@@ -2059,7 +2059,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Not every task should be automated. Some work depends on empathy, trust, creativity and judgment. The goal is meaningful automation, not maximum automation.",
+              "Not every task should be automated. Some work depends on empathy, trust, creativity and judgement. The goal is meaningful automation, not maximum automation.",
           },
           { type: "heading", text: "Mistake 3: Ignoring poor processes" },
           {
@@ -2077,7 +2077,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "Employees need clarity on why AI is being introduced, how it will help and where human judgment still matters. Good communication is a major part of successful adoption.",
+              "Employees need clarity on why AI is being introduced, how it will help and where human judgement still matters. Good communication is a major part of successful adoption.",
           },
           {
             type: "paragraph",
@@ -2091,14 +2091,14 @@ export const resourceSections: ResourceSection[] = [
         tag: "Advanced",
         title: "What AI Should Never Replace",
         description:
-          "Where human judgment, empathy and leadership must remain central.",
+          "Where human judgement, empathy and leadership must remain central.",
         body: [
           {
             type: "paragraph",
             text:
               "AI can summarise, analyse, draft and assist, but there are parts of business that should remain firmly human no matter how capable the technology becomes.",
           },
-          { type: "heading", text: "Judgment should stay human" },
+          { type: "heading", text: "Judgement should stay human" },
           {
             type: "paragraph",
             text:
@@ -2151,7 +2151,7 @@ export const resourceSections: ResourceSection[] = [
           {
             type: "paragraph",
             text:
-              "People trust AI more when leaders are honest about what it can do, where it helps and where human judgment still makes the final call.",
+              "People trust AI more when leaders are honest about what it can do, where it helps and where human judgement still makes the final call.",
           },
           { type: "heading", text: "Start small" },
           {
