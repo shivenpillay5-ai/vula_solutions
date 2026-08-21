@@ -7,10 +7,10 @@ import {
 export const Route = createFileRoute("/tools/digital-transformation-roadmap")({
   head: () => ({
     meta: [
-      { title: "Digital Transformation Roadmap â€” Vula Solutions" },
+      { title: "Digital Transformation Roadmap | Vula Solutions" },
       { name: "description", content: "A practical, four-stage roadmap for transforming your business with confidence. Assess where you are, define your vision, and plan the path forward. Free from Vula Solutions." },
       { property: "og:title", content: "Digital Transformation Roadmap" },
-      { property: "og:description", content: "A practical, four-stage roadmap for transforming your business with confidence â€” from current state to a clear implementation plan." },
+      { property: "og:description", content: "A practical, four-stage roadmap for transforming your business with confidence, from current state to a clear implementation plan." },
       { property: "og:url", content: "https://vulasolutions.co.za/tools/digital-transformation-roadmap" },
       { property: "og:type", content: "website" },
     ],
@@ -47,12 +47,12 @@ function DigitalTransformationRoadmapPage() {
       about="Digital transformation is about improving the way your business operates, not simply adopting new technology. This roadmap helps you assess where you are today, define where you want to be, and identify the practical steps to get there."
       howTo={["Complete each stage in order", "Involve key stakeholders", "Focus on business outcomes", "Review and update regularly"]}
     >
-      <ToolSection label="Stage 1 â€” Understand Your Current State">
+      <ToolSection label="Stage 1: Understand Your Current State">
         <StageHeader number={1} title="Where are we today?" />
         <DataTable
           columns={[
             { label: "Area", width: "25%" },
-            { label: "Current State â€” describe what exists today", width: "75%" },
+            { label: "Current State: describe what exists today", width: "75%" },
           ]}
           rowCount={5}
         />
@@ -60,9 +60,9 @@ function DigitalTransformationRoadmapPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Stage 2 â€” Define Your Vision">
+      <ToolSection label="Stage 2: Define Your Vision">
         <StageHeader number={2} title="Where do we want to be?" />
-        <TextQ label="Describe what success looks like in the next 12â€“24 months." rows={3} />
+        <TextQ label="Describe what success looks like in the next 12-24 months." rows={3} />
         <div className="mt-1">
           <div className="mb-2 text-[11.5px] font-semibold" style={{ color: SLATE }}>Business priorities (select all that apply):</div>
           <Checklist items={[
@@ -78,7 +78,7 @@ function DigitalTransformationRoadmapPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Stage 3 â€” Build Your Roadmap">
+      <ToolSection label="Stage 3: Build Your Roadmap">
         <StageHeader number={3} title="How do we get there?" />
         <DataTable
           columns={[
@@ -93,7 +93,7 @@ function DigitalTransformationRoadmapPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Stage 4 â€” Risks & Dependencies">
+      <ToolSection label="Stage 4: Risks & Dependencies">
         <StageHeader number={4} title="What could slow us down?" />
         <Checklist items={[
           "Budget constraints",

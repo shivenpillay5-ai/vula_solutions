@@ -7,8 +7,8 @@ import {
 export const Route = createFileRoute("/tools/meeting-agenda-templates")({
   head: () => ({
     meta: [
-      { title: "Meeting Agenda Templates â€” Vula Solutions" },
-      { name: "description", content: "Run productive meetings with clear objectives and outcomes. Four free meeting agenda templates â€” team, project kick-off, requirements workshop, and leadership." },
+      { title: "Meeting Agenda Templates | Vula Solutions" },
+      { name: "description", content: "Run productive meetings with clear objectives and outcomes. Four free meeting agenda templates: team, project kick-off, requirements workshop, and leadership." },
       { property: "og:title", content: "Meeting Agenda Templates" },
       { property: "og:description", content: "Four free meeting agenda templates designed to help you run focused meetings and capture decisions, actions, and outcomes." },
       { property: "og:url", content: "https://vulasolutions.co.za/tools/meeting-agenda-templates" },
@@ -27,7 +27,7 @@ function MeetingAgendaTemplatesPage() {
       type="Template"
       about="Effective meetings begin with preparation. These templates help you run focused meetings, capture decisions, assign actions and improve accountability. Use the template that fits your meeting type."
     >
-      <ToolSection label="Template 1 â€” General Team Meeting">
+      <ToolSection label="Template 1: General Team Meeting">
         <FieldGrid fields={["Meeting Purpose", "Date & Time", "Facilitator"]} />
         <div className="mt-3.5">
           <TextQ label="Attendees" />
@@ -39,11 +39,11 @@ function MeetingAgendaTemplatesPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Template 2 â€” Project Kick-off Meeting">
+      <ToolSection label="Template 2: Project Kick-off Meeting">
         <FieldGrid fields={["Project Name", "Date & Time", "Project Manager", "Sponsor"]} />
         <div className="mt-3.5">
           <TextQ label="Project objectives" rows={2} />
-          <TextQ label="Scope â€” what is in and out of scope?" rows={2} />
+          <TextQ label="Scope: what is in and out of scope?" rows={2} />
           <TextQ label="Roles & responsibilities" rows={2} />
           <TextQ label="Key milestones and dates" rows={2} />
           <TextQ label="Risks and dependencies identified" rows={2} />
@@ -53,7 +53,7 @@ function MeetingAgendaTemplatesPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Template 3 â€” Requirements Workshop">
+      <ToolSection label="Template 3: Requirements Workshop">
         <FieldGrid fields={["Workshop Name", "Date & Time", "Facilitator", "Business Area"]} />
         <div className="mt-3.5">
           <TextQ label="Attendees and their roles" />
@@ -67,7 +67,7 @@ function MeetingAgendaTemplatesPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Template 4 â€” Weekly Leadership Meeting">
+      <ToolSection label="Template 4: Weekly Leadership Meeting">
         <FieldGrid fields={["Date & Time", "Facilitator"]} />
         <div className="mt-3.5">
           <TextQ label="Business updates from each area" rows={3} />
@@ -83,7 +83,7 @@ function MeetingAgendaTemplatesPage() {
       <ToolSection label="Meeting Best Practices">
         <Checklist items={[
           "Distribute the agenda at least 24 hours before the meeting.",
-          "Start and finish on time â€” every time.",
+          "Start and finish on time, every time.",
           "Assign a clear owner to every action before the meeting ends.",
           "Record decisions as they are made, not afterwards.",
           "Review outstanding actions at the start of the next meeting.",

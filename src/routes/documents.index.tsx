@@ -9,7 +9,7 @@ const LIFT  = "#F5F7F9";
 const SLATE = "#5A6A7A";
 
 export const Route = createFileRoute("/documents/")({
-  head: () => ({ meta: [{ title: "Business Documents â€” Vula Internal" }] }),
+  head: () => ({ meta: [{ title: "Business Documents | Vula Internal" }] }),
   component: DocumentsPage,
 });
 
@@ -17,7 +17,7 @@ const docs = [
   {
     to: "/documents/business-plan" as const,
     title: "Business Plan 2026",
-    description: "Full business plan â€” executive summary, DARESâ„¢ overview, products, target market, financial projections (Years 1â€“3), go-to-market, and Pty Ltd registration guidance.",
+    description: "Full business plan: executive summary, DARES™ overview, products, target market, financial projections (Years 1-3), go-to-market, and Pty Ltd registration guidance.",
     category: "Strategy",
     pages: "~20 pages",
     note: "Fill in: contact details, city, CIPC reg no once registered.",
@@ -36,7 +36,7 @@ const docs = [
     description: "Post-Compass proposal template. Structured sections for client context, proposed engagement, investment table, timeline, and acceptance block.",
     category: "Sales",
     pages: "~8 pages",
-    note: "Use a fresh copy per client â€” fill in all [bracket] fields.",
+    note: "Use a fresh copy per client and fill in all [bracket] fields.",
   },
   {
     to: "/documents/scope-of-work" as const,
@@ -57,7 +57,7 @@ const docs = [
   {
     to: "/documents/client-welcome-pack" as const,
     title: "Client Welcome Pack",
-    description: "Send this to clients before a Compass session. Covers DARESâ„¢ overview, session preparation checklist, what to expect, and post-session process.",
+    description: "Send this to clients before a Compass session. Covers DARES™ overview, session preparation checklist, what to expect, and post-session process.",
     category: "Client",
     pages: "~5 pages",
     note: "Personalise: client name, session date, tier, and your Vula contact details.",
@@ -65,10 +65,10 @@ const docs = [
   {
     to: "/documents/compass-report" as const,
     title: "Compass Report",
-    description: "Structured post-session report following the DARESâ„¢ framework â€” discovery, assessment, recommendations, roadmap, and agreed next steps.",
+    description: "Structured post-session report following the DARES™ framework: discovery, assessment, recommendations, roadmap, and agreed next steps.",
     category: "Delivery",
     pages: "~8 pages",
-    note: "Complete and send to the client within 2â€“3 business days of the session.",
+    note: "Complete and send to the client within 2-3 business days of the session.",
   },
 ];
 
@@ -149,7 +149,7 @@ function DocumentsPage() {
             className="mb-7 border-l-[3px] p-4 text-[13px] leading-[1.72]"
             style={{ background: "#E6F6FA", borderColor: TEAL, color: INK }}
           >
-            These are your working templates â€” not client-facing links. Each document contains placeholder fields marked with [brackets] or [Insert]. Use a fresh copy for each client engagement and never share the master copies directly.
+            These are your working templates, not client-facing links. Each document contains placeholder fields marked with [brackets] or [Insert]. Use a fresh copy for each client engagement and never share the master copies directly.
           </div>
 
           {/* Document list */}
@@ -207,9 +207,9 @@ function DocumentsPage() {
               About these documents
             </div>
             <ul className="space-y-1.5">
-              <li>â€¢ The <strong style={{ color: INK }}>Business Plan</strong> and <strong style={{ color: INK }}>Client Contract</strong> contain placeholder fields â€” search for <code style={{ background: RULE, color: INK, padding: "0 3px", borderRadius: 2 }}>[Insert]</code> and <code style={{ background: RULE, color: INK, padding: "0 3px", borderRadius: 2 }}>[bracket fields]</code> to find them all.</li>
-              <li>â€¢ Legal documents (Contract, NDA, SOW) should be reviewed by a South African attorney before use with clients.</li>
-              <li>â€¢ Register <strong style={{ color: INK }}>Vula Solutions (Pty) Ltd</strong> at <strong style={{ color: INK }}>bizportal.gov.za</strong> (R175) before your first paid engagement.</li>
+              <li>• The <strong style={{ color: INK }}>Business Plan</strong> and <strong style={{ color: INK }}>Client Contract</strong> contain placeholder fields: search for <code style={{ background: RULE, color: INK, padding: "0 3px", borderRadius: 2 }}>[Insert]</code> and <code style={{ background: RULE, color: INK, padding: "0 3px", borderRadius: 2 }}>[bracket fields]</code> to find them all.</li>
+              <li>• Legal documents (Contract, NDA, SOW) should be reviewed by a South African attorney before use with clients.</li>
+              <li>• Register <strong style={{ color: INK }}>Vula Solutions (Pty) Ltd</strong> at <strong style={{ color: INK }}>bizportal.gov.za</strong> (R175) before your first paid engagement.</li>
             </ul>
           </div>
         </div>
@@ -220,7 +220,7 @@ function DocumentsPage() {
           className="flex items-center justify-between gap-4 px-11 py-5"
         >
           <span className="text-[11px]" style={{ color: "rgba(255,255,255,.35)" }}>
-            Vula Solutions (Pty) Ltd â€” Confidential â€” Internal use only
+            Vula Solutions (Pty) Ltd | Confidential | Internal use only
           </span>
           <span className="text-[11px]" style={{ color: TEAL }}>
             vula.co.za

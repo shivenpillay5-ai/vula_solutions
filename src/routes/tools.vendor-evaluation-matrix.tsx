@@ -7,10 +7,10 @@ import {
 export const Route = createFileRoute("/tools/vendor-evaluation-matrix")({
   head: () => ({
     meta: [
-      { title: "Vendor Evaluation Matrix â€” Vula Solutions" },
+      { title: "Vendor Evaluation Matrix | Vula Solutions" },
       { name: "description", content: "Compare potential vendors objectively and confidently. A free weighted scoring matrix to evaluate technology partners against the criteria that matter most." },
       { property: "og:title", content: "Vendor Evaluation Matrix" },
-      { property: "og:description", content: "A free weighted scoring matrix to compare vendors objectively â€” covering fit, functionality, support, security, cost and more." },
+      { property: "og:description", content: "A free weighted scoring matrix to compare vendors objectively, covering fit, functionality, support, security, cost and more." },
       { property: "og:url", content: "https://vulasolutions.co.za/tools/vendor-evaluation-matrix" },
       { property: "og:type", content: "website" },
     ],
@@ -45,9 +45,9 @@ function VendorEvaluationMatrixPage() {
       tagline="Compare potential vendors objectively and confidently."
       type="Matrix"
       about="Choosing the right technology partner requires more than comparing features and pricing. This evaluation matrix helps you assess vendors consistently against the criteria that matter most to your business, and arrive at a defensible recommendation."
-      howTo={["Identify your evaluation criteria", "Assign a weighting to each criterion", "Score each vendor consistently (1â€“5)", "Multiply score Ã— weight for a weighted total", "Compare the overall weighted results"]}
+      howTo={["Identify your evaluation criteria", "Assign a weighting to each criterion", "Score each vendor consistently (1-5)", "Multiply score × weight for a weighted total", "Compare the overall weighted results"]}
     >
-      <ToolSection label="Step 1 â€” Define Evaluation Criteria & Weights">
+      <ToolSection label="Step 1: Define Evaluation Criteria & Weights">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse" style={{ minWidth: 380 }}>
             <thead>
@@ -85,7 +85,7 @@ function VendorEvaluationMatrixPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Step 2 â€” Score Each Vendor (1â€“5)">
+      <ToolSection label="Step 2: Score Each Vendor (1-5)">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse" style={{ minWidth: 480 }}>
             <thead>
@@ -123,7 +123,7 @@ function VendorEvaluationMatrixPage() {
 
       <ToolDivider />
 
-      <ToolSection label="Step 3 â€” Qualitative Assessment">
+      <ToolSection label="Step 3: Qualitative Assessment">
         <TextQ label="Key strengths of your preferred vendor" rows={2} />
         <TextQ label="Weaknesses or risks to address" rows={2} />
         <TextQ label="Questions still to clarify before deciding" rows={2} />

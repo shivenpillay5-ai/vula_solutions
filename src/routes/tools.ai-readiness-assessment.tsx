@@ -8,7 +8,7 @@ import {
 export const Route = createFileRoute("/tools/ai-readiness-assessment")({
   head: () => ({
     meta: [
-      { title: "AI Readiness Assessment â€” Vula Solutions" },
+      { title: "AI Readiness Assessment | Vula Solutions" },
       { name: "description", content: "Evaluate your organisation's readiness to adopt artificial intelligence responsibly. A free structured assessment from Vula Solutions." },
       { property: "og:title", content: "AI Readiness Assessment" },
       { property: "og:description", content: "Evaluate your organisation's readiness to adopt AI responsibly, identify strengths and gaps, and define your next steps." },
@@ -145,11 +145,11 @@ function AIReadinessAssessmentPage() {
           <table className="w-full border-collapse text-[12.5px]" style={{ minWidth: 360 }}>
             <tbody>
               {[
-                { range: "0â€“20", label: "Early Stage", desc: "Foundational work needed before AI adoption." },
-                { range: "21â€“40", label: "Building Foundations", desc: "Starting to create the conditions for AI." },
-                { range: "41â€“60", label: "Ready to Explore", desc: "Pilot projects and targeted use cases are viable." },
-                { range: "61â€“80", label: "AI Enabled", desc: "AI is part of how you work; expand strategically." },
-                { range: "81â€“100", label: "AI Accelerator", desc: "Lead and scale AI across the organisation." },
+                { range: "0-20", label: "Early Stage", desc: "Foundational work needed before AI adoption." },
+                { range: "21-40", label: "Building Foundations", desc: "Starting to create the conditions for AI." },
+                { range: "41-60", label: "Ready to Explore", desc: "Pilot projects and targeted use cases are viable." },
+                { range: "61-80", label: "AI Enabled", desc: "AI is part of how you work; expand strategically." },
+                { range: "81-100", label: "AI Accelerator", desc: "Lead and scale AI across the organisation." },
               ].map((row, i) => (
                 <tr key={row.range} style={{ background: i % 2 === 1 ? LIFT : "#fff" }}>
                   <td className="px-3 py-2 font-semibold" style={{ borderBottom: `1px solid ${RULE}`, color: TEAL, width: "15%" }}>{row.range}</td>

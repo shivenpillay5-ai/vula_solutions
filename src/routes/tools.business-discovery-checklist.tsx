@@ -7,7 +7,7 @@ import {
 export const Route = createFileRoute("/tools/business-discovery-checklist")({
   head: () => ({
     meta: [
-      { title: "Business Discovery Checklist â€” Vula Solutions" },
+      { title: "Business Discovery Checklist | Vula Solutions" },
       { name: "description", content: "Evaluate where your business is today and identify where to focus next. A free structured worksheet from Vula Solutions." },
       { property: "og:title", content: "Business Discovery Checklist" },
       { property: "og:description", content: "Evaluate where your business is today and identify where to focus next. Free from Vula Solutions." },
@@ -23,7 +23,7 @@ function BusinessDiscoveryChecklistPage() {
   return (
     <ToolPage
       title="Business Discovery Checklist"
-      tagline="Discover where your business is today â€” and identify where to focus next."
+      tagline="Discover where your business is today, and identify where to focus next."
       type="Checklist"
       about="Every successful business makes decisions based on understanding, not assumptions. This checklist helps you evaluate the current state of your business, identify strengths, and prioritise improvement opportunities. Complete each section honestly for the most valuable outcome."
       howTo={["Complete every section", "Answer honestly", "Capture notes throughout", "Identify improvement opportunities", "Prioritise your next steps"]}
