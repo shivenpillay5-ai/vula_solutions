@@ -1,4 +1,4 @@
-﻿import {
+import {
   resourceSections,
   type ResourceArticle,
   type ResourceContentBlock,
@@ -567,7 +567,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   }
 
   // Team resistance / change management / AI adoption
-  if (includesAny(text, ["resistant", "resistance", "afraid of ai", "worried about ai", "skeptical", "not ready for ai", "team won't use", "adoption", "change management"])) {
+  if (includesAny(text, ["resistant", "resistance", "afraid of ai", "worried about ai", "skeptical", "sceptical", "not ready for ai", "team won't use", "adoption", "change management"])) {
     return withReferences(
       {
         content: `That is common, and exactly why enablement is central to the Accelerate${TM} programme. VULA works with your team, not just your tools, building confidence through practical, relevant use cases rather than abstract training.`,

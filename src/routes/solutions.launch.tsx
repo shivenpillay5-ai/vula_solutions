@@ -1,4 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Rocket } from "lucide-react";
 import { SolutionPage } from "@/components/site/SolutionPage";
 

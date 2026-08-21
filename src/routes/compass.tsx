@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, X, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";

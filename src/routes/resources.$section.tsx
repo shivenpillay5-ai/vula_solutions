@@ -1,4 +1,4 @@
-﻿import { Outlet, createFileRoute, notFound } from "@tanstack/react-router";
+import { Outlet, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { getResourceSectionBySlug } from "@/lib/resources";
 

@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Briefcase, Landmark, HardHat, Building2, Stethoscope, Wrench, ArrowRight, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";

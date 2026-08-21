@@ -1,4 +1,4 @@
-﻿import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, Phone, MapPin, CheckCircle2, ShieldCheck, ArrowRight, Loader2 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";

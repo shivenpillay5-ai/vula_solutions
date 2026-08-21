@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Lock, ArrowRight, ArrowLeft } from "lucide-react";
 import { Logo } from "@/components/site/Logo";
 

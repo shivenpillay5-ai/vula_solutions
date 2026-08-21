@@ -1,4 +1,4 @@
-﻿import { Compass, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
+import { Compass, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
 import type { ProductCardProps } from "./ProductCard";
 
 export const products: ProductCardProps[] = [

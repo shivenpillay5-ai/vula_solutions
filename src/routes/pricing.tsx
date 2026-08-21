@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Info, Rocket, Workflow, Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
 import type { ComponentType } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
