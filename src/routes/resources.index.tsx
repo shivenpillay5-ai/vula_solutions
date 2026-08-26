@@ -53,6 +53,13 @@ const FREE_TOOLS = [
     description: "Honest Rand price ranges for websites, automation, AI and SEO in South Africa.",
   },
   {
+    slug: "cost-of-doing-nothing-calculator",
+    to: "/tools/cost-of-doing-nothing-calculator" as const,
+    title: "Cost of Doing Nothing Calculator",
+    type: "Calculator",
+    description: "Turn the hours your team loses to manual admin into a Rand figure per year.",
+  },
+  {
     slug: "business-discovery-checklist",
     to: "/tools/business-discovery-checklist" as const,
     title: "Business Discovery Checklist",

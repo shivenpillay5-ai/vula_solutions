@@ -200,6 +200,11 @@ const FREE_TOOLS: IndexedTool[] = [
     description: "Honest 2026 Rand price ranges for websites, automation, AI and SEO in South Africa, plus the red flags to avoid and the questions to ask any provider before signing.",
   },
   {
+    title: "Cost of Doing Nothing Calculator",
+    slug: "cost-of-doing-nothing-calculator",
+    description: "An interactive calculator that turns the hours a team loses to manual, repetitive admin into a Rand cost per year, and shows what automation could realistically recover.",
+  },
+  {
     title: "AI Readiness Assessment",
     slug: "ai-readiness-assessment",
     description: "Score your business across data quality, team readiness, process maturity and infrastructure to understand where AI can realistically help you.",

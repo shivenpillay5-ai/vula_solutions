@@ -34,6 +34,7 @@ import { Route as ToolsProjectRiskChecklistRouteImport } from './routes/tools.pr
 import { Route as ToolsProcessImprovementScorecardRouteImport } from './routes/tools.process-improvement-scorecard'
 import { Route as ToolsMeetingAgendaTemplatesRouteImport } from './routes/tools.meeting-agenda-templates'
 import { Route as ToolsDigitalTransformationRoadmapRouteImport } from './routes/tools.digital-transformation-roadmap'
+import { Route as ToolsCostOfDoingNothingCalculatorRouteImport } from './routes/tools.cost-of-doing-nothing-calculator'
 import { Route as ToolsBusinessSystemsAuditRouteImport } from './routes/tools.business-systems-audit'
 import { Route as ToolsBusinessDiscoveryChecklistRouteImport } from './routes/tools.business-discovery-checklist'
 import { Route as ToolsAiReadinessAssessmentRouteImport } from './routes/tools.ai-readiness-assessment'
@@ -189,6 +190,12 @@ const ToolsDigitalTransformationRoadmapRoute =
     path: '/tools/digital-transformation-roadmap',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ToolsCostOfDoingNothingCalculatorRoute =
+  ToolsCostOfDoingNothingCalculatorRouteImport.update({
+    id: '/tools/cost-of-doing-nothing-calculator',
+    path: '/tools/cost-of-doing-nothing-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ToolsBusinessSystemsAuditRoute =
   ToolsBusinessSystemsAuditRouteImport.update({
     id: '/tools/business-systems-audit',
@@ -342,6 +349,7 @@ export interface FileRoutesByFullPath {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
@@ -388,6 +396,7 @@ export interface FileRoutesByTo {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
@@ -438,6 +447,7 @@ export interface FileRoutesById {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
@@ -489,6 +499,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
     | '/tools/process-improvement-scorecard'
@@ -535,6 +546,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
     | '/tools/process-improvement-scorecard'
@@ -584,6 +596,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
     | '/tools/process-improvement-scorecard'
@@ -617,6 +630,7 @@ export interface RootRouteChildren {
   ToolsAiReadinessAssessmentRoute: typeof ToolsAiReadinessAssessmentRoute
   ToolsBusinessDiscoveryChecklistRoute: typeof ToolsBusinessDiscoveryChecklistRoute
   ToolsBusinessSystemsAuditRoute: typeof ToolsBusinessSystemsAuditRoute
+  ToolsCostOfDoingNothingCalculatorRoute: typeof ToolsCostOfDoingNothingCalculatorRoute
   ToolsDigitalTransformationRoadmapRoute: typeof ToolsDigitalTransformationRoadmapRoute
   ToolsMeetingAgendaTemplatesRoute: typeof ToolsMeetingAgendaTemplatesRoute
   ToolsProcessImprovementScorecardRoute: typeof ToolsProcessImprovementScorecardRoute
@@ -802,6 +816,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/digital-transformation-roadmap'
       fullPath: '/tools/digital-transformation-roadmap'
       preLoaderRoute: typeof ToolsDigitalTransformationRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/cost-of-doing-nothing-calculator': {
+      id: '/tools/cost-of-doing-nothing-calculator'
+      path: '/tools/cost-of-doing-nothing-calculator'
+      fullPath: '/tools/cost-of-doing-nothing-calculator'
+      preLoaderRoute: typeof ToolsCostOfDoingNothingCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/business-systems-audit': {
@@ -1071,6 +1092,8 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsAiReadinessAssessmentRoute: ToolsAiReadinessAssessmentRoute,
   ToolsBusinessDiscoveryChecklistRoute: ToolsBusinessDiscoveryChecklistRoute,
   ToolsBusinessSystemsAuditRoute: ToolsBusinessSystemsAuditRoute,
+  ToolsCostOfDoingNothingCalculatorRoute:
+    ToolsCostOfDoingNothingCalculatorRoute,
   ToolsDigitalTransformationRoadmapRoute:
     ToolsDigitalTransformationRoadmapRoute,
   ToolsMeetingAgendaTemplatesRoute: ToolsMeetingAgendaTemplatesRoute,
