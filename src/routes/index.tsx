@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
+import { ArrowRight, Calculator, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
@@ -28,6 +28,7 @@ function Home() {
       <CompassIntro />
       <SolutionsOverview />
       <WhyVula />
+      <ToolSpotlight />
       <BrandBand />
       <CTA />
     </>
@@ -92,6 +93,46 @@ function Hero() {
             style={{ background: "radial-gradient(60% 60% at 50% 50%, rgba(20,184,166,0.25), transparent 70%)" }}
             aria-hidden
           />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ToolSpotlight() {
+  const reveal = useReveal();
+  return (
+    <section className="py-4 sm:py-6">
+      <div ref={reveal.ref} className={`container-page ${reveal.className}`}>
+        <div className="relative overflow-hidden rounded-3xl bg-navy-deep px-8 py-10 sm:px-12">
+          <div
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl"
+            style={{ background: "radial-gradient(circle, rgba(1,161,183,0.35), transparent 70%)" }}
+            aria-hidden
+          />
+          <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-electric/15 text-electric">
+                <Calculator className="h-6 w-6" />
+              </span>
+              <div>
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-electric">Free tool</p>
+                <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                  Manual admin has no invoice. It still has a price.
+                </h2>
+                <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/60">
+                  Work out what repetitive work costs your business each year, in Rand, in about 60 seconds.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/tools/cost-of-doing-nothing-calculator"
+              className="inline-flex h-11 shrink-0 items-center gap-2 self-start rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90 md:self-center"
+              style={{ backgroundColor: "#01A1B7" }}
+            >
+              Calculate yours <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
