@@ -195,6 +195,11 @@ const FREE_TOOLS: IndexedTool[] = [
     description: "Work through a structured discovery of your business across strategy, people, process, technology and growth. Ideal starting point before a Compass™ session.",
   },
   {
+    title: "The SA SME Pricing Guide",
+    slug: "sme-pricing-guide",
+    description: "Honest 2026 Rand price ranges for websites, automation, AI and SEO in South Africa, plus the red flags to avoid and the questions to ask any provider before signing.",
+  },
+  {
     title: "AI Readiness Assessment",
     slug: "ai-readiness-assessment",
     description: "Score your business across data quality, team readiness, process maturity and infrastructure to understand where AI can realistically help you.",

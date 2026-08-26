@@ -28,6 +28,7 @@ import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as DocumentsIndexRouteImport } from './routes/documents.index'
 import { Route as ToolsVendorEvaluationMatrixRouteImport } from './routes/tools.vendor-evaluation-matrix'
 import { Route as ToolsSoftwareBuyingChecklistRouteImport } from './routes/tools.software-buying-checklist'
+import { Route as ToolsSmePricingGuideRouteImport } from './routes/tools.sme-pricing-guide'
 import { Route as ToolsRequirementsWorkshopGuideRouteImport } from './routes/tools.requirements-workshop-guide'
 import { Route as ToolsProjectRiskChecklistRouteImport } from './routes/tools.project-risk-checklist'
 import { Route as ToolsProcessImprovementScorecardRouteImport } from './routes/tools.process-improvement-scorecard'
@@ -153,6 +154,11 @@ const ToolsSoftwareBuyingChecklistRoute =
     path: '/tools/software-buying-checklist',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ToolsSmePricingGuideRoute = ToolsSmePricingGuideRouteImport.update({
+  id: '/tools/sme-pricing-guide',
+  path: '/tools/sme-pricing-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsRequirementsWorkshopGuideRoute =
   ToolsRequirementsWorkshopGuideRouteImport.update({
     id: '/tools/requirements-workshop-guide',
@@ -341,6 +347,7 @@ export interface FileRoutesByFullPath {
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/sme-pricing-guide': typeof ToolsSmePricingGuideRoute
   '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
   '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
   '/documents/': typeof DocumentsIndexRoute
@@ -386,6 +393,7 @@ export interface FileRoutesByTo {
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/sme-pricing-guide': typeof ToolsSmePricingGuideRoute
   '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
   '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
   '/documents': typeof DocumentsIndexRoute
@@ -435,6 +443,7 @@ export interface FileRoutesById {
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
+  '/tools/sme-pricing-guide': typeof ToolsSmePricingGuideRoute
   '/tools/software-buying-checklist': typeof ToolsSoftwareBuyingChecklistRoute
   '/tools/vendor-evaluation-matrix': typeof ToolsVendorEvaluationMatrixRoute
   '/documents/': typeof DocumentsIndexRoute
@@ -485,6 +494,7 @@ export interface FileRouteTypes {
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
+    | '/tools/sme-pricing-guide'
     | '/tools/software-buying-checklist'
     | '/tools/vendor-evaluation-matrix'
     | '/documents/'
@@ -530,6 +540,7 @@ export interface FileRouteTypes {
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
+    | '/tools/sme-pricing-guide'
     | '/tools/software-buying-checklist'
     | '/tools/vendor-evaluation-matrix'
     | '/documents'
@@ -578,6 +589,7 @@ export interface FileRouteTypes {
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
+    | '/tools/sme-pricing-guide'
     | '/tools/software-buying-checklist'
     | '/tools/vendor-evaluation-matrix'
     | '/documents/'
@@ -610,6 +622,7 @@ export interface RootRouteChildren {
   ToolsProcessImprovementScorecardRoute: typeof ToolsProcessImprovementScorecardRoute
   ToolsProjectRiskChecklistRoute: typeof ToolsProjectRiskChecklistRoute
   ToolsRequirementsWorkshopGuideRoute: typeof ToolsRequirementsWorkshopGuideRoute
+  ToolsSmePricingGuideRoute: typeof ToolsSmePricingGuideRoute
   ToolsSoftwareBuyingChecklistRoute: typeof ToolsSoftwareBuyingChecklistRoute
   ToolsVendorEvaluationMatrixRoute: typeof ToolsVendorEvaluationMatrixRoute
 }
@@ -747,6 +760,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/software-buying-checklist'
       fullPath: '/tools/software-buying-checklist'
       preLoaderRoute: typeof ToolsSoftwareBuyingChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/sme-pricing-guide': {
+      id: '/tools/sme-pricing-guide'
+      path: '/tools/sme-pricing-guide'
+      fullPath: '/tools/sme-pricing-guide'
+      preLoaderRoute: typeof ToolsSmePricingGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/requirements-workshop-guide': {
@@ -1057,6 +1077,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsProcessImprovementScorecardRoute: ToolsProcessImprovementScorecardRoute,
   ToolsProjectRiskChecklistRoute: ToolsProjectRiskChecklistRoute,
   ToolsRequirementsWorkshopGuideRoute: ToolsRequirementsWorkshopGuideRoute,
+  ToolsSmePricingGuideRoute: ToolsSmePricingGuideRoute,
   ToolsSoftwareBuyingChecklistRoute: ToolsSoftwareBuyingChecklistRoute,
   ToolsVendorEvaluationMatrixRoute: ToolsVendorEvaluationMatrixRoute,
 }

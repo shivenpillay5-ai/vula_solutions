@@ -46,6 +46,13 @@ export const Route = createFileRoute("/resources/")({
 
 const FREE_TOOLS = [
   {
+    slug: "sme-pricing-guide",
+    to: "/tools/sme-pricing-guide" as const,
+    title: "The SA SME Pricing Guide",
+    type: "Guide",
+    description: "Honest Rand price ranges for websites, automation, AI and SEO in South Africa.",
+  },
+  {
     slug: "business-discovery-checklist",
     to: "/tools/business-discovery-checklist" as const,
     title: "Business Discovery Checklist",

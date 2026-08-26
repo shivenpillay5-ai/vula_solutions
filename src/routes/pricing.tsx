@@ -157,6 +157,11 @@ function Pricing() {
           <p className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">These are starting prices, not fixed quotes.</span>{" "}
             Scope, complexity and delivery timelines all shape the final proposal. No project is quoted until Compass™ has mapped the full picture.
+            Wondering how these compare to the wider market? Read our free{" "}
+            <Link to="/tools/sme-pricing-guide" className="font-medium text-electric underline-offset-2 hover:underline">
+              SA SME Pricing Guide
+            </Link>{" "}
+            for honest Rand ranges across the industry.
           </p>
         </div>
       </Section>
