@@ -28,13 +28,16 @@ function extractPullQuote(body: ResourceContentBlock[]): string | null {
 }
 
 export const Route = createFileRoute("/resources/")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    tab: (search.tab === "articles" ? "articles" : "tools") as "tools" | "articles",
+  }),
   head: () => ({
     meta: [
       { title: "Resources — Vula Solutions" },
       {
         name: "description",
         content:
-          "Guides, checklists and insights on how small and medium businesses can work smarter.",
+          "Free tools, checklists and guides to help South African small and medium businesses work smarter.",
       },
       { property: "og:title", content: "Resources — Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/resources" },
@@ -144,20 +147,81 @@ function tightenCopy(text: string, max = 84) {
   return `${trimmed.slice(0, max).trimEnd().replace(/[.,;:]?$/, "")}...`;
 }
 
-function ResourcesIndex() {
+// ── Tab bar ────────────────────────────────────────────────────────────────────
+
+function TabBar({ active }: { active: "tools" | "articles" }) {
+  const base = "px-1 py-4 mr-7 text-sm font-semibold border-b-2 -mb-px transition-colors";
+  const on   = "border-electric text-electric";
+  const off  = "border-transparent text-muted-foreground hover:text-foreground";
+  return (
+    <div className="sticky top-16 lg:top-20 z-20 border-b border-border bg-background/95 backdrop-blur-sm">
+      <div className="container-page flex">
+        <Link
+          to="/resources"
+          search={{ tab: "tools" }}
+          className={`${base} ${active === "tools" ? on : off}`}
+        >
+          Tools & Templates
+        </Link>
+        <Link
+          to="/resources"
+          search={{ tab: "articles" }}
+          className={`${base} ${active === "articles" ? on : off}`}
+        >
+          Articles & Guides
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+// ── Tools tab ─────────────────────────────────────────────────────────────────
+
+function ToolsContent() {
+  return (
+    <Section
+      eyebrow="Free Downloads"
+      title="Tools you can use right now."
+      intro="Practical worksheets, checklists and templates designed to help you make better business decisions — no sign-up required."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {FREE_TOOLS.map(tool => (
+          <Link
+            key={tool.slug}
+            to={tool.to}
+            className="card-premium card-premium-hover group flex flex-col p-6"
+          >
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <span className="rounded-full bg-electric/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-electric">
+                {tool.type}
+              </span>
+              <Download className="h-4 w-4 text-muted-foreground transition group-hover:text-electric" />
+            </div>
+            <h3 className="mb-2 text-base font-semibold tracking-tight leading-snug">{tool.title}</h3>
+            <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{tool.description}</p>
+            <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
+              Open tool <ArrowRight className="h-4 w-4" />
+            </div>
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// ── Articles tab ──────────────────────────────────────────────────────────────
+
+function ArticlesContent({ openSection, setOpenSection }: {
+  openSection: string;
+  setOpenSection: (s: string | ((prev: string) => string)) => void;
+}) {
   const featuredSection = resourceSections.find((section) =>
     section.articles.some((article) => article.body),
   );
   const featuredArticle = featuredSection?.articles.find((article) => article.body);
-  const [openSection, setOpenSection] = useState(resourceSections[0]?.slug ?? "");
 
   return (
     <>
-      <PageHeader
-        eyebrow="Resources"
-        title="Thoughtful guidance, not content for content's sake."
-        intro="Start with Compass™ thinking, then explore practical articles curated to help leaders make clearer business decisions."
-      />
       <Section className="pb-6 sm:pb-8">
         {featuredSection && featuredArticle && (
           <Link
@@ -196,38 +260,12 @@ function ResourcesIndex() {
           </Link>
         )}
       </Section>
-      <Section
-        eyebrow="Free Downloads"
-        title="Tools you can use right now."
-        intro="Practical worksheets, checklists and templates designed to help you make better business decisions — no sign-up required."
-        className="pt-2"
-      >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FREE_TOOLS.map(tool => (
-            <Link
-              key={tool.slug}
-              to={tool.to}
-              className="card-premium card-premium-hover group flex flex-col p-6"
-            >
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <span className="rounded-full bg-electric/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-electric">
-                  {tool.type}
-                </span>
-                <Download className="h-4 w-4 text-muted-foreground transition group-hover:text-electric" />
-              </div>
-              <h3 className="mb-2 text-base font-semibold tracking-tight leading-snug">{tool.title}</h3>
-              <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{tool.description}</p>
-              <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-electric transition group-hover:translate-x-0.5">
-                Open tool <ArrowRight className="h-4 w-4" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
+
       <Section
         eyebrow="Browse By Theme"
         title="Seven doors into better business thinking."
         intro="Open one topic at a time, start with the article that matters most, and keep the library calm instead of crowded."
+        className="pt-2"
       >
         <div className="space-y-4">
           {resourceSections.map((section) => {
@@ -349,6 +387,29 @@ function ResourcesIndex() {
           })}
         </div>
       </Section>
+    </>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+
+function ResourcesIndex() {
+  const { tab } = Route.useSearch();
+  const [openSection, setOpenSection] = useState(resourceSections[0]?.slug ?? "");
+
+  return (
+    <>
+      <PageHeader
+        eyebrow="Resources"
+        title="Your free SME business toolkit."
+        intro="Practical tools and guides designed for business leaders who want clarity, not content for content's sake. No sign-up required."
+      />
+      <TabBar active={tab} />
+      {tab === "tools" ? (
+        <ToolsContent />
+      ) : (
+        <ArticlesContent openSection={openSection} setOpenSection={setOpenSection} />
+      )}
       <CTA
         title="Knowledge is the start. Action is the difference."
         body="Compass™ turns what you have read into a concrete plan for your business. Book a session and leave with clarity."
