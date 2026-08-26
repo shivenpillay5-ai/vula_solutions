@@ -190,6 +190,11 @@ type IndexedTool = {
 
 const FREE_TOOLS: IndexedTool[] = [
   {
+    title: "Business Tech Glossary",
+    slug: "business-tech-glossary",
+    description: "Plain-English definitions of over 40 common business technology terms — cloud, AI, automation, SEO, cybersecurity and more. Written for business owners, not developers.",
+  },
+  {
     title: "Business Discovery Checklist",
     slug: "business-discovery-checklist",
     description: "Work through a structured discovery of your business across strategy, people, process, technology and growth. Ideal starting point before a Compass™ session.",

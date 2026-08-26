@@ -60,6 +60,13 @@ const FREE_TOOLS = [
     description: "Turn the hours your team loses to manual admin into a Rand figure per year.",
   },
   {
+    slug: "business-tech-glossary",
+    to: "/tools/business-tech-glossary" as const,
+    title: "Business Tech Glossary",
+    type: "Glossary",
+    description: "Plain-English definitions of cloud, AI, automation and digital terms — written for business owners, not developers.",
+  },
+  {
     slug: "business-discovery-checklist",
     to: "/tools/business-discovery-checklist" as const,
     title: "Business Discovery Checklist",
