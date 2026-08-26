@@ -24,25 +24,37 @@ import { Mark } from "../components/site/Logo";
  */
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://vulasolutions.co.za/#organization",
-  name: "Vula Solutions",
-  url: "https://vulasolutions.co.za/",
-  slogan: "Open the door to a smarter, stronger business.",
-  description:
-    "Vula Solutions is a Business Transformation Partner for South African SMEs. Strategy, websites, AI, automation and SEO — every engagement starts with Compass™, our signature business discovery session.",
-  image: "https://vulasolutions.co.za/og-image.png",
-  email: "info@vulasolutions.co.za",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Midrand",
-    addressRegion: "Gauteng",
-    addressCountry: "ZA",
-  },
-  areaServed: { "@type": "Country", name: "South Africa" },
-  sameAs: [
-    "https://www.linkedin.com/company/vula-solutions/",
-    "https://www.facebook.com/vulasolutions",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://vulasolutions.co.za/#organization",
+      name: "Vula Solutions",
+      url: "https://vulasolutions.co.za/",
+      slogan: "Open the door to a smarter, stronger business.",
+      description:
+        "Vula Solutions is a Business Transformation Partner for South African SMEs. Strategy, websites, AI, automation and SEO — every engagement starts with Compass™, our signature business discovery session.",
+      image: "https://vulasolutions.co.za/og-image.png",
+      email: "info@vulasolutions.co.za",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Midrand",
+        addressRegion: "Gauteng",
+        addressCountry: "ZA",
+      },
+      areaServed: { "@type": "Country", name: "South Africa" },
+      sameAs: [
+        "https://www.linkedin.com/company/vula-solutions/",
+        "https://www.facebook.com/vulasolutions",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vulasolutions.co.za/#website",
+      url: "https://vulasolutions.co.za/",
+      name: "Vula Solutions",
+      inLanguage: "en-ZA",
+      publisher: { "@id": "https://vulasolutions.co.za/#organization" },
+    },
   ],
 });
 

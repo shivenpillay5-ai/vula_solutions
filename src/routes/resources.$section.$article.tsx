@@ -1,6 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { getResourceArticle, type ResourceContentBlock } from "@/lib/resources";
@@ -51,9 +55,46 @@ function ResourceArticlePage() {
   const { section, article } = result;
   const body = article.body!;
   const minutes = readTime(body);
+  const pageUrl = `https://vulasolutions.co.za/resources/${sectionSlug}/${articleSlug}`;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": pageUrl,
+        headline: article.title,
+        description: article.description,
+        url: pageUrl,
+        inLanguage: "en-ZA",
+        datePublished: "2026-08-01",
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://vulasolutions.co.za/#organization",
+          name: "Vula Solutions",
+        },
+        author: {
+          "@type": "Organization",
+          "@id": "https://vulasolutions.co.za/#organization",
+          name: "Vula Solutions",
+        },
+        articleSection: section.title,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://vulasolutions.co.za/" },
+          { "@type": "ListItem", position: 2, name: "Resources", item: "https://vulasolutions.co.za/resources" },
+          { "@type": "ListItem", position: 3, name: section.title, item: `https://vulasolutions.co.za/resources/${sectionSlug}` },
+          { "@type": "ListItem", position: 4, name: article.title, item: pageUrl },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
+      <JsonLd data={schema} />
       <PageHeader
         eyebrow={section.title}
         title={article.title}

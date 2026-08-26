@@ -35,6 +35,7 @@ import { Route as ToolsProcessImprovementScorecardRouteImport } from './routes/t
 import { Route as ToolsMeetingAgendaTemplatesRouteImport } from './routes/tools.meeting-agenda-templates'
 import { Route as ToolsDigitalTransformationRoadmapRouteImport } from './routes/tools.digital-transformation-roadmap'
 import { Route as ToolsCostOfDoingNothingCalculatorRouteImport } from './routes/tools.cost-of-doing-nothing-calculator'
+import { Route as ToolsBusinessTechGlossaryRouteImport } from './routes/tools.business-tech-glossary'
 import { Route as ToolsBusinessSystemsAuditRouteImport } from './routes/tools.business-systems-audit'
 import { Route as ToolsBusinessDiscoveryChecklistRouteImport } from './routes/tools.business-discovery-checklist'
 import { Route as ToolsAiReadinessAssessmentRouteImport } from './routes/tools.ai-readiness-assessment'
@@ -196,6 +197,12 @@ const ToolsCostOfDoingNothingCalculatorRoute =
     path: '/tools/cost-of-doing-nothing-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ToolsBusinessTechGlossaryRoute =
+  ToolsBusinessTechGlossaryRouteImport.update({
+    id: '/tools/business-tech-glossary',
+    path: '/tools/business-tech-glossary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ToolsBusinessSystemsAuditRoute =
   ToolsBusinessSystemsAuditRouteImport.update({
     id: '/tools/business-systems-audit',
@@ -349,6 +356,7 @@ export interface FileRoutesByFullPath {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/business-tech-glossary': typeof ToolsBusinessTechGlossaryRoute
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
@@ -396,6 +404,7 @@ export interface FileRoutesByTo {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/business-tech-glossary': typeof ToolsBusinessTechGlossaryRoute
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
@@ -447,6 +456,7 @@ export interface FileRoutesById {
   '/tools/ai-readiness-assessment': typeof ToolsAiReadinessAssessmentRoute
   '/tools/business-discovery-checklist': typeof ToolsBusinessDiscoveryChecklistRoute
   '/tools/business-systems-audit': typeof ToolsBusinessSystemsAuditRoute
+  '/tools/business-tech-glossary': typeof ToolsBusinessTechGlossaryRoute
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
@@ -499,6 +509,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/business-tech-glossary'
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
@@ -546,6 +557,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/business-tech-glossary'
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
@@ -596,6 +608,7 @@ export interface FileRouteTypes {
     | '/tools/ai-readiness-assessment'
     | '/tools/business-discovery-checklist'
     | '/tools/business-systems-audit'
+    | '/tools/business-tech-glossary'
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
@@ -630,6 +643,7 @@ export interface RootRouteChildren {
   ToolsAiReadinessAssessmentRoute: typeof ToolsAiReadinessAssessmentRoute
   ToolsBusinessDiscoveryChecklistRoute: typeof ToolsBusinessDiscoveryChecklistRoute
   ToolsBusinessSystemsAuditRoute: typeof ToolsBusinessSystemsAuditRoute
+  ToolsBusinessTechGlossaryRoute: typeof ToolsBusinessTechGlossaryRoute
   ToolsCostOfDoingNothingCalculatorRoute: typeof ToolsCostOfDoingNothingCalculatorRoute
   ToolsDigitalTransformationRoadmapRoute: typeof ToolsDigitalTransformationRoadmapRoute
   ToolsMeetingAgendaTemplatesRoute: typeof ToolsMeetingAgendaTemplatesRoute
@@ -823,6 +837,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/cost-of-doing-nothing-calculator'
       fullPath: '/tools/cost-of-doing-nothing-calculator'
       preLoaderRoute: typeof ToolsCostOfDoingNothingCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/business-tech-glossary': {
+      id: '/tools/business-tech-glossary'
+      path: '/tools/business-tech-glossary'
+      fullPath: '/tools/business-tech-glossary'
+      preLoaderRoute: typeof ToolsBusinessTechGlossaryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/business-systems-audit': {
@@ -1092,6 +1113,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsAiReadinessAssessmentRoute: ToolsAiReadinessAssessmentRoute,
   ToolsBusinessDiscoveryChecklistRoute: ToolsBusinessDiscoveryChecklistRoute,
   ToolsBusinessSystemsAuditRoute: ToolsBusinessSystemsAuditRoute,
+  ToolsBusinessTechGlossaryRoute: ToolsBusinessTechGlossaryRoute,
   ToolsCostOfDoingNothingCalculatorRoute:
     ToolsCostOfDoingNothingCalculatorRoute,
   ToolsDigitalTransformationRoadmapRoute:

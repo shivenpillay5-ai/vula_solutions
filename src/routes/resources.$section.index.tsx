@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
@@ -21,6 +25,17 @@ function ResourceSectionPage() {
   const section = getResourceSectionBySlug(sectionSlug);
 
   if (!section) return null;
+
+  const sectionUrl = `https://vulasolutions.co.za/resources/${sectionSlug}`;
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vulasolutions.co.za/" },
+      { "@type": "ListItem", position: 2, name: "Resources", item: "https://vulasolutions.co.za/resources" },
+      { "@type": "ListItem", position: 3, name: section.title, item: sectionUrl },
+    ],
+  };
 
   const publishedArticles = section.articles.filter((article) => Boolean(article.body));
   const featuredArticle = publishedArticles[0];
@@ -57,6 +72,7 @@ function ResourceSectionPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumb} />
       <PageHeader
         eyebrow="Resources"
         title={section.title}
@@ -64,6 +80,7 @@ function ResourceSectionPage() {
         breadcrumb={
           <Link
             to="/resources"
+            search={{ tab: "articles" }}
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />

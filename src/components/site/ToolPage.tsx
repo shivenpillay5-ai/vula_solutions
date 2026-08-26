@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Printer, ArrowLeft } from "lucide-react";
 import { Logo } from "./Logo";
+
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
 
 const TEAL  = "#01A1B7";
 const INK   = "#0F1923";
@@ -25,8 +29,21 @@ interface ToolPageProps {
 }
 
 export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Business Resource", footerVariant = "compass", backTo = "/resources", backLabel = "Resources", children }: ToolPageProps) {
+  const { pathname } = useLocation();
+  const pageUrl = `https://vulasolutions.co.za${pathname}`;
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vulasolutions.co.za/" },
+      { "@type": "ListItem", position: 2, name: "Resources", item: "https://vulasolutions.co.za/resources" },
+      { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+    ],
+  };
+
   return (
     <div style={{ background: "#E8ECF0", WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" } as React.CSSProperties} className="min-h-screen pb-12">
+      <JsonLd data={breadcrumb} />
 
       {/* Print bar — hidden in print output */}
       <div className="print:hidden sticky top-16 z-30 border-b border-[#DDE3E9] bg-[#F5F7F9]">

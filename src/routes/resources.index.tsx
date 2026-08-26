@@ -28,8 +28,8 @@ function extractPullQuote(body: ResourceContentBlock[]): string | null {
 }
 
 export const Route = createFileRoute("/resources/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    tab: (search.tab === "articles" ? "articles" : "tools") as "tools" | "articles",
+  validateSearch: (search: Record<string, unknown>): { tab?: "tools" | "articles" } => ({
+    tab: search.tab === "articles" ? "articles" : search.tab === "tools" ? "tools" : undefined,
   }),
   head: () => ({
     meta: [
@@ -395,6 +395,7 @@ function ArticlesContent({ openSection, setOpenSection }: {
 
 function ResourcesIndex() {
   const { tab } = Route.useSearch();
+  const activeTab = tab ?? "tools";
   const [openSection, setOpenSection] = useState(resourceSections[0]?.slug ?? "");
 
   return (
@@ -404,8 +405,8 @@ function ResourcesIndex() {
         title="Your free SME business toolkit."
         intro="Practical tools and guides designed for business leaders who want clarity, not content for content's sake. No sign-up required."
       />
-      <TabBar active={tab} />
-      {tab === "tools" ? (
+      <TabBar active={activeTab} />
+      {activeTab === "tools" ? (
         <ToolsContent />
       ) : (
         <ArticlesContent openSection={openSection} setOpenSection={setOpenSection} />
