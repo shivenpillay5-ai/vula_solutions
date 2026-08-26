@@ -121,7 +121,7 @@ function ToolSpotlight() {
                   Manual admin has no invoice. It still has a price.
                 </h2>
                 <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/60">
-                  Work out what repetitive work costs your business each year, in Rand, in about 60 seconds.
+                  Work out what repetitive work costs your business each year, in about 60 seconds.
                 </p>
               </div>
             </div>
