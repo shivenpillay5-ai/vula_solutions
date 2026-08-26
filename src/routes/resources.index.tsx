@@ -70,6 +70,13 @@ const FREE_TOOLS = [
     description: "Plain-English definitions of cloud, AI, automation and digital terms — written for business owners, not developers.",
   },
   {
+    slug: "popia-basics-checklist",
+    to: "/tools/popia-basics-checklist" as const,
+    title: "POPIA Basics Checklist",
+    type: "Checklist",
+    description: "Nine practical compliance areas every South African SME should work through to meet their POPIA obligations — no legal jargon.",
+  },
+  {
     slug: "business-discovery-checklist",
     to: "/tools/business-discovery-checklist" as const,
     title: "Business Discovery Checklist",

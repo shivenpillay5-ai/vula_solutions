@@ -195,6 +195,11 @@ const FREE_TOOLS: IndexedTool[] = [
     description: "Plain-English definitions of over 40 common business technology terms — cloud, AI, automation, SEO, cybersecurity and more. Written for business owners, not developers.",
   },
   {
+    title: "POPIA Basics Checklist",
+    slug: "popia-basics-checklist",
+    description: "A plain-English POPIA compliance checklist for South African SMEs. Nine practical areas: appointing an information officer, mapping personal data, lawful basis for processing, privacy notice, data subject rights, security, operator agreements, breach response, and retention.",
+  },
+  {
     title: "Business Discovery Checklist",
     slug: "business-discovery-checklist",
     description: "Work through a structured discovery of your business across strategy, people, process, technology and growth. Ideal starting point before a Compass™ session.",
@@ -347,7 +352,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
       snippet: t.description,
     }));
     return {
-      content: `VULA offers 10 free business tools — no sign-up needed. They cover AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
+      content: `VULA offers 14 free business tools — no sign-up needed. They cover POPIA compliance, AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
       suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
       references: toolRefs.length > 0 ? toolRefs : fallbackRefs,
     };
@@ -565,6 +570,17 @@ export function getAskCompassReply(question: string): AskCompassReply {
       {
         content: `Yes. VULA helps identify repetitive work and turn it into reliable workflows through Flow${TM}. We would usually begin by understanding the process first, then recommend the right level of automation.`,
         suggestions: [`What is Compass${TM}`, "How VULA can help my business", "How do I start"],
+      },
+      question,
+    );
+  }
+
+  // POPIA / personal information compliance
+  if (includesAny(text, ["popia", "protection of personal information", "information officer", "data breach", "data subject", "privacy compliance", "privacy act", "personal information act", "inforegulator", "responsible party", "operator agreement", "privacy notice"])) {
+    return withReferences(
+      {
+        content: `POPIA — South Africa's Protection of Personal Information Act — applies to every business that collects or processes personal information. VULA has a free POPIA Basics Checklist covering nine practical areas: appointing an information officer, mapping what data you hold, establishing lawful grounds, publishing a privacy notice, data subject rights, securing data, managing operators, responding to breaches and setting retention periods.`,
+        suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
     );
