@@ -6,7 +6,7 @@ export const Route = createFileRoute("/tools/business-tech-glossary")({
   head: () => ({
     meta: [
       { title: "Business Tech Glossary | Vula Solutions" },
-      { name: "description", content: "Plain-English definitions of common business technology terms for South African SMEs. Cloud, AI, automation, SEO and more — no jargon, no spin." },
+      { name: "description", content: "Plain-English definitions of common business technology terms for South African SMEs. Cloud, AI, automation, SEO and more. No jargon, no spin." },
       { property: "og:title", content: "Business Tech Glossary" },
       { property: "og:description", content: "Clear definitions of the terms your software vendor uses, written for business owners not developers." },
       { property: "og:url", content: "https://vulasolutions.co.za/tools/business-tech-glossary" },
@@ -95,11 +95,11 @@ const CATEGORIES: GlossaryCategory[] = [
       {
         term: "CMS",
         full: "Content Management System",
-        definition: "Software that lets you update website content — blog posts, products, pages — without needing a developer. WordPress is the most common example.",
+        definition: "Software that lets you update website content, such as blog posts, products and pages, without needing a developer. WordPress is the most common example.",
       },
       {
         term: "Workflow automation",
-        definition: "Software that completes a defined sequence of tasks automatically when triggered by an event. For example: a new enquiry submits your contact form, which creates a task, sends a confirmation email and updates your CRM — without anyone doing it manually.",
+        definition: "Software that completes a defined sequence of tasks automatically when triggered by an event. For example: a new enquiry submits your contact form, which creates a task, sends a confirmation email and updates your CRM, all without anyone doing it manually.",
       },
       {
         term: "No-code / Low-code",
@@ -124,7 +124,7 @@ const CATEGORIES: GlossaryCategory[] = [
       },
       {
         term: "Generative AI",
-        definition: "AI that produces new content — text, images, code or audio — based on a prompt or instruction. ChatGPT and Claude are generative AI tools.",
+        definition: "AI that produces new content, such as text, images, code or audio, based on a prompt or instruction. ChatGPT and Claude are generative AI tools.",
       },
       {
         term: "Prompt",
@@ -137,7 +137,7 @@ const CATEGORIES: GlossaryCategory[] = [
       {
         term: "RPA",
         full: "Robotic Process Automation",
-        definition: "Software that mimics repetitive human actions in existing systems — copying data between screens, filling in forms, sending standard emails — without changing the underlying software.",
+        definition: "Software that mimics repetitive human actions in existing systems: copying data between screens, filling in forms and sending standard emails, without changing the underlying software.",
       },
       {
         term: "Large Language Model (LLM)",
@@ -165,7 +165,7 @@ const CATEGORIES: GlossaryCategory[] = [
       },
       {
         term: "Responsive design",
-        definition: "A website that automatically adjusts its layout to suit the screen it is being viewed on — whether a phone, tablet or desktop monitor.",
+        definition: "A website that automatically adjusts its layout to suit the screen it is being viewed on, whether a phone, tablet or desktop monitor.",
       },
       {
         term: "Conversion",
@@ -173,11 +173,11 @@ const CATEGORIES: GlossaryCategory[] = [
       },
       {
         term: "Analytics",
-        definition: "Tracking and measuring user behaviour on your website or app — usually via a tool like Google Analytics — to understand how people find and use your digital presence.",
+        definition: "Tracking and measuring user behaviour on your website or app, usually via a tool like Google Analytics, to understand how people find and use your digital presence.",
       },
       {
         term: "Structured data",
-        definition: "Hidden code on a webpage that tells Google what the content means, not just what it says. Enables rich results in search — star ratings, FAQs, breadcrumbs — that increase click-through rates.",
+        definition: "Hidden code on a webpage that tells Google what the content means, not just what it says. Enables rich results in search, such as star ratings, FAQs and breadcrumbs, that increase click-through rates.",
       },
     ],
   },
@@ -210,7 +210,7 @@ const CATEGORIES: GlossaryCategory[] = [
       },
       {
         term: "Digital transformation",
-        definition: "Using technology to fundamentally change how a business operates and delivers value. Not just adding new software — rethinking processes, culture and strategy at the same time.",
+        definition: "Using technology to fundamentally change how a business operates and delivers value. Not just adding new software, but rethinking processes, culture and strategy at the same time.",
       },
       {
         term: "Scope creep",
@@ -236,7 +236,7 @@ const CATEGORIES: GlossaryCategory[] = [
       },
       {
         term: "Two-factor authentication (2FA)",
-        definition: "A login method that requires both a password and a second proof of identity — usually a code sent to your phone. Significantly reduces the risk of unauthorised access even when a password is stolen.",
+        definition: "A login method that requires both a password and a second proof of identity, usually a code sent to your phone. Significantly reduces the risk of unauthorised access even when a password is stolen.",
       },
       {
         term: "VPN",
@@ -291,7 +291,7 @@ function BusinessTechGlossaryPage() {
       title="Business Tech Glossary"
       tagline="Clear definitions of the terms your software vendor uses, written for business owners not developers."
       type="Glossary"
-      about="Technology sales people often speak a dialect designed to sound impressive rather than to inform. This glossary translates the most common terms into plain language so you can evaluate proposals, ask better questions and make faster decisions — without needing a technical background."
+      about="Technology sales people often speak a dialect designed to sound impressive rather than to inform. This glossary translates the most common terms into plain language so you can evaluate proposals, ask better questions and make faster decisions, without needing a technical background."
       howTo={[
         "Search for a specific term, acronym or topic",
         "Browse by category if you are new to an area",

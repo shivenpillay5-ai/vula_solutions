@@ -67,14 +67,14 @@ const FREE_TOOLS = [
     to: "/tools/business-tech-glossary" as const,
     title: "Business Tech Glossary",
     type: "Glossary",
-    description: "Plain-English definitions of cloud, AI, automation and digital terms — written for business owners, not developers.",
+    description: "Plain-English definitions of cloud, AI, automation and digital terms. Written for business owners, not developers.",
   },
   {
     slug: "popia-basics-checklist",
     to: "/tools/popia-basics-checklist" as const,
     title: "POPIA Basics Checklist",
     type: "Checklist",
-    description: "Nine practical compliance areas every South African SME should work through to meet their POPIA obligations — no legal jargon.",
+    description: "Nine practical compliance areas every South African SME should work through to meet their POPIA obligations. No legal jargon.",
   },
   {
     slug: "business-discovery-checklist",
@@ -123,7 +123,7 @@ const FREE_TOOLS = [
     to: "/tools/meeting-agenda-templates" as const,
     title: "Meeting Agenda Templates",
     type: "Template",
-    description: "Four ready-to-use templates — team, project kick-off, requirements, and leadership.",
+    description: "Four ready-to-use templates covering team standups, project kick-offs, requirements sessions and leadership meetings.",
   },
   {
     slug: "requirements-workshop-guide",
@@ -189,7 +189,7 @@ function ToolsContent() {
     <Section
       eyebrow="Free Downloads"
       title="Tools you can use right now."
-      intro="Practical worksheets, checklists and templates designed to help you make better business decisions — no sign-up required."
+      intro="Practical worksheets, checklists and templates designed to help you make better business decisions. No sign-up required."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {FREE_TOOLS.map(tool => (

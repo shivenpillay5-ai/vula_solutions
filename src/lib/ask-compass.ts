@@ -192,7 +192,7 @@ const FREE_TOOLS: IndexedTool[] = [
   {
     title: "Business Tech Glossary",
     slug: "business-tech-glossary",
-    description: "Plain-English definitions of over 40 common business technology terms — cloud, AI, automation, SEO, cybersecurity and more. Written for business owners, not developers.",
+    description: "Plain-English definitions of over 40 common business technology terms: cloud, AI, automation, SEO, cybersecurity and more. Written for business owners, not developers.",
   },
   {
     title: "POPIA Basics Checklist",
@@ -232,12 +232,12 @@ const FREE_TOOLS: IndexedTool[] = [
   {
     title: "Business Systems Audit",
     slug: "business-systems-audit",
-    description: "Audit every tool and system in your business — from accounting to CRM — to find gaps, overlaps and cost savings.",
+    description: "Audit every tool and system in your business, from accounting to CRM, to find gaps, overlaps and cost savings.",
   },
   {
     title: "Software Buying Checklist",
     slug: "software-buying-checklist",
-    description: "A structured checklist to evaluate any software purchase — covering requirements, budget, security, integration and vendor risk.",
+    description: "A structured checklist to evaluate any software purchase, covering requirements, budget, security, integration and vendor risk.",
   },
   {
     title: "Vendor Evaluation Matrix",
@@ -352,7 +352,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
       snippet: t.description,
     }));
     return {
-      content: `VULA offers 14 free business tools — no sign-up needed. They cover POPIA compliance, AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
+      content: `VULA offers 14 free business tools. No sign-up needed. They cover POPIA compliance, AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
       suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
       references: toolRefs.length > 0 ? toolRefs : fallbackRefs,
     };
@@ -362,7 +362,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["meeting", "agenda", "meeting notes", "meeting template", "kick-off", "kick off", "retrospective"])) {
     return withReferences(
       {
-        content: `Running structured meetings makes a real difference. VULA has a free Meeting Agenda Templates tool covering strategy reviews, project kick-offs, client check-ins and retrospectives. You can open and fill it in directly — no download needed.`,
+        content: `Running structured meetings makes a real difference. VULA has a free Meeting Agenda Templates tool covering strategy reviews, project kick-offs, client check-ins and retrospectives. You can open and fill it in directly. No download needed.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -395,7 +395,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["project risk", "risk register", "risk management", "risks", "risk assessment"])) {
     return withReferences(
       {
-        content: `VULA's free Project Risk Checklist helps you identify, rate and plan responses to risks before a project starts — covering scope, budget, resource, technical and stakeholder risk.`,
+        content: `VULA's free Project Risk Checklist helps you identify, rate and plan responses to risks before a project starts, covering scope, budget, resource, technical and stakeholder risk.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -406,7 +406,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["requirements", "requirements gathering", "requirements workshop", "specification", "scope document"])) {
     return withReferences(
       {
-        content: `VULA has a free Requirements Workshop Guide — a structured facilitation template for gathering requirements from your team or clients before any build or change project.`,
+        content: `VULA has a free Requirements Workshop Guide, a structured facilitation template for gathering requirements from your team or clients before any build or change project.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -417,7 +417,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["systems audit", "business systems", "audit my tools", "tool audit", "software audit", "crm audit"])) {
     return withReferences(
       {
-        content: `VULA's free Business Systems Audit maps every tool and system across your business — accounting, CRM, comms, project management — to surface gaps, overlaps and cost savings.`,
+        content: `VULA's free Business Systems Audit maps every tool and system across your business, including accounting, CRM, comms and project management, to surface gaps, overlaps and cost savings.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -579,7 +579,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["popia", "protection of personal information", "information officer", "data breach", "data subject", "privacy compliance", "privacy act", "personal information act", "inforegulator", "responsible party", "operator agreement", "privacy notice"])) {
     return withReferences(
       {
-        content: `POPIA — South Africa's Protection of Personal Information Act — applies to every business that collects or processes personal information. VULA has a free POPIA Basics Checklist covering nine practical areas: appointing an information officer, mapping what data you hold, establishing lawful grounds, publishing a privacy notice, data subject rights, securing data, managing operators, responding to breaches and setting retention periods.`,
+        content: `South Africa's Protection of Personal Information Act (POPIA) applies to every business that collects or processes personal information. VULA has a free POPIA Basics Checklist covering nine practical areas: appointing an information officer, mapping what data you hold, establishing lawful grounds, publishing a privacy notice, data subject rights, securing data, managing operators, responding to breaches and setting retention periods.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
