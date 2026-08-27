@@ -1,6 +1,16 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
+const SECTION_TOOL: Record<string, { title: string; slug: string; description: string }> = {
+  "getting-started":        { title: "Business Discovery Checklist",       slug: "business-discovery-checklist",       description: "Evaluate where your business is today and identify where to focus next." },
+  "strategy-and-leadership":{ title: "Digital Transformation Roadmap",     slug: "digital-transformation-roadmap",     description: "Assess your current state, define your vision, and plan the path forward." },
+  "change-management":      { title: "Business Discovery Checklist",       slug: "business-discovery-checklist",       description: "Evaluate where your business is today and identify where to focus next." },
+  "process-improvement":    { title: "Process Improvement Scorecard",      slug: "process-improvement-scorecard",      description: "Rate your business processes across eight areas and build an improvement plan." },
+  "artificial-intelligence":{ title: "AI Readiness Assessment",            slug: "ai-readiness-assessment",            description: "Understand your organisation's readiness to adopt AI responsibly." },
+  "software-and-technology":{ title: "Software Buying Checklist",          slug: "software-buying-checklist",          description: "Define your requirements, evaluate vendors and avoid costly mistakes." },
+  "business-growth":        { title: "Cost of Doing Nothing Calculator",   slug: "cost-of-doing-nothing-calculator",   description: "Work out what repetitive work costs your business each year, in about 60 seconds." },
+};
+
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -55,6 +65,12 @@ function ResourceArticlePage() {
   const { section, article } = result;
   const body = article.body!;
   const minutes = readTime(body);
+
+  const relatedArticles = section.articles
+    .filter((a) => a.body && a.slug !== articleSlug)
+    .slice(0, 2);
+
+  const relatedTool = SECTION_TOOL[sectionSlug] ?? null;
   const pageUrl = `https://vulasolutions.co.za/resources/${sectionSlug}/${articleSlug}`;
 
   const schema = {
@@ -190,6 +206,45 @@ function ResourceArticlePage() {
               </Link>
             </div>
           </div>
+
+          {relatedArticles.length > 0 && (
+            <div className="mt-8">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Keep reading</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {relatedArticles.map((related) => (
+                  <Link
+                    key={related.slug}
+                    to="/resources/$section/$article"
+                    params={{ section: section.slug, article: related.slug }}
+                    className="group flex flex-col rounded-2xl border border-border bg-background p-5 transition hover:border-electric/40 hover:bg-accent/40"
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-electric">{related.tag}</p>
+                    <h4 className="mt-2 text-sm font-semibold leading-snug text-foreground">{related.title}</h4>
+                    <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{related.description}</p>
+                    <div className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-electric transition-transform group-hover:translate-x-0.5">
+                      Read article <ArrowRight className="h-3 w-3" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {relatedTool && (
+            <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-border p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+              <div className="min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Free tool</p>
+                <p className="mt-1 text-sm font-semibold text-foreground">{relatedTool.title}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{relatedTool.description}</p>
+              </div>
+              <Link
+                to={`/tools/${relatedTool.slug}` as never}
+                className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-primary px-5 text-xs font-semibold text-primary-foreground transition hover:opacity-90"
+              >
+                Open free tool <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+          )}
         </article>
       </Section>
     </>

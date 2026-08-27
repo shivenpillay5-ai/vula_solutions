@@ -45,7 +45,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Discovery",
         title: "Why Most Software Projects Fail Before They Begin",
         description:
-          "Why clarity should come before software decisions.",
+          "Why clarity should come before software decisions. Most projects fail not because of the technology chosen, but because the brief was never properly defined.",
         body: [
           {
             type: "paragraph",
@@ -232,7 +232,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Discovery",
         title: "The Five Questions Every Business Should Answer Before Buying Software",
         description:
-          "Five questions to answer before choosing software.",
+          "Five questions to answer before choosing software. Getting these right upfront saves time, reduces risk and makes implementation far smoother.",
         body: [
           {
             type: "paragraph",
@@ -433,7 +433,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Discovery",
         title: "Why Requirements Gathering Isn't Business Discovery",
         description:
-          "Why business discovery should come before requirements.",
+          "Why business discovery should come before requirements. Knowing what to build matters less than knowing whether you should be building it at all.",
         body: [
           {
             type: "paragraph",
@@ -627,7 +627,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Leadership",
         title: "Why Transformation Fails Without Leadership Buy-In",
         description:
-          "Why transformation succeeds only with visible leadership buy-in.",
+          "Why transformation succeeds only with visible leadership buy-in. Without it, even well-designed change programmes stall at the first sign of resistance.",
         body: [
           {
             type: "paragraph",
@@ -699,7 +699,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Leadership",
         title: "Technology Doesn't Transform Businesses. People Do.",
         description:
-          "Why people matter more than the software itself.",
+          "Why people matter more than the software itself. The most successful transformations are built around mindset, behaviour and leadership, not platforms.",
         body: [
           {
             type: "paragraph",
@@ -772,7 +772,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Leadership",
         title: "Why Every Digital Transformation Should Start With Trust",
         description:
-          "Why trust makes transformation believable and sustainable.",
+          "Why trust makes transformation believable and sustainable. When people do not trust the process or the leadership behind it, no communication fills that gap.",
         body: [
           {
             type: "paragraph",
@@ -845,7 +845,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Strategy",
         title: "Why Digital Transformation Isn't an IT Project",
         description:
-          "Why transformation should be led as a business initiative.",
+          "Why transformation should be led as a business initiative. Handing it to IT tends to produce a technology solution to what is really a business problem.",
         body: [
           {
             type: "paragraph",
@@ -912,7 +912,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Strategy",
         title: "The Cost of Doing Nothing",
         description:
-          "Why doing nothing often costs more than expected.",
+          "Why doing nothing often costs more than expected. Staying with a broken process or outdated system quietly drains time, money and competitive advantage.",
         body: [
           {
             type: "paragraph",
@@ -985,7 +985,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Strategy",
         title: "Technology Should Follow Strategy, Not Lead It",
         description:
-          "Why strategy should shape technology decisions.",
+          "Why strategy should shape technology decisions. Buying software before clarifying direction often locks businesses into the wrong solution.",
         body: [
           {
             type: "paragraph",
@@ -1066,7 +1066,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Change",
         title: "Why Employees Resist Change (And What They're Really Saying)",
         description:
-          "Why resistance is usually a response to uncertainty, not change itself.",
+          "Why resistance is usually a response to uncertainty, not change itself. Understanding what people are really saying makes navigating it far clearer.",
         body: [
           {
             type: "paragraph",
@@ -1173,7 +1173,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Change",
         title: "How to Build Confidence During Business Change",
         description:
-          "How leaders create confidence so people move forward together.",
+          "How leaders create confidence so people move forward together. Practical approaches that reduce anxiety and build genuine commitment during change.",
         body: [
           {
             type: "paragraph",
@@ -1290,7 +1290,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Change",
         title: "Why Communication Is Your Most Important Transformation Tool",
         description:
-          "Why communication shapes confidence, alignment and adoption during change.",
+          "Why communication shapes confidence, alignment and adoption during change. Most organisations underinvest in it and pay for that later.",
         body: [
           {
             type: "paragraph",
@@ -1414,7 +1414,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Small Business",
         title: "Stop Buying Technology. Start Solving Problems.",
         description:
-          "Why the right starting point is business clarity, not another tool.",
+          "Why the right starting point is business clarity, not another tool. Most businesses buy software to solve problems they have not properly defined yet.",
         body: [
           {
             type: "paragraph",
@@ -1476,7 +1476,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Small Business",
         title: "When Excel Is Actually the Right Answer",
         description:
-          "Why replacing spreadsheets is not always the smartest first move.",
+          "Why replacing spreadsheets is not always the smartest first move. Sometimes the spreadsheet is fine and the process around it is the real problem.",
         body: [
           {
             type: "paragraph",
@@ -1538,7 +1538,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Small Business",
         title: "The Hidden Cost of Disconnected Business Systems",
         description:
-          "Why fragmented tools quietly create waste, delays and confusion.",
+          "Why fragmented tools quietly create waste, delays and confusion. The real cost is rarely visible on any single system. It shows up in the gaps between them.",
         body: [
           {
             type: "paragraph",
@@ -1595,7 +1595,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Operations",
         title: "Why Process Mapping Still Matters in an AI World",
         description:
-          "Why understanding the work is even more important before using AI.",
+          "Why understanding the work is even more important before using AI. Automating a process you have not properly mapped is one of the fastest ways to scale a mistake.",
         body: [
           {
             type: "paragraph",
@@ -1643,7 +1643,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Operations",
         title: "Automation vs Optimisation",
         description:
-          "Why making a bad process faster is not the same as making it better.",
+          "Why making a bad process faster is not the same as making it better. Optimising first, then automating, produces far more durable and predictable results.",
         body: [
           {
             type: "paragraph",
@@ -1692,7 +1692,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Operations",
         title: "Digital Maturity Isn't What You Think",
         description:
-          "Why maturity is about clarity, capability and discipline, not more software.",
+          "Why maturity is about clarity, capability and discipline, not more software. Most businesses are further along than they realise and missing in quite specific areas.",
         body: [
           {
             type: "paragraph",
@@ -1735,7 +1735,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Productivity",
         title: "Five Signs Your Business Is Wasting Time",
         description:
-          "Simple patterns that reveal hidden inefficiency across everyday work.",
+          "Simple patterns that reveal hidden inefficiency across everyday work. If several of these feel familiar, there is likely untapped capacity in the business.",
         body: [
           {
             type: "paragraph",
@@ -1784,7 +1784,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Productivity",
         title: "Why Busy Doesn't Always Mean Productive",
         description:
-          "Why high activity can still hide low-value work and slow progress.",
+          "Why high activity can still hide low-value work and slow progress. The goal is not to do more but to do the right things with less wasted effort.",
         body: [
           {
             type: "paragraph",
@@ -1827,7 +1827,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Productivity",
         title: "How Small Process Improvements Create Big Business Results",
         description:
-          "Why modest operational changes often compound into meaningful gains.",
+          "Why modest operational changes often compound into meaningful gains. Small fixes to everyday processes rarely feel significant in isolation, but they add up quickly.",
         body: [
           {
             type: "paragraph",
@@ -1878,7 +1878,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Starting with AI",
         title: "AI Won't Fix a Broken Process",
         description:
-          "Why AI works best after the process itself has been improved.",
+          "Why AI works best after the process itself has been improved. Introducing AI into a broken workflow tends to make the problems faster rather than smaller.",
         body: [
           {
             type: "paragraph",
@@ -1940,7 +1940,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Starting with AI",
         title: "Five Practical Ways SMEs Can Use AI Today",
         description:
-          "A simple, realistic look at where smaller businesses can start using AI now.",
+          "A simple, realistic look at where smaller businesses can start using AI now, without needing a data science team or a large technology budget.",
         body: [
           {
             type: "paragraph",
@@ -1989,7 +1989,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Starting with AI",
         title: "AI Readiness: Are You Solving the Right Problem?",
         description:
-          "Why readiness has more to do with clarity, process and people than tools.",
+          "Why readiness has more to do with clarity, process and people than tools. Most businesses that struggle with AI adoption started with the wrong question.",
         body: [
           {
             type: "paragraph",
@@ -2042,7 +2042,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Advanced",
         title: "Common AI Mistakes Businesses Make",
         description:
-          "The most common adoption mistakes and how to avoid them early.",
+          "The most common adoption mistakes and how to avoid them early. Most come down to starting with the technology rather than the business problem it is meant to solve.",
         body: [
           {
             type: "paragraph",
@@ -2091,7 +2091,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Advanced",
         title: "What AI Should Never Replace",
         description:
-          "Where human judgement, empathy and leadership must remain central.",
+          "Where human judgement, empathy and leadership must remain central. Some decisions require things no model can replicate, and knowing the difference matters.",
         body: [
           {
             type: "paragraph",
@@ -2134,7 +2134,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Advanced",
         title: "How to Introduce AI Without Overwhelming Your Team",
         description:
-          "How to roll out AI in a way that builds confidence instead of fear.",
+          "How to roll out AI in a way that builds confidence instead of fear. A gradual approach makes adoption stick where a big-bang rollout rarely does.",
         body: [
           {
             type: "paragraph",
@@ -2191,7 +2191,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Software",
         title: "How to Choose Software Without Regretting It",
         description:
-          "A calmer, better way to choose software by starting with the business first.",
+          "A calmer, better way to choose software by starting with the business first. Most regrets come from evaluating vendors before the requirements were clear.",
         body: [
           {
             type: "paragraph",
@@ -2256,7 +2256,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Software",
         title: "Custom Software vs Off-the-Shelf Software: Which Is Right for Your Business?",
         description:
-          "How to decide whether to buy proven software or build something tailored.",
+          "How to decide whether to buy proven software or build something tailored. The right answer depends on how distinctive your process actually is.",
         body: [
           {
             type: "paragraph",
@@ -2319,7 +2319,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Software",
         title: "The Questions You Should Ask Every Software Vendor",
         description:
-          "Better vendor questions that lead to better software decisions.",
+          "Better vendor questions that lead to better software decisions. Most buyers focus on features when the questions that reveal real fit rarely get asked.",
         body: [
           {
             type: "paragraph",
@@ -2387,7 +2387,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Growth",
         title: "Why Growing Businesses Outgrow Their Systems",
         description:
-          "Why the tools that supported early growth can start creating friction later on.",
+          "Why the tools that supported early growth can start creating friction later on. What worked at ten people rarely scales cleanly to fifty without some adjustment.",
         body: [
           {
             type: "paragraph",
@@ -2435,7 +2435,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Growth",
         title: "When Is It Time to Invest in Better Technology?",
         description:
-          "How to recognise when technology is holding the business back rather than helping it forward.",
+          "How to recognise when technology is holding the business back rather than helping it forward. There are usually clear signals, and most businesses miss them until it is already costly.",
         body: [
           {
             type: "paragraph",
@@ -2484,7 +2484,7 @@ export const resourceSections: ResourceSection[] = [
         tag: "Growth",
         title: "Building a Business That Can Scale Without Chaos",
         description:
-          "Why growth becomes more sustainable when the business is designed to handle it calmly.",
+          "Why growth becomes more sustainable when the business is designed to handle it calmly. That means having the right processes, people and systems in place before the pressure comes.",
         body: [
           {
             type: "paragraph",

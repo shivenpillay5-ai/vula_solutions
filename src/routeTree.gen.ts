@@ -32,6 +32,7 @@ import { Route as ToolsSmePricingGuideRouteImport } from './routes/tools.sme-pri
 import { Route as ToolsRequirementsWorkshopGuideRouteImport } from './routes/tools.requirements-workshop-guide'
 import { Route as ToolsProjectRiskChecklistRouteImport } from './routes/tools.project-risk-checklist'
 import { Route as ToolsProcessImprovementScorecardRouteImport } from './routes/tools.process-improvement-scorecard'
+import { Route as ToolsPopiaBasicsChecklistRouteImport } from './routes/tools.popia-basics-checklist'
 import { Route as ToolsMeetingAgendaTemplatesRouteImport } from './routes/tools.meeting-agenda-templates'
 import { Route as ToolsDigitalTransformationRoadmapRouteImport } from './routes/tools.digital-transformation-roadmap'
 import { Route as ToolsCostOfDoingNothingCalculatorRouteImport } from './routes/tools.cost-of-doing-nothing-calculator'
@@ -177,6 +178,12 @@ const ToolsProcessImprovementScorecardRoute =
   ToolsProcessImprovementScorecardRouteImport.update({
     id: '/tools/process-improvement-scorecard',
     path: '/tools/process-improvement-scorecard',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsPopiaBasicsChecklistRoute =
+  ToolsPopiaBasicsChecklistRouteImport.update({
+    id: '/tools/popia-basics-checklist',
+    path: '/tools/popia-basics-checklist',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ToolsMeetingAgendaTemplatesRoute =
@@ -360,6 +367,7 @@ export interface FileRoutesByFullPath {
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/popia-basics-checklist': typeof ToolsPopiaBasicsChecklistRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
@@ -408,6 +416,7 @@ export interface FileRoutesByTo {
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/popia-basics-checklist': typeof ToolsPopiaBasicsChecklistRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
@@ -460,6 +469,7 @@ export interface FileRoutesById {
   '/tools/cost-of-doing-nothing-calculator': typeof ToolsCostOfDoingNothingCalculatorRoute
   '/tools/digital-transformation-roadmap': typeof ToolsDigitalTransformationRoadmapRoute
   '/tools/meeting-agenda-templates': typeof ToolsMeetingAgendaTemplatesRoute
+  '/tools/popia-basics-checklist': typeof ToolsPopiaBasicsChecklistRoute
   '/tools/process-improvement-scorecard': typeof ToolsProcessImprovementScorecardRoute
   '/tools/project-risk-checklist': typeof ToolsProjectRiskChecklistRoute
   '/tools/requirements-workshop-guide': typeof ToolsRequirementsWorkshopGuideRoute
@@ -513,6 +523,7 @@ export interface FileRouteTypes {
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
+    | '/tools/popia-basics-checklist'
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
@@ -561,6 +572,7 @@ export interface FileRouteTypes {
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
+    | '/tools/popia-basics-checklist'
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
@@ -612,6 +624,7 @@ export interface FileRouteTypes {
     | '/tools/cost-of-doing-nothing-calculator'
     | '/tools/digital-transformation-roadmap'
     | '/tools/meeting-agenda-templates'
+    | '/tools/popia-basics-checklist'
     | '/tools/process-improvement-scorecard'
     | '/tools/project-risk-checklist'
     | '/tools/requirements-workshop-guide'
@@ -647,6 +660,7 @@ export interface RootRouteChildren {
   ToolsCostOfDoingNothingCalculatorRoute: typeof ToolsCostOfDoingNothingCalculatorRoute
   ToolsDigitalTransformationRoadmapRoute: typeof ToolsDigitalTransformationRoadmapRoute
   ToolsMeetingAgendaTemplatesRoute: typeof ToolsMeetingAgendaTemplatesRoute
+  ToolsPopiaBasicsChecklistRoute: typeof ToolsPopiaBasicsChecklistRoute
   ToolsProcessImprovementScorecardRoute: typeof ToolsProcessImprovementScorecardRoute
   ToolsProjectRiskChecklistRoute: typeof ToolsProjectRiskChecklistRoute
   ToolsRequirementsWorkshopGuideRoute: typeof ToolsRequirementsWorkshopGuideRoute
@@ -816,6 +830,13 @@ declare module '@tanstack/react-router' {
       path: '/tools/process-improvement-scorecard'
       fullPath: '/tools/process-improvement-scorecard'
       preLoaderRoute: typeof ToolsProcessImprovementScorecardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/popia-basics-checklist': {
+      id: '/tools/popia-basics-checklist'
+      path: '/tools/popia-basics-checklist'
+      fullPath: '/tools/popia-basics-checklist'
+      preLoaderRoute: typeof ToolsPopiaBasicsChecklistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/meeting-agenda-templates': {
@@ -1119,6 +1140,7 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsDigitalTransformationRoadmapRoute:
     ToolsDigitalTransformationRoadmapRoute,
   ToolsMeetingAgendaTemplatesRoute: ToolsMeetingAgendaTemplatesRoute,
+  ToolsPopiaBasicsChecklistRoute: ToolsPopiaBasicsChecklistRoute,
   ToolsProcessImprovementScorecardRoute: ToolsProcessImprovementScorecardRoute,
   ToolsProjectRiskChecklistRoute: ToolsProjectRiskChecklistRoute,
   ToolsRequirementsWorkshopGuideRoute: ToolsRequirementsWorkshopGuideRoute,

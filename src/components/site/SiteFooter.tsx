@@ -53,7 +53,7 @@ export function SiteFooter() {
         </div>
         {cols.map((c) => (
           <div key={c.title}>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.title}</h4>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.title}</p>
             <ul className="space-y-3 text-sm">
               {c.links.map((l) => (
                 <li key={l.to}>
