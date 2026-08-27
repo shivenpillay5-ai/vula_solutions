@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Printer, ArrowLeft } from "lucide-react";
+import { analytics } from "@/lib/analytics";
 import { Logo } from "./Logo";
 
 function JsonLd({ data }: { data: object }) {
@@ -168,6 +169,7 @@ export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Bus
             </div>
             <Link
               to="/contact"
+              onClick={() => analytics.bookCompassClick("tool_page")}
               className="inline-flex shrink-0 items-center gap-2 rounded px-5 py-2.5 text-[12px] font-bold tracking-[0.04em] text-white transition hover:opacity-90"
               style={{ background: TEAL }}
             >

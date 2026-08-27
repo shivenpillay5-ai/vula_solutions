@@ -18,6 +18,7 @@ function JsonLd({ data }: { data: object }) {
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { getResourceArticle, type ResourceContentBlock } from "@/lib/resources";
+import { analytics } from "@/lib/analytics";
 
 export const Route = createFileRoute("/resources/$section/$article")({
   beforeLoad: ({ params }) => {
@@ -193,6 +194,7 @@ function ResourceArticlePage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 to="/contact"
+                onClick={() => analytics.bookCompassClick("article_cta")}
                 className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
               >
                 Book Compass™ <ArrowRight className="h-4 w-4" />

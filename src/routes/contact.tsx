@@ -1,4 +1,5 @@
 import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { analytics } from "@/lib/analytics";
 import { useState } from "react";
 import { Mail, Phone, MapPin, CheckCircle2, ShieldCheck, ArrowRight, Loader2 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
@@ -117,6 +118,7 @@ function Contact() {
                 const result = await res.json();
                 if (result.success) {
                   setSent(true);
+                  analytics.contactFormSubmit();
                 } else {
                   setSubmitError("Something went wrong. Please email us directly at info@vulasolutions.co.za.");
                 }

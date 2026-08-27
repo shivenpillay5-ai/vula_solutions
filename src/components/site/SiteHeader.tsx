@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import { Menu, X, Sun, Moon, ChevronDown, LayoutGrid, BookOpen } from "lucide-react";
 import { Logo } from "./Logo";
+import { analytics } from "@/lib/analytics";
 
 type NavItem = { to: string; label: string };
 
@@ -146,6 +147,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             to="/contact"
+            onClick={() => analytics.bookCompassClick("header")}
             className="inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-90"
           >
             Start with Compass™
@@ -215,7 +217,7 @@ export function SiteHeader() {
 
             <Link
               to="/contact"
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); analytics.bookCompassClick("header_mobile"); }}
               className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground"
             >
               Start with Compass™

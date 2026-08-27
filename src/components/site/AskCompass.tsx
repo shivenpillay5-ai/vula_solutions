@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { analytics } from "@/lib/analytics";
 import { Link } from "@tanstack/react-router";
 import { BotMessageSquare, Compass, Loader2, SendHorizonal, X } from "lucide-react";
 
@@ -100,6 +101,7 @@ export function AskCompass() {
     setDraft("");
     setMessages((current) => [...current, createMessage("user", content)]);
     setLoading(true);
+    analytics.askCompassMessage();
 
     try {
       await new Promise((resolve) => window.setTimeout(resolve, 420));

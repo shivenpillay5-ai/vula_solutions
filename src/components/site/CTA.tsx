@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { useReveal } from "./Reveal";
+import { analytics } from "@/lib/analytics";
 
 export function CTA({
   title = "Ready to find your direction?",
@@ -13,6 +14,7 @@ export function CTA({
   secondary?: { to: string; label: string };
 }) {
   const reveal = useReveal();
+  const { pathname } = useLocation();
   return (
     <section className="py-10 sm:py-14">
       <div ref={reveal.ref} className={`container-page ${reveal.className}`}>
@@ -24,6 +26,7 @@ export function CTA({
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               to={primary.to}
+              onClick={() => primary.to === "/contact" && analytics.bookCompassClick(`cta:${pathname}`)}
               className="inline-flex h-11 items-center rounded-full bg-electric px-6 text-sm font-semibold text-white transition hover:opacity-90"
             >
               {primary.label}
