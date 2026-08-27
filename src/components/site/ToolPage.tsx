@@ -42,7 +42,7 @@ export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Bus
   };
 
   return (
-    <div style={{ background: "#E8ECF0", WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" } as React.CSSProperties} className="min-h-screen pb-12">
+    <div style={{ background: "#E8ECF0", WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" } as React.CSSProperties} className="min-h-screen pb-12 print:bg-white print:pb-0">
       <JsonLd data={breadcrumb} />
 
       {/* Print bar — hidden in print output */}
@@ -76,7 +76,7 @@ export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Bus
 
       {/* Document card */}
       <div
-        className="mx-auto mt-7 max-w-[800px] bg-white"
+        className="mx-auto mt-7 max-w-[800px] bg-white print:mt-0 print:max-w-none"
         style={{ boxShadow: "0 2px 8px rgba(15,25,35,.08),0 8px 28px rgba(15,25,35,.06)" }}
       >
 
@@ -189,7 +189,7 @@ export function ToolSection({ label, children, className = "" }: {
   className?: string;
 }) {
   return (
-    <div className={`mb-7 ${className}`}>
+    <div className={`mb-7 print:break-inside-avoid ${className}`}>
       <div
         className="mb-3.5 border-l-2 pl-2 text-[12px] font-extrabold uppercase leading-none tracking-[0.14em]"
         style={{ borderColor: TEAL, color: TEAL }}
@@ -271,7 +271,7 @@ export function Checklist({ items }: { items: string[] }) {
       {items.map((item, i) => (
         <li
           key={item}
-          className="flex items-start gap-2.5 border-b py-[7px] text-[13px]"
+          className="flex items-start gap-2.5 border-b py-[7px] text-[13px] print:break-inside-avoid"
           style={{ borderColor: RULE, borderTop: i === 0 ? `1px solid ${RULE}` : undefined }}
         >
           <input

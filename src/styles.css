@@ -206,3 +206,9 @@
     box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--navy) 35%, transparent);
   }
 }
+
+@media print {
+  * {
+    box-shadow: none !important;
+  }
+}
