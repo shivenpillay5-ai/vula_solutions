@@ -169,7 +169,7 @@ function findRelevantResources(question: string, limit = 3): AskCompassReference
         score: score + phraseBonus,
       };
     })
-    .filter(({ score }) => score >= 4)
+    .filter(({ score }) => score >= 8)
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 
