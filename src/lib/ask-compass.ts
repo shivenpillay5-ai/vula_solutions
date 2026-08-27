@@ -297,7 +297,8 @@ function findRelevantTools(question: string, limit = 2): AskCompassReference[] {
 }
 
 function blendReferenceIntoContent(content: string, references: AskCompassReference[]) {
-  const primary = references[0];
+  // Only blend an article snippet — tool descriptions duplicate what the card already shows
+  const primary = references.find(r => r.sectionTitle !== "Free Business Resource");
   if (!primary) return content;
 
   const groundedSnippet = sentenceSafeSnippet(primary.snippet);
@@ -305,15 +306,17 @@ function blendReferenceIntoContent(content: string, references: AskCompassRefere
 }
 
 function withReferences(reply: AskCompassReply, question: string) {
-  const articleRefs = findRelevantResources(question);
-  const toolRefs = findRelevantTools(question);
+  const articleRefs = findRelevantResources(question, 2);
+  const toolRefs = findRelevantTools(question, 2);
 
   const seen = new Set<string>();
-  const references = [...articleRefs, ...toolRefs].filter((ref) => {
+  // Lead with the top tool if one exists, then articles, then second tool
+  const ordered = [toolRefs[0], ...articleRefs, toolRefs[1]].filter((r): r is AskCompassReference => Boolean(r));
+  const references = ordered.filter((ref) => {
     if (seen.has(ref.to)) return false;
     seen.add(ref.to);
     return true;
-  }).slice(0, 4);
+  }).slice(0, 3);
 
   if (!references.length) return reply;
 
