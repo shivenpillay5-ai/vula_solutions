@@ -7,6 +7,42 @@ import { CTA } from "@/components/site/CTA";
 import { FAQ } from "@/components/site/FAQ";
 import { compassOutcomes } from "@/lib/outcomes";
 
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+const COMPASS_FAQS = [
+  { q: "Is Compass™ a sales call?", a: "No. It's a structured strategy session. You'll leave with a written report, whether or not you choose to work with us afterwards." },
+  { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business. Reach out and we'll send you the details before you decide." },
+  { q: "Can I do Compass™ remotely?", a: "Yes. Compass™ works equally well in person or online. Most sessions are conducted via video call, with clients across South Africa." },
+  { q: "Who runs the session?", a: "A senior Vula Solutions strategist who has worked across websites, AI adoption, automation and SME growth." },
+  { q: "How long does it take?", a: "It depends on the tier. Essential sessions are typically around 90 minutes, Professional sessions run roughly half a day, and Strategic engagements span a full day or more depending on scope. The Compass Report is delivered within a week." },
+  { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose. There's no obligation to continue working with us." },
+  { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand. The rest is a conversation." },
+];
+
+const COMPASS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": "https://vulasolutions.co.za/compass#faq",
+      mainEntity: COMPASS_FAQS.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://vulasolutions.co.za/" },
+        { "@type": "ListItem", position: 2, name: "Compass™", item: "https://vulasolutions.co.za/compass" },
+      ],
+    },
+  ],
+};
+
 type OutcomeResult = {
   metric: string;
   label: string;
@@ -178,6 +214,7 @@ export const Route = createFileRoute("/compass")({
 function CompassPage() {
   return (
     <>
+      <JsonLd data={COMPASS_SCHEMA} />
       <PageHeader
         eyebrow="Compass™"
         title={<><span>Find Your</span> <span className="text-electric">Direction.</span></>}
@@ -301,15 +338,7 @@ function CompassPage() {
       </Section>
       <CompassOutcomes />
       <Section eyebrow="Common questions" title="Compass™, answered.">
-        <FAQ items={[
-          { q: "Is Compass™ a sales call?", a: "No. It's a structured strategy session. You'll leave with a written report, whether or not you choose to work with us afterwards." },
-          { q: "How much does Compass™ cost?", a: "Compass™ is a fixed investment, confirmed before you commit. Pricing depends on the scope of your business. Reach out and we'll send you the details before you decide." },
-          { q: "Can I do Compass™ remotely?", a: "Yes. Compass™ works equally well in person or online. Most sessions are conducted via video call, with clients across South Africa." },
-          { q: "Who runs the session?", a: "A senior Vula Solutions strategist who has worked across websites, AI adoption, automation and SME growth." },
-          { q: "How long does it take?", a: "It depends on the tier. Essential sessions are typically around 90 minutes, Professional sessions run roughly half a day, and Strategic engagements span a full day or more depending on scope. The Compass Report is delivered within a week." },
-          { q: "What if I'm not ready to move forward after?", a: "That's completely fine. The Compass Report is yours to keep and act on however you choose. There's no obligation to continue working with us." },
-          { q: "What do I need to prepare?", a: "Very little. We'll send a short brief beforehand. The rest is a conversation." },
-        ]} />
+        <FAQ items={COMPASS_FAQS} />
       </Section>
       <CTA
         title="Ready to start with Compass™?"
