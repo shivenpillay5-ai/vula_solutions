@@ -8,15 +8,20 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, lazy, Suspense, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
-import { BrandIntro } from "../components/site/BrandIntro";
-import { AskCompass } from "../components/site/AskCompass";
 import { Mark } from "../components/site/Logo";
+
+const BrandIntro = lazy(() =>
+  import("../components/site/BrandIntro").then((m) => ({ default: m.BrandIntro }))
+);
+const AskCompass = lazy(() =>
+  import("../components/site/AskCompass").then((m) => ({ default: m.AskCompass }))
+);
 
 /**
  * Structured data for search engines — ProfessionalService covers
@@ -197,14 +202,20 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ScrollToTop />
       <div className="flex min-h-dvh flex-col">
-        <BrandIntro skip={isInternal} />
+        <Suspense fallback={null}>
+          <BrandIntro skip={isInternal} />
+        </Suspense>
         <SiteHeader />
         <main className="flex-1">
           {/* Required: nested routes render here. */}
           <Outlet />
         </main>
         <SiteFooter />
-        {!isInternal && <AskCompass />}
+        {!isInternal && (
+          <Suspense fallback={null}>
+            <AskCompass />
+          </Suspense>
+        )}
       </div>
     </QueryClientProvider>
   );
