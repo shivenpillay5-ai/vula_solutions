@@ -7,6 +7,7 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title: "Terms of Use — Vula Solutions" },
       { name: "description", content: "The terms that govern use of the Vula Solutions website." },
+      { property: "og:title", content: "Terms of Use — Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/terms" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/terms" }],

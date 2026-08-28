@@ -7,6 +7,7 @@ export const Route = createFileRoute("/privacy")({
     meta: [
       { title: "Privacy Policy — Vula Solutions" },
       { name: "description", content: "How Vula Solutions collects, uses and protects your personal information in accordance with POPIA." },
+      { property: "og:title", content: "Privacy Policy — Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/privacy" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/privacy" }],

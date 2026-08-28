@@ -54,6 +54,8 @@ function ResourcesDropdown() {
     <div className="relative" onMouseEnter={enter} onMouseLeave={leave}>
       <button
         type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
         className={`flex items-center gap-1 text-sm font-medium transition-colors ${open ? "text-electric" : "text-muted-foreground hover:text-electric"}`}
       >
         Resources

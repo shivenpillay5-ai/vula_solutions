@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calculator, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
+import { analytics } from "@/lib/analytics";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/components/site/products";
@@ -63,6 +64,7 @@ function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/compass"
+              onClick={() => analytics.bookCompassClick("home_hero")}
               className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90"
               style={{ backgroundColor: "#01A1B7" }}
             >
@@ -178,6 +180,7 @@ function CompassIntro() {
           </p>
           <Link
             to="/compass"
+            onClick={() => analytics.bookCompassClick("home_compass_section")}
             className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
           >
             Discover Compass™ <ArrowRight className="h-4 w-4" />
