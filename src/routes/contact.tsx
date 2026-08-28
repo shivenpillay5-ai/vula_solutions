@@ -91,6 +91,26 @@ function Contact() {
                 <span>South Africa · In-person &amp; remote</span>
               </div>
             </div>
+
+            {/* What happens next */}
+            <div className="card-premium p-7">
+              <h2 className="text-sm font-semibold">What happens after you enquire</h2>
+              <ol className="mt-5 space-y-5">
+                {[
+                  { n: "1", t: "We reply within one business day", b: "No auto-responder. A real person reads your enquiry and responds directly." },
+                  { n: "2", t: "We share the right Compass™ option", b: "Based on your business size and goals, we'll recommend the tier that fits and confirm the details before you commit." },
+                  { n: "3", t: "You choose when — we make it work", b: "Sessions run in-person or via video call. We'll agree on a time that suits you, then send a short brief to prepare." },
+                ].map(({ n, t, b }) => (
+                  <li key={n} className="flex gap-4">
+                    <span className="font-display mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-electric/10 text-xs font-bold text-electric">{n}</span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{t}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{b}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
 
           {/* Right column — enquiry form */}
