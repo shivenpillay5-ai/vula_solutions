@@ -6,7 +6,7 @@ import { CTA } from "@/components/site/CTA";
 const TEAL = "#01A1B7";
 const INK = "#0F1923";
 
-export const Route = createFileRoute("/compass/sample-report")({
+export const Route = createFileRoute("/compass-sample-report")({
   head: () => ({
     meta: [
       { title: "Sample Compass™ Report — Vula Solutions" },
@@ -299,7 +299,7 @@ function SampleReport() {
         {/* Back to Compass link */}
         <div className="mt-8">
           <Link to="/compass" className="inline-flex items-center gap-2 text-sm font-medium text-electric hover:underline">
-            ← Back to Compass™
+            Back to Compass™
           </Link>
         </div>
 

@@ -342,7 +342,7 @@ function CompassPage() {
             <p className="mt-0.5 text-xs text-muted-foreground">Browse an anonymised example based on a real engagement with a South African professional services firm.</p>
           </div>
           <Link
-            to="/compass/sample-report"
+            to="/compass-sample-report"
             className="inline-flex shrink-0 items-center gap-2 rounded-full border border-electric/40 px-5 py-2 text-xs font-semibold text-electric transition hover:bg-electric/5"
           >
             View sample <ArrowRight className="h-3.5 w-3.5" />
