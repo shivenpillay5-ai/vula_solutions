@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, X, CheckCircle, BarChart2, Map, GitBranch, CheckSquare } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Compass as CompassIcon, MapPin, Target, FileText, Sparkles, Search, ClipboardCheck, Lightbulb, Hammer, LifeBuoy, X, CheckCircle, BarChart2, Map, GitBranch, CheckSquare, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/Section";
 import { CTA } from "@/components/site/CTA";
@@ -316,7 +316,7 @@ function CompassPage() {
           Compass™ covers <span className="font-medium text-white">Discover</span>, <span className="font-medium text-white">Assess</span> and <span className="font-medium text-white">Recommend</span>. <span className="font-medium text-white">Execute</span> and <span className="font-medium text-white">Support</span> continue through Launch™, Flow™, Accelerate™, Growth™ or Partner™.
         </p>
       </Section>
-      <Section eyebrow="The deliverable" title="Inside the Compass Report.">
+      <Section eyebrow="The deliverable" title="Inside the Compass Report." intro="A written document that's yours to keep and act on — whether or not you continue with us.">
         <div className="grid gap-6 md:grid-cols-2">
           {[
             { icon: BarChart2, t: "Business snapshot", b: "A clear summary of where your business is today." },
@@ -334,6 +334,19 @@ function CompassPage() {
               <p className="mt-3 text-sm text-muted-foreground">{b}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-8 flex items-center gap-4 rounded-2xl border border-border bg-secondary/40 px-7 py-5">
+          <FileText className="h-5 w-5 shrink-0 text-electric" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold">See what a Compass Report looks like</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">Browse an anonymised example based on a real engagement with a South African professional services firm.</p>
+          </div>
+          <Link
+            to="/compass/sample-report"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-electric/40 px-5 py-2 text-xs font-semibold text-electric transition hover:bg-electric/5"
+          >
+            View sample <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </Section>
       <CompassOutcomes />

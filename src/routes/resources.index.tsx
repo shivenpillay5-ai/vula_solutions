@@ -50,6 +50,13 @@ export const Route = createFileRoute("/resources/")({
 
 const FREE_TOOLS = [
   {
+    slug: "compass-sample-report",
+    to: "/compass/sample-report" as const,
+    title: "Sample Compass™ Report",
+    type: "Sample Report",
+    description: "See what a real Compass™ engagement delivers. An anonymised report for a small South African professional services firm.",
+  },
+  {
     slug: "sme-pricing-guide",
     to: "/tools/sme-pricing-guide" as const,
     title: "The SA SME Pricing Guide",
