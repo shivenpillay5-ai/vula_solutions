@@ -152,6 +152,7 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
     let hideTimeout = 0;
     let rafA = 0;
     let rafB = 0;
+    let rafC = 0;
     let fallback = 0;
     let started = false;
     let cancelled = false;
@@ -160,14 +161,17 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       if (started || cancelled) return;
       started = true;
 
-      // Wait two frames so React's hydration commit (and any font-swap reflow) flushes
-      // before the first animation frame. Starting mid-hydration is what dropped frames
-      // and produced the start-jerk on a real page load.
+      // Wait three frames so React's hydration commit, any font-swap reflow, AND the
+      // browser's initial GPU layer promotion all flush before the first animation frame.
+      // Two frames fixed the dropped-frame start-jerk; the third eliminates the residual
+      // subtle hitch caused by layer rasterisation on the very first composite.
       rafA = window.requestAnimationFrame(() => {
         rafB = window.requestAnimationFrame(() => {
-          if (cancelled) return;
-          setState("playing");
-          hideTimeout = window.setTimeout(() => setState("hidden"), 2320);
+          rafC = window.requestAnimationFrame(() => {
+            if (cancelled) return;
+            setState("playing");
+            hideTimeout = window.setTimeout(() => setState("hidden"), 2320);
+          });
         });
       });
     };
@@ -186,6 +190,7 @@ export function BrandIntro({ skip = false }: { skip?: boolean }) {
       cancelled = true;
       window.cancelAnimationFrame(rafA);
       window.cancelAnimationFrame(rafB);
+      window.cancelAnimationFrame(rafC);
       window.clearTimeout(hideTimeout);
       window.clearTimeout(fallback);
     };
