@@ -8,6 +8,7 @@ export const Route = createFileRoute("/solutions/partner")({
       { title: "Partner™ — Grow Without Limits | Vula Solutions" },
       { name: "description", content: "Ongoing support and strategic partnership. Continuous improvement, priority support and long-term growth." },
       { property: "og:title", content: "Partner™ — Grow Without Limits" },
+      { property: "og:description", content: "Ongoing support and strategic partnership. Continuous improvement, priority support and long-term growth." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions/partner" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions/partner" }],

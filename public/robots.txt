@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /sessions/
+Disallow: /documents/
+
+Sitemap: https://vulasolutions.co.za/sitemap.xml

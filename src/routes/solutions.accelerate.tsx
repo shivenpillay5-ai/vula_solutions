@@ -8,6 +8,7 @@ export const Route = createFileRoute("/solutions/accelerate")({
       { title: "Accelerate™ — Unlock Your Potential | Vula Solutions" },
       { name: "description", content: "Practical AI adoption and team enablement. Real use cases, adopted well, measured properly." },
       { property: "og:title", content: "Accelerate™ — Unlock Your Potential" },
+      { property: "og:description", content: "Practical AI adoption and team enablement. Real use cases, adopted well, measured properly." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions/accelerate" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions/accelerate" }],

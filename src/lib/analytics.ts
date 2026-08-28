@@ -12,5 +12,4 @@ export const analytics = {
   bookCompassClick: (source: string) => track("book_compass_click", { source }),
   contactFormSubmit: () => track("contact_form_submit"),
   askCompassMessage: () => track("ask_compass_message"),
-  toolOpen: (tool: string) => track("tool_open", { tool }),
 };

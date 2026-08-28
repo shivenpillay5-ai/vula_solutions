@@ -287,7 +287,7 @@ export function AskCompass() {
 
               <div className="mt-3 flex items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
                 <span>Guidance only. No pricing or promises.</span>
-                <Link to="/contact" className="font-medium text-electric hover:underline">
+                <Link to="/contact" onClick={() => analytics.bookCompassClick("ask_compass")} className="font-medium text-electric hover:underline">
                   Start with Compass™
                 </Link>
               </div>

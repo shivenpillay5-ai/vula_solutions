@@ -40,6 +40,7 @@ export const Route = createFileRoute("/resources/")({
           "Free tools, checklists and guides to help South African small and medium businesses work smarter.",
       },
       { property: "og:title", content: "Resources — Vula Solutions" },
+      { property: "og:description", content: "Free tools, checklists and guides to help South African small and medium businesses work smarter." },
       { property: "og:url", content: "https://vulasolutions.co.za/resources" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/resources" }],

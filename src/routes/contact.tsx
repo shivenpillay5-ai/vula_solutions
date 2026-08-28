@@ -11,6 +11,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Vula Solutions" },
       { name: "description", content: "Book a Compass™ session or send us a short enquiry. We'll get back to you within one business day." },
       { property: "og:title", content: "Contact Vula Solutions" },
+      { property: "og:description", content: "Book a Compass™ session or send us a short enquiry. We'll get back to you within one business day." },
       { property: "og:url", content: "https://vulasolutions.co.za/contact" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/contact" }],

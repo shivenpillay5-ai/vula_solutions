@@ -10,6 +10,7 @@ export const Route = createFileRoute("/about")({
       { title: "About — Vula Solutions" },
       { name: "description", content: "We build confidence through technology. Meet the team helping South African SMEs work smarter." },
       { property: "og:title", content: "About Vula Solutions" },
+      { property: "og:description", content: "We build confidence through technology. Meet the team helping South African SMEs work smarter." },
       { property: "og:url", content: "https://vulasolutions.co.za/about" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/about" }],

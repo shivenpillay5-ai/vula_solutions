@@ -11,6 +11,7 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — Vula Solutions" },
       { name: "description", content: "Transparent, scope-based pricing for Compass™ discovery sessions and all Vula Solutions products." },
       { property: "og:title", content: "Pricing — Vula Solutions" },
+      { property: "og:description", content: "Transparent, scope-based pricing for Compass™ discovery sessions and all Vula Solutions products." },
       { property: "og:url", content: "https://vulasolutions.co.za/pricing" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/pricing" }],
