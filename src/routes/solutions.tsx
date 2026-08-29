@@ -9,10 +9,10 @@ import { CTA } from "@/components/site/CTA";
 export const Route = createFileRoute("/solutions")({
   head: () => ({
     meta: [
-      { title: "Solutions — Vula Solutions" },
+      { title: "Solutions | Vula Solutions" },
       { name: "description", content: "Compass™, Launch™, Flow™, Accelerate™, Growth™ and Partner™, a connected ecosystem to help your business work smarter." },
       { property: "og:title", content: "Solutions | Vula Solutions" },
-      { property: "og:description", content: "A connected ecosystem for modern businesses." },
+      { property: "og:description", content: "Compass, Launch, Flow, Accelerate, Growth and Partner: a connected ecosystem to help your business work smarter." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/solutions" }],
@@ -32,13 +32,13 @@ function SolutionsLayout() {
       <PageHeader
         eyebrow="Solutions"
         title="A connected ecosystem for modern businesses."
-        intro="Each product can stand alone or work as part of a broader transformation. Every engagement begins with Compass™."
+        intro="Each product can stand alone or work as part of a broader transformation."
       />
       <Section eyebrow="Start here" title="Every engagement begins with Compass™.">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-center">
           <div>
             <p className="text-lg text-muted-foreground">
-              Before we recommend websites, automation or AI, we first understand your business. Compass™ is our premium discovery and strategy session, the foundation every client engagement begins with.
+              Compass™ is our premium discovery and strategy session. Before we recommend websites, automation or AI, we first understand your business.
             </p>
             <p className="mt-4 text-lg text-foreground">
               You leave with a written Compass Report: a clear plan that's yours to keep and act on, whether or not you continue with us.

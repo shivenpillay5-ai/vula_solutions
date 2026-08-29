@@ -5,9 +5,9 @@ import { SolutionPage } from "@/components/site/SolutionPage";
 export const Route = createFileRoute("/solutions/growth")({
   head: () => ({
     meta: [
-      { title: "Growth™ — Be Found. Be Chosen. | Vula Solutions" },
+      { title: "Growth™: Be Found. Be Chosen. | Vula Solutions" },
       { name: "description", content: "SEO, Google Business Profile, content and conversion improvements that turn visibility into pipeline." },
-      { property: "og:title", content: "Growth™ — Be Found. Be Chosen." },
+      { property: "og:title", content: "Growth™: Be Found. Be Chosen." },
       { property: "og:description", content: "SEO, Google Business Profile, content and conversion improvements that turn visibility into pipeline." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions/growth" },
     ],

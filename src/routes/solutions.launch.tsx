@@ -5,9 +5,9 @@ import { SolutionPage } from "@/components/site/SolutionPage";
 export const Route = createFileRoute("/solutions/launch")({
   head: () => ({
     meta: [
-      { title: "Launch™ — Build With Confidence | Vula Solutions" },
+      { title: "Launch™: Build With Confidence | Vula Solutions" },
       { name: "description", content: "Modern, conversion-focused websites and redesigns that give your business a stronger digital foundation." },
-      { property: "og:title", content: "Launch™ — Build With Confidence" },
+      { property: "og:title", content: "Launch™: Build With Confidence" },
       { property: "og:description", content: "Modern, conversion-focused websites and redesigns that give your business a stronger digital foundation." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions/launch" },
     ],

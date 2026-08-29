@@ -5,9 +5,9 @@ import { SolutionPage } from "@/components/site/SolutionPage";
 export const Route = createFileRoute("/solutions/partner")({
   head: () => ({
     meta: [
-      { title: "Partner™ — Grow Without Limits | Vula Solutions" },
+      { title: "Partner™: Grow Without Limits | Vula Solutions" },
       { name: "description", content: "Ongoing support and strategic partnership. Continuous improvement, priority support and long-term growth." },
-      { property: "og:title", content: "Partner™ — Grow Without Limits" },
+      { property: "og:title", content: "Partner™: Grow Without Limits" },
       { property: "og:description", content: "Ongoing support and strategic partnership. Continuous improvement, priority support and long-term growth." },
       { property: "og:url", content: "https://vulasolutions.co.za/solutions/partner" },
     ],
