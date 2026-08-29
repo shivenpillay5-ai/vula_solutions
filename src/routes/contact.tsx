@@ -65,13 +65,18 @@ function Contact() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 A focused discovery session with a senior Vula Solutions strategist. You leave with a written Compass Report and a clear picture of what your business should do next.
               </p>
-              <a
-                href="mailto:info@vulasolutions.co.za?subject=Compass%E2%84%A2%20booking"
+              <button
+                type="button"
+                onClick={() => {
+                  analytics.bookCompassClick("contact_compass_card");
+                  document.getElementById("enquiry-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.setTimeout(() => document.getElementById("name")?.focus({ preventScroll: true }), 500);
+                }}
                 className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
               >
                 Request a Compass™ slot
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </button>
             </div>
 
             {/* Contact details — secondary */}
@@ -115,7 +120,8 @@ function Contact() {
 
           {/* Right column — enquiry form */}
           <form
-            className="card-premium space-y-5 p-7 sm:p-8"
+            id="enquiry-form"
+            className="card-premium scroll-mt-24 space-y-5 p-7 sm:p-8"
             onSubmit={async (e) => {
               e.preventDefault();
               setSubmitting(true);
