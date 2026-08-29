@@ -9,7 +9,7 @@ const INK = "#0F1923";
 export const Route = createFileRoute("/compass-sample-report")({
   head: () => ({
     meta: [
-      { title: "Sample Compass™ Report — Vula Solutions" },
+      { title: "Sample Compass™ Report | Vula Solutions" },
       { name: "description", content: "See what a real Compass™ Report looks like. An anonymised example for a small South African professional services firm." },
       { property: "og:title", content: "Sample Compass™ Report" },
       { property: "og:description", content: "See what a real Compass™ Report looks like. An anonymised example for a small South African professional services firm." },
@@ -52,7 +52,7 @@ function SampleReport() {
       <div className="border-y border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30">
         <div className="container-page flex items-center gap-3 py-3 text-sm text-amber-800 dark:text-amber-300">
           <AlertCircle className="h-4 w-4 shrink-0" />
-          <span><strong>Sample report — anonymised.</strong> All client details, figures and specifics have been changed to protect confidentiality.</span>
+          <span><strong>Sample report, anonymised.</strong> All client details, figures and specifics have been changed to protect confidentiality.</span>
         </div>
       </div>
 
@@ -87,10 +87,10 @@ function SampleReport() {
 
         {/* Section 1: Business Snapshot */}
         <div className="mt-12">
-          <SectionLabel>01 — Business Snapshot</SectionLabel>
+          <SectionLabel>01 · Business Snapshot</SectionLabel>
           <div className="card-premium p-8">
             <p className="text-base leading-relaxed text-foreground">
-              Nexus Advisory Partners is a well-established accounting and business advisory firm with a loyal client base built almost entirely through referrals. The business has operated profitably for 12 years, providing compliance services — tax returns, audits and bookkeeping — to roughly 140 active clients across Gauteng.
+              Nexus Advisory Partners is a well-established accounting and business advisory firm with a loyal client base built almost entirely through referrals. The business has operated profitably for 12 years, providing compliance services (tax returns, audits and bookkeeping) to roughly 140 active clients across Gauteng.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Revenue is stable but growth has plateaued. New client acquisition has slowed over the past three years, and the principals recognise they have been operating reactively rather than strategically. Advisory and consulting work, which commands significantly higher margins, represents less than 5% of revenue despite clear demand from the existing client base.
@@ -98,8 +98,8 @@ function SampleReport() {
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 { label: "Revenue mix", value: "95% compliance / 5% advisory" },
-                { label: "New clients (last 12 months)", value: "11 — all referrals" },
-                { label: "Onboarding time per client", value: "3–4 hours (manual)" },
+                { label: "New clients (last 12 months)", value: "11, all referrals" },
+                { label: "Onboarding time per client", value: "3 to 4 hours (manual)" },
               ].map(({ label, value }) => (
                 <div key={label} className="rounded-xl bg-secondary/60 px-5 py-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{label}</p>
@@ -112,24 +112,24 @@ function SampleReport() {
 
         {/* Section 2: Key Findings */}
         <div className="mt-12">
-          <SectionLabel>02 — Key Findings</SectionLabel>
+          <SectionLabel>02 · Key Findings</SectionLabel>
           <p className="mb-6 text-sm text-muted-foreground">What we identified during the discovery session and assessment.</p>
           <div className="space-y-4">
             {[
               {
                 severity: "high",
                 title: "Digital presence is effectively invisible",
-                detail: "The firm's website was last updated in 2018. It is not mobile-optimised, loads slowly, has no working contact form, and ranks for almost no search terms. There is no Google Business Profile, meaning the firm does not appear in local map searches — the primary way prospective clients search for accounting firms in their area.",
+                detail: "The firm's website was last updated in 2018. It is not mobile-optimised, loads slowly, has no working contact form, and ranks for almost no search terms. There is no Google Business Profile, meaning the firm does not appear in local map searches, the primary way prospective clients search for accounting firms in their area.",
               },
               {
                 severity: "high",
                 title: "Client onboarding is entirely manual",
-                detail: "Every new client relationship begins with a series of emails back and forth to collect information, set expectations, and agree on scope. This takes 3–4 hours of principal time per client. No templates, no intake forms, no workflow. At 11 new clients per year this is manageable, but it is a ceiling on growth.",
+                detail: "Every new client relationship begins with a series of emails back and forth to collect information, set expectations, and agree on scope. This takes 3 to 4 hours of principal time per client. No templates, no intake forms, no workflow. At 11 new clients per year this is manageable, but it is a ceiling on growth.",
               },
               {
                 severity: "medium",
                 title: "Advisory services are undermarketed and underpriced",
-                detail: "The firm has deep expertise in business advisory work that their existing clients regularly request informally. This work is currently billed reactively at ad hoc rates, not packaged or proactively offered. Advisory engagements carry 4–5x the margin of compliance work and are exactly what the market is willing to pay for.",
+                detail: "The firm has deep expertise in business advisory work that their existing clients regularly request informally. This work is currently billed reactively at ad hoc rates, not packaged or proactively offered. Advisory engagements carry 4 to 5x the margin of compliance work and are exactly what the market is willing to pay for.",
               },
               {
                 severity: "medium",
@@ -165,16 +165,16 @@ function SampleReport() {
 
         {/* Section 3: Opportunity Map */}
         <div className="mt-12">
-          <SectionLabel>03 — Opportunity Map</SectionLabel>
+          <SectionLabel>03 · Opportunity Map</SectionLabel>
           <p className="mb-6 text-sm text-muted-foreground">Prioritised by impact and effort. Highest-value opportunities first.</p>
           <div className="space-y-3">
             {[
-              { icon: Zap, effort: "Low effort", impact: "High impact", title: "Google Business Profile", desc: "Free to set up. Puts the firm on the map — literally — for local searches. Most accounting clients search 'accountant near me' or 'accounting firm Johannesburg'. Currently invisible for all of these." },
-              { icon: Zap, effort: "Low effort", impact: "High impact", title: "Structured client intake process", desc: "A simple intake form and email template sequence can reduce onboarding time from 3–4 hours to under 45 minutes. Immediate time saving; better first impression for new clients." },
+              { icon: Zap, effort: "Low effort", impact: "High impact", title: "Google Business Profile", desc: "Free to set up. Puts the firm on the map, literally, for local searches. Most accounting clients search 'accountant near me' or 'accounting firm Johannesburg'. Currently invisible for all of these." },
+              { icon: Zap, effort: "Low effort", impact: "High impact", title: "Structured client intake process", desc: "A simple intake form and email template sequence can reduce onboarding time from around 4 hours to under 45 minutes. Immediate time saving; better first impression for new clients." },
               { icon: TrendingUp, effort: "Medium effort", impact: "Very high impact", title: "New website with clear service pages", desc: "A professional site with a working contact form, clear service descriptions and basic local SEO. The single biggest lever for new client acquisition outside referrals." },
-              { icon: TrendingUp, effort: "Medium effort", impact: "High impact", title: "Repackaged advisory offering", desc: "Define two or three advisory packages with clear scope and fixed pricing. Offer proactively to the existing 140-client base. Conservative estimate: 15–20% uptake at 4x the margin of compliance work." },
+              { icon: TrendingUp, effort: "Medium effort", impact: "High impact", title: "Repackaged advisory offering", desc: "Define two or three advisory packages with clear scope and fixed pricing. Offer proactively to the existing 140-client base. Conservative estimate: 15 to 20% uptake at 4x the margin of compliance work." },
               { icon: TrendingUp, effort: "Medium effort", impact: "Medium impact", title: "Referral follow-up workflow", desc: "A simple CRM or structured inbox process to ensure every referral gets a response within 4 hours and a follow-up within 48 hours. Estimated 30% improvement in conversion." },
-              { icon: Clock, effort: "Higher effort", impact: "High impact", title: "AI-assisted proposals and compliance notes", desc: "Use AI tools to draft client proposals, summarise meetings and generate first-draft compliance summaries. Estimated 5–7 hours saved per week per senior staff member." },
+              { icon: Clock, effort: "Higher effort", impact: "High impact", title: "AI-assisted proposals and compliance notes", desc: "Use AI tools to draft client proposals, summarise meetings and generate first-draft compliance summaries. Estimated 5 to 7 hours saved per week per senior staff member." },
             ].map(({ icon: Icon, effort, impact, title, desc }) => (
               <div key={title} className="card-premium flex items-start gap-5 p-6">
                 <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-electric">
@@ -195,13 +195,13 @@ function SampleReport() {
 
         {/* Section 4: Recommended Roadmap */}
         <div className="mt-12">
-          <SectionLabel>04 — Recommended Roadmap</SectionLabel>
+          <SectionLabel>04 · Recommended Roadmap</SectionLabel>
           <p className="mb-6 text-sm text-muted-foreground">A phased plan that builds on each stage without overwhelming the team.</p>
           <div className="grid gap-5 sm:grid-cols-3">
             {[
               {
                 phase: "Phase 1",
-                timeline: "Months 1–2",
+                timeline: "Months 1 to 2",
                 title: "Foundation",
                 color: TEAL,
                 items: [
@@ -213,7 +213,7 @@ function SampleReport() {
               },
               {
                 phase: "Phase 2",
-                timeline: "Months 2–6",
+                timeline: "Months 2 to 6",
                 title: "Systems",
                 color: "#6366f1",
                 items: [
@@ -225,7 +225,7 @@ function SampleReport() {
               },
               {
                 phase: "Phase 3",
-                timeline: "Months 6–18",
+                timeline: "Months 6 to 18",
                 title: "Growth",
                 color: "#0ea5e9",
                 items: [
@@ -256,7 +256,7 @@ function SampleReport() {
 
         {/* Section 5: Suggested Next Steps */}
         <div className="mt-12">
-          <SectionLabel>05 — Suggested Next Steps</SectionLabel>
+          <SectionLabel>05 · Suggested Next Steps</SectionLabel>
           <p className="mb-6 text-sm text-muted-foreground">Based on the findings above, the recommended starting point for Nexus Advisory Partners.</p>
           <div className="grid gap-5 sm:grid-cols-2">
             {[
@@ -264,14 +264,14 @@ function SampleReport() {
                 priority: "Priority 1",
                 product: "Launch™",
                 title: "New website and digital foundation",
-                timeline: "4–6 weeks",
+                timeline: "4 to 6 weeks",
                 desc: "A professionally built website with clear service pages, SEO basics and a working contact form. This is the single highest-leverage action for new client acquisition.",
               },
               {
                 priority: "Priority 2",
                 product: "Flow™",
                 title: "Client onboarding automation",
-                timeline: "2–3 weeks (after Launch™)",
+                timeline: "2 to 3 weeks (after Launch™)",
                 desc: "A structured intake form, automated email sequence and CRM setup to halve onboarding time and ensure no referral falls through.",
               },
             ].map(({ priority, product, title, timeline, desc }) => (

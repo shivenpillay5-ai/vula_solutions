@@ -8,7 +8,7 @@ import { allOutcomes } from "@/lib/outcomes";
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case Studies — Vula Solutions" },
+      { title: "Case Studies | Vula Solutions" },
       { name: "description", content: "Real transformations, before-and-after stories and outcomes from Vula Solutions engagements." },
       { property: "og:title", content: "Case Studies | Vula Solutions" },
       { property: "og:description", content: "Real transformations, before-and-after stories and outcomes from Vula Solutions engagements." },

@@ -5,9 +5,9 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Vula Solutions" },
+      { title: "Privacy Policy | Vula Solutions" },
       { name: "description", content: "How Vula Solutions collects, uses and protects your personal information in accordance with POPIA." },
-      { property: "og:title", content: "Privacy Policy — Vula Solutions" },
+      { property: "og:title", content: "Privacy Policy | Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/privacy" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/privacy" }],
@@ -99,15 +99,15 @@ function Privacy() {
             </p>
             <ul className="mt-3 list-disc space-y-1.5 pl-5 text-muted-foreground">
               <li>
-                <strong className="font-semibold text-foreground">Form processing services</strong> — the platform
+                <strong className="font-semibold text-foreground">Form processing services</strong>: the platform
                 we use to receive and manage enquiries submitted through this website
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Website hosting providers</strong> — the
+                <strong className="font-semibold text-foreground">Website hosting providers</strong>: the
                 infrastructure on which this website is hosted
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Email service providers</strong> — used to send
+                <strong className="font-semibold text-foreground">Email service providers</strong>: used to send
                 and receive correspondence with you
               </li>
             </ul>
@@ -138,23 +138,23 @@ function Privacy() {
             <p>Under POPIA, you have the right to:</p>
             <ul className="mt-3 list-disc space-y-1.5 pl-5 text-muted-foreground">
               <li>
-                <strong className="font-semibold text-foreground">Access</strong> — request confirmation of
+                <strong className="font-semibold text-foreground">Access</strong>: request confirmation of
                 whether we hold personal information about you, and to receive a copy
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Correction</strong> — request that inaccurate
+                <strong className="font-semibold text-foreground">Correction</strong>: request that inaccurate
                 or incomplete information be corrected
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Deletion</strong> — request that your personal
+                <strong className="font-semibold text-foreground">Deletion</strong>: request that your personal
                 information be deleted, subject to any legal retention obligations
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Objection</strong> — object to the processing
+                <strong className="font-semibold text-foreground">Objection</strong>: object to the processing
                 of your personal information on grounds relating to your particular situation
               </li>
               <li>
-                <strong className="font-semibold text-foreground">Withdrawal of consent</strong> — where
+                <strong className="font-semibold text-foreground">Withdrawal of consent</strong>: where
                 processing is based on consent, withdraw that consent at any time without affecting the
                 lawfulness of prior processing
               </li>

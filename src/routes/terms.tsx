@@ -5,9 +5,9 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Use — Vula Solutions" },
+      { title: "Terms of Use | Vula Solutions" },
       { name: "description", content: "The terms that govern use of the Vula Solutions website." },
-      { property: "og:title", content: "Terms of Use — Vula Solutions" },
+      { property: "og:title", content: "Terms of Use | Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/terms" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/terms" }],

@@ -5,9 +5,9 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
-      { title: "Cookie Notice — Vula Solutions" },
+      { title: "Cookie Notice | Vula Solutions" },
       { name: "description", content: "How Vula Solutions uses cookies and similar technologies on this website." },
-      { property: "og:title", content: "Cookie Notice — Vula Solutions" },
+      { property: "og:title", content: "Cookie Notice | Vula Solutions" },
       { property: "og:url", content: "https://vulasolutions.co.za/cookies" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/cookies" }],

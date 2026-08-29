@@ -33,13 +33,13 @@ export const Route = createFileRoute("/resources/")({
   }),
   head: () => ({
     meta: [
-      { title: "Resources — Vula Solutions" },
+      { title: "Resources | Vula Solutions" },
       {
         name: "description",
         content:
           "Free tools, checklists and guides to help South African small and medium businesses work smarter.",
       },
-      { property: "og:title", content: "Resources — Vula Solutions" },
+      { property: "og:title", content: "Resources | Vula Solutions" },
       { property: "og:description", content: "Free tools, checklists and guides to help South African small and medium businesses work smarter." },
       { property: "og:url", content: "https://vulasolutions.co.za/resources" },
     ],
