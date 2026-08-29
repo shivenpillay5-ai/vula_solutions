@@ -20,6 +20,7 @@ import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompassSampleReportRouteImport } from './routes/compass-sample-report'
 import { Route as CompassRouteImport } from './routes/compass'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as AboutRouteImport } from './routes/about'
@@ -113,6 +114,11 @@ const CookiesRoute = CookiesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompassSampleReportRoute = CompassSampleReportRouteImport.update({
+  id: '/compass-sample-report',
+  path: '/compass-sample-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompassRoute = CompassRouteImport.update({
@@ -332,6 +338,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/compass': typeof CompassRoute
+  '/compass-sample-report': typeof CompassSampleReportRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/documents': typeof DocumentsRouteWithChildren
@@ -384,6 +391,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/compass': typeof CompassRoute
+  '/compass-sample-report': typeof CompassSampleReportRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/industries': typeof IndustriesRoute
@@ -434,6 +442,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/compass': typeof CompassRoute
+  '/compass-sample-report': typeof CompassSampleReportRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/documents': typeof DocumentsRouteWithChildren
@@ -488,6 +497,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/compass'
+    | '/compass-sample-report'
     | '/contact'
     | '/cookies'
     | '/documents'
@@ -540,6 +550,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/compass'
+    | '/compass-sample-report'
     | '/contact'
     | '/cookies'
     | '/industries'
@@ -589,6 +600,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/compass'
+    | '/compass-sample-report'
     | '/contact'
     | '/cookies'
     | '/documents'
@@ -642,6 +654,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CaseStudiesRoute: typeof CaseStudiesRoute
   CompassRoute: typeof CompassRoute
+  CompassSampleReportRoute: typeof CompassSampleReportRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   DocumentsRoute: typeof DocumentsRouteWithChildren
@@ -746,6 +759,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compass-sample-report': {
+      id: '/compass-sample-report'
+      path: '/compass-sample-report'
+      fullPath: '/compass-sample-report'
+      preLoaderRoute: typeof CompassSampleReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compass': {
@@ -1120,6 +1140,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CaseStudiesRoute: CaseStudiesRoute,
   CompassRoute: CompassRoute,
+  CompassSampleReportRoute: CompassSampleReportRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   DocumentsRoute: DocumentsRouteWithChildren,
