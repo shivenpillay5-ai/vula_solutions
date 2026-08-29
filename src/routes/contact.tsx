@@ -8,7 +8,7 @@ import { Section } from "@/components/site/Section";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Vula Solutions" },
+      { title: "Contact | Vula Solutions" },
       { name: "description", content: "Book a Compass™ session or send us a short enquiry. We'll get back to you within one business day." },
       { property: "og:title", content: "Contact Vula Solutions" },
       { property: "og:description", content: "Book a Compass™ session or send us a short enquiry. We'll get back to you within one business day." },
@@ -99,7 +99,7 @@ function Contact() {
                 {[
                   { n: "1", t: "We reply within one business day", b: "No auto-responder. A real person reads your enquiry and responds directly." },
                   { n: "2", t: "We share the right Compass™ option", b: "Based on your business size and goals, we'll recommend the tier that fits and confirm the details before you commit." },
-                  { n: "3", t: "You choose when — we make it work", b: "Sessions run in-person or via video call. We'll agree on a time that suits you, then send a short brief to prepare." },
+                  { n: "3", t: "You choose when, we make it work", b: "Sessions run in-person or via video call. We'll agree on a time that suits you, then send a short brief to prepare." },
                 ].map(({ n, t, b }) => (
                   <li key={n} className="flex gap-4">
                     <span className="font-display mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-electric/10 text-xs font-bold text-electric">{n}</span>
@@ -127,7 +127,7 @@ function Contact() {
                   headers: { "Content-Type": "application/json", Accept: "application/json" },
                   body: JSON.stringify({
                     access_key: "5b0a4f62-8142-47f6-a4e2-e92ce4867b5c",
-                    subject: "New enquiry — Vula Solutions website",
+                    subject: "New enquiry: Vula Solutions website",
                     name: data.get("name"),
                     email: data.get("email"),
                     company: data.get("company") || "Not provided",

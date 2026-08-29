@@ -8,9 +8,9 @@ import { CTA } from "@/components/site/CTA";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing — Vula Solutions" },
+      { title: "Pricing | Vula Solutions" },
       { name: "description", content: "Transparent, scope-based pricing for Compass™ discovery sessions and all Vula Solutions products." },
-      { property: "og:title", content: "Pricing — Vula Solutions" },
+      { property: "og:title", content: "Pricing | Vula Solutions" },
       { property: "og:description", content: "Transparent, scope-based pricing for Compass™ discovery sessions and all Vula Solutions products." },
       { property: "og:url", content: "https://vulasolutions.co.za/pricing" },
     ],
@@ -28,7 +28,7 @@ const compassTiers = [
     featured: false,
     included: [
       "Discovery session (approx. 90 minutes)",
-      "1–2 stakeholder participants",
+      "1 to 2 stakeholder participants",
       "Digital presence and operations review",
       "Written Compass Report with prioritised roadmap",
     ],
@@ -121,7 +121,7 @@ function Pricing() {
       <PageHeader
         eyebrow="Pricing"
         title="Scope determines price. Compass™ determines scope."
-        intro="We don't charge you more because of your headcount. We charge based on what the work involves. Every engagement starts with a Compass™ session, which gives us — and you — the context to price accurately."
+        intro="We don't charge you more because of your headcount. We charge based on what the work involves. Every engagement starts with a Compass™ session, which gives us, and you, the context to price accurately."
       />
 
       <Section

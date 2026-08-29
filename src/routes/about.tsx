@@ -7,7 +7,7 @@ import { CTA } from "@/components/site/CTA";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Vula Solutions" },
+      { title: "About | Vula Solutions" },
       { name: "description", content: "We build confidence through technology. Meet the team helping South African SMEs work smarter." },
       { property: "og:title", content: "About Vula Solutions" },
       { property: "og:description", content: "We build confidence through technology. Meet the team helping South African SMEs work smarter." },
