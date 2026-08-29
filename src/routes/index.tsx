@@ -11,10 +11,10 @@ import heroDoorway from "@/assets/hero-doorway.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vula Solutions - Helping businesses work smarter" },
-      { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™ - our signature business discovery experience." },
-      { property: "og:title", content: "Vula Solutions" },
-      { property: "og:description", content: "Open the door to a smarter, stronger business." },
+      { title: "Vula Solutions: Helping businesses work smarter" },
+      { name: "description", content: "Strategy, websites, AI, automation and SEO for South African SMEs. Start with Compass™, our signature business discovery experience." },
+      { property: "og:title", content: "Vula Solutions, Business Transformation Partner" },
+      { property: "og:description", content: "Strategy, websites, AI and automation for South African SMEs. Every engagement starts with Compass, our signature business discovery session." },
       { property: "og:url", content: "https://vulasolutions.co.za/" },
     ],
     links: [{ rel: "canonical", href: "https://vulasolutions.co.za/" }],
@@ -45,8 +45,7 @@ function Hero() {
             Technology shouldn't be the <span className="text-electric">hardest part</span> of running your business.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-            Running a business is complicated enough. Choosing the right technology shouldn't be.
-            We help you open the right doors to clarity, confidence and practical technology that fits your business.
+            We help you open the right doors: clarity, confidence and practical technology that fits your business.
           </p>
           {/* Hero image — visible on mobile only, sits between text and buttons */}
           <div className="relative my-8 md:hidden">
@@ -153,7 +152,7 @@ function BrandBand() {
           We help you <span className="text-electric">open the door</span> to a smarter, stronger business.
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-          VULA is a Business Transformation Partner — not a website agency, an AI vendor or IT support.
+          VULA is a Business Transformation Partner, not a website agency, an AI vendor or IT support.
           The best technology is the kind that helps your business thrive without getting in the way.
         </p>
       </div>
@@ -173,7 +172,7 @@ function CompassIntro() {
             Every successful journey starts with knowing where you are.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Compass™ is our signature business discovery and strategy experience. Before we recommend websites, AI, automation or digital transformation, we first understand your business, identify opportunities and create a clear roadmap.
+            Compass™ is our signature business discovery and strategy experience. Before we recommend anything, we understand your business, map the opportunities and build a clear roadmap.
           </p>
           <p className="mt-4 text-lg text-foreground">
             At the end of Compass™, you don't leave with a quote. You leave with clarity.

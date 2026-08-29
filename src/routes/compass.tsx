@@ -220,12 +220,32 @@ function CompassPage() {
         title={<><span>Find Your</span> <span className="text-electric">Direction.</span></>}
         intro="Every successful journey starts with knowing where you are. Compass™ is our premium business discovery and strategy experience."
       />
+      <div className="border-y border-border bg-secondary/30">
+        <div className="mx-auto grid max-w-6xl sm:grid-cols-3 sm:divide-x sm:divide-border">
+          {[
+            { icon: MapPin, label: "Session format", value: "In-person or video call", sub: "90 minutes to multiple days, by tier" },
+            { icon: FileText, label: "What you receive", value: "Written Compass Report", sub: "Delivered within one week" },
+            { icon: CheckCircle, label: "Obligation", value: "None", sub: "The report is yours to keep" },
+          ].map(({ icon: Icon, label, value, sub }) => (
+            <div key={label} className="flex items-center gap-4 px-8 py-6 sm:px-10 sm:py-7">
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-electric/10 text-electric">
+                <Icon className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-electric">{label}</p>
+                <p className="mt-1 text-sm font-semibold text-foreground sm:text-base">{value}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <Section>
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-start">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What Compass™ is</h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              A focused, high-value session with a senior Vula Solutions strategist. We explore your business: what's working, what isn't, and where the real opportunities lie. It's the foundation for every engagement we take on.
+              A focused, high-value session with a senior Vula Solutions strategist. We explore your business: what's working, what isn't, and where the real opportunities lie.
             </p>
             <p className="mt-4 text-lg text-foreground">What you leave with isn't a proposal. It's a written Compass Report, a plan that's yours to keep and act on, whether you continue with us or not.</p>
           </div>
@@ -288,7 +308,6 @@ function CompassPage() {
       <Section
         eyebrow="The methodology"
         title="Every Compass™ engagement follows the VULA DARES™ Framework."
-        intro="Compass™ is delivered through DARES™, our five-step methodology for turning uncertainty into clarity, and clarity into action."
         className="bg-navy-deep"
         tone="dark"
       >
@@ -312,9 +331,6 @@ function CompassPage() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 text-sm text-white/60">
-          Compass™ covers <span className="font-medium text-white">Discover</span>, <span className="font-medium text-white">Assess</span> and <span className="font-medium text-white">Recommend</span>. <span className="font-medium text-white">Execute</span> and <span className="font-medium text-white">Support</span> continue through Launch™, Flow™, Accelerate™, Growth™ or Partner™.
-        </p>
       </Section>
       <Section eyebrow="The deliverable" title="Inside the Compass Report." intro="A written document that's yours to keep and act on — whether or not you continue with us.">
         <div className="grid gap-6 md:grid-cols-2">
