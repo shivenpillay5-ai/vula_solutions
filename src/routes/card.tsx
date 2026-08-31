@@ -14,7 +14,6 @@ export const Route = createFileRoute("/card")({
 });
 
 const SITE_URL = "https://vulasolutions.co.za";
-
 const MARK_LEFT = "M160 90L0 0V416.667L160 500V90Z";
 const MARK_RIGHT = "M260 90L420 0V416.667L260 500V90Z";
 
@@ -28,42 +27,64 @@ function VulaMark({ h = 56 }: { h?: number }) {
   );
 }
 
+function QRWithLogo({ size }: { size: number }) {
+  return (
+    <div style={{ position: "relative", display: "inline-block", padding: "5px", background: "#F2F7FC", borderRadius: "6px", lineHeight: 0, flexShrink: 0 }}>
+      <QRCode value={SITE_URL} size={size} bgColor="#F2F7FC" fgColor="#0B1220" level="H" style={{ display: "block" }} />
+      {/* VULA mark overlay — Level H gives 30% error correction headroom */}
+      <div style={{
+        position: "absolute", top: "50%", left: "50%",
+        transform: "translate(-50%, -50%)",
+        background: "#F2F7FC",
+        padding: "2px 3px",
+        lineHeight: 0,
+      }}>
+        <svg width={Math.round(size * 0.22)} height={Math.round(size * 0.26)} viewBox="0 0 420 500" aria-hidden="true">
+          <path d={MARK_LEFT} fill="#0B1220" />
+          <path d={MARK_RIGHT} fill="#01A1B7" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function CardPage() {
   const [flipped, setFlipped] = useState(false);
 
   return (
     <div
-      className="flex min-h-dvh flex-col items-center justify-center px-4 py-10"
-      style={{ background: "#05090F" }}
+      style={{
+        background: "#05090F",
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2rem 1rem",
+        overflow: "hidden",
+      }}
     >
       {/* Ambient glow */}
-      <div
-        aria-hidden
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "radial-gradient(ellipse at 50% 0%, rgba(1,161,183,0.07) 0%, transparent 55%)",
-          pointerEvents: "none",
-        }}
-      />
+      <div aria-hidden style={{ position: "fixed", inset: 0, background: "radial-gradient(ellipse at 50% 0%, rgba(1,161,183,0.07) 0%, transparent 55%)", pointerEvents: "none" }} />
 
-      {/* Scene */}
+      {/* Scene — full width up to 460px, always centred */}
       <div
         onClick={() => setFlipped((f) => !f)}
+        role="button"
+        tabIndex={0}
+        aria-label={flipped ? "Show front of card" : "Show back of card"}
+        onKeyDown={(e) => e.key === "Enter" && setFlipped((f) => !f)}
         style={{
           perspective: "1400px",
-          width: "min(480px, 92vw)",
-          aspectRatio: "480/284",
+          width: "100%",
+          maxWidth: "460px",
+          aspectRatio: "460/272",
           cursor: "pointer",
           userSelect: "none",
           WebkitTapHighlightColor: "transparent",
           position: "relative",
           zIndex: 1,
         }}
-        aria-label={flipped ? "Show front of card" : "Show back of card"}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && setFlipped((f) => !f)}
       >
         <div
           style={{
@@ -75,45 +96,21 @@ function CardPage() {
             transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
         >
-          {/* FRONT */}
-          <CardFace side="front" />
-
-          {/* BACK */}
-          <CardFace side="back" />
+          <FrontFace />
+          <BackFace />
         </div>
       </div>
 
-      {/* Flip hint */}
-      <p
-        style={{
-          marginTop: "1.25rem",
-          fontSize: "0.6rem",
-          letterSpacing: "0.16em",
-          textTransform: "uppercase",
-          color: "#546E88",
-          opacity: flipped ? 0 : 0.5,
-          transition: "opacity 0.4s",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+      {/* Hint */}
+      <p style={{ marginTop: "1rem", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#546E88", opacity: flipped ? 0 : 0.45, transition: "opacity 0.4s", position: "relative", zIndex: 1 }}>
         Tap to flip
       </p>
 
-      {/* Link to site */}
+      {/* Site link */}
       <a
         href={SITE_URL}
-        style={{
-          marginTop: "1rem",
-          fontSize: "0.65rem",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "#01A1B7",
-          textDecoration: "none",
-          opacity: 0.7,
-          position: "relative",
-          zIndex: 1,
-        }}
+        onClick={(e) => e.stopPropagation()}
+        style={{ marginTop: "0.75rem", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#01A1B7", textDecoration: "none", opacity: 0.7, position: "relative", zIndex: 1 }}
       >
         vulasolutions.co.za
       </a>
@@ -121,134 +118,112 @@ function CardPage() {
   );
 }
 
-function CardFace({ side }: { side: "front" | "back" }) {
-  const base: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    borderRadius: "18px",
-    border: "1px solid rgba(1,161,183,0.20)",
-    background: "#0B1220",
-    backfaceVisibility: "hidden",
-    WebkitBackfaceVisibility: "hidden",
-    overflow: "hidden",
-  };
+const faceBase: React.CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  borderRadius: "16px",
+  border: "1px solid rgba(1,161,183,0.20)",
+  background: "#0B1220",
+  backfaceVisibility: "hidden",
+  WebkitBackfaceVisibility: "hidden",
+  overflow: "hidden",
+};
 
-  if (side === "front") {
-    return (
-      <div style={base}>
-        <TealBar />
-        <Glow />
-        {/* Centred logo */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "10px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <VulaMark h={58} />
-            <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(2rem,7vw,3.2rem)", fontWeight: 600, letterSpacing: "0.025em", color: "#F2F7FC", lineHeight: 1 }}>
-              VULA
-            </span>
-          </div>
-          <span style={{ fontSize: "0.58rem", color: "#546E88", letterSpacing: "0.20em", textTransform: "uppercase" }}>
-            vulasolutions.co.za
-          </span>
-        </div>
-      </div>
-    );
-  }
+function TealBar() {
+  return <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "#01A1B7", zIndex: 2 }} />;
+}
 
+function Glow() {
+  return <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 80% 20%, rgba(1,161,183,0.08) 0%, transparent 60%)" }} />;
+}
+
+function FrontFace() {
   return (
-    <div style={{ ...base, transform: "rotateY(180deg)", display: "grid", gridTemplateRows: "auto 1fr auto", padding: "clamp(16px,4%,24px) clamp(18px,5%,30px) clamp(14px,3.5%,20px)", gap: "clamp(8px,2%,12px)" }}>
+    <div style={faceBase}>
       <TealBar />
       <Glow />
-
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", position: "relative", zIndex: 1 }}>
-        <VulaMark h={20} />
-        <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.04em", color: "#F2F7FC", lineHeight: 1.1 }}>
-          VULA SOLUTIONS
-          <span style={{ display: "block", fontFamily: "system-ui, sans-serif", fontSize: "0.52rem", fontWeight: 400, letterSpacing: "0.16em", textTransform: "uppercase", color: "#01A1B7", marginTop: "2px", opacity: 0.85 }}>
-            Business Transformation Partner
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "10px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px,3vw,20px)" }}>
+          <VulaMark h={54} />
+          <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(1.9rem,6.5vw,3rem)", fontWeight: 600, letterSpacing: "0.025em", color: "#F2F7FC", lineHeight: 1 }}>
+            VULA
           </span>
         </div>
-      </div>
-
-      {/* Middle: people + contacts + QR */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr auto", gap: "0 12px", alignItems: "center", position: "relative", zIndex: 1 }}>
-
-        {/* People */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingRight: "12px", borderRight: "1px solid rgba(1,161,183,0.12)" }}>
-          <Person name="Shiven Pillay" role="Founder & Managing Director" />
-          <Person name="Nolene Pillay" role="Co-Founder & Director" />
-        </div>
-
-        {/* Contacts */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <ContactRow icon={<Phone size={9} color="#01A1B7" />} text="061 211 9960" />
-          <ContactRow icon={<Mail size={9} color="#01A1B7" />} text="info@vulasolutions.co.za" />
-          <ContactRow icon={<Globe size={9} color="#01A1B7" />} text="vulasolutions.co.za" />
-        </div>
-
-        {/* QR code */}
-        <div style={{ padding: "5px", background: "#F2F7FC", borderRadius: "6px", flexShrink: 0 }}>
-          <QRCode value={SITE_URL} size={52} bgColor="#F2F7FC" fgColor="#0B1220" level="M" style={{ display: "block" }} />
-        </div>
-      </div>
-
-      {/* Footer: socials */}
-      <div style={{ display: "flex", alignItems: "center", gap: "14px", paddingTop: "clamp(5px,1.5%,8px)", borderTop: "1px solid rgba(1,161,183,0.10)", position: "relative", zIndex: 1 }}>
-        <SocialItem icon={<Linkedin size={9} color="#01A1B7" />} label="LinkedIn" />
-        <SocialItem icon={<Facebook size={9} color="#01A1B7" />} label="Facebook" />
+        <span style={{ fontSize: "0.55rem", color: "#546E88", letterSpacing: "0.20em", textTransform: "uppercase" }}>
+          vulasolutions.co.za
+        </span>
       </div>
     </div>
   );
 }
 
-function TealBar() {
+function BackFace() {
   return (
-    <div
-      aria-hidden
-      style={{
-        position: "absolute", top: 0, left: 0, right: 0, height: "3px",
-        background: "linear-gradient(90deg, #01A1B7 0%, rgba(1,161,183,0.3) 100%)",
-        borderRadius: "18px 18px 0 0", zIndex: 2,
-      }}
-    />
-  );
-}
+    <div style={{ ...faceBase, transform: "rotateY(180deg)", display: "grid", gridTemplateRows: "auto 1fr auto", padding: "clamp(14px,3.5%,22px) clamp(16px,4%,26px) clamp(12px,3%,18px)", gap: "clamp(7px,2%,11px)" }}>
+      <TealBar />
+      <Glow />
 
-function Glow() {
-  return (
-    <div
-      aria-hidden
-      style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse at 80% 20%, rgba(1,161,183,0.08) 0%, transparent 60%)",
-      }}
-    />
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: "9px", position: "relative", zIndex: 1 }}>
+        <VulaMark h={18} />
+        <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.62rem,1.9vw,0.78rem)", fontWeight: 600, letterSpacing: "0.04em", color: "#F2F7FC", lineHeight: 1.1 }}>
+          VULA SOLUTIONS
+          <span style={{ display: "block", fontFamily: "system-ui, sans-serif", fontSize: "clamp(0.44rem,1.3vw,0.52rem)", fontWeight: 400, letterSpacing: "0.14em", textTransform: "uppercase", color: "#01A1B7", marginTop: "2px", opacity: 0.85 }}>
+            Business Transformation Partner
+          </span>
+        </div>
+      </div>
+
+      {/* Middle: left info | right QR */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0 12px", alignItems: "center", position: "relative", zIndex: 1 }}>
+
+        {/* Left: names + divider + contacts */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,8px)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,8px)" }}>
+            <Person name="Shiven Pillay" role="Founder & Managing Director" />
+            <Person name="Nolene Pillay" role="Co-Founder & Director" />
+          </div>
+          <div style={{ width: "20px", height: "1px", background: "rgba(1,161,183,0.22)" }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(3px,1%,5px)" }}>
+            <ContactRow icon={<Phone size={8} color="#01A1B7" />} text="061 211 9960" />
+            <ContactRow icon={<Mail size={8} color="#01A1B7" />} text="info@vulasolutions.co.za" />
+            <ContactRow icon={<Globe size={8} color="#01A1B7" />} text="vulasolutions.co.za" />
+          </div>
+        </div>
+
+        {/* Right: QR with logo */}
+        <QRWithLogo size={54} />
+      </div>
+
+      {/* Footer: socials */}
+      <div style={{ display: "flex", alignItems: "center", gap: "14px", paddingTop: "clamp(5px,1.5%,8px)", borderTop: "1px solid rgba(1,161,183,0.10)", position: "relative", zIndex: 1 }}>
+        <a href="https://www.linkedin.com/company/vula-solutions/" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.58rem)", color: "#546E88", textDecoration: "none", letterSpacing: "0.04em" }}>
+          <Linkedin size={9} color="#01A1B7" />
+          LinkedIn
+        </a>
+        <a href="https://www.facebook.com/vulasolutions/" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.58rem)", color: "#546E88", textDecoration: "none", letterSpacing: "0.04em" }}>
+          <Facebook size={9} color="#01A1B7" />
+          Facebook
+        </a>
+      </div>
+    </div>
   );
 }
 
 function Person({ name, role }: { name: string; role: string }) {
   return (
     <div>
-      <div style={{ fontSize: "clamp(0.6rem,1.8vw,0.76rem)", fontWeight: 600, color: "#F2F7FC", lineHeight: 1.2 }}>{name}</div>
-      <div style={{ fontSize: "clamp(0.47rem,1.3vw,0.58rem)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase", color: "#01A1B7", marginTop: "1px", opacity: 0.9 }}>{role}</div>
+      <div style={{ fontSize: "clamp(0.58rem,1.7vw,0.72rem)", fontWeight: 600, color: "#F2F7FC", lineHeight: 1.2 }}>{name}</div>
+      <div style={{ fontSize: "clamp(0.44rem,1.2vw,0.55rem)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase", color: "#01A1B7", marginTop: "1px", opacity: 0.9 }}>{role}</div>
     </div>
   );
 }
 
 function ContactRow({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "clamp(0.5rem,1.5vw,0.64rem)", color: "#546E88", lineHeight: 1 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.6rem)", color: "#546E88", lineHeight: 1 }}>
       {icon}
       {text}
-    </div>
-  );
-}
-
-function SocialItem({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "0.58rem", color: "#546E88", letterSpacing: "0.04em" }}>
-      {icon}
-      {label}
     </div>
   );
 }
