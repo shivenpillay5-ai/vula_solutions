@@ -163,34 +163,34 @@ function BackFace() {
       <TealBar />
       <Glow />
 
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "9px", position: "relative", zIndex: 1 }}>
-        <VulaMark h={18} />
-        <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.62rem,1.9vw,0.78rem)", fontWeight: 600, letterSpacing: "0.04em", color: "#F2F7FC", lineHeight: 1.1 }}>
-          VULA SOLUTIONS
-          <span style={{ display: "block", fontFamily: "system-ui, sans-serif", fontSize: "clamp(0.44rem,1.3vw,0.52rem)", fontWeight: 400, letterSpacing: "0.14em", textTransform: "uppercase", color: "#01A1B7", marginTop: "2px", opacity: 0.85 }}>
-            Business Transformation Partner
-          </span>
+      {/* Header: brand left, QR top right */}
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px", position: "relative", zIndex: 1 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
+          <VulaMark h={18} />
+          <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.62rem,1.9vw,0.78rem)", fontWeight: 600, letterSpacing: "0.04em", color: "#F2F7FC", lineHeight: 1.1 }}>
+            VULA SOLUTIONS
+            <span style={{ display: "block", fontFamily: "system-ui, sans-serif", fontSize: "clamp(0.44rem,1.3vw,0.52rem)", fontWeight: 400, letterSpacing: "0.14em", textTransform: "uppercase", color: "#01A1B7", marginTop: "2px", opacity: 0.85 }}>
+              Business Transformation Partner
+            </span>
+          </div>
         </div>
+        <QRWithLogo size={40} />
       </div>
 
-      {/* Middle: left (names) | right (contacts + QR) */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0 14px", alignItems: "center", position: "relative", zIndex: 1 }}>
+      {/* Middle: names | divider | contacts */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px", alignItems: "center", position: "relative", zIndex: 1 }}>
 
         {/* Left: names */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(7px,2%,12px)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(7px,2%,11px)", paddingRight: "14px", borderRight: "1px solid rgba(1,161,183,0.15)" }}>
           <Person name="Shiven Pillay" role="Founder & Managing Director" />
           <Person name="Nolene Pillay" role="Co-Founder & Director" />
         </div>
 
-        {/* Right: contacts above, QR below */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(6px,1.8%,9px)", alignItems: "flex-start", alignSelf: "center" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(3px,1%,5px)" }}>
-            <ContactRow icon={<Phone size={8} color="#01A1B7" />} text="061 211 9960" />
-            <ContactRow icon={<Mail size={8} color="#01A1B7" />} text="info@vulasolutions.co.za" />
-            <ContactRow icon={<Globe size={8} color="#01A1B7" />} text="vulasolutions.co.za" />
-          </div>
-          <QRWithLogo size={38} />
+        {/* Right: contacts */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(4px,1.2%,6px)" }}>
+          <ContactRow icon={<Phone size={8} color="#01A1B7" />} text="061 211 9960" />
+          <ContactRow icon={<Mail size={8} color="#01A1B7" />} text="info@vulasolutions.co.za" />
+          <ContactRow icon={<Globe size={8} color="#01A1B7" />} text="vulasolutions.co.za" />
         </div>
       </div>
 
