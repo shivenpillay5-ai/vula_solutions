@@ -35,12 +35,13 @@ function QRWithLogo({ size }: { size: number }) {
       <div style={{
         position: "absolute", top: "50%", left: "50%",
         transform: "translate(-50%, -50%)",
-        background: "#F2F7FC",
+        background: "#0B1220",
         padding: "2px 3px",
+        borderRadius: "2px",
         lineHeight: 0,
       }}>
         <svg width={Math.round(size * 0.22)} height={Math.round(size * 0.26)} viewBox="0 0 420 500" aria-hidden="true">
-          <path d={MARK_LEFT} fill="#0B1220" />
+          <path d={MARK_LEFT} fill="#F2F7FC" />
           <path d={MARK_RIGHT} fill="#01A1B7" />
         </svg>
       </div>
@@ -164,7 +165,7 @@ function BackFace() {
       <Glow />
 
       {/* Header: brand left, QR top right */}
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px", position: "relative", zIndex: 1 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
           <VulaMark h={18} />
           <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.62rem,1.9vw,0.78rem)", fontWeight: 600, letterSpacing: "0.04em", color: "#F2F7FC", lineHeight: 1.1 }}>
