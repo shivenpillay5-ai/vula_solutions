@@ -178,7 +178,7 @@ function BackFace() {
       </div>
 
       {/* Middle: names | divider | contacts */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px", alignItems: "center", position: "relative", zIndex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.25fr 1fr", gap: "0 14px", alignItems: "center", position: "relative", zIndex: 1 }}>
 
         {/* Left: names */}
         <div style={{ display: "flex", flexDirection: "column", gap: "clamp(7px,2%,11px)", paddingRight: "14px", borderRight: "1px solid rgba(1,161,183,0.15)" }}>
@@ -187,7 +187,7 @@ function BackFace() {
         </div>
 
         {/* Right: contacts */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(4px,1.2%,6px)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(6px,1.8%,9px)" }}>
           <ContactRow icon={<Phone size={8} color="#01A1B7" />} text="061 211 9960" />
           <ContactRow icon={<Mail size={8} color="#01A1B7" />} text="info@vulasolutions.co.za" />
           <ContactRow icon={<Globe size={8} color="#01A1B7" />} text="vulasolutions.co.za" />
@@ -213,14 +213,14 @@ function Person({ name, role }: { name: string; role: string }) {
   return (
     <div>
       <div style={{ fontSize: "clamp(0.58rem,1.7vw,0.72rem)", fontWeight: 600, color: "#F2F7FC", lineHeight: 1.2 }}>{name}</div>
-      <div style={{ fontSize: "clamp(0.44rem,1.2vw,0.55rem)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase", color: "#01A1B7", marginTop: "1px", opacity: 0.9 }}>{role}</div>
+      <div style={{ fontSize: "clamp(0.44rem,1.2vw,0.55rem)", fontWeight: 500, letterSpacing: "0.04em", textTransform: "uppercase", color: "#01A1B7", marginTop: "1px", opacity: 0.9, whiteSpace: "nowrap" }}>{role}</div>
     </div>
   );
 }
 
 function ContactRow({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.6rem)", fontWeight: 500, color: "#BFD0DF", lineHeight: 1 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.5rem,1.5vw,0.64rem)", fontWeight: 500, color: "#BFD0DF", lineHeight: 1 }}>
       {icon}
       {text}
     </div>
