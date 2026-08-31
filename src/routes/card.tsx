@@ -176,7 +176,7 @@ function CardFace({ side }: { side: "front" | "back" }) {
         {/* People */}
         <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingRight: "12px", borderRight: "1px solid rgba(1,161,183,0.12)" }}>
           <Person name="Shiven Pillay" role="Founder & Managing Director" />
-          <Person name="Nolene Pillay" role="Director" />
+          <Person name="Nolene Pillay" role="Co-Founder & Director" />
         </div>
 
         {/* Contacts */}
