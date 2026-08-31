@@ -40,7 +40,7 @@ function ThemeToggle() {
 
 function ResourcesDropdown() {
   const [open, setOpen] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   function enter() {
     clearTimeout(timerRef.current);

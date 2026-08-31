@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calculator, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Calculator, CheckCircle2, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
 import { analytics } from "@/lib/analytics";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -219,18 +219,83 @@ function CompassIntro() {
 }
 
 function SolutionsOverview() {
+  const [compass, ...solutions] = products;
   return (
     <Section
       eyebrow="The Vula Solutions suite"
       title="A connected ecosystem for modern businesses."
-      intro="Each product is designed to work on its own or as part of a broader transformation, all beginning with Compass™."
+      intro="Each product works on its own or as part of a broader transformation."
       className="bg-navy-deep"
       tone="dark"
     >
+      {/* Compass spotlight — the flagship, where every engagement starts */}
+      <Link
+        to={compass.to}
+        className="card-premium group relative block overflow-hidden border-electric/30 p-8 transition-transform duration-250 hover:-translate-y-[3px] hover:shadow-[0_32px_70px_-34px_rgba(1,161,183,0.35)] sm:p-10"
+        style={{ borderTopWidth: 0 }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric" aria-hidden />
+        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-electric/20 to-electric/0 blur-3xl" aria-hidden />
+        <div className="relative grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-electric">Where every engagement starts</p>
+            <div className="mt-4 flex items-center gap-4">
+              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/8 bg-navy-deep text-white transition-all duration-250 group-hover:border-electric/30 group-hover:ring-1 group-hover:ring-electric/45">
+                <CompassIcon className="h-6 w-6" />
+              </span>
+              <div>
+                <h3 className="text-2xl font-semibold tracking-tight transition-colors duration-250 group-hover:text-electric">{compass.name}</h3>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{compass.tagline}</p>
+              </div>
+            </div>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">{compass.description}</p>
+            <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-electric">
+              Discover Compass™
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </div>
+          <ul className="space-y-3.5">
+            {[
+              "In-person or video, 90 minutes to multiple days",
+              "A written Compass Report within one week",
+              "No obligation: the report is yours to keep",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-3 text-sm text-muted-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-electric" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Link>
+
+      {/* Connector — the roadmap flows into the solutions */}
+      <div className="flex flex-col items-center py-2" aria-hidden>
+        <div className="h-8 w-px bg-gradient-to-b from-electric/70 to-electric/25" />
+        <span className="rounded-full border border-electric/25 bg-electric/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-electric">
+          Your roadmap leads to
+        </span>
+        <div className="h-8 w-px bg-gradient-to-b from-electric/25 to-electric/70" />
+      </div>
+
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((p) => (
+        {solutions.map((p) => (
           <ProductCard key={p.name} {...p} />
         ))}
+        {/* Closes the loop back to Compass */}
+        <Link
+          to="/contact"
+          className="group flex h-full flex-col items-start justify-center rounded-2xl border border-dashed border-electric/30 p-7 transition hover:border-electric/60 hover:bg-electric/5"
+        >
+          <p className="text-sm font-semibold text-white">Not sure which door to open?</p>
+          <p className="mt-2 text-sm leading-relaxed text-white/60">
+            That is exactly what Compass™ answers. One session, and you will know where to start.
+          </p>
+          <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-electric">
+            Book Compass™
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
+        </Link>
       </div>
     </Section>
   );
