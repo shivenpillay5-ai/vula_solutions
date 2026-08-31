@@ -199,26 +199,31 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const { pathname } = useLocation();
   const isInternal = pathname.startsWith("/sessions") || pathname.startsWith("/documents");
+  const isCard = pathname === "/card";
 
   return (
     <QueryClientProvider client={queryClient}>
       <ScrollToTop />
-      <div className="flex min-h-dvh flex-col">
-        <Suspense fallback={null}>
-          <BrandIntro skip={isInternal} />
-        </Suspense>
-        <SiteHeader />
-        <main className="flex-1">
-          {/* Required: nested routes render here. */}
-          <Outlet />
-        </main>
-        <SiteFooter />
-        {!isInternal && (
+      {isCard ? (
+        <Outlet />
+      ) : (
+        <div className="flex min-h-dvh flex-col">
           <Suspense fallback={null}>
-            <AskCompass />
+            <BrandIntro skip={isInternal} />
           </Suspense>
-        )}
-      </div>
+          <SiteHeader />
+          <main className="flex-1">
+            {/* Required: nested routes render here. */}
+            <Outlet />
+          </main>
+          <SiteFooter />
+          {!isInternal && (
+            <Suspense fallback={null}>
+              <AskCompass />
+            </Suspense>
+          )}
+        </div>
+      )}
     </QueryClientProvider>
   );
 }
