@@ -174,25 +174,24 @@ function BackFace() {
         </div>
       </div>
 
-      {/* Middle: left info | right QR */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0 12px", alignItems: "center", position: "relative", zIndex: 1 }}>
+      {/* Middle: left (names) | right (contacts + QR) */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0 14px", alignItems: "start", position: "relative", zIndex: 1 }}>
 
-        {/* Left: names + divider + contacts */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,8px)" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,8px)" }}>
-            <Person name="Shiven Pillay" role="Founder & Managing Director" />
-            <Person name="Nolene Pillay" role="Co-Founder & Director" />
-          </div>
-          <div style={{ width: "20px", height: "1px", background: "rgba(1,161,183,0.22)" }} />
+        {/* Left: names */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,9px)" }}>
+          <Person name="Shiven Pillay" role="Founder & Managing Director" />
+          <Person name="Nolene Pillay" role="Co-Founder & Director" />
+        </div>
+
+        {/* Right: contacts above, QR below */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(5px,1.5%,8px)", alignItems: "flex-start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(3px,1%,5px)" }}>
             <ContactRow icon={<Phone size={8} color="#01A1B7" />} text="061 211 9960" />
             <ContactRow icon={<Mail size={8} color="#01A1B7" />} text="info@vulasolutions.co.za" />
             <ContactRow icon={<Globe size={8} color="#01A1B7" />} text="vulasolutions.co.za" />
           </div>
+          <QRWithLogo size={48} />
         </div>
-
-        {/* Right: QR with logo */}
-        <QRWithLogo size={54} />
       </div>
 
       {/* Footer: socials */}
