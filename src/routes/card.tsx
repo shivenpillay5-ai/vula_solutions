@@ -29,21 +29,26 @@ function VulaMark({ h = 56 }: { h?: number }) {
 
 function QRWithLogo({ size }: { size: number }) {
   return (
-    <div style={{ position: "relative", display: "inline-block", padding: "5px", background: "#F2F7FC", borderRadius: "6px", lineHeight: 0, flexShrink: 0 }}>
-      <QRCode value={SITE_URL} size={size} bgColor="#F2F7FC" fgColor="#0B1220" level="H" style={{ display: "block" }} />
-      {/* VULA mark overlay — Level H gives 30% error correction headroom */}
-      <div style={{
-        position: "absolute", top: "50%", left: "50%",
-        transform: "translate(-50%, -50%)",
-        background: "#F2F7FC",
-        padding: "2px 3px",
-        lineHeight: 0,
-      }}>
-        <svg width={Math.round(size * 0.22)} height={Math.round(size * 0.26)} viewBox="0 0 420 500" aria-hidden="true">
-          <path d={MARK_LEFT} fill="#0B1220" />
-          <path d={MARK_RIGHT} fill="#01A1B7" />
-        </svg>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", flexShrink: 0 }}>
+      <div style={{ position: "relative", display: "inline-block", padding: "5px", background: "#F2F7FC", borderRadius: "6px", lineHeight: 0 }}>
+        <QRCode value={SITE_URL} size={size} bgColor="#F2F7FC" fgColor="#0B1220" level="H" style={{ display: "block" }} />
+        {/* VULA mark overlay — Level H gives 30% error correction headroom */}
+        <div style={{
+          position: "absolute", top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "#F2F7FC",
+          padding: "2px 3px",
+          lineHeight: 0,
+        }}>
+          <svg width={Math.round(size * 0.22)} height={Math.round(size * 0.26)} viewBox="0 0 420 500" aria-hidden="true">
+            <path d={MARK_LEFT} fill="#0B1220" />
+            <path d={MARK_RIGHT} fill="#01A1B7" />
+          </svg>
+        </div>
       </div>
+      <span style={{ fontSize: "0.4rem", fontWeight: 600, color: "#01A1B7", letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.9 }}>
+        Scan to explore VULA
+      </span>
     </div>
   );
 }
@@ -220,7 +225,7 @@ function Person({ name, role }: { name: string; role: string }) {
 
 function ContactRow({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.6rem)", color: "#546E88", lineHeight: 1 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.48rem,1.4vw,0.6rem)", fontWeight: 500, color: "#BFD0DF", lineHeight: 1 }}>
       {icon}
       {text}
     </div>
