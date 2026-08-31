@@ -35,13 +35,12 @@ function QRWithLogo({ size }: { size: number }) {
       <div style={{
         position: "absolute", top: "50%", left: "50%",
         transform: "translate(-50%, -50%)",
-        background: "#0B1220",
+        background: "#F2F7FC",
         padding: "2px 3px",
-        borderRadius: "2px",
         lineHeight: 0,
       }}>
         <svg width={Math.round(size * 0.22)} height={Math.round(size * 0.26)} viewBox="0 0 420 500" aria-hidden="true">
-          <path d={MARK_LEFT} fill="#F2F7FC" />
+          <path d={MARK_LEFT} fill="#0B1220" />
           <path d={MARK_RIGHT} fill="#01A1B7" />
         </svg>
       </div>
