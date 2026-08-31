@@ -1,5 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { Linkedin, Facebook } from "lucide-react";
 import { Logo } from "./Logo";
+
+const socials = [
+  { href: "https://www.linkedin.com/company/vula-solutions/", label: "Vula Solutions on LinkedIn", Icon: Linkedin },
+  { href: "https://www.facebook.com/vulasolutions", label: "Vula Solutions on Facebook", Icon: Facebook },
+] as const;
 
 const cols = [
   {
@@ -51,6 +57,20 @@ export function SiteFooter() {
           >
             Start with Compass™
           </Link>
+          <div className="mt-6 flex items-center gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition hover:border-electric/40 hover:text-electric"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
         {cols.map((c) => (
           <div key={c.title}>
