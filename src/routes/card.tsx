@@ -220,7 +220,7 @@ function Person({ name, role }: { name: string; role: string }) {
 
 function ContactRow({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.5rem,1.5vw,0.64rem)", fontWeight: 500, color: "#BFD0DF", lineHeight: 1 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "clamp(0.5rem,1.5vw,0.64rem)", fontWeight: 500, color: "#F2F7FC", lineHeight: 1 }}>
       {icon}
       {text}
     </div>
