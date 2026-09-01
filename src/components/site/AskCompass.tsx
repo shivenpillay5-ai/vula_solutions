@@ -134,11 +134,11 @@ export function AskCompass() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="print:hidden fixed bottom-5 right-5 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-navy-deep text-xs font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 hover:bg-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:gap-2 sm:px-3 sm:py-2"
+        className="print:hidden fixed bottom-5 right-5 z-40 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-electric text-xs font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:gap-2 sm:overflow-visible sm:border sm:border-white/10 sm:bg-navy-deep sm:px-3 sm:py-2 sm:hover:bg-navy"
         aria-label="Open Ask Compass™ chat"
       >
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-electric text-white sm:h-7 sm:w-7">
-          <BotMessageSquare className="h-3.5 w-3.5" />
+          <BotMessageSquare className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
         </span>
         <span className="hidden sm:inline">Ask Compass™</span>
       </button>
