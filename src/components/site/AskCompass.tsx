@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { analytics } from "@/lib/analytics";
 import { Link } from "@tanstack/react-router";
-import { BotMessageSquare, Compass, Loader2, SendHorizonal, X } from "lucide-react";
+import { BotMessageSquare, Loader2, SendHorizonal, X } from "lucide-react";
+import { Mark } from "@/components/site/Logo";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -149,7 +150,7 @@ export function AskCompass() {
             <div className="flex items-center justify-between gap-3 pr-0">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-electric text-white shadow-[0_12px_32px_-16px_rgba(1,161,183,0.8)]">
-                  <Compass className="h-5 w-5" />
+                  <Mark className="h-5 w-auto" variant="light" />
                 </span>
                 <div>
                   <DialogTitle className="font-display text-[1.1rem] text-white">Ask VULA</DialogTitle>
