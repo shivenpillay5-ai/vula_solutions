@@ -217,7 +217,7 @@ function ResourceSectionPage() {
       <CTA
         title="Ready to turn this into a plan?"
         body="Compass™ is where reading becomes a plan. Book a session and leave with a clear picture of what your business should do next."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/resources", label: "Back to resources" }}
       />
     </>

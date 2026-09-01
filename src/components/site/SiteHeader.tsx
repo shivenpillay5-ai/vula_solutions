@@ -7,7 +7,7 @@ import { analytics } from "@/lib/analytics";
 type NavItem = { to: string; label: string };
 
 const NAV_BEFORE: NavItem[] = [
-  { to: "/compass", label: "Compass™" },
+  { to: "/compass", label: "Compass" },
   { to: "/solutions", label: "Solutions" },
   { to: "/pricing", label: "Pricing" },
   { to: "/industries", label: "Industries" },
@@ -152,7 +152,7 @@ export function SiteHeader() {
             onClick={() => analytics.bookCompassClick("header")}
             className="inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-90"
           >
-            Start with Compass™
+            Book a Compass session
           </Link>
           <ThemeToggle />
         </div>

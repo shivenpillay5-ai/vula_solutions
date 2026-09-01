@@ -67,7 +67,7 @@ function Hero() {
               className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition hover:opacity-90"
               style={{ backgroundColor: "#01A1B7" }}
             >
-              Start with Compass™
+              Start with Compass
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -182,7 +182,7 @@ function CompassIntro() {
             onClick={() => analytics.bookCompassClick("home_compass_section")}
             className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
           >
-            Discover Compass™ <ArrowRight className="h-4 w-4" />
+            Learn how Compass works <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -250,7 +250,7 @@ function SolutionsOverview() {
             </div>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">{compass.description}</p>
             <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-electric">
-              Discover Compass™
+              Learn how Compass works
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </div>
@@ -292,7 +292,7 @@ function SolutionsOverview() {
             That is exactly what Compass™ answers. One session, and you will know where to start.
           </p>
           <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-electric">
-            Book Compass™
+            Book a Compass session
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
         </Link>

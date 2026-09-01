@@ -67,9 +67,9 @@ export function SolutionPage(props: SolutionPageProps) {
         <FAQ items={faq} />
       </Section>
       <CTA
-        title={`Start with Compass™, then build with ${name}.`}
-        body="Every engagement begins with a discovery session. Book Compass™ and we'll shape the right plan together."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        title={`Start with Compass, then build with ${name}.`}
+        body="Every engagement begins with a discovery session. Book a Compass session and we will shape the right plan together."
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/solutions", label: "See all solutions" }}
       />
     </>

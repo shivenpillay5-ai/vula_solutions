@@ -168,9 +168,9 @@ function Pricing() {
       </Section>
 
       <CTA
-        title="Start with Compass™."
-        body="Book a discovery session and leave with a written plan for your business. The Compass™ fee is the only fixed cost until a project is scoped and agreed."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        title="Start with Compass."
+        body="Book a discovery session and leave with a written plan for your business. The Compass fee is the only fixed cost until a project is scoped and agreed."
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/solutions", label: "See all solutions" }}
       />
     </>

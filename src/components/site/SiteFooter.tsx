@@ -11,7 +11,7 @@ const cols = [
   {
     title: "Solutions",
     links: [
-      { to: "/compass", label: "Compass™" },
+      { to: "/compass", label: "Compass" },
       { to: "/solutions/launch", label: "Launch™" },
       { to: "/solutions/flow", label: "Flow™" },
       { to: "/solutions/accelerate", label: "Accelerate™" },
