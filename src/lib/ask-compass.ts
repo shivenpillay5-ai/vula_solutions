@@ -355,7 +355,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
       snippet: t.description,
     }));
     return {
-      content: `VULA offers 14 free business tools. No sign-up needed. They cover POPIA compliance, AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. Open any from the Resources page.`,
+      content: `There is quite a bit to choose from here. VULA has 14 free business tools, no account needed. They cover POPIA compliance, AI readiness, process improvement, digital transformation, software evaluation, vendor selection, project risk, meeting agendas and more. You can open any of them from the Resources page.`,
       suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "How do I start"],
       references: toolRefs.length > 0 ? toolRefs : fallbackRefs,
     };
@@ -398,7 +398,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["project risk", "risk register", "risk management", "risks", "risk assessment"])) {
     return withReferences(
       {
-        content: `Good thinking to get ahead of this. VULA's free Project Risk Checklist helps you identify, rate and plan responses to risks before a project starts. It covers scope, budget, resource, technical and stakeholder risk. Simple to work through.`,
+        content: `Smart to think about this before a project kicks off. VULA's free Project Risk Checklist helps you identify, rate and plan responses to risks before a project starts. It covers scope, budget, resource, technical and stakeholder risk. Simple to work through.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -420,7 +420,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["systems audit", "business systems", "audit my tools", "tool audit", "software audit", "crm audit"])) {
     return withReferences(
       {
-        content: `A useful place to start. VULA's free Business Systems Audit maps every tool and system across your business, covering accounting, CRM, comms and project management, to surface gaps, overlaps and cost savings. It often surprises people what they find.`,
+        content: `You might be surprised what comes up. VULA's free Business Systems Audit maps every tool and system across your business, covering accounting, CRM, comms and project management, to surface gaps, overlaps and cost savings. It often surprises people what they find.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
@@ -494,7 +494,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["vula", "what do you do", "how can vula help", "help my business", "business transformation"])) {
     return withReferences(
       {
-        content: "Good place to start. VULA is a Business Transformation Partner. We help businesses with strategy, websites, AI, automation and growth, but we usually begin by understanding the business first rather than jumping straight to a tool or a build. The right solution depends on what is actually going on.",
+        content: "Happy to explain what VULA actually does. VULA is a Business Transformation Partner. We help businesses with strategy, websites, AI, automation and growth, but we usually begin by understanding the business first rather than jumping straight to a tool or a build. The right solution depends on what is actually going on.",
         suggestions: [`What is Compass${TM}`, "Can VULA help with automation", "What industries VULA works with"],
       },
       question,
@@ -582,7 +582,7 @@ export function getAskCompassReply(question: string): AskCompassReply {
   if (includesAny(text, ["popia", "protection of personal information", "information officer", "data breach", "data subject", "privacy compliance", "privacy act", "personal information act", "inforegulator", "responsible party", "operator agreement", "privacy notice"])) {
     return withReferences(
       {
-        content: `Good thing to get on top of. South Africa's Protection of Personal Information Act (POPIA) applies to every business that collects or processes personal information. VULA has a free POPIA Basics Checklist covering nine practical areas: appointing an information officer, mapping what data you hold, establishing lawful grounds, publishing a privacy notice, data subject rights, securing data, managing operators, responding to breaches and setting retention periods.`,
+        content: `Really important to have sorted. South Africa's Protection of Personal Information Act (POPIA) applies to every business that collects or processes personal information. VULA has a free POPIA Basics Checklist covering nine practical areas: appointing an information officer, mapping what data you hold, establishing lawful grounds, publishing a privacy notice, data subject rights, securing data, managing operators, responding to breaches and setting retention periods.`,
         suggestions: ["What free resources are available", `What is Compass${TM}`, "How do I start"],
       },
       question,
