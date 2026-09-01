@@ -88,7 +88,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="border-t border-border">
-        <div className="container-page flex flex-col items-start justify-between gap-2 pt-6 pb-16 text-xs text-muted-foreground sm:flex-row sm:items-center">
+        <div className="container-page flex flex-col items-start justify-between gap-2 pt-6 pb-24 text-xs text-muted-foreground sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Vula Solutions. All rights reserved.</p>
           <p>Helping businesses work smarter.</p>
         </div>
