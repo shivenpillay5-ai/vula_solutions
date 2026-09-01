@@ -61,7 +61,7 @@ function Contact() {
             <div className="card-premium relative overflow-hidden border-electric/30 p-7">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] rounded-t-[inherit] bg-electric opacity-90" aria-hidden />
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-electric">Recommended starting point</p>
-              <h2 className="mt-3 text-lg font-semibold">Book Compass™</h2>
+              <h2 className="mt-3 text-lg font-semibold">Book a Compass session</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 A focused discovery session with a senior Vula Solutions strategist. You leave with a written Compass Report and a clear picture of what your business should do next.
               </p>
@@ -74,7 +74,7 @@ function Contact() {
                 }}
                 className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
               >
-                Request a Compass™ slot
+                Book a Compass session
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>

@@ -370,9 +370,9 @@ function CompassPage() {
         <FAQ items={COMPASS_FAQS} />
       </Section>
       <CTA
-        title="Ready to start with Compass™?"
-        body="Book a session and take the first step towards a clearer, smarter business."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        title="Ready to book a Compass session?"
+        body="Take the first step towards a clearer, smarter business."
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/solutions", label: "See all solutions" }}
       />
     </>

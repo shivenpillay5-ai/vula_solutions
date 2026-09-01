@@ -308,7 +308,7 @@ function SampleReport() {
       <CTA
         title="Ready for your own Compass™?"
         body="Every report is built around your specific business. Book a session and leave with a plan that's yours to keep."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/pricing", label: "See pricing" }}
       />
     </>

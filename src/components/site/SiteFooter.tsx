@@ -55,7 +55,7 @@ export function SiteFooter() {
             to="/compass"
             className="mt-6 inline-flex h-11 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
-            Start with Compass™
+            Book a Compass session
           </Link>
           <div className="mt-6 flex items-center gap-3">
             {socials.map(({ href, label, Icon }) => (

@@ -135,12 +135,12 @@ export function AskCompass() {
         type="button"
         onClick={() => setOpen(true)}
         className="print:hidden fixed bottom-5 right-5 z-40 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-electric text-xs font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:gap-2 sm:overflow-visible sm:border sm:border-white/10 sm:bg-navy-deep sm:px-3 sm:py-2 sm:hover:bg-navy"
-        aria-label="Open Ask Compass™ chat"
+        aria-label="Open Ask Compass chat"
       >
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-electric text-white sm:h-7 sm:w-7">
           <BotMessageSquare className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
         </span>
-        <span className="hidden sm:inline">Ask Compass™</span>
+        <span className="hidden sm:inline">Ask Compass</span>
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -272,7 +272,7 @@ export function AskCompass() {
                 />
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs text-muted-foreground">
-                    Not sure? Compass™ is usually the right first step.
+                    Not sure? Compass is usually the right first step.
                   </p>
                   <Button
                     type="submit"
@@ -288,7 +288,7 @@ export function AskCompass() {
               <div className="mt-3 flex items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
                 <span>Guidance only. No pricing or promises.</span>
                 <Link to="/contact" onClick={() => analytics.bookCompassClick("ask_compass")} className="font-medium text-electric hover:underline">
-                  Start with Compass™
+                  Book a Compass session
                 </Link>
               </div>
             </div>

@@ -79,8 +79,8 @@ function CaseStudies() {
 
       <CTA
         title="Want to be our next success story?"
-        body="Start with Compass™ and let us map out what is possible for your business."
-        primary={{ to: "/contact", label: "Book Compass™" }}
+        body="Book a Compass session and let us map out what is possible for your business."
+        primary={{ to: "/contact", label: "Book a Compass session" }}
         secondary={{ to: "/solutions", label: "Explore solutions" }}
       />
     </>

@@ -4,9 +4,9 @@ import { analytics } from "@/lib/analytics";
 
 export function CTA({
   title = "Ready to find your direction?",
-  body = "Every successful journey starts with knowing where you are. Book a Compass™ session and leave with clarity.",
-  primary = { to: "/contact", label: "Start with Compass™" },
-  secondary = { to: "/compass", label: "Discover Compass™" },
+  body = "Every successful journey starts with knowing where you are. Book a Compass session and leave with clarity.",
+  primary = { to: "/contact", label: "Book a Compass session" },
+  secondary = { to: "/compass", label: "Learn how Compass works" },
 }: {
   title?: string;
   body?: string;

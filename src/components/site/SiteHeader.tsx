@@ -222,7 +222,7 @@ export function SiteHeader() {
               onClick={() => { setOpen(false); analytics.bookCompassClick("header_mobile"); }}
               className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground"
             >
-              Start with Compass™
+              Book a Compass session
             </Link>
             <div className="pt-1">
               <ThemeToggle />
