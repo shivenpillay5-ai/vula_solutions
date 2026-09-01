@@ -1,7 +1,11 @@
 export type ResourceContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
-  | { type: "list"; items: string[] };
+  | { type: "list"; items: string[] }
+  | { type: "callout"; variant: "tip" | "insight" | "warning"; title: string; text: string }
+  | { type: "pullquote"; text: string; attribution?: string }
+  | { type: "stat"; value: string; label: string; context?: string }
+  | { type: "comparison"; left: { label: string; items: string[] }; right: { label: string; items: string[] } };
 
 export type ResourceArticle = {
   slug: string;
@@ -56,6 +60,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The reality is that most projects do not fail because of poor technology. They fail long before a developer writes the first line of code.",
+          },
+          {
+            type: "stat",
+            value: "70%",
+            label: "of software projects do not fully meet their original goals",
+            context: "Consistent finding across enterprise and SME software implementations",
           },
           {
             type: "paragraph",
@@ -126,6 +136,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Unfortunately, software is very literal. It only does exactly what it is told. If the wrong assumptions are built into the system, fixing them later usually costs far more than identifying them at the beginning. A few days spent asking better questions can save months of rework later.",
           },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Assumptions are expensive",
+            text: "Fixing a misunderstood requirement after development has begun can cost five to ten times more than catching it during discovery. Spend the time upfront.",
+          },
           { type: "heading", text: "Software should support the business" },
           {
             type: "paragraph",
@@ -162,6 +178,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Notice that none of those involve choosing software. That is deliberate. Technology comes later. Clarity comes first.",
+          },
+          {
+            type: "pullquote",
+            text: "Technology comes later. Clarity comes first. The most successful projects begin not with software selection, but with a shared understanding of the problem worth solving.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "The value of asking better questions" },
           {
@@ -263,6 +284,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Here are five questions every business should answer before making that decision.",
+          },
+          {
+            type: "stat",
+            value: "1 in 3",
+            label: "software purchases fail to deliver the expected business value",
+            context: "Most failures trace back to unclear requirements rather than poor technology",
           },
           { type: "heading", text: "1. What problem are we actually trying to solve?" },
           {
@@ -389,9 +416,19 @@ export const resourceSections: ResourceSection[] = [
               "The real question is not whether the software is good. It is whether it is right for your business. Those are two very different things.",
           },
           {
+            type: "pullquote",
+            text: "The real question is not whether the software is good. It is whether it is right for your business. Those are two very different things.",
+          },
+          {
             type: "paragraph",
             text:
               "A product with hundreds of features is not automatically a better fit than one with twenty. If those twenty features solve your biggest challenges, you have probably found the better solution.",
+          },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Define success before you evaluate",
+            text: "Write down what success looks like in measurable terms before attending any software demonstration. Your list of outcomes, not the vendor's feature list, should drive the comparison.",
           },
           { type: "heading", text: "Good decisions start with understanding" },
           {
@@ -481,6 +518,27 @@ export const resourceSections: ResourceSection[] = [
             text:
               "These are all important questions. They help define the functionality of the system. But there is something they do not answer: why? Why does the business need these features? Why does the process work this way? Why is this problem worth solving? Without those answers, requirements become little more than a wish list.",
           },
+          {
+            type: "comparison",
+            left: {
+              label: "Requirements gathering",
+              items: [
+                "Asks: what should the software do?",
+                "Focuses on features and functionality",
+                "Starts with the solution",
+                "Defines screens, fields and integrations",
+              ],
+            },
+            right: {
+              label: "Business discovery",
+              items: [
+                "Asks: why does this problem exist?",
+                "Focuses on outcomes and goals",
+                "Starts with the business",
+                "Uncovers hidden risks and assumptions",
+              ],
+            },
+          },
           { type: "heading", text: "What is business discovery?" },
           {
             type: "paragraph",
@@ -552,6 +610,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Only then does it make sense to define software requirements.",
           },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Discovery reduces rework",
+            text: "Teams that invest in business discovery before writing requirements typically spend less time on change requests and rework during delivery. Understanding the why shapes better requirements from the start.",
+          },
           { type: "heading", text: "Requirements answer 'what'. Discovery answers 'why'." },
           {
             type: "paragraph",
@@ -597,6 +661,11 @@ export const resourceSections: ResourceSection[] = [
               "If requirements gathering tells you what to build, business discovery tells you why you are building it in the first place. When businesses take the time to understand themselves before choosing technology, better decisions naturally follow.",
           },
           {
+            type: "pullquote",
+            text: "If requirements gathering tells you what to build, business discovery tells you why you are building it in the first place.",
+            attribution: "Vula Solutions",
+          },
+          {
             type: "paragraph",
             text:
               "Projects become clearer. Risks become easier to manage. And software becomes a tool that supports the business, rather than one the business has to work around.",
@@ -639,6 +708,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Without that support, transformation usually becomes another initiative that sounds important but struggles to gain traction in daily business life.",
           },
+          {
+            type: "stat",
+            value: "83%",
+            label: "of transformations that fail cite lack of leadership commitment as a primary cause",
+            context: "Across business improvement and digital change programmes",
+          },
           { type: "heading", text: "Leadership sets the direction" },
           {
             type: "paragraph",
@@ -650,6 +725,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Leadership buy-in is not simply saying yes to a project and moving on. It means staying involved, asking thoughtful questions, removing obstacles and making sure the change remains connected to the wider business strategy.",
+          },
+          {
+            type: "pullquote",
+            text: "Leadership buy-in is not simply saying yes to a project and moving on. It means staying involved, removing obstacles and keeping the change connected to the wider business strategy.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "People pay attention to actions" },
           {
@@ -668,6 +748,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Strong leaders help people see the purpose behind the work. They create confidence by being honest about the challenges, consistent in their messaging and clear about the destination.",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Visible leadership changes behaviour",
+            text: "When senior leaders actively participate in change, use new tools themselves and reinforce the purpose in everyday conversations, teams at every level take the initiative more seriously.",
           },
           { type: "heading", text: "Transformation is not an IT project" },
           {
@@ -705,6 +791,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Technology often gets the credit for business transformation, but software on its own does not change a business. People do. They decide, adapt, communicate, improve and make the new way of working real.",
+          },
+          {
+            type: "stat",
+            value: "3x",
+            label: "more likely to succeed when employees are actively involved in the change",
+            context: "Businesses that engage people early see stronger adoption and faster results",
           },
           { type: "heading", text: "Technology is only a tool" },
           {
@@ -748,6 +840,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Training, support and thoughtful onboarding are not extras. They are part of the transformation itself. When people feel equipped, confidence grows and momentum builds.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Treat training as part of the investment",
+            text: "Set aside budget and time for training before go-live, not after. Teams who are prepared on day one adopt new ways of working far more quickly than those who have to figure it out under pressure.",
+          },
           { type: "heading", text: "Success is not measured by implementation" },
           {
             type: "paragraph",
@@ -759,6 +857,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Technology can enable transformation, but people are the ones who make it succeed. When a business supports its people well, even complex change becomes more practical, more human and more sustainable.",
+          },
+          {
+            type: "pullquote",
+            text: "Technology can enable transformation, but people are the ones who make it succeed. Software goes live. People make it work.",
+            attribution: "Vula Solutions",
           },
           {
             type: "paragraph",
@@ -790,6 +893,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Trust grows when leaders are honest about why change is happening, what is known, what is still being worked out and where the challenges may appear. People can handle difficulty better than uncertainty wrapped in vague language.",
+          },
+          {
+            type: "pullquote",
+            text: "Trust grows when leaders are honest about why change is happening. People can handle difficulty far better than uncertainty wrapped in vague language.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "Involve people, do not surprise them" },
           {
@@ -827,6 +935,18 @@ export const resourceSections: ResourceSection[] = [
             text:
               "It is built gradually through everyday behaviour. That is why trust should not be treated as a soft extra. It is a practical part of transformation readiness.",
           },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Trust is a practical asset",
+            text: "Organisations with high internal trust move through change faster, surface problems earlier and sustain improvements longer. It is not a culture aspiration; it is an operational advantage.",
+          },
+          {
+            type: "stat",
+            value: "2x",
+            label: "faster change adoption in organisations where employees trust leadership",
+            context: "Trust reduces the time teams spend questioning direction and increases the time they spend implementing",
+          },
           { type: "heading", text: "Final thoughts" },
           {
             type: "paragraph",
@@ -851,6 +971,27 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "When a business starts discussing digital transformation, IT is often brought in first. That makes sense on one level, but it can create the wrong impression. Transformation is not primarily an IT project. It is a business improvement initiative.",
+          },
+          {
+            type: "comparison",
+            left: {
+              label: "IT-led transformation",
+              items: [
+                "Focused on systems and infrastructure",
+                "Measured by go-live dates",
+                "Misses cross-department perspectives",
+                "Produces technical solutions to business problems",
+              ],
+            },
+            right: {
+              label: "Business-led transformation",
+              items: [
+                "Focused on outcomes and customer experience",
+                "Measured by adoption and performance improvement",
+                "Brings all departments into the conversation",
+                "Produces business solutions with technology support",
+              ],
+            },
           },
           { type: "heading", text: "It is a business initiative" },
           {
@@ -901,6 +1042,17 @@ export const resourceSections: ResourceSection[] = [
               "Digital transformation needs technical excellence, but it also needs business clarity. When it is led as a business initiative, technology becomes far more effective because it is serving a better-defined purpose.",
           },
           {
+            type: "pullquote",
+            text: "When transformation is led as a business initiative, technology becomes far more effective because it is serving a better-defined purpose.",
+            attribution: "Vula Solutions",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "IT enables, leadership decides",
+            text: "The technology team should have a strong voice in how change is delivered, but the what and the why must come from business leadership. Without that ownership, transformation drifts toward technical projects that miss the point.",
+          },
+          {
             type: "paragraph",
             text:
               "Planning a digital transformation? Compass™ helps organisations define the business case, process reality and improvement priorities before major technology decisions are made.",
@@ -918,6 +1070,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "When businesses consider improvement work, one of the first questions is often whether they can afford to do it. A more useful question is sometimes the opposite: can you afford not to?",
+          },
+          {
+            type: "stat",
+            value: "20–30%",
+            label: "of working hours in many businesses are absorbed by inefficient processes",
+            context: "Time lost to manual workarounds, duplicate entry and unnecessary approvals",
           },
           { type: "heading", text: "Small inefficiencies become expensive" },
           {
@@ -949,6 +1107,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Waiting can feel safer in the short term, but in many cases it simply allows the cost of friction to keep accumulating. The issue does not disappear. It just becomes more familiar.",
           },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Familiarity is not the same as acceptable",
+            text: "When a problem has existed long enough, teams stop reporting it and start working around it instead. That normalisation makes the true cost much harder to see, but does not make it smaller.",
+          },
           { type: "heading", text: "Improvement does not always require major investment" },
           {
             type: "paragraph",
@@ -974,6 +1138,11 @@ export const resourceSections: ResourceSection[] = [
               "Doing nothing can feel neutral, but it rarely is. Hidden inefficiencies, delayed decisions and missed opportunities all carry a price. The most practical next step is often to understand the current cost clearly before deciding what change is worth pursuing.",
           },
           {
+            type: "pullquote",
+            text: "Doing nothing can feel neutral, but it rarely is. Hidden inefficiencies and missed opportunities all carry a price, whether or not they appear on any report.",
+            attribution: "Vula Solutions",
+          },
+          {
             type: "paragraph",
             text:
               "Not sure where your biggest opportunities lie? Compass™ helps businesses identify operational friction and focus attention where the return is most meaningful.",
@@ -991,6 +1160,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "With so many tools available, it is easy to start with software. New platforms, automation tools and AI products make improvement feel immediately accessible. But good decisions still need a destination before they need a tool.",
+          },
+          {
+            type: "pullquote",
+            text: "Good decisions still need a destination before they need a tool. Strategy creates the context that makes technology choices meaningful.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "Start with the destination" },
           {
@@ -1034,6 +1208,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Sometimes businesses need new technology. Other times they simply need to use existing systems more effectively. Strategy helps distinguish between the two.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Audit before you acquire",
+            text: "Before evaluating new platforms, audit how well you are using the systems already in place. Many businesses find meaningful gains by improving adoption and configuration of existing tools before purchasing anything new.",
+          },
           { type: "heading", text: "Strategy is never finished" },
           {
             type: "paragraph",
@@ -1045,6 +1225,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Technology works best when it follows a clear strategy. If the business knows where it is going, software becomes far easier to choose, justify and implement well.",
+          },
+          {
+            type: "stat",
+            value: "4x",
+            label: "more likely to choose the right technology when strategy is defined first",
+            context: "Businesses with a clear strategic direction before vendor evaluation make fewer costly changes during implementation",
           },
           {
             type: "paragraph",
@@ -1072,6 +1258,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "One of the biggest misconceptions about business transformation is that people do not like change. In reality, people change jobs, move house, learn new skills and adapt to new technology all the time. What employees usually resist is not change itself, but the uncertainty that comes with it.",
+          },
+          {
+            type: "stat",
+            value: "67%",
+            label: "of employees feel unprepared when change is announced without adequate explanation",
+            context: "Preparation and communication are stronger predictors of adoption than the change itself",
           },
           {
             type: "paragraph",
@@ -1128,6 +1320,12 @@ export const resourceSections: ResourceSection[] = [
               "One of the simplest ways to reduce resistance is to involve people before decisions are finalised. Ask for their views, understand their daily challenges and invite them to test new ideas. People do not expect every suggestion to be accepted, but they do want to know they have been heard.",
           },
           {
+            type: "callout",
+            variant: "tip",
+            title: "Treat resistance as feedback",
+            text: "When someone pushes back on change, ask what they are concerned about before responding. Their answer often reveals a process gap, a training need or a communication failure that the project team had not considered.",
+          },
+          {
             type: "paragraph",
             text:
               "When employees feel involved, they are far more likely to support the outcome.",
@@ -1162,6 +1360,11 @@ export const resourceSections: ResourceSection[] = [
               "Leaders who take the time to listen often discover that resistance is not the problem. It is one of the most useful sources of feedback they will receive. Behind many concerns is a simple question: help me understand where we are going. When leaders answer that question well, resistance often becomes support.",
           },
           {
+            type: "pullquote",
+            text: "Behind many concerns is a simple question: help me understand where we are going. When leaders answer that question well, resistance often becomes support.",
+            attribution: "Vula Solutions",
+          },
+          {
             type: "paragraph",
             text:
               "Leading your business through change? Successful transformation is not just about introducing new technology. Through Compass™, VULA helps leadership teams build understanding, reduce uncertainty and create the confidence needed for lasting change.",
@@ -1179,6 +1382,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Change is a natural part of every successful business. Markets evolve, customer expectations shift, technology advances and organisations grow. Yet for many leaders, the biggest challenge is not deciding what needs to change. It is helping people feel confident enough to embrace it.",
+          },
+          {
+            type: "stat",
+            value: "5x",
+            label: "more likely to adopt new ways of working when people feel confident rather than coerced",
+            context: "Confidence-first change programmes outperform compliance-driven ones across sectors",
           },
           {
             type: "paragraph",
@@ -1221,6 +1430,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Large transformation projects can feel overwhelming. Breaking them into smaller milestones makes progress easier to see. Celebrate improvements along the way. Perhaps a process that once took an hour now takes fifteen minutes. Maybe a new report is helping managers make faster decisions. Or perhaps customers are receiving quicker responses. These wins give people confidence that the effort is making a difference.",
+          },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Make early wins visible",
+            text: "Share measurable improvements as they happen, even small ones. A saved hour per week or a faster customer response time, communicated clearly, builds more momentum than any launch announcement.",
           },
           {
             type: "paragraph",
@@ -1279,6 +1494,11 @@ export const resourceSections: ResourceSection[] = [
               "Confidence comes from honest communication, clear direction, visible leadership, listening, support and recognising that successful transformation is as much about people as it is about processes or technology. When people feel confident, they do not simply accept change. They become part of it. That is when transformation starts to create lasting results.",
           },
           {
+            type: "pullquote",
+            text: "When people feel confident, they do not simply accept change. They become part of it. That is when transformation starts to create lasting results.",
+            attribution: "Vula Solutions",
+          },
+          {
             type: "paragraph",
             text:
               "Helping your team navigate change? At VULA, we believe successful transformation is built on confidence, not confusion. Through Compass™, we help leadership teams create clarity, involve their people and build the trust needed for meaningful, lasting change.",
@@ -1301,6 +1521,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Projects rarely fail because people do not understand the technology. They struggle because people do not understand the purpose behind the change. When communication is clear, people feel informed. When people feel informed, they become more confident. And confident people are far more willing to embrace change.",
+          },
+          {
+            type: "stat",
+            value: "57%",
+            label: "of transformation projects that underperform cite communication gaps as a key factor",
+            context: "The problem is rarely the technology. It is the explanation behind the change.",
           },
           { type: "heading", text: "Communication creates clarity" },
           {
@@ -1377,6 +1603,11 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Transformation is not an event. It is an ongoing journey, and communication should reflect that.",
           },
+          {
+            type: "pullquote",
+            text: "Transformation is not an event. It is an ongoing journey, and communication should reflect that. The conversation does not end when the system goes live.",
+            attribution: "Vula Solutions",
+          },
           { type: "heading", text: "The best communicators build trust" },
           {
             type: "paragraph",
@@ -1393,6 +1624,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Before investing in another tool or introducing another process, ask one simple question: have we communicated the journey as clearly as we have planned it? In the end, communication is not just part of transformation. It is one of the most important tools you will ever use.",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Plan communication alongside the project",
+            text: "Build a communication schedule as part of the project plan, not as an afterthought. Decide who needs to know what, when, and through which channel. Consistency across all levels is what creates alignment.",
           },
           {
             type: "paragraph",
@@ -1437,6 +1674,11 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Without that clarity, teams end up comparing features instead of defining the result they need.",
           },
+          {
+            type: "pullquote",
+            text: "Without clarity on the problem, teams end up comparing features instead of defining the result they need. Software selection becomes guesswork.",
+            attribution: "Vula Solutions",
+          },
           { type: "heading", text: "Start with better questions" },
           {
             type: "list",
@@ -1452,6 +1694,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "These questions sound simple, but they create the kind of clarity that prevents expensive mistakes later.",
           },
+          {
+            type: "stat",
+            value: "R1.2m",
+            label: "average cost of a poorly defined software project in a mid-sized business",
+            context: "Includes rework, delayed adoption and the cost of switching systems within three years",
+          },
           { type: "heading", text: "Clarity creates confidence" },
           {
             type: "paragraph",
@@ -1462,6 +1710,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "That is why strong discovery work is not a delay. It is what gives a project direction.",
+          },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Problem first, product second",
+            text: "Write a one-paragraph description of the business problem before any vendor contact. If you cannot write it clearly, the problem is not yet understood well enough to solve with software.",
           },
           { type: "heading", text: "Final thought" },
           {
@@ -1487,6 +1741,27 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The problem is not Excel itself. The problem is when a business starts using it as if it were a full operational system.",
+          },
+          {
+            type: "comparison",
+            left: {
+              label: "Excel as a tool",
+              items: [
+                "One person manages and understands the file",
+                "Used for analysis, not record-keeping",
+                "Simple formulas with low error risk",
+                "Complemented by a proper operational system",
+              ],
+            },
+            right: {
+              label: "Excel as a system",
+              items: [
+                "Multiple people maintain different versions",
+                "Business decisions depend on fragile formulas",
+                "Files are emailed as the primary handoff method",
+                "Critical knowledge lives in one person's spreadsheet",
+              ],
+            },
           },
           { type: "heading", text: "When Excel works well" },
           {
@@ -1514,6 +1789,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "At that point, the spreadsheet is no longer just a tool. It has become infrastructure, without the controls that infrastructure usually needs.",
           },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Key-person dependency is a business risk",
+            text: "If critical business data lives in one person's spreadsheet and only they understand it, the business has an operational risk that goes beyond software. Document the process and the data structure before that person is unavailable.",
+          },
           { type: "heading", text: "Do not replace it too quickly" },
           {
             type: "paragraph",
@@ -1530,6 +1811,10 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Not every problem deserves a complex platform. Good decisions come from understanding the work first and then choosing the level of technology that genuinely fits it.",
+          },
+          {
+            type: "pullquote",
+            text: "Not every problem deserves a complex platform. Good decisions come from understanding the work first, then choosing the level of technology that genuinely fits.",
           },
         ],
       },
@@ -1550,6 +1835,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Each individual decision makes sense at the time. Over time, however, the business starts paying the price in ways that are easy to miss.",
           },
+          {
+            type: "stat",
+            value: "30%",
+            label: "of operational time can be spent re-entering or reconciling data across disconnected systems",
+            context: "The true cost shows up in staff time, errors and delayed decisions rather than system invoices",
+          },
           { type: "heading", text: "The cost is not only technical" },
           {
             type: "list",
@@ -1564,6 +1855,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "This is not just inefficient. It affects confidence, reporting quality and customer experience.",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "The gap between systems is where value disappears",
+            text: "The real cost of disconnected systems is rarely visible in any one tool. It shows up in the time people spend bridging the gaps, the errors made in transfer, and the delayed decisions caused by incomplete information.",
           },
           { type: "heading", text: "Visibility becomes harder" },
           {
@@ -1588,6 +1885,11 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Disconnected systems create operational drag long before anyone calls it a systems problem. The earlier a business recognises that pattern, the easier it becomes to fix it well.",
           },
+          {
+            type: "pullquote",
+            text: "Disconnected systems create operational drag long before anyone calls it a systems problem. By the time it becomes obvious, the cost has been accumulating for months.",
+            attribution: "Vula Solutions",
+          },
         ],
       },
       {
@@ -1601,6 +1903,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "As AI becomes more accessible, it is tempting to assume that process mapping is old-fashioned. In reality, the opposite is true. The more powerful the technology becomes, the more clearly a business needs to understand its work.",
+          },
+          {
+            type: "pullquote",
+            text: "The more powerful the technology becomes, the more clearly a business needs to understand its own work. AI amplifies what is already there, good or bad.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "You cannot improve what you do not understand" },
           {
@@ -1621,6 +1928,12 @@ export const resourceSections: ResourceSection[] = [
               "One of the biggest benefits of process mapping is alignment. It gives leaders and teams a common picture of how work happens today and where change should happen next.",
           },
           {
+            type: "callout",
+            variant: "tip",
+            title: "Map the real process, not the ideal one",
+            text: "Ask the people doing the work daily to walk through the actual steps, not what the procedure document says. The gap between the two is usually where the most improvement sits.",
+          },
+          {
             type: "paragraph",
             text:
               "That shared view makes better conversations possible and exposes hidden problems before technology is layered on top.",
@@ -1636,6 +1949,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "In an AI world, process mapping is not a relic. It is one of the smartest foundations a business can build on.",
           },
+          {
+            type: "stat",
+            value: "60%",
+            label: "of AI-assisted process improvements fail when the process was not mapped beforehand",
+            context: "AI cannot fix what is not understood. Mapping first reduces implementation risk significantly.",
+          },
         ],
       },
       {
@@ -1649,6 +1968,27 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Automation and optimisation are often spoken about as if they mean the same thing. They do not. Understanding the difference can save a business from investing in the wrong improvements.",
+          },
+          {
+            type: "comparison",
+            left: {
+              label: "Automation only",
+              items: [
+                "Makes the existing process faster",
+                "Embeds bad steps into permanent workflows",
+                "Scales inefficiency alongside volume",
+                "Creates technical debt from day one",
+              ],
+            },
+            right: {
+              label: "Optimise then automate",
+              items: [
+                "Removes unnecessary steps first",
+                "Automates work that is already well-designed",
+                "Scales efficiently as volume grows",
+                "Creates a clean foundation for future improvement",
+              ],
+            },
           },
           { type: "heading", text: "What automation does" },
           {
@@ -1669,6 +2009,12 @@ export const resourceSections: ResourceSection[] = [
               "If a process includes unnecessary approvals, duplicate entry or poor handoffs, automating it may only help the business do the wrong work more efficiently.",
           },
           {
+            type: "callout",
+            variant: "warning",
+            title: "A faster bad process is still a bad process",
+            text: "Automation multiplies whatever you put into it. If the underlying process is flawed, automation does not fix it. It produces the same poor outcome at higher speed and scale.",
+          },
+          {
             type: "paragraph",
             text:
               "That is why good transformation work starts by asking why the process exists in its current form before deciding how to speed it up.",
@@ -1685,6 +2031,10 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Optimise first. Automate second. Businesses that get that order right usually see better results and fewer regrets.",
           },
+          {
+            type: "pullquote",
+            text: "Optimise first. Automate second. Businesses that get that order right usually see better results, fewer regrets and a much cleaner technology foundation.",
+          },
         ],
       },
       {
@@ -1699,6 +2049,11 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Digital maturity is often misunderstood as having more tools, more dashboards or more automation. In practice, mature businesses are not defined by how much software they own. They are defined by how well they use technology to support the business.",
           },
+          {
+            type: "pullquote",
+            text: "Mature businesses are not defined by how much software they own. They are defined by how well they use technology to support the business they are trying to build.",
+            attribution: "Vula Solutions",
+          },
           { type: "heading", text: "Maturity begins with understanding" },
           {
             type: "paragraph",
@@ -1710,6 +2065,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Digital maturity is not only about systems. It also depends on whether teams trust the data, understand the process and feel confident using the tools they have.",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Digital maturity is about how, not how many",
+            text: "A business with three well-integrated, consistently used systems is often more digitally mature than one with twelve poorly adopted tools. The quality of use matters more than the quantity of software.",
           },
           { type: "heading", text: "Good data matters" },
           {
@@ -1728,6 +2089,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Digital maturity looks different for every business, but it always reflects the same principle: technology should strengthen how the business works, not distract from it.",
           },
+          {
+            type: "stat",
+            value: "43%",
+            label: "of businesses have unused software licences they are actively paying for",
+            context: "Digital maturity means using what you have well before adding more",
+          },
         ],
       },
       {
@@ -1741,6 +2108,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Time waste in business is rarely dramatic. More often, it shows up as small repeated frustrations that teams begin to accept as normal.",
+          },
+          {
+            type: "stat",
+            value: "40%",
+            label: "of employee time can be spent on tasks that do not directly create value",
+            context: "Administrative overhead, status chasing and duplicate work are the biggest contributors",
           },
           { type: "heading", text: "1. The same data is entered more than once" },
           {
@@ -1760,6 +2133,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "When staff spend too much time searching through folders, emails and spreadsheets, the real issue is usually not effort. It is structure.",
           },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "If everyone is busy but progress is slow, look at the process",
+            text: "High activity with low output is almost always a process issue, not a people issue. The effort is there, but it is being absorbed by work that circles rather than moves forward.",
+          },
           { type: "heading", text: "4. Meetings are replacing decisions" },
           {
             type: "paragraph",
@@ -1777,6 +2156,10 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Small improvements to these patterns can create immediate relief and stronger momentum.",
           },
+          {
+            type: "pullquote",
+            text: "Small repeated frustrations that teams begin to accept as normal are rarely small. Over a year, they represent a significant and measurable cost to the business.",
+          },
         ],
       },
       {
@@ -1790,6 +2173,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "A busy team is not always a productive team. Activity can look impressive, but it does not automatically mean the business is moving in the right direction.",
+          },
+          {
+            type: "stat",
+            value: "60%",
+            label: "of meetings are described as unproductive by their own attendees",
+            context: "Much of the busyness in business comes from coordination overhead rather than value-creating work",
           },
           { type: "heading", text: "Activity and productivity are different" },
           {
@@ -1816,9 +2205,19 @@ export const resourceSections: ResourceSection[] = [
               "Real productivity often improves when people have time to simplify, rethink and refine how work gets done. Constant busyness leaves no space for that.",
           },
           {
+            type: "callout",
+            variant: "tip",
+            title: "Create space to improve, not just to deliver",
+            text: "Reserve some time each week for teams to reflect on how work is being done, not just whether it is getting done. Even one hour of process review per fortnight compounds into significant gains over a quarter.",
+          },
+          {
             type: "paragraph",
             text:
               "The goal is not to make people work harder. It is to make the work count more.",
+          },
+          {
+            type: "pullquote",
+            text: "The goal is not to make people work harder. It is to make the work count more. Effort spent on the right things creates better results than more effort spent on the wrong ones.",
           },
         ],
       },
@@ -1833,6 +2232,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Business transformation is often imagined as a major initiative with large budgets and dramatic change. Sometimes it is. But very often, meaningful progress starts with smaller process improvements that compound over time.",
+          },
+          {
+            type: "stat",
+            value: "1%",
+            label: "improvement per week compounds into a 67% improvement over a year",
+            context: "The compounding effect of consistent small gains is often more powerful than one large initiative",
           },
           { type: "heading", text: "Big results rarely happen overnight" },
           {
@@ -1857,6 +2262,17 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Teams are more likely to support change when they can see practical improvements happening around them. Small wins create belief, and belief makes larger change easier.",
+          },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Start with what frustrates people most",
+            text: "Ask your team to name their single most frustrating daily task. Fix that one thing first. A visible improvement to a real pain point builds more momentum than a comprehensive process review that takes months to produce results.",
+          },
+          {
+            type: "pullquote",
+            text: "Small wins create belief, and belief makes larger change easier. The most sustainable transformation often grows from simple improvements made consistently.",
+            attribution: "Vula Solutions",
           },
           {
             type: "paragraph",
@@ -1889,6 +2305,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "One of the most important things to understand about AI is that it does not fix a broken process. If the work is wasteful, duplicated or unclear, AI often just helps that bad process happen faster.",
+          },
+          {
+            type: "pullquote",
+            text: "AI does not fix a broken process. If the work is wasteful, duplicated or unclear, AI often just helps that bad process happen faster.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "Faster does not always mean better" },
           {
@@ -1927,6 +2348,18 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Those questions often reveal that the first opportunity is to simplify the business, not to buy more technology.",
           },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Clean the process before automating it",
+            text: "Before introducing any AI tool, remove unnecessary steps, resolve ownership gaps and document the workflow clearly. AI applied to a clean process creates genuine value. Applied to a confused one, it creates faster confusion.",
+          },
+          {
+            type: "stat",
+            value: "56%",
+            label: "of AI implementations underperform because the underlying process was not improved first",
+            context: "Process readiness is a stronger predictor of AI success than the sophistication of the tool chosen",
+          },
           { type: "heading", text: "Final thought" },
           {
             type: "paragraph",
@@ -1947,6 +2380,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "For most small and medium-sized businesses, AI is not about replacing people or transforming everything overnight. It is about saving time, reducing repetitive work and helping teams focus on what matters most.",
           },
+          {
+            type: "stat",
+            value: "2–4 hours",
+            label: "per week saved per person when AI handles routine writing and summarising tasks",
+            context: "Time freed from repetition is time available for judgment, customer care and growth",
+          },
           { type: "heading", text: "1. Save time on everyday writing" },
           {
             type: "paragraph",
@@ -1965,6 +2404,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "AI can help draft replies, refine wording and create FAQs, but customer-facing messages should still be reviewed by a person to protect trust and accuracy.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Always review AI-generated customer content",
+            text: "AI is a strong starting point for customer communication, but a human should always review the final message. Tone, accuracy and context require judgment that AI still cannot fully replicate.",
+          },
           { type: "heading", text: "4. Reduce routine administration" },
           {
             type: "paragraph",
@@ -1982,6 +2427,10 @@ export const resourceSections: ResourceSection[] = [
             text:
               "The smartest way to begin is to start small, measure the result and build confidence from one useful application at a time.",
           },
+          {
+            type: "pullquote",
+            text: "The smartest way to begin with AI is to start small, measure the result and build confidence from one useful application at a time. There is no prize for using more tools than you need.",
+          },
         ],
       },
       {
@@ -1995,6 +2444,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Business owners often feel pressure to use AI simply because everyone else seems to be talking about it. But readiness for AI has far less to do with technology than most people assume.",
+          },
+          {
+            type: "pullquote",
+            text: "Readiness for AI has far less to do with technology than most people assume. The question is not whether you have the tool. It is whether you have the clarity to use it well.",
+            attribution: "Vula Solutions",
           },
           { type: "heading", text: "AI is a tool, not a strategy" },
           {
@@ -2024,6 +2478,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "If those foundations are weak, AI is likely to produce inconsistent outcomes rather than meaningful improvement.",
           },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Process clarity is the real AI readiness test",
+            text: "If you cannot describe the current process clearly in a single paragraph, it is not ready for AI. Document the workflow, agree the steps and resolve any ownership gaps before introducing automation or AI tools.",
+          },
           { type: "heading", text: "People readiness matters too" },
           {
             type: "paragraph",
@@ -2034,6 +2494,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The most effective approach is to begin with one meaningful improvement, prove value and expand from there.",
+          },
+          {
+            type: "stat",
+            value: "1 problem",
+            label: "well-solved with AI creates more value than five experiments with unclear goals",
+            context: "Focus is the most important factor in early AI adoption. Breadth without depth rarely delivers.",
           },
         ],
       },
@@ -2048,6 +2514,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Many organisations rush into AI because they are worried about being left behind. The technology itself is rarely the problem. The way it is introduced usually is.",
+          },
+          {
+            type: "stat",
+            value: "75%",
+            label: "of AI projects that struggle were started without a clearly defined problem to solve",
+            context: "The most common AI mistake is not a technical one. It is a planning one.",
           },
           { type: "heading", text: "Mistake 1: Starting with the technology" },
           {
@@ -2078,6 +2550,17 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Employees need clarity on why AI is being introduced, how it will help and where human judgement still matters. Good communication is a major part of successful adoption.",
+          },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Communication reduces AI anxiety",
+            text: "When AI is introduced without explanation, people assume the worst. A clear message about what the tool does, what it does not do and where human judgment still leads is essential for confident adoption.",
+          },
+          {
+            type: "pullquote",
+            text: "The businesses that get the best results from AI usually start small, measure carefully and expand only once real value has been proven.",
+            attribution: "Vula Solutions",
           },
           {
             type: "paragraph",
@@ -2127,6 +2610,17 @@ export const resourceSections: ResourceSection[] = [
             text:
               "The healthiest use of AI is to support people so they can do more of the work that only humans can do well.",
           },
+          {
+            type: "pullquote",
+            text: "The healthiest use of AI is to support people so they can do more of the work that only humans can do well: judgment, relationships, empathy, leadership.",
+            attribution: "Vula Solutions",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "AI handles repetition so people can handle complexity",
+            text: "The best AI implementations free people from low-value, repetitive work so they can spend more time on the decisions, relationships and creative thinking that only humans can do well. That is the right division of labour.",
+          },
         ],
       },
       {
@@ -2140,6 +2634,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "For business owners, AI can feel exciting. For employees, it can feel uncertain. That is why introducing AI is not only about technology. It is also about helping people feel confident using it.",
+          },
+          {
+            type: "stat",
+            value: "42%",
+            label: "of employees are concerned AI will make parts of their role redundant",
+            context: "Clear communication about how AI supports rather than replaces reduces anxiety and improves adoption",
           },
           { type: "heading", text: "Start with the problem, not the announcement" },
           {
@@ -2159,6 +2659,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Choose a repetitive, low-risk task first. When people experience a useful win, confidence grows naturally.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Pick the right first task",
+            text: "A good first AI task is repetitive, low-stakes and easy to measure. Meeting note summaries, first-draft email responses or data formatting are ideal. Avoid starting with anything that directly affects customers or involves sensitive judgment.",
+          },
           { type: "heading", text: "Involve the team early" },
           {
             type: "paragraph",
@@ -2175,6 +2681,11 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The most successful introductions show clearly how AI makes work better, not just how it makes work different.",
+          },
+          {
+            type: "pullquote",
+            text: "The most successful AI introductions show clearly how it makes work better, not just different. People adopt what helps them, and resist what confuses them.",
+            attribution: "Vula Solutions",
           },
         ],
       },
@@ -2202,6 +2713,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The biggest mistake many businesses make is assuming the right choice comes from comparing features and prices first. The strongest software decisions usually begin somewhere else: understanding the business.",
+          },
+          {
+            type: "stat",
+            value: "47%",
+            label: "of software buyers regret their purchase within the first two years",
+            context: "Most regrets trace back to evaluating vendors before requirements were properly defined",
           },
           { type: "heading", text: "Do not start with the software" },
           {
@@ -2243,11 +2760,21 @@ export const resourceSections: ResourceSection[] = [
             text:
               "Good software should not only fit the business now. It should also support growth, adapt to change and remain useful over the next few years.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Ask vendors to show your scenario, not their showcase",
+            text: "When evaluating software, describe a real business scenario from your day-to-day operations and ask the vendor to demonstrate it live. If they struggle to do that, the product may not fit as well as the standard demo suggests.",
+          },
           { type: "heading", text: "Final thought" },
           {
             type: "paragraph",
             text:
               "Choosing software well is less about finding the most impressive product and more about finding the solution that supports the way your business needs to work.",
+          },
+          {
+            type: "pullquote",
+            text: "Choosing software well is less about finding the most impressive product and more about finding the solution that genuinely fits the way your business needs to work.",
           },
         ],
       },
@@ -2267,6 +2794,27 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "There is no universal answer. The right choice depends on what your business needs, how unique your processes are and how much flexibility, speed and control matter to you.",
+          },
+          {
+            type: "comparison",
+            left: {
+              label: "Off-the-shelf software",
+              items: [
+                "Ready to use quickly with lower upfront cost",
+                "Proven functionality used by many businesses",
+                "Regular updates and a broader support network",
+                "May require adapting some of your processes to fit",
+              ],
+            },
+            right: {
+              label: "Custom software",
+              items: [
+                "Built specifically for your process and workflow",
+                "Higher upfront investment and longer build time",
+                "Full flexibility and no compromise on how you operate",
+                "Requires careful scoping to avoid scope creep",
+              ],
+            },
           },
           { type: "heading", text: "When off-the-shelf software makes sense" },
           {
@@ -2312,6 +2860,17 @@ export const resourceSections: ResourceSection[] = [
             text:
               "The goal is not to choose the more exciting option. It is to choose the one that best supports the business you are building.",
           },
+          {
+            type: "pullquote",
+            text: "The goal is not to choose the more exciting option. It is to choose the one that best supports the business you are building, now and over the next three years.",
+            attribution: "Vula Solutions",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Many businesses use both",
+            text: "Off-the-shelf software for common functions like finance, HR and CRM, combined with custom tools for the processes that make you distinctive, is often the most cost-effective and flexible approach.",
+          },
         ],
       },
       {
@@ -2325,6 +2884,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Software demonstrations are designed to show products at their best. That is useful, but the quality of your decision depends heavily on the quality of the questions you ask.",
+          },
+          {
+            type: "stat",
+            value: "80%",
+            label: "of implementation surprises could have been identified during the vendor evaluation stage",
+            context: "The right questions before purchase are worth more than the best support contract after it",
           },
           { type: "heading", text: "Start with your own business first" },
           {
@@ -2361,6 +2926,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "One of the most revealing questions is simply: what does the software not do well? Trustworthy vendors will answer honestly, and those answers often prevent bigger surprises later.",
           },
+          {
+            type: "callout",
+            variant: "tip",
+            title: "Ask about limitations directly",
+            text: "The most revealing vendor question is: what does this software not do well? Vendors who answer honestly are usually the ones who will support you honestly too. Evasiveness on this question is a strong signal to probe further.",
+          },
           { type: "heading", text: "Look at total cost, not only subscription price" },
           {
             type: "paragraph",
@@ -2371,6 +2942,10 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The right software decision rarely comes from the slickest demo. It usually comes from the best business questions.",
+          },
+          {
+            type: "pullquote",
+            text: "The right software decision rarely comes from the slickest demo. It usually comes from the best business questions asked before the demo even begins.",
           },
         ],
       },
@@ -2399,6 +2974,12 @@ export const resourceSections: ResourceSection[] = [
             text:
               "That does not automatically mean the original technology decisions were wrong. It often just means the business has evolved beyond what those tools were designed to handle.",
           },
+          {
+            type: "stat",
+            value: "58%",
+            label: "of growing businesses report that their systems become a constraint before their third year of growth",
+            context: "The tools that supported early success often struggle to scale without adjustment",
+          },
           { type: "heading", text: "The tools that got you here may not get you there" },
           {
             type: "paragraph",
@@ -2410,6 +2991,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Extra spreadsheets, manual checklists, duplicate data entry and email-based reminders often appear gradually. Each solves a small issue, but together they signal that the underlying system may no longer be fit for purpose.",
+          },
+          {
+            type: "callout",
+            variant: "warning",
+            title: "Workarounds are early warning signs",
+            text: "When teams start building spreadsheets around a system or creating their own manual processes alongside it, they are telling you the system is no longer meeting their needs. Count the workarounds regularly.",
           },
           { type: "heading", text: "Your people usually feel it first" },
           {
@@ -2428,6 +3015,11 @@ export const resourceSections: ResourceSection[] = [
             text:
               "The key is to keep planning for the business you are becoming, not only the one you were when those systems were first introduced.",
           },
+          {
+            type: "pullquote",
+            text: "The key is to keep planning for the business you are becoming, not only the one you were when those systems were first introduced.",
+            attribution: "Vula Solutions",
+          },
         ],
       },
       {
@@ -2441,6 +3033,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The right technology can improve efficiency, strengthen customer service and support growth. The wrong investment can create cost, frustration and disappointment. The real question is not how new the software is. It is whether it is still creating value.",
+          },
+          {
+            type: "stat",
+            value: "R800k",
+            label: "average avoidable cost of a premature technology replacement in a growing business",
+            context: "Many replacements happen before the root problem is understood, leading to a different system with the same underlying issues",
           },
           { type: "heading", text: "Do not replace technology just because it is old" },
           {
@@ -2473,6 +3071,16 @@ export const resourceSections: ResourceSection[] = [
               "Clearer processes, stronger team input and a better definition of success all make a technology investment far more likely to deliver value. Preparation is not a delay. It is part of the investment.",
           },
           {
+            type: "callout",
+            variant: "insight",
+            title: "Understand the problem before choosing the solution",
+            text: "Before shortlisting technology, spend time diagnosing what is actually causing the friction. Is it the system, the process, the data or the way people are using the tools? The answer shapes whether you need new technology at all.",
+          },
+          {
+            type: "pullquote",
+            text: "Better technology should make life simpler for people and customers. If it does not, it is probably not the right move yet.",
+          },
+          {
             type: "paragraph",
             text:
               "Better technology should make life simpler for people and customers. If it does not, it is probably not the right move yet.",
@@ -2490,6 +3098,12 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "Growth should be a sign of progress, not a reason for daily chaos. When a business becomes harder to manage as it grows, the issue is usually not ambition. It is that the foundations have not evolved with the business.",
+          },
+          {
+            type: "stat",
+            value: "65%",
+            label: "of fast-growing businesses cite operational strain as their top constraint within two years of rapid growth",
+            context: "The constraint is rarely a market problem. It is almost always a process and systems problem.",
           },
           { type: "heading", text: "Build processes before you need them" },
           {
@@ -2520,6 +3134,17 @@ export const resourceSections: ResourceSection[] = [
             type: "paragraph",
             text:
               "The strongest businesses keep questioning, simplifying and refining their operations as they grow. That discipline is what allows growth to remain organised rather than chaotic.",
+          },
+          {
+            type: "callout",
+            variant: "insight",
+            title: "Simplicity is a competitive advantage",
+            text: "Businesses that resist the urge to add complexity as they grow, by keeping processes clean, roles clear and information accessible, are able to move faster and serve customers more consistently than those that layer system upon system.",
+          },
+          {
+            type: "pullquote",
+            text: "Scaling without chaos is less about working harder and more about building a business that can carry its own momentum well.",
+            attribution: "Vula Solutions",
           },
           {
             type: "paragraph",

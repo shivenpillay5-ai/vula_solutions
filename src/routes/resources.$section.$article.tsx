@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Lightbulb, Sparkles, AlertTriangle } from "lucide-react";
+import { ArticleIllustration } from "@/components/site/ArticleIllustration";
 
 const SECTION_TOOL: Record<string, { title: string; slug: string; description: string }> = {
   "getting-started":        { title: "Business Discovery Checklist",       slug: "business-discovery-checklist",       description: "Evaluate where your business is today and identify where to focus next." },
@@ -50,6 +51,10 @@ function readTime(body: ResourceContentBlock[]): number {
   const words = body.reduce((acc, block) => {
     if (block.type === "paragraph" || block.type === "heading") return acc + block.text.split(/\s+/).length;
     if (block.type === "list") return acc + block.items.join(" ").split(/\s+/).length;
+    if (block.type === "callout") return acc + (block.title + " " + block.text).split(/\s+/).length;
+    if (block.type === "pullquote") return acc + block.text.split(/\s+/).length;
+    if (block.type === "stat") return acc + (block.value + " " + block.label).split(/\s+/).length;
+    if (block.type === "comparison") return acc + [...block.left.items, ...block.right.items].join(" ").split(/\s+/).length;
     return acc;
   }, 0);
   return Math.max(1, Math.ceil(words / 200));
@@ -140,11 +145,17 @@ function ResourceArticlePage() {
       <Section className="py-0">
         <article className="mx-auto max-w-3xl py-12 sm:py-16">
           <div className="card-premium p-8 sm:p-10">
-            <div className="mb-8 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.14em] text-electric">
+            <div className="mb-6 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.14em] text-electric">
               <span>{article.tag}</span>
               <span className="h-1 w-1 rounded-full bg-electric/60" />
               <span>{section.title}</span>
             </div>
+
+            {/* Section illustration */}
+            <div className="-mx-8 sm:-mx-10 mb-8 h-40 sm:h-48 overflow-hidden">
+              <ArticleIllustration section={sectionSlug} />
+            </div>
+
             <div className="space-y-6">
               {body.map((block, index) => {
                 if (block.type === "heading") {
@@ -157,16 +168,87 @@ function ResourceArticlePage() {
 
                 if (block.type === "list") {
                   return (
-                    <ul
-                      key={index}
-                      className="space-y-3 pl-5 text-base leading-8 text-foreground marker:text-electric"
-                    >
+                    <ul key={index} className="space-y-3 pl-5 text-base leading-8 text-foreground marker:text-electric">
                       {block.items.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
                   );
                 }
+
+                if (block.type === "callout") {
+                  const Icon = block.variant === "tip" ? Lightbulb : block.variant === "insight" ? Sparkles : AlertTriangle;
+                  const colorClass = block.variant === "warning"
+                    ? "border-amber-400/25 bg-amber-400/5"
+                    : "border-electric/20 bg-electric/[0.04]";
+                  const iconColor = block.variant === "warning" ? "text-amber-400 bg-amber-400/10" : "text-electric bg-electric/10";
+                  return (
+                    <div key={index} className={`flex gap-4 rounded-xl border p-5 ${colorClass}`}>
+                      <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${iconColor}`}>
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{block.title}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{block.text}</p>
+                      </div>
+                    </div>
+                  );
+                }
+
+                if (block.type === "pullquote") {
+                  return (
+                    <blockquote key={index} className="border-l-[3px] border-electric py-1 pl-6">
+                      <p className="text-xl font-medium italic leading-snug text-foreground sm:text-2xl">
+                        &ldquo;{block.text}&rdquo;
+                      </p>
+                      {block.attribution && (
+                        <p className="mt-2 text-sm text-muted-foreground">{block.attribution}</p>
+                      )}
+                    </blockquote>
+                  );
+                }
+
+                if (block.type === "stat") {
+                  return (
+                    <div key={index} className="rounded-xl border border-border bg-secondary/40 px-8 py-6 text-center">
+                      <p className="font-display text-5xl font-bold tracking-tight text-electric sm:text-6xl">{block.value}</p>
+                      <p className="mt-2 text-base font-medium text-foreground">{block.label}</p>
+                      {block.context && <p className="mt-1 text-xs text-muted-foreground">{block.context}</p>}
+                    </div>
+                  );
+                }
+
+                if (block.type === "comparison") {
+                  return (
+                    <div key={index} className="grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-destructive">{block.left.label}</p>
+                        <ul className="space-y-2">
+                          {block.left.items.map((item, i) => (
+                            <li key={i} className="flex gap-2 text-sm leading-relaxed text-foreground/80">
+                              <span className="mt-0.5 shrink-0 text-destructive">&#x2715;</span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-xl border border-electric/20 bg-electric/5 p-5">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-electric">{block.right.label}</p>
+                        <ul className="space-y-2">
+                          {block.right.items.map((item, i) => (
+                            <li key={i} className="flex gap-2 text-sm leading-relaxed text-foreground/80">
+                              <span className="mt-0.5 shrink-0 text-electric">&#x2713;</span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // paragraph (and any unhandled type falls through as null)
+                if (block.type !== "paragraph") return null;
 
                 if (index === 1 && block.text.length >= 60 && block.text.length <= 200) {
                   return (
