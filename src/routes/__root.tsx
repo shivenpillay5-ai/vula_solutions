@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { Mark } from "../components/site/Logo";
+import { WhatsAppButton } from "../components/site/WhatsAppButton";
 
 const BrandIntro = lazy(() =>
   import("../components/site/BrandIntro").then((m) => ({ default: m.BrandIntro }))
@@ -217,6 +218,7 @@ function RootComponent() {
             <Outlet />
           </main>
           <SiteFooter />
+          <WhatsAppButton />
           {!isInternal && (
             <Suspense fallback={null}>
               <AskCompass />
