@@ -150,7 +150,7 @@ export function AskCompass() {
             <div className="flex items-center justify-between gap-3 pr-0">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_-8px_rgba(15,23,42,0.25)]">
-                  <Mark className="h-7 w-auto" variant="dark" />
+                  <Mark className="h-6 w-auto" variant="dark" />
                 </span>
                 <div>
                   <DialogTitle className="font-display text-[1.1rem] text-electric">Ask VULA</DialogTitle>
