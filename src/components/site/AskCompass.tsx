@@ -149,8 +149,8 @@ export function AskCompass() {
           <DialogHeader className="border-b border-border bg-navy-deep px-5 py-4 text-left">
             <div className="flex items-center justify-between gap-3 pr-0">
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-electric text-white shadow-[0_12px_32px_-16px_rgba(1,161,183,0.8)]">
-                  <Mark className="h-5 w-auto" variant="light" />
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_-8px_rgba(15,23,42,0.25)]">
+                  <Mark className="h-5 w-auto" variant="dark" />
                 </span>
                 <div>
                   <DialogTitle className="font-display text-[1.1rem] text-white">Ask VULA</DialogTitle>
