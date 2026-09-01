@@ -330,7 +330,7 @@ function withReferences(reply: AskCompassReply, question: string) {
 export function getAskCompassWelcome(): AskCompassReply {
   return {
     content:
-      `Welcome to Ask Compass${TM}. I can help you understand where to start, explain Compass${TM}, and point you toward the right next step.`,
+      `Welcome to Ask VULA. I can help you understand where VULA fits your business, explain your options, and point you toward the right next step.`,
     suggestions: [...DEFAULT_SUGGESTIONS],
   };
 }

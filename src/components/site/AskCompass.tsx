@@ -111,7 +111,7 @@ export function AskCompass() {
         createMessage("assistant", reply.content, reply.suggestions, reply.references),
       ]);
     } catch {
-      setError("Ask Compass™ could not respond just now. Please try again, or start with Compass™.");
+      setError("Ask VULA could not respond just now. Please try again, or book a Compass session.");
     } finally {
       setLoading(false);
     }
@@ -135,12 +135,12 @@ export function AskCompass() {
         type="button"
         onClick={() => setOpen(true)}
         className="print:hidden fixed bottom-5 right-5 z-40 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-electric text-xs font-medium text-white shadow-[0_20px_40px_-20px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:gap-2 sm:overflow-visible sm:border sm:border-white/10 sm:bg-navy-deep sm:px-3 sm:py-2 sm:hover:bg-navy"
-        aria-label="Open Ask Compass chat"
+        aria-label="Open Ask VULA chat"
       >
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-electric text-white sm:h-7 sm:w-7">
           <BotMessageSquare className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
         </span>
-        <span className="hidden sm:inline">Ask Compass</span>
+        <span className="hidden sm:inline">Ask VULA</span>
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -152,9 +152,9 @@ export function AskCompass() {
                   <Compass className="h-5 w-5" />
                 </span>
                 <div>
-                  <DialogTitle className="font-display text-[1.1rem] text-white">Ask Compass™</DialogTitle>
+                  <DialogTitle className="font-display text-[1.1rem] text-white">Ask VULA</DialogTitle>
                   <DialogDescription className="mt-1 text-sm text-white/65">
-                    Calm guidance for the right next step.
+                    Practical guidance for your next step.
                   </DialogDescription>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export function AskCompass() {
                 type="button"
                 onClick={() => setOpen(false)}
                 className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white/78 transition hover:bg-white/12 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
-                aria-label="Close Ask Compass chat"
+                aria-label="Close Ask VULA chat"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -175,7 +175,7 @@ export function AskCompass() {
               className="flex-1 space-y-4 overflow-y-auto bg-[linear-gradient(180deg,rgba(248,250,252,0.92),rgba(255,255,255,1))] px-4 py-4 sm:px-5"
             >
               <div className="rounded-2xl border border-electric/15 bg-electric/5 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-                <strong className="font-semibold text-foreground">Ask Compass™</strong> uses curated website guidance and stays within VULA's published positioning.
+                <strong className="font-semibold text-foreground">Ask VULA</strong> uses curated website content and stays within VULA's published information.
               </div>
 
               {messages.map((message, index) => (
@@ -256,11 +256,11 @@ export function AskCompass() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-3">
-                <label htmlFor="ask-compass-input" className="sr-only">
-                  Ask Compass a question
+                <label htmlFor="ask-vula-input" className="sr-only">
+                  Ask VULA a question
                 </label>
                 <Textarea
-                  id="ask-compass-input"
+                  id="ask-vula-input"
                   ref={inputRef}
                   value={draft}
                   onChange={(event) => setDraft(event.target.value)}
