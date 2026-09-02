@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Calculator, CheckCircle2, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Calculator, CheckCircle2, Compass as CompassIcon, Route as RouteIcon, Gauge, Gem, Handshake, Brain, ShieldCheck, ClipboardList, Map, BarChart2, Gift } from "lucide-react";
 import { analytics } from "@/lib/analytics";
 import { Section } from "@/components/site/Section";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -30,6 +30,7 @@ function Home() {
       <SolutionsOverview />
       <WhyVula />
       <ToolSpotlight />
+      <FreeTools />
       <BrandBand />
       <CTA />
     </>
@@ -135,6 +136,115 @@ function ToolSpotlight() {
             </Link>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+const FREE_TOOL_CARDS = [
+  {
+    icon: Calculator,
+    title: "Cost of Doing Nothing",
+    description: "Turn admin hours into a real Rand cost per year.",
+    to: "/tools/cost-of-doing-nothing-calculator",
+  },
+  {
+    icon: Brain,
+    title: "AI Readiness Assessment",
+    description: "Score your business across data, team and process.",
+    to: "/tools/ai-readiness-assessment",
+  },
+  {
+    icon: ShieldCheck,
+    title: "POPIA Basics Checklist",
+    description: "Nine practical areas every SA business must cover.",
+    to: "/tools/popia-basics-checklist",
+  },
+  {
+    icon: ClipboardList,
+    title: "Business Discovery Checklist",
+    description: "Map your strategy, people, process and technology.",
+    to: "/tools/business-discovery-checklist",
+  },
+  {
+    icon: Map,
+    title: "Digital Transformation Roadmap",
+    description: "Plan your journey across five clear stages.",
+    to: "/tools/digital-transformation-roadmap",
+  },
+  {
+    icon: BarChart2,
+    title: "Process Improvement Scorecard",
+    description: "Find the bottlenecks and manual work costing you time.",
+    to: "/tools/process-improvement-scorecard",
+  },
+];
+
+function FreeTools() {
+  const reveal = useReveal();
+  return (
+    <section className="bg-navy-deep py-16 sm:py-20">
+      <div ref={reveal.ref} className={`container-page ${reveal.className}`}>
+
+        {/* Header */}
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-electric/15 text-electric">
+                <Gift className="h-5 w-5" />
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-electric">
+                No sign-up. No cost. No catch.
+              </p>
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+              14 free business tools,<br className="hidden sm:inline" /> ready to use right now.
+            </h2>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/60">
+              Built for South African SMEs. Covering compliance, AI, automation, digital transformation and more.
+            </p>
+          </div>
+          <Link
+            to="/resources"
+            className="inline-flex h-11 shrink-0 items-center gap-2 self-start rounded-full border border-white/15 bg-white/8 px-6 text-sm font-semibold text-white transition hover:bg-white/15 md:self-auto"
+          >
+            Browse all 14 tools <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        {/* Tool grid */}
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FREE_TOOL_CARDS.map(({ icon: Icon, title, description, to }) => (
+            <Link
+              key={to}
+              to={to}
+              className="group flex items-start gap-4 rounded-2xl border border-white/8 bg-white/4 p-6 transition hover:border-electric/30 hover:bg-white/8"
+            >
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-electric/12 text-electric transition group-hover:bg-electric/20">
+                <Icon className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-white">{title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/55">{description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom strip */}
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-electric/20 bg-electric/8 px-6 py-5 sm:flex-row">
+          <p className="text-sm text-white/70">
+            Plus 8 more: vendor evaluation, software buying, project risk, meeting agendas, requirements workshops, business systems audit, pricing guide and more.
+          </p>
+          <Link
+            to="/resources"
+            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full px-5 text-sm font-semibold text-white transition hover:opacity-90"
+            style={{ backgroundColor: "#01A1B7" }}
+          >
+            See everything <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
