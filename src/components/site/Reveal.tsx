@@ -28,7 +28,9 @@ export function useReveal() {
           observer.disconnect();
         }
       },
-      { threshold: 0.12 },
+      // rootMargin fires the observer 80px before the element reaches the fold,
+      // so the animation is already mid-run by the time it's fully in view.
+      { threshold: 0.08, rootMargin: "0px 0px 80px 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -36,7 +38,7 @@ export function useReveal() {
 
   return {
     ref,
-    className: `transition-[opacity,transform] duration-700 ease-out ${
+    className: `transition-[opacity,transform] duration-[550ms] ease-out ${
       hidden ? "translate-y-5 opacity-0" : "translate-y-0 opacity-100"
     }`,
   };
