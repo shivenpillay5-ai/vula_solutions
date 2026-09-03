@@ -1,3 +1,5 @@
+import { analytics } from "@/lib/analytics";
+
 export function WhatsAppButton() {
   const href =
     "https://wa.me/27612119960?text=" +
@@ -9,6 +11,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
+      onClick={() => analytics.whatsAppClick("floating_button")}
       className="print:hidden fixed bottom-5 left-5 z-40 flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 sm:bottom-6 sm:left-6"
       style={{ backgroundColor: "#25D366" }}
     >
