@@ -16,10 +16,10 @@ import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { Mark } from "../components/site/Logo";
 import { WhatsAppButton } from "../components/site/WhatsAppButton";
+// Static import — the intro must be part of the very first paint. Lazy-loading it
+// lets the homepage render while its chunk downloads, flashing the page pre-intro.
+import { BrandIntro } from "../components/site/BrandIntro";
 
-const BrandIntro = lazy(() =>
-  import("../components/site/BrandIntro").then((m) => ({ default: m.BrandIntro }))
-);
 const AskCompass = lazy(() =>
   import("../components/site/AskCompass").then((m) => ({ default: m.AskCompass }))
 );
@@ -209,9 +209,7 @@ function RootComponent() {
         <Outlet />
       ) : (
         <div className="flex min-h-dvh flex-col">
-          <Suspense fallback={null}>
-            <BrandIntro skip={isInternal} />
-          </Suspense>
+          <BrandIntro skip={isInternal} />
           <SiteHeader />
           <main className="flex-1">
             {/* Required: nested routes render here. */}
