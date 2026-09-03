@@ -91,9 +91,19 @@ function includesAny(text: string, keywords: string[]) {
   return keywords.some((keyword) => text.includes(keyword));
 }
 
-function blockToText(block: ResourceContentBlock) {
-  if (block.type === "list") return block.items.join(" ");
-  return block.text;
+function blockToText(block: ResourceContentBlock): string {
+  switch (block.type) {
+    case "list":
+      return block.items.join(" ");
+    case "stat":
+      return [block.value, block.label, block.context].filter(Boolean).join(" ");
+    case "comparison":
+      return [block.left.label, ...block.left.items, block.right.label, ...block.right.items].join(" ");
+    case "callout":
+      return `${block.title} ${block.text}`;
+    default:
+      return block.text;
+  }
 }
 
 function buildSnippet(article: ResourceArticle, tokens: string[]) {
