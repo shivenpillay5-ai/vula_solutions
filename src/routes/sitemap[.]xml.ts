@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { resourceSections } from "@/lib/resources";
 
 const BASE_URL = "https://vulasolutions.co.za";
 
@@ -26,6 +27,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/about", changefreq: "monthly", priority: "0.6" },
           { path: "/industries", changefreq: "monthly", priority: "0.6" },
           { path: "/resources", changefreq: "weekly", priority: "0.6" },
+          ...resourceSections.map((section): SitemapEntry => ({
+            path: `/resources/${section.slug}`,
+            changefreq: "monthly",
+            priority: "0.6",
+          })),
           { path: "/case-studies", changefreq: "monthly", priority: "0.6" },
           { path: "/contact", changefreq: "monthly", priority: "0.6" },
           { path: "/compass-sample-report", changefreq: "monthly", priority: "0.8" },

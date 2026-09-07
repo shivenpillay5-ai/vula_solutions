@@ -38,7 +38,7 @@ const JSON_LD = JSON.stringify({
       url: "https://vulasolutions.co.za/",
       slogan: "Open the door to a smarter, stronger business.",
       description:
-        "Vula Solutions is a Business Transformation Partner for South African SMEs. Strategy, websites, AI, automation and SEO — every engagement starts with Compass™, our signature business discovery session.",
+        "Vula Solutions is a Business Transformation Partner for South African SMEs. Strategy, websites, AI, automation and SEO. Every engagement starts with Compass™, our signature business discovery session.",
       image: "https://vulasolutions.co.za/og-image.png",
       email: "info@vulasolutions.co.za",
       address: {
@@ -72,7 +72,7 @@ function NotFoundComponent() {
         <p className="font-display mt-8 text-7xl font-semibold tracking-tight text-foreground">404</p>
         <h1 className="mt-3 text-xl font-semibold text-foreground">This door leads nowhere.</h1>
         <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
-          Vula means open — but the page you're looking for doesn't exist or has moved.
+          Vula means open, but the page you're looking for doesn't exist or has moved.
           Let's get you back to somewhere useful.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -157,10 +157,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
-      },
-      {
-        rel: "canonical",
-        href: "https://vulasolutions.co.za",
       },
     ],
   }),

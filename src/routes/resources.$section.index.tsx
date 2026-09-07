@@ -11,6 +11,21 @@ import { CTA } from "@/components/site/CTA";
 import { getResourceSectionBySlug } from "@/lib/resources";
 
 export const Route = createFileRoute("/resources/$section/")({
+  head: ({ params }) => {
+    const section = getResourceSectionBySlug(params.section);
+    if (!section) return { meta: [] };
+    const url = `https://vulasolutions.co.za/resources/${params.section}`;
+    return {
+      meta: [
+        { title: `${section.title} | Vula Solutions` },
+        { name: "description", content: section.description },
+        { property: "og:title", content: section.title },
+        { property: "og:description", content: section.description },
+        { property: "og:url", content: url },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: ResourceSectionPage,
 });
 

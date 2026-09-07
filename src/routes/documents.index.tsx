@@ -223,7 +223,7 @@ function DocumentsPage() {
             Vula Solutions (Pty) Ltd | Confidential | Internal use only
           </span>
           <span className="text-[11px]" style={{ color: TEAL }}>
-            vula.co.za
+            vulasolutions.co.za
           </span>
         </footer>
 

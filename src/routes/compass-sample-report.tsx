@@ -13,9 +13,9 @@ export const Route = createFileRoute("/compass-sample-report")({
       { name: "description", content: "See what a real Compass™ Report looks like. An anonymised example for a small South African professional services firm." },
       { property: "og:title", content: "Sample Compass™ Report" },
       { property: "og:description", content: "See what a real Compass™ Report looks like. An anonymised example for a small South African professional services firm." },
-      { property: "og:url", content: "https://vulasolutions.co.za/compass/sample-report" },
+      { property: "og:url", content: "https://vulasolutions.co.za/compass-sample-report" },
     ],
-    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/compass/sample-report" }],
+    links: [{ rel: "canonical", href: "https://vulasolutions.co.za/compass-sample-report" }],
   }),
   component: SampleReport,
 });

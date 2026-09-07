@@ -33,7 +33,7 @@ export const Route = createFileRoute("/resources/$section/$article")({
     const url = `https://vulasolutions.co.za/resources/${params.section}/${params.article}`;
     return {
       meta: [
-        { title: `${article.title} — Vula Solutions` },
+        { title: `${article.title} | Vula Solutions` },
         { name: "description", content: article.description },
         { property: "og:title", content: article.title },
         { property: "og:description", content: article.description },

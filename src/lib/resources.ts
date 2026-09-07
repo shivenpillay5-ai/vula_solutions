@@ -1073,7 +1073,7 @@ export const resourceSections: ResourceSection[] = [
           },
           {
             type: "stat",
-            value: "20–30%",
+            value: "20 to 30%",
             label: "of working hours in many businesses are absorbed by inefficient processes",
             context: "Time lost to manual workarounds, duplicate entry and unnecessary approvals",
           },
@@ -2382,7 +2382,7 @@ export const resourceSections: ResourceSection[] = [
           },
           {
             type: "stat",
-            value: "2–4 hours",
+            value: "2 to 4 hours",
             label: "per week saved per person when AI handles routine writing and summarising tasks",
             context: "Time freed from repetition is time available for judgment, customer care and growth",
           },

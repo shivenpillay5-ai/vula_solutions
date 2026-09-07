@@ -129,7 +129,7 @@ function OutcomeCard({ metric, label, outcome, source, product, found, fixed }: 
             ref={panelRef}
             role="dialog"
             aria-modal="true"
-            aria-label={`${metric} — ${label}`}
+            aria-label={`${metric}, ${label}`}
             className="relative w-full max-w-lg rounded-2xl border border-border bg-background p-8 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
@@ -200,9 +200,9 @@ function CompassOutcomes() {
 export const Route = createFileRoute("/compass")({
   head: () => ({
     meta: [
-      { title: "Compass™ — Find Your Direction | Vula Solutions" },
+      { title: "Compass™: Find Your Direction | Vula Solutions" },
       { name: "description", content: "Compass™ is Vula Solutions' signature business discovery and strategy experience. Leave with clarity, not a quote." },
-      { property: "og:title", content: "Compass™ — Find Your Direction" },
+      { property: "og:title", content: "Compass™: Find Your Direction" },
       { property: "og:description", content: "Every successful journey starts with knowing where you are." },
       { property: "og:url", content: "https://vulasolutions.co.za/compass" },
     ],
@@ -293,7 +293,7 @@ function CompassPage() {
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
             { n: "01", t: "Pre-session brief", b: "A short intake so we arrive prepared and focused on your business." },
-            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist. Duration varies by tier — from around 90 minutes to a full day." },
+            { n: "02", t: "Discovery session", b: "A structured conversation with a senior strategist. Duration varies by tier, from around 90 minutes to a full day." },
             { n: "03", t: "Analysis", b: "We synthesise findings and map opportunities across your business." },
             { n: "04", t: "Compass Report", b: "A written roadmap with priorities, options and clear next steps." },
           ].map((s) => (
@@ -332,7 +332,7 @@ function CompassPage() {
           ))}
         </ol>
       </Section>
-      <Section eyebrow="The deliverable" title="Inside the Compass Report." intro="A written document that's yours to keep and act on — whether or not you continue with us.">
+      <Section eyebrow="The deliverable" title="Inside the Compass Report." intro="A written document that's yours to keep and act on, whether or not you continue with us.">
         <div className="grid gap-6 md:grid-cols-2">
           {[
             { icon: BarChart2, t: "Business snapshot", b: "A clear summary of where your business is today." },

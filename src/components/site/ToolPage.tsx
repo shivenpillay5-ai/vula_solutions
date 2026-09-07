@@ -146,9 +146,9 @@ export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Bus
             className="flex items-center justify-between gap-4 px-11 py-5"
           >
             <span className="text-[11px]" style={{ color: "rgba(255,255,255,.35)" }}>
-              Vula Solutions (Pty) Ltd — Confidential — Internal use only
+              Vula Solutions (Pty) Ltd | Confidential | Internal use only
             </span>
-            <span className="text-[11px]" style={{ color: TEAL }}>vula.co.za</span>
+            <span className="text-[11px]" style={{ color: TEAL }}>vulasolutions.co.za</span>
           </footer>
         ) : (
           <footer
@@ -160,7 +160,7 @@ export function ToolPage({ title, tagline, type, about, howTo, badge = "Free Bus
                 Your next step
               </div>
               <div className="mb-1.5 text-[17px] font-semibold text-white" style={{ letterSpacing: "-0.01em" }}>
-                Turn this into a plan — book Compass™
+                Turn this into a plan, book Compass™
               </div>
               <p className="max-w-[400px] text-[12px] leading-relaxed" style={{ color: "rgba(255,255,255,.48)" }}>
                 Completing this {type.toLowerCase()} is the beginning, not the end. Compass™ is Vula's structured
